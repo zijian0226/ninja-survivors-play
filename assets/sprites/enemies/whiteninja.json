@@ -1,0 +1,91 @@
+{
+ "id": "enemy_whiteninja",
+ "name": "白发忍者",
+ "image": "whiteninja.png",
+ "animations": {
+  "walk": {
+   "fps": 8,
+   "loop": true,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_thunder1/main/01_走_7f_77x64.png"
+   ],
+   "row": 0,
+   "frames": 7
+  },
+  "idle": {
+   "fps": 3,
+   "loop": true,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_thunder1/main/00_站立_2f_69x69.png"
+   ],
+   "row": 1,
+   "frames": 2
+  },
+  "attack": {
+   "fps": 10,
+   "loop": false,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_thunder1/main/10_砍1_3f_73x78.png"
+   ],
+   "row": 2,
+   "frames": 3
+  },
+  "hurt": {
+   "fps": 10,
+   "loop": false,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_thunder1/main/25_被打_2f_64x77.png"
+   ],
+   "row": 3,
+   "frames": 2
+  },
+  "death": {
+   "fps": 8,
+   "loop": false,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_thunder1/main/25_被打_2f_64x77.png #-1",
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_thunder1/main/26_击飞_1f_85x78.png #0",
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_thunder1/main/28_击落地_11f_124x82.png #0"
+   ],
+   "row": 4,
+   "frames": 3
+  }
+ },
+ "frameWidth": 42,
+ "frameHeight": 36,
+ "spacing": 0,
+ "outline": "baked",
+ "anchor": {
+  "x": 21,
+  "y": 34
+ },
+ "facing": "right",
+ "scale": 1,
+ "palette": [
+  "#fec774",
+  "#333333",
+  "#d0d4e3",
+  "#d15310",
+  "#0f0f19",
+  "#ff8c30",
+  "#ff131b",
+  "#464f74",
+  "#1f1f3b",
+  "#1f1f3b",
+  "#1f1f3b",
+  "#0f0f19",
+  "#f4f6ff",
+  "#a3aec8",
+  "#76829f"
+ ],
+ "paletteNote": "源素材 k-means 12 色（Lab）+ 补丁追加色",
+ "credits": "CREDITS.md#bvn_openbleachvsnaruto",
+ "source": {
+  "pack": "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_thunder1",
+  "scale": 0.4062,
+  "standHeightPx": 26,
+  "method": "去特效拖尾 + BOX 平滑缩小 + Lab 调色板映射 + 去噪 + 逐帧像素补丁(497 px，白刺发+面罩+围巾尾) + 1px #161020 外描边",
+  "patches": "tools/art/bvn/patches/whiteninja.json"
+ },
+ "note": "BVN 侧视角像素小人（方向已确认 2026-11-04）；尚未接入代码；仅限个人学习，不得商用/公开发布"
+}

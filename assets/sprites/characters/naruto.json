@@ -1,0 +1,72 @@
+{
+ "id": "hero_naruto",
+ "image": "naruto.png",
+ "frameWidth": 52,
+ "frameHeight": 37,
+ "spacing": 0,
+ "outline": "baked",
+ "anchor": {
+  "x": 26,
+  "y": 35
+ },
+ "facing": "right",
+ "scale": 1,
+ "animations": {
+  "walk": {
+   "row": 0,
+   "frames": 7,
+   "fps": 10,
+   "loop": true,
+   "source": "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/fighter_naruto/元件_mc_0004/01_走_7f_45x52.png"
+  },
+  "idle": {
+   "row": 1,
+   "frames": 3,
+   "fps": 4,
+   "loop": true,
+   "source": "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/fighter_naruto/元件_mc_0004/00_站立_3f_42x56.png"
+  },
+  "hurt": {
+   "row": 2,
+   "frames": 4,
+   "fps": 10,
+   "loop": false,
+   "source": "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/fighter_naruto/元件_mc_0004/32_被打_4f_52x54.png"
+  },
+  "attack": {
+   "row": 3,
+   "frames": 4,
+   "fps": 12,
+   "loop": false,
+   "source": "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/fighter_naruto/元件_mc_0004/12_砍1_4f_54x58.png"
+  }
+ },
+ "hitbox": {
+  "r": 5
+ },
+ "palette": {
+  "H": "#ffd23a",
+  "h": "#c89010",
+  "B": "#26357a",
+  "M": "#cfd8e6",
+  "S": "#ffd2a8",
+  "s": "#b0704a",
+  "O": "#ff8a1f",
+  "o": "#c0560e",
+  "W": "#fff3d6",
+  "D": "#22222e",
+  "d": "#4a4a5a",
+  "K": "#2a3a8a",
+  "e": "#0b1c4a"
+ },
+ "paletteNote": "§2.3 角色色 + 暗部色；源色→key 映射见 tools/art/bvn/patches/naruto.json",
+ "credits": "CREDITS.md#bvn_openbleachvsnaruto",
+ "source": {
+  "pack": "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/fighter_naruto/元件_mc_0004",
+  "scale": 0.5769,
+  "standHeightPx": 30,
+  "method": "语义缩小（源色→key，BOX 覆盖率×权重取最大）+ 去噪 + 逐帧像素补丁(3 px) + 1px #161020 外描边",
+  "patches": "tools/art/bvn/patches/naruto.json"
+ },
+ "note": "BVN 侧视角像素小人（方向已确认 2026-11-04）；尚未接入代码；仅限个人学习，不得商用/公开发布"
+}

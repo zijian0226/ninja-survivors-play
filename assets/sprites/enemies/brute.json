@@ -1,0 +1,88 @@
+{
+ "id": "enemy_brute",
+ "name": "紫头巾巨汉",
+ "image": "brute.png",
+ "animations": {
+  "walk": {
+   "fps": 6,
+   "loop": true,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja2/main/01_走_5f_70x68.png"
+   ],
+   "row": 0,
+   "frames": 5
+  },
+  "idle": {
+   "fps": 4,
+   "loop": true,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja2/main/00_站立_3f_68x66.png"
+   ],
+   "row": 1,
+   "frames": 3
+  },
+  "attack": {
+   "fps": 10,
+   "loop": false,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja2/main/10_砍1_5f_114x69.png"
+   ],
+   "row": 2,
+   "frames": 5
+  },
+  "hurt": {
+   "fps": 8,
+   "loop": false,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja2/main/25_被打_3f_79x68.png"
+   ],
+   "row": 3,
+   "frames": 3
+  },
+  "death": {
+   "fps": 8,
+   "loop": false,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja2/main/25_被打_3f_79x68.png #-1",
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja2/main/26_击飞_1f_68x66.png #0",
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja2/main/28_击落地_11f_133x94.png #0"
+   ],
+   "row": 4,
+   "frames": 3
+  }
+ },
+ "frameWidth": 66,
+ "frameHeight": 40,
+ "spacing": 0,
+ "outline": "baked",
+ "anchor": {
+  "x": 24,
+  "y": 39
+ },
+ "facing": "right",
+ "scale": 1,
+ "palette": [
+  "#22063e",
+  "#574b69",
+  "#5d4226",
+  "#000000",
+  "#c4afa0",
+  "#55381c",
+  "#5d4124",
+  "#2a0e47",
+  "#5d4124",
+  "#a9714b",
+  "#000000",
+  "#d7783f"
+ ],
+ "paletteNote": "源素材 k-means 12 色（Lab）",
+ "credits": "CREDITS.md#bvn_openbleachvsnaruto",
+ "source": {
+  "pack": "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja2",
+  "scale": 0.6,
+  "standHeightPx": 36,
+  "method": "去特效拖尾 + BOX 平滑缩小 + Lab 调色板映射 + 去噪 + 攻击特效水平裁切（相对锚点 -∞..40 px） + 1px #161020 外描边"
+ },
+ "note": "BVN 侧视角像素小人（方向已确认 2026-11-04）；尚未接入代码；仅限个人学习，不得商用/公开发布",
+ "frameNote": "非对称帧：anchor.x 不在帧中心（攻击向右伸展）"
+}

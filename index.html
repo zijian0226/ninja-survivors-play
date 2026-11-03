@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="忍界幸存者">
+<meta name="application-name" content="忍界幸存者">
+<meta name="theme-color" content="#0f1d3a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180.png">
+<title>忍界幸存者 · Ninja Survivors</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <!-- 标题画面 -->
+  <div id="title-screen" class="screen">
+    <div class="title-bg"></div>
+    <div class="title-chars" id="title-chars"></div>
+    <div class="title-logo">
+      <div class="logo-main">忍界<span>幸存者</span></div>
+      <div class="logo-sub">NINJA SURVIVORS</div>
+    </div>
+    <div class="title-tap">— 点击屏幕开始 —</div>
+    <div class="title-note">粉丝向原型 · 非官方作品 · 所有美术为原创像素画</div>
+  </div>
+
+  <!-- 局外界面（二次元手游风格） -->
+  <div id="ui" class="screen hidden">
+    <div id="topbar"></div>
+    <div id="ui-main"></div>
+    <nav id="bottom-nav"></nav>
+  </div>
+
+  <!-- 战斗界面（像素风） -->
+  <div id="battle" class="screen hidden">
+    <canvas id="game"></canvas>
+    <div id="hud">
+      <div class="hud-xp"><div id="hud-xp-fill"></div><span id="hud-lv">Lv 1</span></div>
+      <div class="hud-row">
+        <div class="hud-pill hp">HP <b id="hud-hp">100/100</b></div>
+        <div class="hud-time" id="hud-time">00:00</div>
+        <div class="hud-pill"><i class="ic-skull"></i><b id="hud-kills">0</b></div>
+        <div class="hud-pill coin"><i class="ic-coin"></i><b id="hud-coins">0</b></div>
+        <button class="hud-pause no-joy" id="btn-pause">II</button>
+      </div>
+      <div id="hud-skills"></div>
+      <div id="boss-bar" class="hidden"><div class="bb-name" id="boss-name">BOSS</div><div class="bb-track"><div id="boss-fill"></div></div></div>
+    </div>
+    <div id="battle-toast"></div>
+    <div id="boss-banner"><div class="bw">WARNING</div><div class="bn">BOSS</div><div class="bs">强敌来袭</div></div>
+    <div id="levelup" class="overlay hidden no-joy"></div>
+    <div id="pause-menu" class="overlay hidden no-joy"></div>
+    <div id="result" class="overlay hidden no-joy"></div>
+  </div>
+
+  <div id="gacha-anim" class="overlay hidden"></div>
+  <div id="modal" class="overlay hidden"></div>
+  <div id="toast-layer"></div>
+</div>
+
+<script src="src/data/characters.js"></script>
+<script src="src/data/skills.js"></script>
+<script src="src/data/enemies.js"></script>
+<script src="src/data/upgrades.js"></script>
+<script src="src/art/pixelArt.js"></script>
+<script src="src/save.js"></script>
+<script src="src/audio.js"></script>
+<script src="src/bvn.js"></script>
+<script src="src/sprites.js"></script>
+<script src="src/perf.js"></script>
+<script src="src/game.js"></script>
+<script src="src/ui.js"></script>
+<script src="src/mobile.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>

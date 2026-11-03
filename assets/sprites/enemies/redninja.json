@@ -1,0 +1,92 @@
+{
+ "id": "enemy_redninja",
+ "name": "红衣忍者",
+ "image": "redninja.png",
+ "animations": {
+  "walk": {
+   "fps": 8,
+   "loop": true,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_earth1/main/01_走_7f_73x67.png"
+   ],
+   "row": 0,
+   "frames": 7
+  },
+  "idle": {
+   "fps": 3,
+   "loop": true,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_earth1/main/00_站立_2f_69x69.png"
+   ],
+   "row": 1,
+   "frames": 2
+  },
+  "attack": {
+   "fps": 10,
+   "loop": false,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_earth1/main/10_砍1_3f_71x77.png"
+   ],
+   "row": 2,
+   "frames": 3
+  },
+  "hurt": {
+   "fps": 10,
+   "loop": false,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_earth1/main/25_被打_2f_59x77.png"
+   ],
+   "row": 3,
+   "frames": 2
+  },
+  "death": {
+   "fps": 8,
+   "loop": false,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_earth1/main/25_被打_2f_59x77.png #-1",
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_earth1/main/26_击飞_1f_86x79.png #0",
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_earth1/main/28_击落地_11f_123x82.png #0"
+   ],
+   "row": 4,
+   "frames": 3
+  }
+ },
+ "frameWidth": 46,
+ "frameHeight": 33,
+ "spacing": 0,
+ "outline": "baked",
+ "anchor": {
+  "x": 23,
+  "y": 31
+ },
+ "facing": "right",
+ "scale": 1,
+ "palette": [
+  "#eacaa1",
+  "#37312c",
+  "#000000",
+  "#c52033",
+  "#fd892e",
+  "#0f0f19",
+  "#0f0f19",
+  "#0f0f19",
+  "#813026",
+  "#0f0f19",
+  "#0f0f19",
+  "#0f0f19",
+  "#4f6db0",
+  "#34497e",
+  "#d4dae6",
+  "#8b95ab"
+ ],
+ "paletteNote": "源素材 k-means 12 色（Lab）+ 补丁追加色",
+ "credits": "CREDITS.md#bvn_openbleachvsnaruto",
+ "source": {
+  "pack": "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja_earth1",
+  "scale": 0.4062,
+  "standHeightPx": 26,
+  "method": "去特效拖尾 + BOX 平滑缩小 + Lab 调色板映射 + 去噪 + 逐帧像素补丁(267 px，蓝护额+飘带) + 1px #161020 外描边",
+  "patches": "tools/art/bvn/patches/redninja.json"
+ },
+ "note": "BVN 侧视角像素小人（方向已确认 2026-11-04）；尚未接入代码；仅限个人学习，不得商用/公开发布"
+}

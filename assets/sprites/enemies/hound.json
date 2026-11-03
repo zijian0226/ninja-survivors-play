@@ -1,0 +1,60 @@
+{
+ "id": "enemy_hound",
+ "name": "灰狼",
+ "image": "hound.png",
+ "animations": {
+  "walk": {
+   "fps": 8,
+   "loop": true,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_dog1/main/00_站立_5f_60x34.png"
+   ],
+   "row": 0,
+   "frames": 5,
+   "note": "源素材无独立走路帧，用站立 5 帧（呼吸/踱步）代替"
+  },
+  "death": {
+   "fps": 8,
+   "loop": false,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_dog1/main/26_击飞_1f_28x42.png #0",
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_dog1/main/28_击落地_11f_123x57.png #0"
+   ],
+   "row": 1,
+   "frames": 2
+  }
+ },
+ "frameWidth": 34,
+ "frameHeight": 22,
+ "spacing": 0,
+ "outline": "baked",
+ "anchor": {
+  "x": 17,
+  "y": 20
+ },
+ "facing": "right",
+ "scale": 1,
+ "palette": [
+  "#525265",
+  "#6f6f8b",
+  "#7e7e92",
+  "#2b0606",
+  "#000000",
+  "#080808",
+  "#080808",
+  "#b4b3c0",
+  "#28283b",
+  "#080808",
+  "#080808",
+  "#863033"
+ ],
+ "paletteNote": "源素材 k-means 12 色（Lab）",
+ "credits": "CREDITS.md#bvn_openbleachvsnaruto",
+ "source": {
+  "pack": "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_dog1",
+  "scale": 0.4516,
+  "standHeightPx": 14,
+  "method": "去特效拖尾 + BOX 平滑缩小 + Lab 调色板映射 + 去噪 + 1px #161020 外描边"
+ },
+ "note": "BVN 侧视角像素小人（方向已确认 2026-11-04）；尚未接入代码；仅限个人学习，不得商用/公开发布"
+}

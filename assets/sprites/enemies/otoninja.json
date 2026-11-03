@@ -1,0 +1,87 @@
+{
+ "id": "enemy_otoninja",
+ "name": "紫衣小忍者",
+ "image": "otoninja.png",
+ "animations": {
+  "walk": {
+   "fps": 8,
+   "loop": true,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja1/main/01_走_7f_58x46.png"
+   ],
+   "row": 0,
+   "frames": 7
+  },
+  "idle": {
+   "fps": 4,
+   "loop": true,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja1/main/00_站立_3f_40x52.png"
+   ],
+   "row": 1,
+   "frames": 3
+  },
+  "attack": {
+   "fps": 12,
+   "loop": false,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja1/main/10_砍1_4f_65x55.png"
+   ],
+   "row": 2,
+   "frames": 4
+  },
+  "hurt": {
+   "fps": 10,
+   "loop": false,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja1/main/25_被打_3f_48x58.png"
+   ],
+   "row": 3,
+   "frames": 3
+  },
+  "death": {
+   "fps": 8,
+   "loop": false,
+   "source": [
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja1/main/25_被打_3f_48x58.png #-1",
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja1/main/26_击飞_1f_43x50.png #0",
+    "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja1/main/28_击落地_11f_123x58.png #0"
+   ],
+   "row": 4,
+   "frames": 3
+  }
+ },
+ "frameWidth": 44,
+ "frameHeight": 30,
+ "spacing": 0,
+ "outline": "baked",
+ "anchor": {
+  "x": 22,
+  "y": 28
+ },
+ "facing": "right",
+ "scale": 1,
+ "palette": [
+  "#000000",
+  "#000000",
+  "#000000",
+  "#000000",
+  "#b9c1c5",
+  "#000000",
+  "#906a44",
+  "#766995",
+  "#542e7a",
+  "#542e7a",
+  "#000000",
+  "#df9355"
+ ],
+ "paletteNote": "源素材 k-means 12 色（Lab）",
+ "credits": "CREDITS.md#bvn_openbleachvsnaruto",
+ "source": {
+  "pack": "assets/thirdparty/naruto_personal_only/characters_pixel/bvn_openbleachvsnaruto/zako_ninja1",
+  "scale": 0.5217,
+  "standHeightPx": 24,
+  "method": "去特效拖尾 + BOX 平滑缩小 + Lab 调色板映射 + 去噪 + 1px #161020 外描边"
+ },
+ "note": "BVN 侧视角像素小人（方向已确认 2026-11-04）；尚未接入代码；仅限个人学习，不得商用/公开发布"
+}
