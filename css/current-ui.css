@@ -27,3 +27,24 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 #modal .md-btns .pbtn{white-space:nowrap;font-size:14px;padding:12px 8px;min-width:0}
 .set-row .toggle:disabled{cursor:default;opacity:.65}
+/* v0.32: a compact loading composition, no title character art. */
+#title-screen{display:grid;place-items:center;padding:24px 20px;padding-top:max(24px,env(safe-area-inset-top));padding-bottom:max(24px,env(safe-area-inset-bottom));cursor:default}
+#title-screen .title-bg{opacity:.48;pointer-events:none}
+.entry-stack{position:relative;z-index:1;width:100%;max-width:330px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px;transform:translateY(-2vh)}
+#title-screen .title-logo{position:static;text-align:center;width:100%}
+#title-screen .logo-main{font-size:44px;line-height:1.2;letter-spacing:3px;margin:0}
+#title-screen .logo-main span{font-size:39px;margin-top:9px;line-height:1.25}
+#title-screen .logo-sub{font-size:10px;letter-spacing:2.5px;line-height:1.5;margin-top:15px}
+.entry-loader{width:100%;max-width:280px;margin-top:4px}
+.entry-loader-status{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;font-size:11px;line-height:1.5;color:#40233e;text-shadow:0 1px #fff9;text-align:left;margin-bottom:8px}
+#entry-progress{position:static;flex:1;font-size:inherit;color:inherit;text-align:left;min-width:0}
+#entry-percent{font-weight:800;font-variant-numeric:tabular-nums;min-width:34px;text-align:right}
+.entry-meter{height:7px;overflow:hidden;border-radius:7px;background:#49253d2b;box-shadow:inset 0 1px 2px #57374b33}
+.entry-meter i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#724060,#b74c48,#ffcf63);transition:width .15s linear}
+#title-screen .title-tap{position:static;display:block;min-height:44px;width:100%;font-size:14px;letter-spacing:2px;line-height:1.5;padding:8px 0;color:#fff;text-shadow:0 2px 7px #6f2b52aa;animation:none}
+#title-screen .title-tap:disabled{opacity:.6;cursor:default}
+#title-screen[data-ready="true"] .title-tap{animation:blink 1.8s ease-in-out infinite;cursor:pointer}
+#title-screen .title-note{position:static;margin:0;color:#fff9;font-size:10px;line-height:1.6;letter-spacing:1px}
+#entry-retry{font-size:13px;background:#ffffffcc;color:#57314e;min-height:42px;padding:9px 24px;border-radius:9px}
+#entry-retry[hidden]{display:none}
+@media(max-width:350px),(max-height:600px){.entry-stack{gap:16px;max-width:280px}#title-screen .logo-main{font-size:37px}#title-screen .logo-main span{font-size:34px}#title-screen .logo-sub{font-size:9px;letter-spacing:1.7px}}

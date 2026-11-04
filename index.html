@@ -16,21 +16,20 @@
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180.png">
 <title>忍者：无尽试炼 · Ninja Survivors</title>
-<link rel="stylesheet" href="css/style.css?v=entry31"><link rel="stylesheet" href="css/current-ui.css?v=entry31">
+<link rel="stylesheet" href="css/style.css?v=load32"><link rel="stylesheet" href="css/current-ui.css?v=load32">
 </head>
 <body>
 <div id="app">
-  <!-- 标题画面 -->
-  <div id="title-screen" class="screen">
-    <div class="title-bg"></div>
-    <div class="title-chars" id="title-chars"></div>
-    <div class="title-logo">
-      <div class="logo-main">忍者<span>无尽试炼</span></div>
-      <div class="logo-sub">NINJA · ENDLESS TRIALS</div>
-    </div>
-    <div id="entry-progress" class="entry-progress" role="status">正在集结忍者…</div>
-    <div class="title-tap">— 点击屏幕开始 —</div>
-    <div class="title-note">同人非官方 · 像素忍者生存试炼</div>
+  <!-- One focused loading screen. Enter is enabled only after assets finish preparing. -->
+  <div id="title-screen" class="screen" data-ready="false" aria-busy="true">
+    <div class="title-bg" aria-hidden="true"></div>
+    <section class="entry-stack" aria-label="忍者：无尽试炼加载">
+      <div class="title-logo"><h1 class="logo-main">忍者：<span>无尽试炼</span></h1><div class="logo-sub">NINJA · ENDLESS TRIALS</div></div>
+      <div class="entry-loader"><div class="entry-loader-status"><span id="entry-progress" role="status" aria-live="polite">正在准备素材…</span><span id="entry-percent">0%</span></div><div id="entry-meter" class="entry-meter" role="progressbar" aria-label="素材加载进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="entry-fill"></i></div></div>
+      <button id="entry-enter" class="title-tap" type="button" disabled>正在加载素材…</button>
+      <button id="entry-retry" class="pbtn" type="button" hidden>重新加载</button>
+      <p class="title-note">同人非官方 · 像素忍者生存试炼</p>
+    </section>
   </div>
 
   <!-- 局外界面（二次元手游风格） -->
@@ -48,20 +47,20 @@
   <div id="toast-layer"></div>
 </div>
 
-<script src="src/data/characters.js?v=entry31"></script>
-<script src="src/data/skills.js?v=entry31"></script>
-<script src="src/data/enemies.js?v=entry31"></script>
-<script src="src/data/upgrades.js?v=entry31"></script>
-<script src="src/data/roster-current.js?v=entry31"></script>
-<script src="src/art/pixelArt.js?v=entry31"></script>
-<script src="src/save.js?v=entry31"></script>
-<script src="src/audio.js?v=entry31"></script>
-<script src="src/bvn.js?v=entry31"></script>
-<script src="src/sprites.js?v=entry31"></script>
-<script src="src/perf.js?v=entry31"></script>
-<script src="src/battle-bridge.js?v=entry31"></script>
-<script src="src/ui.js?v=entry31"></script>
-<script src="src/mobile.js?v=entry31"></script>
-<script src="src/main.js?v=entry31"></script>
+<script src="src/data/characters.js?v=load32"></script>
+<script src="src/data/skills.js?v=load32"></script>
+<script src="src/data/enemies.js?v=load32"></script>
+<script src="src/data/upgrades.js?v=load32"></script>
+<script src="src/data/roster-current.js?v=load32"></script>
+<script src="src/art/pixelArt.js?v=load32"></script>
+<script src="src/save.js?v=load32"></script>
+<script src="src/audio.js?v=load32"></script>
+<script src="src/bvn.js?v=load32"></script>
+<script src="src/sprites.js?v=load32"></script>
+<script src="src/perf.js?v=load32"></script>
+<script src="src/battle-bridge.js?v=load32"></script>
+<script src="src/ui.js?v=load32"></script>
+<script src="src/mobile.js?v=load32"></script>
+<script src="src/main.js?v=load32"></script>
 </body>
 </html>

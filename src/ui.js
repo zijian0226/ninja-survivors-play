@@ -321,7 +321,7 @@ window.UI = (function () {
     m.innerHTML = `<div class="page-head"><h2>设置</h2><span>SETTINGS</span></div>
       <div class="panel set-list">${tg('sfx','音效','技能与界面音效')}${tg('music','大厅音乐','8-bit 合成背景音乐')}<div class="set-row"><div><b>屏幕震动</b><small>沿用当前战斗版本，暂不支持切换</small></div><button class="toggle" disabled aria-label="震动设置暂未接入"><i></i></button></div><div class="set-row"><div><b>伤害数字</b><small>战斗内默认显示</small></div><button class="toggle on" disabled aria-label="伤害数字默认显示"><i></i></button></div>
         <div class="set-row"><div><b>战斗设置</b><small>战斗暂停页可调整1～3倍速</small></div><button class="pbtn" id="btn-perf" style="white-space:nowrap;min-width:64px;flex:none">查看说明</button></div></div>
-      <div class="panel about"><b>关于</b><p>《忍者：无尽试炼》界面整合版 v0.31<br>灵感来自忍者题材动漫；非官方作品，与任何版权方无关。<br>技能动作包含已收集的像素素材与原创角色素材，来源见源码中的素材记录。</p></div>
+      <div class="panel about"><b>关于</b><p>《忍者：无尽试炼》界面整合版 v0.32<br>灵感来自忍者题材动漫；非官方作品，与任何版权方无关。<br>技能动作包含已收集的像素素材与原创角色素材，来源见源码中的素材记录。</p></div>
       <button class="pbtn danger" id="btn-reset">清除存档</button>`;
     $('btn-perf').onclick=()=>modal('战斗设置','<p>进入战斗后点击暂停，可查看队友、连携、倍速；开启首页调试后还可升级、跳转首领。</p>');
     m.querySelectorAll('.toggle[data-k]').forEach(b => b.onclick = () => { s[b.dataset.k] = !s[b.dataset.k]; Save.save(); Sfx.apply(); Game.syncSettings(); Sfx.play('click'); b.classList.toggle('on', s[b.dataset.k]); });
@@ -390,9 +390,7 @@ window.UI = (function () {
   };
 
   U.showTitle = function () {
-    Portraits.preloadAll();
     show('title-screen');
-    $('title-chars').innerHTML = D.characters.slice(0,4).map((c,i)=>charImg(c.id,6,'tc tc'+i)).join('');
   };
   return U;
 })();
