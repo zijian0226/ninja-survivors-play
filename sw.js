@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v38-home';
+const VERSION = 'v39-portrait';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -14,23 +14,23 @@ const PRECACHE = [
   './index.html',
   './play.html',
   './manifest.webmanifest',
-  './css/style.css?v=home38',
-  './src/data/characters.js?v=home38',
-  './src/data/skills.js?v=home38',
-  './src/data/enemies.js?v=home38',
-  './src/data/upgrades.js?v=home38',
-  './src/art/pixelArt.js?v=home38',
-  './src/save.js?v=home38',
-  './src/audio.js?v=home38',
-  './src/sprites.js?v=home38',
-  './src/battle-bridge.js?v=home38',
-  './src/data/roster-current.js?v=home38',
-  './src/data/character-packs.js?v=home38',
-  './css/current-ui.css?v=home38',
-  './src/home-portrait.js?v=home38',
-  './src/ui.js?v=home38',
-  './src/mobile.js?v=home38',
-  './src/main.js?v=home38',
+  './css/style.css?v=portrait39',
+  './src/data/characters.js?v=portrait39',
+  './src/data/skills.js?v=portrait39',
+  './src/data/enemies.js?v=portrait39',
+  './src/data/upgrades.js?v=portrait39',
+  './src/art/pixelArt.js?v=portrait39',
+  './src/save.js?v=portrait39',
+  './src/audio.js?v=portrait39',
+  './src/sprites.js?v=portrait39',
+  './src/battle-bridge.js?v=portrait39',
+  './src/data/roster-current.js?v=portrait39',
+  './src/data/character-packs.js?v=portrait39',
+  './css/current-ui.css?v=portrait39',
+  './src/home-portrait.js?v=portrait39',
+  './src/ui.js?v=portrait39',
+  './src/mobile.js?v=portrait39',
+  './src/main.js?v=portrait39',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
@@ -71,8 +71,8 @@ self.addEventListener('activate', event => {
         channel.port1.onmessage=event=>done(event.data);
         try{client.postMessage({type:'NINJA_CLIENT_STATUS'},[channel.port2]);}catch{done(null);}
       });
-      if(status?.release==='home38')return;
-      url.pathname=SCOPE+'play.html';url.searchParams.set('release','home38');
+      if(status?.release==='portrait39')return;
+      url.pathname=SCOPE+'play.html';url.searchParams.set('release','portrait39');
       // Navigation must run after activation has settled; awaiting it inside activate deadlocks.
       let tries=0;
       const navigate=()=>{

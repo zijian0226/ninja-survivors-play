@@ -15,10 +15,19 @@ window.HomePortrait = (function () {
   boundsCache.set(img.src,box);return box;
  }
  function mount(stage,key){
-  const img=stage.querySelector('img'),points=new Map();let box,view={z:1,x:.5,y:.925},baseline,ready=false;
+  const img=stage.querySelector('img'),points=new Map();let box,view,baseline,ready=false;
+  const frame=()=>document.getElementById('app').getBoundingClientRect();
+  const baseHeight=(w,h)=>Math.min(h*1.15,w*2.15);
+  const defaultView=()=>{const r=frame();return {z:1,x:.5,y:.11+baseHeight(r.width,r.height)/r.height/2};};
+  view=defaultView();
   const saved=Save.data.homePortraits?.[key];
-  if(saved&&['z','x','y'].every(k=>Number.isFinite(saved[k])))view={...saved};
-  function geometry(){const w=stage.clientWidth,h=stage.clientHeight;return {w,h,scale:h*1.6*view.z/box.h};}
+  if(saved&&['z','x','y'].every(k=>Number.isFinite(saved[k]))){
+   if(saved.layout===2)view={z:saved.z,x:saved.x,y:saved.y};
+   else if(Math.abs(saved.z-1)>1e-5||Math.abs(saved.x-.5)>1e-5||Math.abs(saved.y-.925)>1e-5){
+    const r=frame();view={z:saved.z*1.6*r.height/baseHeight(r.width,r.height),x:saved.x,y:saved.y};
+   }
+  }
+  function geometry(){const w=stage.clientWidth,h=stage.clientHeight;return {w,h,scale:baseHeight(w,h)*view.z/box.h};}
   function apply(){
    if(!ready||!stage.isConnected)return;
    const screen=document.getElementById('app').getBoundingClientRect();
@@ -33,7 +42,7 @@ window.HomePortrait = (function () {
    img.style.transform=`translate(${bx-box.x*scale}px,${by-box.y*scale}px)`;
    stage.dataset.ready='true';
   }
-  function save(){if(!ready)return;Save.data.homePortraits||={};Save.data.homePortraits[key]={...view};Save.save();}
+  function save(){if(!ready)return;Save.data.homePortraits||={};Save.data.homePortraits[key]={...view,layout:2};Save.save();}
   function anchor(){
    const p=[...points.values()],r=stage.getBoundingClientRect();
    const center=p.length>1?{x:(p[0].x+p[1].x)/2-r.left,y:(p[0].y+p[1].y)/2-r.top}:{x:p[0]?.x-r.left,y:p[0]?.y-r.top};
@@ -52,7 +61,7 @@ window.HomePortrait = (function () {
   });
   function end(e){if(!points.delete(e.pointerId))return;if(points.size)anchor();save();}
   for(const event of ['pointerup','pointercancel','lostpointercapture'])stage.addEventListener(event,end);
-  stage.parentElement.querySelector('[data-portrait-reset]').onclick=()=>{view={z:1,x:.5,y:.925};apply();save();};
+  stage.parentElement.querySelector('[data-portrait-reset]').onclick=()=>{view=defaultView();apply();save();};
   function loaded(){if(!img.naturalWidth)return;box=artworkBounds(img);ready=true;apply();}
   img.addEventListener('load',loaded);if(img.complete)loaded();
   const observer=new ResizeObserver(()=>{apply();if(points.size)anchor();});observer.observe(document.getElementById('app'));
