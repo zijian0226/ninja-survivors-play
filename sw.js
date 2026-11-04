@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v41-konan';
+const VERSION = 'v42-matte';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -14,23 +14,23 @@ const PRECACHE = [
   './index.html',
   './play.html',
   './manifest.webmanifest',
-  './css/style.css?v=konan41',
-  './src/data/characters.js?v=konan41',
-  './src/data/skills.js?v=konan41',
-  './src/data/enemies.js?v=konan41',
-  './src/data/upgrades.js?v=konan41',
-  './src/art/pixelArt.js?v=konan41',
-  './src/save.js?v=konan41',
-  './src/audio.js?v=konan41',
-  './src/sprites.js?v=konan41',
-  './src/battle-bridge.js?v=konan41',
-  './src/data/roster-current.js?v=konan41',
-  './src/data/character-packs.js?v=konan41',
-  './css/current-ui.css?v=konan41',
-  './src/home-portrait.js?v=konan41',
-  './src/ui.js?v=konan41',
-  './src/mobile.js?v=konan41',
-  './src/main.js?v=konan41',
+  './css/style.css?v=matte42',
+  './src/data/characters.js?v=matte42',
+  './src/data/skills.js?v=matte42',
+  './src/data/enemies.js?v=matte42',
+  './src/data/upgrades.js?v=matte42',
+  './src/art/pixelArt.js?v=matte42',
+  './src/save.js?v=matte42',
+  './src/audio.js?v=matte42',
+  './src/sprites.js?v=matte42',
+  './src/battle-bridge.js?v=matte42',
+  './src/data/roster-current.js?v=matte42',
+  './src/data/character-packs.js?v=matte42',
+  './css/current-ui.css?v=matte42',
+  './src/home-portrait.js?v=matte42',
+  './src/ui.js?v=matte42',
+  './src/mobile.js?v=matte42',
+  './src/main.js?v=matte42',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
@@ -71,8 +71,8 @@ self.addEventListener('activate', event => {
         channel.port1.onmessage=event=>done(event.data);
         try{client.postMessage({type:'NINJA_CLIENT_STATUS'},[channel.port2]);}catch{done(null);}
       });
-      if(status?.release==='konan41')return;
-      url.pathname=SCOPE+'play.html';url.searchParams.set('release','konan41');
+      if(status?.release==='matte42')return;
+      url.pathname=SCOPE+'play.html';url.searchParams.set('release','matte42');
       // Navigation must run after activation has settled; awaiting it inside activate deadlocks.
       let tries=0;
       const navigate=()=>{
