@@ -7,7 +7,7 @@ window.Game=(function(){
  const post=data=>frame?.contentWindow.postMessage({channel:CHANNEL,...data},location.origin);
  const sendSettings=()=>post({type:'settings',sfx:Save.data.settings.sfx});
  function setLoading(message,canRetry=false){let el=$('battle-loading');if(!el){el=document.createElement('div');el.id='battle-loading';$('battle').appendChild(el);}el.className='battle-loading';el.innerHTML='';const strong=document.createElement('strong');strong.textContent=message;el.appendChild(strong);const small=document.createElement('small');small.textContent='首次进入需要载入像素素材';el.appendChild(small);if(canRetry){const retry=document.createElement('button');retry.className='pbtn primary';retry.textContent='重试';retry.onclick=()=>{G.stop();if(frame)frame.remove();frame=null;ready=false;G.start(lastStart.id,lastStart.options);};el.appendChild(retry);const back=document.createElement('button');back.className='pbtn';back.textContent='返回大厅';back.onclick=()=>{G.stop();UI.go('lobby');};el.appendChild(back);}el.hidden=false;}
- function ensureFrame(){if(frame)return;frame=document.createElement('iframe');frame.id='battle-frame';frame.title='忍者：无尽试炼 · 战斗';frame.setAttribute('allow','autoplay; fullscreen');frame.src='battle/?embedded=1&v=ui29';$('battle').appendChild(frame);}
+ function ensureFrame(){if(frame)return;frame=document.createElement('iframe');frame.id='battle-frame';frame.title='忍者：无尽试炼 · 战斗';frame.setAttribute('allow','autoplay; fullscreen');frame.src='battle/?embedded=1&v=battle30';$('battle').appendChild(frame);}
  function launch(){if(!ready||!pending)return;post({type:'start',...pending});pending=null;}
  G.init=()=>{};
  G.start=function(id,options={}){

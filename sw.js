@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v29-ui';
+const VERSION = 'v30-battle';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -13,23 +13,23 @@ const PRECACHE = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './css/style.css',
-  './src/data/characters.js',
-  './src/data/skills.js',
-  './src/data/enemies.js',
-  './src/data/upgrades.js',
-  './src/art/pixelArt.js',
-  './src/save.js',
-  './src/audio.js',
-  './src/bvn.js',
-  './src/sprites.js',
-  './src/perf.js',
-  './src/battle-bridge.js?v=ui29',
-  './src/data/roster-current.js',
-  './css/current-ui.css?v=ui29',
-  './src/ui.js?v=ui29',
-  './src/mobile.js',
-  './src/main.js?v=ui29',
+  './css/style.css?v=battle30',
+  './src/data/characters.js?v=battle30',
+  './src/data/skills.js?v=battle30',
+  './src/data/enemies.js?v=battle30',
+  './src/data/upgrades.js?v=battle30',
+  './src/art/pixelArt.js?v=battle30',
+  './src/save.js?v=battle30',
+  './src/audio.js?v=battle30',
+  './src/bvn.js?v=battle30',
+  './src/sprites.js?v=battle30',
+  './src/perf.js?v=battle30',
+  './src/battle-bridge.js?v=battle30',
+  './src/data/roster-current.js?v=battle30',
+  './css/current-ui.css?v=battle30',
+  './src/ui.js?v=battle30',
+  './src/mobile.js?v=battle30',
+  './src/main.js?v=battle30',
   // BVN 战斗精灵（docs/art-guide §2.2）
   './assets/sprites/characters/naruto.json',
   './assets/sprites/characters/naruto.png',
@@ -75,6 +75,25 @@ self.addEventListener('activate', event => {
     const keys = await caches.keys();
     await Promise.all(keys.filter(k => k.startsWith(PREFIX) && k.endsWith('@' + SCOPE) && k !== CACHE).map(k => caches.delete(k)));
     await self.clients.claim();
+    // Old v6 pages keep executing the obsolete v0.1 engine even after their worker updates.
+    // Migrate such open pages once. Hosted combat frames protect in-progress current runs.
+    const windows=await self.clients.matchAll({type:'window',includeUncontrolled:true});
+    const hasBattle=windows.some(client=>new URL(client.url).pathname.startsWith(SCOPE+'battle/'));
+    if(!hasBattle)await Promise.all(windows.map(async client=>{
+      const url=new URL(client.url);
+      if(url.origin!==self.location.origin||![SCOPE,SCOPE+'index.html'].includes(url.pathname))return;
+      const status=await new Promise(resolve=>{
+        const channel=new MessageChannel();let settled=false;
+        const done=value=>{if(settled)return;settled=true;clearTimeout(timeout);channel.port1.close();resolve(value);};
+        const timeout=setTimeout(()=>done(null),900);
+        channel.port1.onmessage=event=>done(event.data);
+        try{client.postMessage({type:'NINJA_CLIENT_STATUS'},[channel.port2]);}catch{done(null);}
+      });
+      if(status?.release==='battle30')return;
+      url.searchParams.set('release','battle30');
+      // Do not await navigation inside activate: its fetch needs activation to finish.
+      client.navigate(url.href).catch(()=>{});
+    }));
   })());
 });
 
