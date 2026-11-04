@@ -2,12 +2,12 @@
 window.Game=(function(){
  const CHANNEL='ninja-current-battle-v1';let frame,ready=false,pending=null,timer=0,lastStart=null,epoch=0;
  let savedExcluded=[];try{savedExcluded=JSON.parse(localStorage.getItem('ninja-recruit-loadout'))?.excluded||[];}catch{}
- const G={onEnd:null,active:false,excluded:savedExcluded.filter(x=>['火','风','雷','土','水','阴','阳','全'].includes(x)).slice(0,3),lab:false};
+ const G={runtimeId:'ninja-v28-squad35',onEnd:null,active:false,excluded:savedExcluded.filter(x=>['火','风','雷','土','水','阴','阳','全'].includes(x)).slice(0,3),lab:false};
  const $=id=>document.getElementById(id);
  const post=data=>frame?.contentWindow.postMessage({channel:CHANNEL,...data},location.origin);
  const sendSettings=()=>post({type:'settings',sfx:Save.data.settings.sfx});
  function setLoading(message,canRetry=false){let el=$('battle-loading');if(!el){el=document.createElement('div');el.id='battle-loading';$('battle').appendChild(el);}el.className='battle-loading';el.innerHTML='';const strong=document.createElement('strong');strong.textContent=message;el.appendChild(strong);const small=document.createElement('small');small.textContent='首次进入需要载入像素素材';el.appendChild(small);if(canRetry){const retry=document.createElement('button');retry.className='pbtn primary';retry.textContent='重试';retry.onclick=()=>{G.stop();if(frame)frame.remove();frame=null;ready=false;G.start(lastStart.id,lastStart.options);};el.appendChild(retry);const back=document.createElement('button');back.className='pbtn';back.textContent='返回大厅';back.onclick=()=>{G.stop();UI.go('lobby');};el.appendChild(back);}el.hidden=false;}
- function ensureFrame(){if(frame)return;frame=document.createElement('iframe');frame.id='battle-frame';frame.title='忍者：无尽试炼 · 战斗';frame.setAttribute('allow','autoplay; fullscreen');frame.src='battle/?embedded=1&v=battle30';$('battle').appendChild(frame);}
+ function ensureFrame(){if(frame)return;frame=document.createElement('iframe');frame.id='battle-frame';frame.title='忍者：无尽试炼 · 战斗';frame.setAttribute('allow','autoplay; fullscreen');frame.src='battle/play.html?embedded=1&v=entry31';$('battle').appendChild(frame);}
  function launch(){if(!ready||!pending)return;post({type:'start',...pending});pending=null;}
  G.init=()=>{};
  G.start=function(id,options={}){
@@ -25,8 +25,8 @@ window.Game=(function(){
  G.available=c=>!!c&&(c.current.releaseComplete||G.debug());
  addEventListener('message',event=>{
   const m=event.data;if(!frame||event.source!==frame.contentWindow||event.origin!==location.origin||m?.channel!==CHANNEL)return;
-  if(m.type==='ready'){ready=true;launch();}
-  else if(m.type==='started'){clearTimeout(timer);$('battle-loading').hidden=true;}
+  if(m.type==='ready'){if(m.runtimeId!==G.runtimeId||m.forms!==CurrentRoster.length){setLoading('战斗版本不匹配，请重试更新',true);return;}ready=true;launch();}
+  else if(m.type==='started'){if(m.runtimeId!==G.runtimeId){setLoading('战斗版本不匹配，请重试更新',true);return;}clearTimeout(timer);$('battle-loading').hidden=true;}
   else if(m.type==='error'){clearTimeout(timer);setLoading(m.message||'战斗加载失败',true);}
   else if(m.type==='home'){G.stop();$('battle').classList.add('hidden');UI.go('lobby');}
   else if(m.type==='result'&&G.active){G.active=false;clearTimeout(timer);frame.hidden=true;const r=m.result;const coins=r.debug?0:Math.max(0,Math.floor(r.kills*2+r.time*.4+r.bosses*100)),gouyu=r.debug?0:Math.floor(r.time/30)+r.bosses*20;G.onEnd?.({...r,coins,gouyu,charId:lastStart.id});}

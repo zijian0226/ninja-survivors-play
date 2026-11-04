@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="忍者：无尽试炼">
+<meta name="application-name" content="忍者：无尽试炼">
+<meta name="theme-color" content="#0f1d3a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180.png">
+<title>忍者：无尽试炼 · Ninja Survivors</title>
+<link rel="stylesheet" href="css/style.css?v=entry31"><link rel="stylesheet" href="css/current-ui.css?v=entry31">
+</head>
+<body>
+<div id="app">
+  <!-- 标题画面 -->
+  <div id="title-screen" class="screen">
+    <div class="title-bg"></div>
+    <div class="title-chars" id="title-chars"></div>
+    <div class="title-logo">
+      <div class="logo-main">忍者<span>无尽试炼</span></div>
+      <div class="logo-sub">NINJA · ENDLESS TRIALS</div>
+    </div>
+    <div id="entry-progress" class="entry-progress" role="status">正在集结忍者…</div>
+    <div class="title-tap">— 点击屏幕开始 —</div>
+    <div class="title-note">同人非官方 · 像素忍者生存试炼</div>
+  </div>
+
+  <!-- 局外界面（二次元手游风格） -->
+  <div id="ui" class="screen hidden">
+    <div id="topbar"></div>
+    <div id="ui-main"></div>
+    <nav id="bottom-nav"></nav>
+  </div>
+
+  <!-- The preserved game creates #battle-frame here; the legacy v0.1 HUD is not used. -->
+  <div id="battle" class="screen hidden"><div id="result" class="overlay no-joy hidden"></div></div>
+
+  <div id="gacha-anim" class="overlay hidden"></div>
+  <div id="modal" class="overlay hidden"></div>
+  <div id="toast-layer"></div>
+</div>
+
+<script src="src/data/characters.js?v=entry31"></script>
+<script src="src/data/skills.js?v=entry31"></script>
+<script src="src/data/enemies.js?v=entry31"></script>
+<script src="src/data/upgrades.js?v=entry31"></script>
+<script src="src/data/roster-current.js?v=entry31"></script>
+<script src="src/art/pixelArt.js?v=entry31"></script>
+<script src="src/save.js?v=entry31"></script>
+<script src="src/audio.js?v=entry31"></script>
+<script src="src/bvn.js?v=entry31"></script>
+<script src="src/sprites.js?v=entry31"></script>
+<script src="src/perf.js?v=entry31"></script>
+<script src="src/battle-bridge.js?v=entry31"></script>
+<script src="src/ui.js?v=entry31"></script>
+<script src="src/mobile.js?v=entry31"></script>
+<script src="src/main.js?v=entry31"></script>
+</body>
+</html>

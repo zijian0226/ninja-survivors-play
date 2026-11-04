@@ -4,16 +4,33 @@
   "description": "忍者题材竖屏生存 Roguelite（粉丝向原型，非官方作品）",
   "lang": "zh-CN",
   "id": "./",
-  "start_url": "./",
+  "start_url": "play.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#0f1d3a",
   "background_color": "#0a1124",
-  "categories": ["games"],
+  "categories": [
+    "games"
+  ],
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
