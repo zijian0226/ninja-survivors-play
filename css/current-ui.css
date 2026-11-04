@@ -57,8 +57,3 @@
 .home-portrait-stage[data-ready="true"] .splash{visibility:visible}
 .portrait-tools{position:absolute;left:12px;bottom:174px;display:flex;align-items:center;gap:8px;pointer-events:none;color:#fff;font-size:10px;text-shadow:0 1px 4px #122039}
 .portrait-tools button{pointer-events:auto;min-width:44px;min-height:44px;border:1px solid #ffffff66;border-radius:12px;background:#20345280;color:#fff;font:600 11px system-ui}
-
-/* Character identity only: a narrow vertical brush name, with no information card. */
-@font-face{font-family:HomeBrush;src:url('../assets/fonts/home-names.ttf') format('truetype');font-display:swap;font-style:normal;font-weight:400}
-.lobby .char-plate{left:16px;top:16px;padding:0;border:0;border-radius:0;box-shadow:none;background:none;transform:none;pointer-events:none}
-.lobby .cp-name{margin:0;transform:none;writing-mode:vertical-rl;text-orientation:upright;white-space:nowrap;font-family:HomeBrush,'STKaiti','KaiTi',serif;font-size:clamp(20px,calc((100dvh - 300px)/var(--name-count)),40px);font-weight:400;line-height:1.15;letter-spacing:.08em;color:#202638;text-shadow:1px 1px 0 #fff9,-1px -1px 0 #fff9,0 2px 8px #fff8}
