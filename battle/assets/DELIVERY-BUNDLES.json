@@ -21,7 +21,7 @@
       "game.js"
     ],
     "source_sha256": {
-      "skill-art-data.js": "6650319e671a0cc690c0d57f5f10318c729a5fe8ed8de0e7833906e0307dc82d",
+      "skill-art-data.js": "ff8a7dcc429ba383bd774bda0ceb79755d5c9f52002c3c16e8cb7a7cb8c084e3",
       "skill-kits-v23.js": "9c7066121c781e46764ad3ac939f5d04c84a004a52937d440d3cc0e1955af70e",
       "characters.js": "c0699623151ecdbbc06d56205829694873f8ca3127443e42edd0f88a1b7f3a82",
       "skill-catalog.js": "5c358d5b8e69fd84e41768b40184b3445e15e50a9bbcd1afeacb253d9f405368",
@@ -40,8 +40,8 @@
       "materials.js": "103e0fef39cfc8dd1bb7a556f1347a70614abd4d4d7fc69ee4bd37ffc0085fb6",
       "game.js": "2aa567634477b25f96ef30fbfc7641accebe34b655de25449827599ca32ca28d"
     },
-    "bytes": 773401,
-    "sha256": "5e769fe55e27f6effc3253bd37013198e30e26b10e5fd99970d04d010b669aa5"
+    "bytes": 773953,
+    "sha256": "65476299c03c4163e13b0155387c81c394b1e4b88dcb996a1ff15143e1de611f"
   },
   "css": {
     "sources": [
