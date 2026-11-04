@@ -120,19 +120,14 @@ window.UI = (function () {
       <path d="M100 100 m0 -30 a30 30 0 1 1 -21 51 a18 18 0 1 0 21 -33 a8 8 0 1 1 6 -12" stroke-width="3"/></g></svg>`;
   }
   function renderLobby(m) {
-    const s=S(),ch=D.charById[s.displaySelected||s.selected],st=s.owned[ch.id]?.stars||1;
+    const s=S(),ch=D.charById[s.displaySelected||s.selected];
     m.innerHTML = `
       <div class="lobby" style="--c:${ch.color};--c2:${ch.color2}">
         <div class="lobby-bg"><div class="lb-grad"></div><div class="lb-rays"></div>${sealSvg('lb-seal')}
           <div class="lb-kanji">忍</div>${Array.from({ length: 8 }, (_, i) => `<i class="leaf" style="--i:${i}"></i>`).join('')}</div>
         <div class="splash-wrap home-portrait-stage" aria-label="首页展示立绘，可拖动和双指缩放">${charImg(ch.id, 12, 'splash','draggable="false" alt="'+ch.name+'"')}</div>
         <div class="portrait-tools"><span>拖动调整 · 双指缩放</span><button type="button" data-portrait-reset aria-label="恢复默认上半身构图">复位</button></div>
-        <div class="char-plate">
-          <div class="cp-top">${rarityBadge(ch.rarity)}<span class="cp-elem">${ch.element}属性</span></div>
-          <div class="cp-name">${ch.name}</div>
-          <div class="cp-title">${ch.title}</div>
-          ${stars(st)}
-        </div>
+        <div class="char-plate" style="--name-count:${Array.from(ch.name).length}"><div class="cp-name">${ch.name}</div></div>
         <div class="lobby-side">
           <button class="side-btn" data-go="roster"><img class="pix" src="${Sprites.iconURL('clone', 3)}"><span>换人</span></button>
           <button class="side-btn" id="btn-notice"><img class="pix" src="${Sprites.iconURL('scrollBig', 3)}"><span>公告</span></button>

@@ -104,3 +104,7 @@
 | assets/thirdparty/naruto_personal_only/portraits/bandainamco_naruto-game-sc/kakashi_hatake.png | はたけカカシ（chara024，769×1170 全身，含雷切特效） | 未知（SOURCES.tsv 未记录；版权 ©岸本斉史/集英社・万代南梦宫等） | https://naruto-game-sc.bn-ent.net/images/character/detail/chara024/ill.png （页面 https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara024 ） | 官方素材，未授权 | 2026-11-04 | 去第 0 行杂线、放大 ×1.260；雷切完整保留未裁 | assets/portraits/kakashi.png | 仅限个人学习，不得商用/公开发布 |
 | assets/thirdparty/naruto_personal_only/portraits/bandainamco_naruto-game-sc/itachi_uchiha.png | うちはイタチ（chara079，650×1142 全身） | 未知（SOURCES.tsv 未记录；版权 ©岸本斉史/集英社・万代南梦宫等） | https://naruto-game-sc.bn-ent.net/images/character/detail/chara079/ill.png （页面 https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara079 ） | 官方素材，未授权 | 2026-11-04 | 放大 ×1.210（同第七班流程，tools/art/portraits/build_portraits.py） | assets/portraits/itachi.png | 仅限个人学习，不得商用/公开发布 |
 | assets/thirdparty/naruto_personal_only/portraits/bandainamco_naruto-game-sc/deidara.png | デイダラ（chara083，489×1064 全身） | 未知（SOURCES.tsv 未记录；版权 ©岸本斉史/集英社・万代南梦宫等） | https://naruto-game-sc.bn-ent.net/images/character/detail/chara083/ill.png （页面 https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara083 ） | 官方素材，未授权 | 2026-11-04 | 放大 ×1.299（同第七班流程，tools/art/portraits/build_portraits.py） | assets/portraits/deidara.png | 仅限个人学习，不得商用/公开发布 |
+
+## 首页名字字体
+
+Ma Shan Zheng（马善政毛笔字体），Copyright 2018 The Ma Shan Zheng Project Authors。通过 Google Fonts 获取角色名所需97字的精简字库（66 KB），按 SIL Open Font License 1.1 使用。项目：https://github.com/googlefonts/mashanzheng ；完整许可证：`fonts/MaShanZheng-OFL.txt`。
