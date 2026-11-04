@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v32-loading';
+const VERSION = 'v33-packs';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -14,42 +14,22 @@ const PRECACHE = [
   './index.html',
   './play.html',
   './manifest.webmanifest',
-  './css/style.css?v=load32',
-  './src/data/characters.js?v=load32',
-  './src/data/skills.js?v=load32',
-  './src/data/enemies.js?v=load32',
-  './src/data/upgrades.js?v=load32',
-  './src/art/pixelArt.js?v=load32',
-  './src/save.js?v=load32',
-  './src/audio.js?v=load32',
-  './src/bvn.js?v=load32',
-  './src/sprites.js?v=load32',
-  './src/perf.js?v=load32',
-  './src/battle-bridge.js?v=load32',
-  './src/data/roster-current.js?v=load32',
-  './css/current-ui.css?v=load32',
-  './src/ui.js?v=load32',
-  './src/mobile.js?v=load32',
-  './src/main.js?v=load32',
-  // BVN 战斗精灵（docs/art-guide §2.2）
-  './assets/sprites/characters/naruto.json',
-  './assets/sprites/characters/naruto.png',
-  './assets/sprites/characters/sasuke.json',
-  './assets/sprites/characters/sasuke.png',
-  './assets/sprites/characters/sakura.json',
-  './assets/sprites/characters/sakura.png',
-  './assets/sprites/characters/kakashi.json',
-  './assets/sprites/characters/kakashi.png',
-  './assets/sprites/enemies/otoninja.json',
-  './assets/sprites/enemies/otoninja.png',
-  './assets/sprites/enemies/hound.json',
-  './assets/sprites/enemies/hound.png',
-  './assets/sprites/enemies/redninja.json',
-  './assets/sprites/enemies/redninja.png',
-  './assets/sprites/enemies/whiteninja.json',
-  './assets/sprites/enemies/whiteninja.png',
-  './assets/sprites/enemies/brute.json',
-  './assets/sprites/enemies/brute.png',
+  './css/style.css?v=packs33',
+  './src/data/characters.js?v=packs33',
+  './src/data/skills.js?v=packs33',
+  './src/data/enemies.js?v=packs33',
+  './src/data/upgrades.js?v=packs33',
+  './src/art/pixelArt.js?v=packs33',
+  './src/save.js?v=packs33',
+  './src/audio.js?v=packs33',
+  './src/sprites.js?v=packs33',
+  './src/battle-bridge.js?v=packs33',
+  './src/data/roster-current.js?v=packs33',
+  './src/data/character-packs.js?v=packs33',
+  './css/current-ui.css?v=packs33',
+  './src/ui.js?v=packs33',
+  './src/mobile.js?v=packs33',
+  './src/main.js?v=packs33',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
@@ -90,8 +70,8 @@ self.addEventListener('activate', event => {
         channel.port1.onmessage=event=>done(event.data);
         try{client.postMessage({type:'NINJA_CLIENT_STATUS'},[channel.port2]);}catch{done(null);}
       });
-      if(status?.release==='load32')return;
-      url.pathname=SCOPE+'play.html';url.searchParams.set('release','load32');
+      if(status?.release==='packs33')return;
+      url.pathname=SCOPE+'play.html';url.searchParams.set('release','packs33');
       // Navigation must run after activation has settled; awaiting it inside activate deadlocks.
       let tries=0;
       const navigate=()=>{

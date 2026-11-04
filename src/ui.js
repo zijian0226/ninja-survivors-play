@@ -59,10 +59,10 @@ window.UI = (function () {
   })();
   U.Portraits = Portraits;
   /* 角色大图：有立绘用立绘，否则用 scale 倍放大的像素精灵 */
-  function charImg(id, scale, cls, attrs) {
-    Portraits.load(id);
-    const ok=Portraits.ready(id),direct=D.charById[id]?.portraitURL;
-    return `<img class="${(ok||direct)&&!D.charById[id]?.pixelPortrait?'portrait':'pix'} ${cls || ''}" data-portrait="${id}" src="${ok?Portraits.url(id):direct||Sprites.portraitURL(id,scale)}"${attrs ? ' ' + attrs : ''}>`;
+  function charImg(id,scale,cls,attrs){
+    const c=D.charById[id],lazy=scale<=4,direct=lazy?(CharacterPacks.thumbnails[c.current.key]||c.portraitURL):c.portraitURL;
+    if(!lazy)Portraits.load(id);
+    return `<img class="${c.pixelPortrait?'pix':'portrait'} ${cls||''}" ${lazy?'loading="lazy"':'data-portrait="'+id+'"'} decoding="async" src="${direct}"${attrs?' '+attrs:''}>`;
   }
 
   function show(id) {
@@ -152,7 +152,7 @@ window.UI = (function () {
         </button>
       </div>`;
     $('btn-battle').onclick = () => { Sfx.play('select'); U.openBattlePrep(); };
-    $('btn-notice').onclick=()=>{Sfx.play('click');modal('公告',`<p>欢迎来到《忍者：无尽试炼》。</p><ul><li>拖动移动，忍术自动释放；近身忍术需接近目标。</li><li>单人开局，升级招募最多3名支援；支援倒地5秒复活。</li><li>5/10分钟小首领、13分钟大首领，15分钟超时。</li><li>战斗支持1、1.5、2、3倍速；暂停查看技能和联动。</li></ul><p class="muted">已接入35个形态，6个完成正式核验。调试默认开启，预览形态不计正式战绩。</p>`);};
+    $('btn-notice').onclick=()=>{Sfx.play('click');modal('公告',`<p>欢迎来到《忍者：无尽试炼》。</p><ul><li>拖动移动，忍术自动释放；近身忍术需接近目标。</li><li>单人开局，升级招募最多3名支援；支援倒地5秒复活。</li><li>5/10分钟小首领、13分钟大首领，15分钟超时。</li><li>战斗支持1、1.5、2、3倍速；暂停查看技能和联动。</li></ul><p class="muted">35个已接入形态开放测试，其余图鉴角色锁定。开屏只准备首页，战斗与技能资源按包加载。</p>`);};
   }
 
   /* ---------- 角色 ---------- */
@@ -163,7 +163,7 @@ window.UI = (function () {
     U.rosterSel = sel;
     const ch = D.charById[sel], own = s.owned[sel], w = D.weapons[ch.startSkill];
     m.innerHTML = `
-      <div class="page-head"><h2>角色</h2><span>ROSTER · ${Object.keys(s.owned).length}/${D.characters.length}</span></div>
+      <div class="page-head"><h2>角色</h2><span>ROSTER · 35个形态可测试</span></div>
       <div class="ro-detail rarbg-${ch.rarity}" style="--c:${ch.color};--c2:${ch.color2}">
         <div class="ro-art">${sealSvg('ro-seal')}${charImg(ch.id, 8, own ? '' : 'locked-img')}</div>
         <div class="ro-info">
@@ -171,7 +171,7 @@ window.UI = (function () {
           <div class="ro-name">${ch.name}<small>${ch.fullName}</small></div>
           <div class="ro-title">${ch.title}</div>
           ${own ? stars(own.stars) : '<span class="lock-tag">未解锁</span>'}
-          ${statBar('体力',ch.current.hp,900)}<div class="form-review">${ch.current.releaseComplete?'已核验':'动画已接入 · 调试预览'}</div>
+          ${statBar('体力',ch.current.hp,900)}<div class="form-review">${ch.current.releaseComplete?'已核验':'已接入 · 可测试'} · ${Game.hasPack(ch.current.key)?'缓存就绪':'按需加载'} · ${(CharacterPacks.packages[ch.current.key].bytes/1048576).toFixed(2)} MB</div>
         </div>
         <div class="current-skill-list">${ch.current.skills.map(k=>`<article class="current-skill"><small>${k.slot}</small><b>${k.name}</b><p>${k.effect}</p></article>`).join('')}</div>
         <p class="ro-desc">${ch.desc}</p>${Game.debug()?'<button id="roster-lab" class="pbtn">技能试放</button>':''}
@@ -182,9 +182,10 @@ window.UI = (function () {
         return `<div class="ro-card rarbg-${c.rarity} ${c.id === sel ? 'sel' : ''} ${o ? '' : 'locked'}" data-id="${c.id}" style="--c:${c.color}">
           <div class="rc-face">${charImg(c.id, 4)}</div>${rarityBadge(c.rarity)}
           <div class="rc-name">${c.name}</div>${o ? stars(o.stars) : '<div class="rc-lock">🔒 未解锁</div>'}
-          ${(s.displaySelected||s.selected)===c.id?'<div class="rc-main">展示</div>':''}</div>`;
-      }).join('')}</div>`;
+          ${(s.displaySelected||s.selected)===c.id?'<div class="rc-main">展示</div>':''}${Game.debug()?'<button class="ro-quick-test" data-test-unit="'+c.id+'">试放</button>':''}</div>`;
+      }).join('')}</div><details class="locked-archive"><summary>未开放图鉴形态 · ${CharacterPacks.locked.length}项（已锁定）</summary><p class="prep-copy">当前仅开放上方35个测试形态。以下图鉴条目不进入出战、招募和召唤池。</p><div class="locked-grid">${CharacterPacks.locked.map(c=>`<button disabled class="locked-card"><span>🔒</span>${c.name}</button>`).join('')}</div></details>`;
     m.querySelectorAll('.ro-card').forEach(c => c.onclick = () => { Sfx.play('click'); renderRoster(m, c.dataset.id); bindGo(m); });
+    m.querySelectorAll('[data-test-unit]').forEach(b=>b.onclick=e=>{e.stopPropagation();show('battle');Game.start(b.dataset.testUnit,{lab:true});});
     if($('roster-lab'))$('roster-lab').onclick=()=>{show('battle');Game.start(sel,{lab:true});};
     const b = $('btn-setmain');
     if (b) b.onclick = () => { Sfx.play('select'); s.displaySelected=sel; Save.save(); renderTop(); renderRoster(m, sel); bindGo(m); U.toast(ch.name+' 已设为首页展示'); };
@@ -321,7 +322,7 @@ window.UI = (function () {
     m.innerHTML = `<div class="page-head"><h2>设置</h2><span>SETTINGS</span></div>
       <div class="panel set-list">${tg('sfx','音效','技能与界面音效')}${tg('music','大厅音乐','8-bit 合成背景音乐')}<div class="set-row"><div><b>屏幕震动</b><small>沿用当前战斗版本，暂不支持切换</small></div><button class="toggle" disabled aria-label="震动设置暂未接入"><i></i></button></div><div class="set-row"><div><b>伤害数字</b><small>战斗内默认显示</small></div><button class="toggle on" disabled aria-label="伤害数字默认显示"><i></i></button></div>
         <div class="set-row"><div><b>战斗设置</b><small>战斗暂停页可调整1～3倍速</small></div><button class="pbtn" id="btn-perf" style="white-space:nowrap;min-width:64px;flex:none">查看说明</button></div></div>
-      <div class="panel about"><b>关于</b><p>《忍者：无尽试炼》界面整合版 v0.32<br>灵感来自忍者题材动漫；非官方作品，与任何版权方无关。<br>技能动作包含已收集的像素素材与原创角色素材，来源见源码中的素材记录。</p></div>
+      <div class="panel about"><b>关于</b><p>《忍者：无尽试炼》界面整合版 v0.33<br>灵感来自忍者题材动漫；非官方作品，与任何版权方无关。<br>技能动作包含已收集的像素素材与原创角色素材，来源见源码中的素材记录。</p></div>
       <button class="pbtn danger" id="btn-reset">清除存档</button>`;
     $('btn-perf').onclick=()=>modal('战斗设置','<p>进入战斗后点击暂停，可查看队友、连携、倍速；开启首页调试后还可升级、跳转首领。</p>');
     m.querySelectorAll('.toggle[data-k]').forEach(b => b.onclick = () => { s[b.dataset.k] = !s[b.dataset.k]; Save.save(); Sfx.apply(); Game.syncSettings(); Sfx.play('click'); b.classList.toggle('on', s[b.dataset.k]); });
@@ -345,7 +346,7 @@ window.UI = (function () {
     let selected=Game.available(D.charById[S().selected])?S().selected:'naruto';
     let excluded=[...(Game.excluded||[])];
     modal('出战准备','');const body=$('modal').querySelector('.md-body');
-    function render(){body.innerHTML=`<p class="prep-copy">首页展示与出战独立。单人开局，升级招募最多3名支援。${Game.debug()?'调试开启：35个形态均可预览。':'调试关闭：仅开放6个已核验形态。'}</p><div class="prep-grid">${D.characters.map(c=>`<button class="prep-card ${c.id===selected?'active':''}" data-prep="${c.id}" ${Game.available(c)?'':'disabled'}>${charImg(c.id,3)}<b>${c.current.name}</b><small>${c.element}${c.current.releaseComplete?'':' · 预览'}</small></button>`).join('')}</div><h3 class="prep-title">排除招募属性 ${excluded.length}/3</h3><div class="prep-types">${['火','风','雷','土','水','阴','阳','全'].map(n=>`<button data-exclude="${n}" aria-pressed="${excluded.includes(n)}" class="${excluded.includes(n)?'active':''}">${n}</button>`).join('')}</div><p class="prep-copy">可排除0–3种属性。“全”为独立类别。每关2个小首领、1个大首领；支持1.5/2/3倍速。</p>`;
+    function render(){body.innerHTML=`<p class="prep-copy">首页展示与出战独立。单人开局，升级招募最多3名支援。35个已接入形态可选，其余未开放角色保持锁定。角色包在选择后单独载入。</p><div class="prep-grid">${D.characters.map(c=>`<button class="prep-card ${c.id===selected?'active':''}" data-prep="${c.id}" ${Game.available(c)?'':'disabled'}>${charImg(c.id,3)}<b>${c.current.name}</b><small>${c.element}${c.current.releaseComplete?'':' · 预览'}</small></button>`).join('')}</div><h3 class="prep-title">排除招募属性 ${excluded.length}/3</h3><div class="prep-types">${['火','风','雷','土','水','阴','阳','全'].map(n=>`<button data-exclude="${n}" aria-pressed="${excluded.includes(n)}" class="${excluded.includes(n)?'active':''}">${n}</button>`).join('')}</div><p class="prep-copy">可排除0–3种属性。“全”为独立类别。每关2个小首领、1个大首领；支持1.5/2/3倍速。</p>`;
      body.querySelectorAll('[data-prep]').forEach(b=>b.onclick=()=>{selected=b.dataset.prep;render();});
      body.querySelectorAll('[data-exclude]').forEach(b=>b.onclick=()=>{const n=b.dataset.exclude;if(excluded.includes(n))excluded=excluded.filter(x=>x!==n);else if(excluded.length<3)excluded.push(n);else{U.toast('最多排除3种属性');return;}const top=body.scrollTop;render();body.scrollTop=top;});
     }

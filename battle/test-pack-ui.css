@@ -1,0 +1,2 @@
+.pack-test-nav{display:flex;align-items:center;gap:3px;flex:none}.pack-test-nav button{min-width:34px;min-height:32px;padding:4px!important;font:11px/1.2 system-ui!important}.pack-test-nav small{font:10px/1 system-ui;color:#e5d7ad;white-space:nowrap}.lab-head{gap:5px}.lab-head>div:first-child{min-width:0;flex:1}.lab-head>div:first-child>b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#labMenu{flex:none}
+.pack-test-nav button{background:#1d3339;color:#f3dfa5;border:1px solid #bfa96a66;border-radius:6px;white-space:nowrap}
