@@ -38,10 +38,10 @@
       "original-ninja.js": "064f73544f3476c17ff2cf52a6ed029375229601b705cc1cfd8549e41ae11d4e",
       "official-gallery.js": "52622f52c5a294c4835a7875e9979f0614cd66cd21c9ceeb30019e31c8779b09",
       "materials.js": "103e0fef39cfc8dd1bb7a556f1347a70614abd4d4d7fc69ee4bd37ffc0085fb6",
-      "game.js": "2395eb7292f7aa78226bf07cde0cce1767d40808b9265adaf190a7601c23a896"
+      "game.js": "2aa567634477b25f96ef30fbfc7641accebe34b655de25449827599ca32ca28d"
     },
-    "bytes": 773329,
-    "sha256": "9eef40bf55edd39a0f025c3ec72d918a2549d171803fcafcd6ebb71c0697164a"
+    "bytes": 773401,
+    "sha256": "5e769fe55e27f6effc3253bd37013198e30e26b10e5fd99970d04d010b669aa5"
   },
   "css": {
     "sources": [

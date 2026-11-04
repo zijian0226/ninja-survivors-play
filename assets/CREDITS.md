@@ -108,3 +108,7 @@
 ## 首页名字字体
 
 Ma Shan Zheng（马善政毛笔字体），Copyright 2018 The Ma Shan Zheng Project Authors。通过 Google Fonts 获取角色名所需97字的精简字库（66 KB），按 SIL Open Font License 1.1 使用。项目：https://github.com/googlefonts/mashanzheng ；完整许可证：`fonts/MaShanZheng-OFL.txt`。
+
+## v0.40 已接入敌人
+
+现有 `assets/sprites_hd/enemies/` 中5套 BVN 衍生敌人（紫衣忍者、红衣忍者、白发忍者、紫头巾巨汉、灰狼）无损打包至 `battle/assets/enemies/atlas.png` 并接入战斗。来源和逐动作限制见 `battle/assets/enemies/manifest.json`、`battle/assets/enemies/CREDITS.md`；未新增绘制或声称原素材不存在的灰狼攻击动作。
