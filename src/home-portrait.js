@@ -18,14 +18,16 @@ window.HomePortrait = (function () {
   const img=stage.querySelector('img'),points=new Map();let box,view={z:1,x:.5,y:.925},baseline,ready=false;
   const saved=Save.data.homePortraits?.[key];
   if(saved&&['z','x','y'].every(k=>Number.isFinite(saved[k])))view={...saved};
-  function geometry(){const w=stage.clientWidth,h=stage.clientHeight;return {w,h,scale:h*1.85*view.z/box.h};}
+  function geometry(){const w=stage.clientWidth,h=stage.clientHeight;return {w,h,scale:h*1.6*view.z/box.h};}
   function apply(){
    if(!ready||!stage.isConnected)return;
+   const screen=document.getElementById('app').getBoundingClientRect();
+   Object.assign(stage.style,{left:screen.left+'px',top:screen.top+'px',width:screen.width+'px',height:screen.height+'px'});
    view.z=clamp(view.z,.5,1.7);const {w,h,scale}=geometry();if(!w||!h)return;
    const bw=box.w*scale,bh=box.h*scale;
-   // Small art stays inside; enlarged art cannot leave blank outer edges.
+   // Small art stays inside; enlarged art retains limited headroom below the HUD.
    const bx=clamp(view.x*w-bw/2,Math.min(0,w-bw),Math.max(0,w-bw));
-   const by=clamp(view.y*h-bh/2,Math.min(0,h-bh),Math.max(0,h-bh));
+   const by=clamp(view.y*h-bh/2,Math.min(0,h-bh),Math.max(h*.15,h-bh));
    view.x=(bx+bw/2)/w;view.y=(by+bh/2)/h;
    img.style.width=img.naturalWidth*scale+'px';img.style.height=img.naturalHeight*scale+'px';
    img.style.transform=`translate(${bx-box.x*scale}px,${by-box.y*scale}px)`;
@@ -53,7 +55,7 @@ window.HomePortrait = (function () {
   stage.parentElement.querySelector('[data-portrait-reset]').onclick=()=>{view={z:1,x:.5,y:.925};apply();save();};
   function loaded(){if(!img.naturalWidth)return;box=artworkBounds(img);ready=true;apply();}
   img.addEventListener('load',loaded);if(img.complete)loaded();
-  const observer=new ResizeObserver(()=>{apply();if(points.size)anchor();});observer.observe(stage);
+  const observer=new ResizeObserver(()=>{apply();if(points.size)anchor();});observer.observe(document.getElementById('app'));
   return ()=>{save();observer.disconnect();};
  }
  return {mount};
