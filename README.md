@@ -1,3 +1,7 @@
-# 忍界幸存者（试玩）
+# 忍者：无尽试炼（游玩版）
 
-个人学习项目，非商用。在线试玩：https://zijian0226.github.io/ninja-survivors-play/
+手机游玩：https://zijian0226.github.io/ninja-survivors-play/
+
+v0.29：手游局外界面 + 保留的 v0.28 像素战斗，35个角色形态。调试默认开启，6个正式核验形态，其余预览。
+
+同人非官方学习项目。素材来源见 assets/CREDITS.md 和 battle/assets 内说明。

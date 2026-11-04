@@ -1,0 +1,1133 @@
+{
+  "source": "https://naruto-game-sc.bn-ent.net/character/",
+  "credit": "Bandai Namco / CyberConnect2 official NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS gallery. Copyrighted reference assets; no open license asserted.",
+  "entries": [
+    {
+      "id": "new16",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new16/ill.png",
+      "sourceSHA256": "f81efbcc58ebcc212f4c2a53537b47f30cf823ff82e19c886c6366534545b04e",
+      "local": "assets/official-gallery/new16.webp",
+      "outputSHA256": "e2c1f670a99bece15ce184fa903cdce7724370870270c96ec328d21756fe7a7a"
+    },
+    {
+      "id": "new15",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new15/ill.png",
+      "sourceSHA256": "8059fa7f5d7e139e1fdf970788b6d46664786dfcf74f389101669bf72a3b023b",
+      "local": "assets/official-gallery/new15.webp",
+      "outputSHA256": "565dbdf7018aeb9fbec76f17b47f449b959050594763453fe718e452b8e5b4a6"
+    },
+    {
+      "id": "new14",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new14/ill.png",
+      "sourceSHA256": "aef78d1f1027b8319a12c4baac005370c35e28a183cd10fecf549a1bdac958dc",
+      "local": "assets/official-gallery/new14.webp",
+      "outputSHA256": "977af0989825b07d734bcc58f14971cb150959bbbddc675208ad96e2683621e5"
+    },
+    {
+      "id": "new13",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new13/ill.png",
+      "sourceSHA256": "12afede99c20d20840514a5abe278fafecfc3bdbae5dd2289750c70bac0a27b5",
+      "local": "assets/official-gallery/new13.webp",
+      "outputSHA256": "2e825310dd3b83c250c6c5b5a198a1021596bea3d6a22aebc12d4fcc5aa822f2"
+    },
+    {
+      "id": "new12",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new12/ill.png",
+      "sourceSHA256": "5e7147b970ac4ef3d347d7880e92eed3dd2a1a9fb1cdc246128636e334389c7c",
+      "local": "assets/official-gallery/new12.webp",
+      "outputSHA256": "dd027191489aec6a37779e6601ea9a80059c534a4eabda6d8ba28ee576bef8ba"
+    },
+    {
+      "id": "new11",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new11/ill.png",
+      "sourceSHA256": "8c28066ba1421af3911d2cd8795af620e38dbca5f6a28ff71d78c33a2e77d924",
+      "local": "assets/official-gallery/new11.webp",
+      "outputSHA256": "8b4041b63d90f213ca8daed3cf799dad8398a71a29138a7caf279ea4ddfce053"
+    },
+    {
+      "id": "new10",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new10/ill.png",
+      "sourceSHA256": "c8769f5a87e10a27d6589cdbefc640603dc1c6706856fe674bf49d26ce94488c",
+      "local": "assets/official-gallery/new10.webp",
+      "outputSHA256": "7158f77c3137eb1939397481bb7d3d5c4aa3cfa97a40294cb62c845dcbc3ec95"
+    },
+    {
+      "id": "new09",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new09/ill.png",
+      "sourceSHA256": "2f2daee0ece70eb4834277a17f439ab4f9ac917650a399ad3fb16e0a93755a95",
+      "local": "assets/official-gallery/new09.webp",
+      "outputSHA256": "305d0db8014d7f0dfff898e783c877255810d3be55fa785c32d8f729152b5d6b"
+    },
+    {
+      "id": "new08",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new08/ill.png",
+      "sourceSHA256": "eae3b9cf27086b76e7be867f36932cca169a471756ddd95f9137ac5a10da5831",
+      "local": "assets/official-gallery/new08.webp",
+      "outputSHA256": "0bb7fd43448e518eccef5c4f3122945dbf05a8a8f88b87e75e06d07cd28ba1be"
+    },
+    {
+      "id": "new05",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new05/ill.png",
+      "sourceSHA256": "594fa2716406715684a2411c467380cd2a94e2ba6c68d608154fb8fa78504c58",
+      "local": "assets/official-gallery/new05.webp",
+      "outputSHA256": "ca3f39b4ecd029201fa278a2303fed77d71519d247121b83fbce0f6b20dd7526"
+    },
+    {
+      "id": "new06",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new06/ill.png",
+      "sourceSHA256": "e059e11b532ace6077c861d0b64838157ee28b1361225dc2afd790621f027553",
+      "local": "assets/official-gallery/new06.webp",
+      "outputSHA256": "d103dc996b31df5250ee1adf79b56a3e5606c3133e4075c0d37be66be253bc33"
+    },
+    {
+      "id": "new07",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new07/ill.png",
+      "sourceSHA256": "c4b7d560cde4d3422545a5f8e897ce94ee24b253d887d59f83fca4238d05ac19",
+      "local": "assets/official-gallery/new07.webp",
+      "outputSHA256": "a2a39ef5bd0fceef5a4a3fb5800677a3d943be2f898031d508d4abfe54bebbfe"
+    },
+    {
+      "id": "new04",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new04/ill.png",
+      "sourceSHA256": "1ee001a3fc9d8a4d985834ad1e05ea910ba97c55ec9e4a38bcba8c406469231f",
+      "local": "assets/official-gallery/new04.webp",
+      "outputSHA256": "73a8519774b6c0df41ac29eca182f44136e6853afaba97442cca5395cca389d1"
+    },
+    {
+      "id": "new03",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new03/ill.png",
+      "sourceSHA256": "37bd66dd89cc1b6c551304f460367febc2ba68ceecc00984a307bd6685465819",
+      "local": "assets/official-gallery/new03.webp",
+      "outputSHA256": "0ba8556050311159de16975d0820fd2487a44c064737683095cff92a19be7be4"
+    },
+    {
+      "id": "new01",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new01/ill.png",
+      "sourceSHA256": "3203ed8f6cbd7de445a2cecaad79ceb91cb73975b6ddf8fbd00d909a7e777d85",
+      "local": "assets/official-gallery/new01.webp",
+      "outputSHA256": "05a213c36ce1fb8967d3af58298beb8e9a31b747316fcee998210552fd3f609d"
+    },
+    {
+      "id": "new02",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/new02/ill.png",
+      "sourceSHA256": "064b1eb0372c7b3fdff742f9e83cfbf137219bf461bb56dfaf06697875d3ca8d",
+      "local": "assets/official-gallery/new02.webp",
+      "outputSHA256": "580f979b6bf281fff2a9c662e28604a39d4c29bed0d5d4beb5b5f12addd67192"
+    },
+    {
+      "id": "chara001",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara001/ill.png",
+      "sourceSHA256": "8c1b20cba6515a265c39f266a04cf0b4b644e747ce43f38c11a24646213d26a8",
+      "local": "assets/official-gallery/chara001.webp",
+      "outputSHA256": "3db1f11e92c7ddb70d840a1305f38e43ebb2cfbd39dbdbe31381c7d4bfd523a2"
+    },
+    {
+      "id": "chara002",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara002/ill.png",
+      "sourceSHA256": "1217e69196aa3de40f5be7652c6fb8fec57dc87f4c9225d098daf3213ef694cf",
+      "local": "assets/official-gallery/chara002.webp",
+      "outputSHA256": "6d1a6588d5ea91b6ac77623b0bd816c4ce40955b03394822dc38be12a05a03f2"
+    },
+    {
+      "id": "chara003",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara003/ill.png",
+      "sourceSHA256": "268049fdc0ea36701f5960e53bdcd264a2808b4875166e3cb63e025bcac5a395",
+      "local": "assets/official-gallery/chara003.webp",
+      "outputSHA256": "23edd9183906d1a7924b53a92946cfded81203297dd93233db0454bacc77596e"
+    },
+    {
+      "id": "chara126",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara126/ill.png",
+      "sourceSHA256": "cd3f5bb7019d7e383acac81302b07e6aafb6aa8e324a119feff032dc38edcd8e",
+      "local": "assets/official-gallery/chara126.webp",
+      "outputSHA256": "a68b5c53ab170c848a12f98b8730d3a3a6e3190eca659b719a27c2230763aec4"
+    },
+    {
+      "id": "chara127",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara127/ill.png",
+      "sourceSHA256": "b1f4de238fb0bdc180760a48155218bd7f316516996b332a909f9aec7f7451af",
+      "local": "assets/official-gallery/chara127.webp",
+      "outputSHA256": "d6802cbfe5174b08df3db9a1a9f03a71b997efd2e0196f66658646f5f2da7bf8"
+    },
+    {
+      "id": "chara004",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara004/ill.png",
+      "sourceSHA256": "583be0af9b87b22736ae72c6d905616b258f8b6f0cd6956eb47849baf3abdbe6",
+      "local": "assets/official-gallery/chara004.webp",
+      "outputSHA256": "175ce39621b4eaf801f268a65bdd027ddae75e9bde6fba42ff60e4c4388758a6"
+    },
+    {
+      "id": "chara005",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara005/ill.png",
+      "sourceSHA256": "6e1ee3d05719d59dc8440c627004638899755d1fc4cc230c2fdaa5f53a261374",
+      "local": "assets/official-gallery/chara005.webp",
+      "outputSHA256": "f6e6950142e9b7b70a45e584cc10c12dcbc1af9f741b8af96b97ad47c7930733"
+    },
+    {
+      "id": "chara006",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara006/ill.png",
+      "sourceSHA256": "c4dd8bbe4612554555acd54fc72a25f98e559512f73105c736eee8bb40ea0667",
+      "local": "assets/official-gallery/chara006.webp",
+      "outputSHA256": "8c502abc50ea82d34cc55d414c1c39900b30eee6b3ccd87533fadb0e88ed8c5d"
+    },
+    {
+      "id": "chara007",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara007/ill.png",
+      "sourceSHA256": "8d700a1887c3ea3a9f981c11bbd4db8e5f7c1e888170fe3baca01d81e9e67cad",
+      "local": "assets/official-gallery/chara007.webp",
+      "outputSHA256": "01a48c4477b84d8373b5ebab8ed6294c744bf75c937febcc9ae0d6dc5de96101"
+    },
+    {
+      "id": "chara008",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara008/ill.png",
+      "sourceSHA256": "a1cdba6b6e7ab2b7e59521abd0d3b0e871d40abbfa25afe4c56d8a361b3d12fb",
+      "local": "assets/official-gallery/chara008.webp",
+      "outputSHA256": "8e22b608fdd245659736959442d19041f960556b2708106d7dcab3a0dbbb144c"
+    },
+    {
+      "id": "chara128",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara128/ill.png",
+      "sourceSHA256": "6c0c4b20138e655dfa6be8a636f9a4a4d797f3edf41a41de96c9a08f3ca765a3",
+      "local": "assets/official-gallery/chara128.webp",
+      "outputSHA256": "1e1993e5b4ed13b36fdaf090403056c385edc95f0cb66c3c92cf52e7ce71c971"
+    },
+    {
+      "id": "chara009",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara009/ill.png",
+      "sourceSHA256": "3131743bf53e4865e66d59d0d23b0f26e9bf43071bebd679f2dc201b2fb25319",
+      "local": "assets/official-gallery/chara009.webp",
+      "outputSHA256": "84c2765ec67e1e3b8b081166a63e5afa04467db9a519a5c18076c19f060ed2d8"
+    },
+    {
+      "id": "chara010",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara010/ill.png",
+      "sourceSHA256": "00dcc493774bc21ef1c26f6020359f4187bbb3fdf75ebab989e8f9d6df3c25e0",
+      "local": "assets/official-gallery/chara010.webp",
+      "outputSHA256": "784e85aaa4ebb5ba499cff560c23ce4e57f51bce2c5dfc37fb1cc8aa681675f9"
+    },
+    {
+      "id": "chara011",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara011/ill.png",
+      "sourceSHA256": "a32a5ebcdf4f1be8a859c8d40ac0c743fa450c37c7ece9732889c61069dc120c",
+      "local": "assets/official-gallery/chara011.webp",
+      "outputSHA256": "54a469036ce6927a629396a467ae3561983e83b6426adf094be10fde88fb7d23"
+    },
+    {
+      "id": "chara012",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara012/ill.png",
+      "sourceSHA256": "08666bbef68b08f35bff924aeccedcf05b0b38509f9cf9b9ba264c804f482466",
+      "local": "assets/official-gallery/chara012.webp",
+      "outputSHA256": "36e8383f078b858f094da0ef47a0f6c2c6589527521787e29daf75b6a9e89478"
+    },
+    {
+      "id": "chara013",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara013/ill.png",
+      "sourceSHA256": "813666fd4633b856bce53ccd810d7e5360f002892886a505bdb65a1911f30938",
+      "local": "assets/official-gallery/chara013.webp",
+      "outputSHA256": "ed23e1ea93ce87bddecf68fb72add79e6651204de30e0324313c267200b6ff0b"
+    },
+    {
+      "id": "chara014",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara014/ill.png",
+      "sourceSHA256": "f03e93e9b83d181ec34901aeee4cfaa4b1cdb7abaf23295db90bb6ad7ac6c9f6",
+      "local": "assets/official-gallery/chara014.webp",
+      "outputSHA256": "4efb4cd388468759f57f99688f59ac59ade836701af1bc158983f8b18fc43aca"
+    },
+    {
+      "id": "chara015",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara015/ill.png",
+      "sourceSHA256": "a820b36c8c8c23c76403c272b510b5e53a590b917d6b34fea9cf7b351ed3e243",
+      "local": "assets/official-gallery/chara015.webp",
+      "outputSHA256": "8a98e370c653cb83777da0fd9998aa17cc4e96b74afb494841cc0a5483c87862"
+    },
+    {
+      "id": "chara016",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara016/ill.png",
+      "sourceSHA256": "a8c4eb77692815019baaa482c26989a2baf26d644c9deb760f5fc1630fd8ce57",
+      "local": "assets/official-gallery/chara016.webp",
+      "outputSHA256": "d03d8d08c98b3becff1c3dba07d627042b61e5fd2bbf8b3f3d71ea8de0ea8f06"
+    },
+    {
+      "id": "chara017",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara017/ill.png",
+      "sourceSHA256": "33b3e97b9f551d5925b1edf2afecaabfc23bf4ce891f318b0d5f5c93eb7e6c55",
+      "local": "assets/official-gallery/chara017.webp",
+      "outputSHA256": "d43c70d1866c2090143ee1f1253b9ddbf7341d84d2f18e647a084796b33fe521"
+    },
+    {
+      "id": "chara129",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara129/ill.png",
+      "sourceSHA256": "8972489e539b68af13726e75cd76bc5af37ff2a129fc772d725a5a72bf67d5e0",
+      "local": "assets/official-gallery/chara129.webp",
+      "outputSHA256": "9eedb46132bb1f390b14de2e9f588e61c4b52cb0da99b54fbc560bfc7696c41d"
+    },
+    {
+      "id": "chara018",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara018/ill.png",
+      "sourceSHA256": "8e7ff4e8bf262a47c4001637c0bf30c3938263619f375d9219e61a4d081bf421",
+      "local": "assets/official-gallery/chara018.webp",
+      "outputSHA256": "ba9c7867e0a8de27d46b16dcbf9dc850270eb842d584c198c2b392c435d4b374"
+    },
+    {
+      "id": "chara019",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara019/ill.png",
+      "sourceSHA256": "249577d06629d6b8d35002ffa3795705f8b7350de2ab562c8ed9a8890b096c2a",
+      "local": "assets/official-gallery/chara019.webp",
+      "outputSHA256": "e74194a688f569e0f84b87bfc247f7a6d977411be3bacc3c5fbabcee580326be"
+    },
+    {
+      "id": "chara020",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara020/ill.png",
+      "sourceSHA256": "dad912c5a9d0a35e616434feea1e71df72140885d0420839e622c74708682ca6",
+      "local": "assets/official-gallery/chara020.webp",
+      "outputSHA256": "194cafd074aa07c172ce9240aa00f1e022630910475aef58c4e42eeb2d53ba26"
+    },
+    {
+      "id": "chara021",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara021/ill.png",
+      "sourceSHA256": "1d0ce9d0d7b45e860305e71ea2761f42bfed44c26a6ca97c5c3502bb6302ff20",
+      "local": "assets/official-gallery/chara021.webp",
+      "outputSHA256": "eb5e2909a5f9edbbe69cc613bb5bbecf6b626ff74df27638fa378d0827e706c5"
+    },
+    {
+      "id": "chara022",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara022/ill.png",
+      "sourceSHA256": "5910ee7508500c3e2c48159d9b39eb84b4cad4a61e83780078cd0780ebca9124",
+      "local": "assets/official-gallery/chara022.webp",
+      "outputSHA256": "0438eac6bdbebd981fcf66dc6d0209489279dc43f043dd848341fbfd19aa3a64"
+    },
+    {
+      "id": "chara023",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara023/ill.png",
+      "sourceSHA256": "e3c97872e9fe94f2e013af15219dffbfbff3eb95f55c17192fc414faa7215243",
+      "local": "assets/official-gallery/chara023.webp",
+      "outputSHA256": "695d70d49d330afcbba9ee779de43ad4659a0d1e49892bc8c071448fb0cad889"
+    },
+    {
+      "id": "chara024",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara024/ill.png",
+      "sourceSHA256": "d37d056f9e5f8c82772fd763e1c8a1b62e24d11438fd40eeb6572c7c881c43e7",
+      "local": "assets/official-gallery/chara024.webp",
+      "outputSHA256": "dd3045e6ff9bd086d0d83737886aadc2fbfb99d6e9cb2997a96519a864673e76"
+    },
+    {
+      "id": "chara130",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara130/ill.png",
+      "sourceSHA256": "72e2efe0c6d7d65a4c636b882e636bc11993fc36b795edb021fd53e031eea330",
+      "local": "assets/official-gallery/chara130.webp",
+      "outputSHA256": "65344928752ee2c2c826e114c1ec72da6a30a0883c61ffcd7d97f7c53d31e789"
+    },
+    {
+      "id": "chara131",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara131/ill.png",
+      "sourceSHA256": "7d27e27355dbfd8e4305b34d5b20a962918cba1b2b7861ad4893ba595e9bd654",
+      "local": "assets/official-gallery/chara131.webp",
+      "outputSHA256": "ffad434bf743aae9b5c06ca0426995c86612b99328b13e9b8a0a39b878897dd0"
+    },
+    {
+      "id": "chara025",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara025/ill.png",
+      "sourceSHA256": "f5ea7a3693abace141b85bcba231725797ab0400ec6691772f0c5f6c3545575c",
+      "local": "assets/official-gallery/chara025.webp",
+      "outputSHA256": "a848def489665a542883b9fc004722f6ece1fe6375bc59b94ec25488e7e0bcfa"
+    },
+    {
+      "id": "chara026",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara026/ill.png",
+      "sourceSHA256": "107a5430978fd5adb0e77cc2d25cfac4cae35ea6727f29718b677dd3465d6790",
+      "local": "assets/official-gallery/chara026.webp",
+      "outputSHA256": "3c2daa641e89e06ea95397b16662e9ca54cb3909e7663b0f810205bc0bdff16a"
+    },
+    {
+      "id": "chara132",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara132/ill.png",
+      "sourceSHA256": "e2e7a10721e0cbb51fe1e0a86c59a6fced8de2edd6741123289b14db5eaadfa6",
+      "local": "assets/official-gallery/chara132.webp",
+      "outputSHA256": "052821f27fbd6e0c15565f10930818b3b5f9cfb84f4bd70b70b07817147cb626"
+    },
+    {
+      "id": "chara027",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara027/ill.png",
+      "sourceSHA256": "3b87a2f73134ce8843f0a1a9e2f67dabc38b0c75bc1dacceb4189d89fdca5123",
+      "local": "assets/official-gallery/chara027.webp",
+      "outputSHA256": "3af6acdcff30dc6b595081dcc6505707dbb4bd4a787ebd9697cfb5547f646871"
+    },
+    {
+      "id": "chara028",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara028/ill.png",
+      "sourceSHA256": "34248afae2d2769c38cf360c0139a029840bfe932eaefda463945b662c7ddb6b",
+      "local": "assets/official-gallery/chara028.webp",
+      "outputSHA256": "b7274422bcbd47f982e2d1d05c12fbedeaa95770c62b8121e9f28d35fcdac25a"
+    },
+    {
+      "id": "chara029",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara029/ill.png",
+      "sourceSHA256": "2c85a95c6cbf41bd032b6553dfb500fb3e4bc6c470f63a2937e005e0b127fa2d",
+      "local": "assets/official-gallery/chara029.webp",
+      "outputSHA256": "cee85bbefe36a03f7bb39e08a298772047d836f04dd6b5189c11f0331ae2f825"
+    },
+    {
+      "id": "chara030",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara030/ill.png",
+      "sourceSHA256": "f8715a73b5b44de9872ac15c2d1dc2fd5eff1b1f56ca102879c57d56a749760e",
+      "local": "assets/official-gallery/chara030.webp",
+      "outputSHA256": "4d6d8e6ba78eecb3530fd050a29ce8f3ccd71fdb23e13ef0896e157c7d9ec165"
+    },
+    {
+      "id": "chara133",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara133/ill.png",
+      "sourceSHA256": "9760241e4b32e12ac3b8ef11ffa17895336b6e6c2d2bd5830db30c35002e31d8",
+      "local": "assets/official-gallery/chara133.webp",
+      "outputSHA256": "f44c93898a715ae278603d05feb95fb0df9bacf81feb42b13685c5d3c7f38079"
+    },
+    {
+      "id": "chara031",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara031/ill.png",
+      "sourceSHA256": "26db53900c9f8b394bc9eca5a41b59d04d8fb29d71b9344d935529fa6c6ba51b",
+      "local": "assets/official-gallery/chara031.webp",
+      "outputSHA256": "d871a363155ec4ed811e8ff35328b6ebe4aa8e6b491d3d022392e2d518428610"
+    },
+    {
+      "id": "chara032",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara032/ill.png",
+      "sourceSHA256": "7d73838ea91241f05a0541778eb894e18ee9a283f5f053f1b0b9742c9cedf109",
+      "local": "assets/official-gallery/chara032.webp",
+      "outputSHA256": "c5f5bcaf5b0a294afe54e53c1379a64d1a4c13b9d88d047356c9b9d483eb17a8"
+    },
+    {
+      "id": "chara134",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara134/ill.png",
+      "sourceSHA256": "33a6f8596335e988797d9c873e29a63ab798dc8bfb2513441a4a230e4b01fd5c",
+      "local": "assets/official-gallery/chara134.webp",
+      "outputSHA256": "05091e3a6f6e3561e81a5040533e1abb6fc2bb15ffe0940f6bab0952ab9e2656"
+    },
+    {
+      "id": "chara033",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara033/ill.png",
+      "sourceSHA256": "680c2ff3bc7bda3022fb11311e4c3d66e0b2c358c9db5b881315e7cd7ea94590",
+      "local": "assets/official-gallery/chara033.webp",
+      "outputSHA256": "c68e9d943eb820a37029bedb5e79dc459bcbabfa2a1f84a3d9bac74f8ee42d88"
+    },
+    {
+      "id": "chara034",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara034/ill.png",
+      "sourceSHA256": "4bf641f69ad33fcc28c6f180ed11a3ba5d04511c27bcd93f6407a1082f52da8a",
+      "local": "assets/official-gallery/chara034.webp",
+      "outputSHA256": "8bbac5083d16875375aff3c19cd2b2480423715737c2b4d89d3480d68bbd34fc"
+    },
+    {
+      "id": "chara135",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara135/ill.png",
+      "sourceSHA256": "f28d04dd1c3eddb8c8b98c753e121a084f1c77da93b77006ca972d9377267d70",
+      "local": "assets/official-gallery/chara135.webp",
+      "outputSHA256": "9f8534a85850f7b419b516ca8d085ee46d324172a61a7fafd6d9cd0b7a6cbc44"
+    },
+    {
+      "id": "chara035",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara035/ill.png",
+      "sourceSHA256": "c382d57cf1f5b75507a70f6c6971fbf00211352e91a7266fd6f4cbf8b0285321",
+      "local": "assets/official-gallery/chara035.webp",
+      "outputSHA256": "9217566acd3c0579e681061bfc8d88b5fd087ecde1ced5992a05cbc86957c078"
+    },
+    {
+      "id": "chara036",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara036/ill.png",
+      "sourceSHA256": "159059866947ef0d5751953f0d720f5c17b8ac376186b4c21154461abe5fefbb",
+      "local": "assets/official-gallery/chara036.webp",
+      "outputSHA256": "250bb0c0b642d0831b0613033285e64c17b4d758769ea609b5ee8bd5b77bce28"
+    },
+    {
+      "id": "chara136",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara136/ill.png",
+      "sourceSHA256": "d32102145baf91249f1a40feff887bb6e337cd646227a89839c434a3825c0ce9",
+      "local": "assets/official-gallery/chara136.webp",
+      "outputSHA256": "d0728c7a1f563dd38d2ba8ef2e3ca53deabcb6baf4585e9b7571eee109b15d78"
+    },
+    {
+      "id": "chara037",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara037/ill.png",
+      "sourceSHA256": "7e1a5bac7157178dc7e00e947d82ab17af2dca0113a34f60a15a8b3a02a8bce4",
+      "local": "assets/official-gallery/chara037.webp",
+      "outputSHA256": "903f347fb488263852f3a8a0515099f8cc8c631f6b2ff933c9dd4e153e0518b0"
+    },
+    {
+      "id": "chara038",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara038/ill.png",
+      "sourceSHA256": "0a8b8be1da66c47f586ee87bc099b52643868b480f43251ae586d93c7fc5df71",
+      "local": "assets/official-gallery/chara038.webp",
+      "outputSHA256": "817a9aada3a92f1b783c796e8197a42fc6bc210f07b6cdd41b042eecc964684a"
+    },
+    {
+      "id": "chara137",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara137/ill.png",
+      "sourceSHA256": "1490794f30667fba4937ff59a498444255c88270206ef7ff4bb4e47b2f25d5ef",
+      "local": "assets/official-gallery/chara137.webp",
+      "outputSHA256": "d6de3ebb4e2094b7cfbe5c7d18938458bf274c6fea88a689d3b65bd8b2fb5672"
+    },
+    {
+      "id": "chara039",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara039/ill.png",
+      "sourceSHA256": "cdd56c165cdb834c35f039ec75b1d9fd1127190ec4cabb07f20f831bb818c8ee",
+      "local": "assets/official-gallery/chara039.webp",
+      "outputSHA256": "b0ec3ccb8cbdb58f6704d263af07375a8efa6436966f14750d69c6b0ec01e982"
+    },
+    {
+      "id": "chara040",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara040/ill.png",
+      "sourceSHA256": "71a309344fe2ed8e380fb90a9f901db52d3eceb0a96e33f2f2fd4374920ad054",
+      "local": "assets/official-gallery/chara040.webp",
+      "outputSHA256": "f4389884b097b2b4aec846e37d4e2c0ca3fdcf3c97bfd0cdaa17132dc265fc69"
+    },
+    {
+      "id": "chara041",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara041/ill.png",
+      "sourceSHA256": "fd8fe218c1a35822d15357bdfd9b9e1e7d5f4ec6680200da3384118ee2ad0b1c",
+      "local": "assets/official-gallery/chara041.webp",
+      "outputSHA256": "202f3790e4689ef546d3ad68304521aef0db6f5a0a55e27ce7103080f1b50086"
+    },
+    {
+      "id": "chara138",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara138/ill.png",
+      "sourceSHA256": "afd0bed4c63893650567d06b87ad5a9a1a22103365ef75b0bc34f989c3b6cb21",
+      "local": "assets/official-gallery/chara138.webp",
+      "outputSHA256": "4661fa57dbaee7ed50933530dc7b092418cee93449469ebcd96168c93ad085d2"
+    },
+    {
+      "id": "chara042",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara042/ill.png",
+      "sourceSHA256": "ec22330b8d5c53b72d96d5736489d5062b42f88e8af30b2782620c37b2161b23",
+      "local": "assets/official-gallery/chara042.webp",
+      "outputSHA256": "ecfa9dafbebe673acac9b4a76f169aa0044509f78a81cee3cc3015d481e3801c"
+    },
+    {
+      "id": "chara043",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara043/ill.png",
+      "sourceSHA256": "d85d4c0ab3ad2e99e4275d49ca193fccf999d17b281e0b8c71fefde8940a91c9",
+      "local": "assets/official-gallery/chara043.webp",
+      "outputSHA256": "f948ff8b272b1e6c6bd7aa2d175c2abf633380e8a50ce9476276ee43ff294dfd"
+    },
+    {
+      "id": "chara139",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara139/ill.png",
+      "sourceSHA256": "fce3043a49e61cdc51735002f3c58db76081a4a3c00c72077a8a1d2b7cb48dde",
+      "local": "assets/official-gallery/chara139.webp",
+      "outputSHA256": "06e77dea1df57465b98aaa0026ba0e5d74d91cf76b00ffa0940bff7cc0fd16c1"
+    },
+    {
+      "id": "chara044",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara044/ill.png",
+      "sourceSHA256": "1c1ba256db2ff1ed777344a9f0e6548edc2806647a911e61bf8e4ee58f427c4f",
+      "local": "assets/official-gallery/chara044.webp",
+      "outputSHA256": "c02f790ee76414dc5104b5d361c097c5d62c97fad5d004d4e9ccefe821ddaeaf"
+    },
+    {
+      "id": "chara140",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara140/ill.png",
+      "sourceSHA256": "1c1ba256db2ff1ed777344a9f0e6548edc2806647a911e61bf8e4ee58f427c4f",
+      "local": "assets/official-gallery/chara140.webp",
+      "outputSHA256": "c02f790ee76414dc5104b5d361c097c5d62c97fad5d004d4e9ccefe821ddaeaf"
+    },
+    {
+      "id": "chara045",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara045/ill.png",
+      "sourceSHA256": "40b7ac84949910e93e3aadf896194273e3ee63612e25e93fec13b1fa10e6f6ca",
+      "local": "assets/official-gallery/chara045.webp",
+      "outputSHA256": "aa0f2228e9af5bde9a0a9110312888dbf712bbd98ebaa048e86e8decef396289"
+    },
+    {
+      "id": "chara046",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara046/ill.png",
+      "sourceSHA256": "fa8a047084ab094c088b703136b38995810904e68496ddc0244b507cef946763",
+      "local": "assets/official-gallery/chara046.webp",
+      "outputSHA256": "90b216a09b99e1e8e56d0427a05d42b7c049dbde93af1f0074175a0a0b912b27"
+    },
+    {
+      "id": "chara141",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara141/ill.png",
+      "sourceSHA256": "f97aed41c1e7e7a8402f7f5bf486b5c5b838b101648794af39c04df0e5217c0f",
+      "local": "assets/official-gallery/chara141.webp",
+      "outputSHA256": "602916bf0e4ca17ac64eed6ccb44df92052da5b7c2bca81dfd83ab3be1ee6ce1"
+    },
+    {
+      "id": "chara047",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara047/ill.png",
+      "sourceSHA256": "4bb8bd83dd38782cf2b0eec6680a2b0b0843ccf4982b4b034637c996300a278f",
+      "local": "assets/official-gallery/chara047.webp",
+      "outputSHA256": "0a14e5c2674374e3a619988a0549822c23b4eb0e245685701122dd0c322ae7a6"
+    },
+    {
+      "id": "chara048",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara048/ill.png",
+      "sourceSHA256": "c38373cc938787a2f4aa657ddb4526c168dcc5107e21eb4cf4f93b7c95646e98",
+      "local": "assets/official-gallery/chara048.webp",
+      "outputSHA256": "84571e2c47fcde8d16598ee9afe36c86fb79e9144ebe7076f021b68f43330d4a"
+    },
+    {
+      "id": "chara049",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara049/ill.png",
+      "sourceSHA256": "18fc5fe4a7d183773cd08ef62018996db0040ff6af9477b258d685d091668467",
+      "local": "assets/official-gallery/chara049.webp",
+      "outputSHA256": "28f8f6af0f0fb54df00f92499af74008cb93afa14ee6f3c5e9bced2873cbfff5"
+    },
+    {
+      "id": "chara050",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara050/ill.png",
+      "sourceSHA256": "3f5d42b379feb93fe374d0fb7244ff4088a702aea20a2a988df32fa4df8f8dfc",
+      "local": "assets/official-gallery/chara050.webp",
+      "outputSHA256": "2d5f56927c626723a0a0d29e4f886a709e583829e5a12cda73596dec5b1c855d"
+    },
+    {
+      "id": "chara051",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara051/ill.png",
+      "sourceSHA256": "fb6e3753a3345410302168a8f44c334200b2465c3d94131b201869b291dd4aca",
+      "local": "assets/official-gallery/chara051.webp",
+      "outputSHA256": "ae3cd0db73a56c49f142444ba79e06a2775c5f98234a37ceb9bd60e0b94c1370"
+    },
+    {
+      "id": "chara052",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara052/ill.png",
+      "sourceSHA256": "87199650949252f246fdcc76ac8fbb6c4cd68d30ea9e9deb00b1a9b86c9f64f7",
+      "local": "assets/official-gallery/chara052.webp",
+      "outputSHA256": "3ba09da57eaa39fdacd006df718c1bc12c72379a3eade72fc2692ed566b927cb"
+    },
+    {
+      "id": "chara053",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara053/ill.png",
+      "sourceSHA256": "5e1f2d341291efca7f1da1364d91b1c02cc0b048710327f51d9693cfb7c15351",
+      "local": "assets/official-gallery/chara053.webp",
+      "outputSHA256": "1f0239a2bacf66e622740a81fd1b52e6d8b01117d3c904406abb57578361d7dc"
+    },
+    {
+      "id": "chara054",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara054/ill.png",
+      "sourceSHA256": "e508402e87a887d5447ad3325ef77bfe78ced7c372fbea3967d88c0ac135066f",
+      "local": "assets/official-gallery/chara054.webp",
+      "outputSHA256": "b2dd7740b5b0e6fa926e94a0078148f10088361f201d1a76f990a394c50ec227"
+    },
+    {
+      "id": "chara055",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara055/ill.png",
+      "sourceSHA256": "c4c6fdff86c335de62074a291cc4ec21c8766a7604bb527eb6d5ff82ba8cedd7",
+      "local": "assets/official-gallery/chara055.webp",
+      "outputSHA256": "3ab2dd8dcd0c922b0035a8bdf18b3f4046f89c0ad7f78546c494d559b498e5e2"
+    },
+    {
+      "id": "chara056",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara056/ill.png",
+      "sourceSHA256": "5362494a4a03c41a5facc4f1ebe3f7454b044cfcc21acd9317b6ab0f257cd192",
+      "local": "assets/official-gallery/chara056.webp",
+      "outputSHA256": "90782932182d0abaac7ff730814d10d52d895c1cd86c060f324eed224d0c23ee"
+    },
+    {
+      "id": "chara057",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara057/ill.png",
+      "sourceSHA256": "3a6313b4a53ed09ae3e754404d801b3aa67d1dba5cf05864389cd6bf1e8b12fb",
+      "local": "assets/official-gallery/chara057.webp",
+      "outputSHA256": "f776588d2178817b89f6d6a4dfbe81aedacdfb2a03cfb873fbcfb791422c4646"
+    },
+    {
+      "id": "chara058",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara058/ill.png",
+      "sourceSHA256": "a1f3ea8ec69306e8398b1cdce18a2eacdf3b264a07fdb87424497f1a80f3fa27",
+      "local": "assets/official-gallery/chara058.webp",
+      "outputSHA256": "2f78500dc5024a4b6837199407b38dbc564c28b8080b742eaf7254a58085a14a"
+    },
+    {
+      "id": "chara059",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara059/ill.png",
+      "sourceSHA256": "63061219b80b64f0336d46c4d049157f74eb2218e277626cd232e19c5cc7f47e",
+      "local": "assets/official-gallery/chara059.webp",
+      "outputSHA256": "a255e5f52cdd6a96ccd1008df5d00d5e75d4be519cbd71129ba136825163ba3b"
+    },
+    {
+      "id": "chara060",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara060/ill.png",
+      "sourceSHA256": "13757dc825df4320bfd8b7163252dbebd90246093dd333eb2aec8116cd5b33e7",
+      "local": "assets/official-gallery/chara060.webp",
+      "outputSHA256": "6aba3b5c4f91d5b4dc7d39590d4f9737942fe471f0dcd9004f3b136cd418b9e1"
+    },
+    {
+      "id": "chara061",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara061/ill.png",
+      "sourceSHA256": "5fba824f468011bb4c411c1178e9334dcbf3a61e2413441ecc37a7a6af601af0",
+      "local": "assets/official-gallery/chara061.webp",
+      "outputSHA256": "c29a4db3a6c8435c042f7a43facd2123c54d328763fa55e0362bbf09f69cd430"
+    },
+    {
+      "id": "chara142",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara142/ill.png",
+      "sourceSHA256": "f0844db0f4f02c0a11fbc293f32a1665e551026954f92a52cdc18875bb4ae7ca",
+      "local": "assets/official-gallery/chara142.webp",
+      "outputSHA256": "c465f2a5faf7b05364d3ab238d0823dfb4d0d451b1778ab2e0933aae43e0b5ee"
+    },
+    {
+      "id": "chara062",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara062/ill.png",
+      "sourceSHA256": "164ae00b0ae67cc23d0792be6e32ca225dc68677cc7853023f7762fc1f9f4d62",
+      "local": "assets/official-gallery/chara062.webp",
+      "outputSHA256": "328655cd70a5cbfa2bfc24d46e366714b82c2b8a8ae817297c0943d0fec3a9dd"
+    },
+    {
+      "id": "chara143",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara143/ill.png",
+      "sourceSHA256": "71d57ade04c06d2593c1002dd3ac473e89a29dc63c66f4d7c0b499fee3de1a82",
+      "local": "assets/official-gallery/chara143.webp",
+      "outputSHA256": "8de2b09fcbbe208cf1c24b9fb3d8bcda0168df33e448a2dafa9f8d4f9ef1b795"
+    },
+    {
+      "id": "chara063",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara063/ill.png",
+      "sourceSHA256": "52ce6400633acec91bbd872fc8051bc8032aaf2ae8a8ea1737ab54a8ebd8ab4f",
+      "local": "assets/official-gallery/chara063.webp",
+      "outputSHA256": "3dffce96a491091dcf9de93376079bf9f3a2bca6176549658fac7fc57bc949ee"
+    },
+    {
+      "id": "chara064",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara064/ill.png",
+      "sourceSHA256": "d64fe54cf21e3c64cce163f938b3f6796dc7180b033932aa814fdf90822e2b0a",
+      "local": "assets/official-gallery/chara064.webp",
+      "outputSHA256": "60b292f7d23bfb9aa845e4fa25327fc5b55475c66eb5792cbcd5ad89381e5fde"
+    },
+    {
+      "id": "chara144",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara144/ill.png",
+      "sourceSHA256": "88bb7064b700e22933837074153ab33df5729174c2d6246a378d857bc84fb349",
+      "local": "assets/official-gallery/chara144.webp",
+      "outputSHA256": "a8b380918b2326261bb7519aebe4abebe07681d6d8bc02fd060b261179101d3b"
+    },
+    {
+      "id": "chara065",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara065/ill.png",
+      "sourceSHA256": "c23e4c77be78d6fa2d656b2cb480b42dee1dfa659925f78db0200596b5cac56c",
+      "local": "assets/official-gallery/chara065.webp",
+      "outputSHA256": "9e27466471a24559bebeb0ccd0f4c97418d98f5ed28e8dca2202868921a42c83"
+    },
+    {
+      "id": "chara066",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara066/ill.png",
+      "sourceSHA256": "30c154f53f70b90189a30e64adb4b7d47e6a9170ac1836021be22e063f1e3d50",
+      "local": "assets/official-gallery/chara066.webp",
+      "outputSHA256": "43b5e458367993b29b665a318b7ffd967bb6bb24732c903865c343dd9d2ed23b"
+    },
+    {
+      "id": "chara145",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara145/ill.png",
+      "sourceSHA256": "569851ecd71a93590499d6a25d0e63b538259e6895fe4706185e12e9a1759373",
+      "local": "assets/official-gallery/chara145.webp",
+      "outputSHA256": "bbfce8d4ab2a7c09fbfae6692d0359312da75d3a6c964cd6177e240817a907a9"
+    },
+    {
+      "id": "chara067",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara067/ill.png",
+      "sourceSHA256": "3e14e02f07fb52483c3df3bd56a0571118ea6399a733c5ccf713c8100f39b884",
+      "local": "assets/official-gallery/chara067.webp",
+      "outputSHA256": "d39558e7f53ce8c9139116cd98bd06895bb0746d4e1ff80fb990cc6ffa8e83ed"
+    },
+    {
+      "id": "chara068",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara068/ill.png",
+      "sourceSHA256": "da7ed98bdf6addf49f435f248dcc854a4db13f18f4865f58be4fb2944a8b9f65",
+      "local": "assets/official-gallery/chara068.webp",
+      "outputSHA256": "1509b55065b9acd360629bd8bc1e65ef03309063a96fea57e0583e89f190b459"
+    },
+    {
+      "id": "chara069",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara069/ill.png",
+      "sourceSHA256": "f98d437e3a5cbd87c85e36018bd449b60135c435d6a80364fb1788be7c0e4fb1",
+      "local": "assets/official-gallery/chara069.webp",
+      "outputSHA256": "350fc2652e07942c528aead56e18e79dabee0d4365bfb764d6209fa30fe54536"
+    },
+    {
+      "id": "chara070",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara070/ill.png",
+      "sourceSHA256": "1aa1efb75f2a48410380180d2d78820db4ef6ad7f853b337b64c4e3180fbe1b7",
+      "local": "assets/official-gallery/chara070.webp",
+      "outputSHA256": "1f9cc5af14ccbfc8bf93f0f18a49d5b8bc09a028b474a61e23d74ae640550521"
+    },
+    {
+      "id": "chara071",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara071/ill.png",
+      "sourceSHA256": "e0923299ad60939e5c06d6c932744f04f0bfebbf2e1e22906478093719967db6",
+      "local": "assets/official-gallery/chara071.webp",
+      "outputSHA256": "7f530404f2f6594a00a06b677ca4b007dc88267bec1113215a8fce2c3beda455"
+    },
+    {
+      "id": "chara072",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara072/ill.png",
+      "sourceSHA256": "c81ea58a7dfab710473dff695392af92a56daf581a1e011a89f555a3a7e69592",
+      "local": "assets/official-gallery/chara072.webp",
+      "outputSHA256": "75d58850f519d523e3e8779b22a6e967d8a85739caa4d11f40570c4fb9b95c2f"
+    },
+    {
+      "id": "chara073",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara073/ill.png",
+      "sourceSHA256": "555d757ac0a391f1c8e6218cf9da98c1527318e16a03ce18f8d919f804c2f74d",
+      "local": "assets/official-gallery/chara073.webp",
+      "outputSHA256": "0cca2aba8e5d3693bdad1103ca29969810f5cf8c5447f93c1e339b9f66749a5f"
+    },
+    {
+      "id": "chara074",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara074/ill.png",
+      "sourceSHA256": "25dc19637bc12858eda781cbfa0bd544d98a9b7b231c8f08ea7d6063d29cd725",
+      "local": "assets/official-gallery/chara074.webp",
+      "outputSHA256": "266a5cd914bc0545fca31835b2d5b6901c0561d0d704a1d744b29ec76ff2c520"
+    },
+    {
+      "id": "chara075",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara075/ill.png",
+      "sourceSHA256": "7b961e94d7d372570522c431a613d4d551d4fe8a64d71c3569017efe02bdafc8",
+      "local": "assets/official-gallery/chara075.webp",
+      "outputSHA256": "2fa58ab6fa63d521f4f696168f0fbf24900f47158bf677b6af058d9201eb7dad"
+    },
+    {
+      "id": "chara076",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara076/ill.png",
+      "sourceSHA256": "a3e264ec6baa9604cb135769eed65ec9b7fe93ddef53452c3efb06f6853b38d7",
+      "local": "assets/official-gallery/chara076.webp",
+      "outputSHA256": "cd301feafa8e47db4ebc49ed4c0a20e73e219ac2189d51f16971f4ff5e9cffa6"
+    },
+    {
+      "id": "chara077",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara077/ill.png",
+      "sourceSHA256": "9778438257bef6edb29fff54a46d8e87deb50c7447e8325d8fd1194049eabbc7",
+      "local": "assets/official-gallery/chara077.webp",
+      "outputSHA256": "01561dfebe7e7b32035fbee0d1573d6c4f37e3841fdbf39a0b3d09c51f08770d"
+    },
+    {
+      "id": "chara078",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara078/ill.png",
+      "sourceSHA256": "ea279bdbf2e4f66ee826064b280014f9baee72adfe24d31288f3b31b238ba3c0",
+      "local": "assets/official-gallery/chara078.webp",
+      "outputSHA256": "7fcc7ae13596a2cc5a07cc30202881afb7347dc6cdeacd9c7003aed8ab1410e5"
+    },
+    {
+      "id": "chara079",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara079/ill.png",
+      "sourceSHA256": "44229873b3172e8ca42a48fe40c5b736e2384dfdb1236bd676a6c2729fd2b0f1",
+      "local": "assets/official-gallery/chara079.webp",
+      "outputSHA256": "333bd7b8df9fba9431e5a85d71e5cdad5d6ce98f812cd3200de5ea62adce5318"
+    },
+    {
+      "id": "chara080",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara080/ill.png",
+      "sourceSHA256": "c449058a592418d164f98cd875363fe15d1908de5001c8700f5ed59c9ae734fe",
+      "local": "assets/official-gallery/chara080.webp",
+      "outputSHA256": "5bab20d9f0501b6c824f727f99fc0a5f2745418ad1ac849332dbae61ad49274c"
+    },
+    {
+      "id": "chara081",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara081/ill.png",
+      "sourceSHA256": "c8c2dc46a244e26a0a757a9cda541c4261dd57da57264d36fba0407a07b9c680",
+      "local": "assets/official-gallery/chara081.webp",
+      "outputSHA256": "6a0c0a20c6500e32e5b53124b084f959195da69a689c6ff9ac8b1a2bc479029b"
+    },
+    {
+      "id": "chara082",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara082/ill.png",
+      "sourceSHA256": "58ed10605fec059d89a72f0bbcd189f71edcf37a9884f5643cbe9f7fd6e4fb80",
+      "local": "assets/official-gallery/chara082.webp",
+      "outputSHA256": "d61647774e4b8cb7b16085865d97b2e85ebbfdd76ffb0492a94737347d5ab13a"
+    },
+    {
+      "id": "chara083",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara083/ill.png",
+      "sourceSHA256": "449fa002a84be674ed9a3e205a64e31c1e312178c7a6ea2d3d6ccc71b7bc53cf",
+      "local": "assets/official-gallery/chara083.webp",
+      "outputSHA256": "0d5c96a3664d6726d80e502fd0d9ebf9f1dafa46489245932d7fd40e50e9b822"
+    },
+    {
+      "id": "chara084",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara084/ill.png",
+      "sourceSHA256": "f148d515daa9723e9b36ab0187f727345b77133ff1e11805de968cbc394a588c",
+      "local": "assets/official-gallery/chara084.webp",
+      "outputSHA256": "2949574b221b6bf039f817c98da498b692854d244538d9cbd83d4ea4b6fc99b1"
+    },
+    {
+      "id": "chara085",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara085/ill_sp.png",
+      "sourceSHA256": "18168d2a45de71de5ae2083a00220ded83751b3587cd83e657bcfdad867ecc64",
+      "local": "assets/official-gallery/chara085.webp",
+      "outputSHA256": "a5f3eeaf75ea03814103c3cbeb5c266e0594d9c05abb65da0efaa86e984a16dd"
+    },
+    {
+      "id": "chara086",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara086/ill.png",
+      "sourceSHA256": "2de7c5ddac6a7802b3d69a08235b5eb3f671974e90abd614b69c7c56b216396d",
+      "local": "assets/official-gallery/chara086.webp",
+      "outputSHA256": "5894f8740a55d65825536efff23cbc0d5907505b9180adde40b1be3d1a17b846"
+    },
+    {
+      "id": "chara087",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara087/ill.png",
+      "sourceSHA256": "25d30c988a25052b102bb780c9c6552b02eb42a8cfb60158d00eb42836902fc4",
+      "local": "assets/official-gallery/chara087.webp",
+      "outputSHA256": "059792026b3e45754698dddf6408f8673f42c10bd6d144c729803d2500bfc1ed"
+    },
+    {
+      "id": "chara088",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara088/ill.png",
+      "sourceSHA256": "64d8437772db0a55ace91e0878d8b6501c0c0ea75d7dbb3f5ad6160e5e7261ad",
+      "local": "assets/official-gallery/chara088.webp",
+      "outputSHA256": "57d12e5dbff92d252e262d31955f04e591ca7651e0c6d16bcd3cc49b9b2fcb11"
+    },
+    {
+      "id": "chara089",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara089/ill.png",
+      "sourceSHA256": "6da0cbcc0e45cc21614cc9042a68ddef506dccab2087ee0c7ee58ef16b057d4a",
+      "local": "assets/official-gallery/chara089.webp",
+      "outputSHA256": "311d413c0044276f40178b90b9814ca236a815884ec8c90ef85a9c41ccf34c3f"
+    },
+    {
+      "id": "chara090",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara090/ill.png",
+      "sourceSHA256": "047dc29d5e2cb249a4975cf25bbb87667a8f0e80533656591ce528e02751a30d",
+      "local": "assets/official-gallery/chara090.webp",
+      "outputSHA256": "be056c745819565479dab88746f36157f3d01b8348b6356681ba2c2a0a634d25"
+    },
+    {
+      "id": "chara091",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara091/ill.png",
+      "sourceSHA256": "418af9c743a10014819ad140890b6b15085f0031fec6d6e9de512983359e4fae",
+      "local": "assets/official-gallery/chara091.webp",
+      "outputSHA256": "1c8a9ae14c0a8727daddf5b3564971a8cbb7922f1a75d7ea936fb2cbe98b5dc2"
+    },
+    {
+      "id": "chara092",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara092/ill.png",
+      "sourceSHA256": "25d61d4339db8a01f82d7c86f37ca20d339a488552120feb36357ce174b6cda5",
+      "local": "assets/official-gallery/chara092.webp",
+      "outputSHA256": "7cc5d576e033bd12ffd2ca0fb1453eabaa9abc04c12addf576a3848deb263de1"
+    },
+    {
+      "id": "chara146",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara146/ill.png",
+      "sourceSHA256": "b1292e66bab57c70224a979990aee50864074dc9e9cab3bf6579e621ad8a4388",
+      "local": "assets/official-gallery/chara146.webp",
+      "outputSHA256": "f2dd6988ce8aa6a3c7f616fa4ec119f9d097bd69af14bb51a0edfa1866cc3263"
+    },
+    {
+      "id": "chara093",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara093/ill.png",
+      "sourceSHA256": "7cef6e271cfc01cac7e34adcef4369bf69b501f1e67085b0cd749ea7057cae8c",
+      "local": "assets/official-gallery/chara093.webp",
+      "outputSHA256": "6fb210a4e68d9bc656f13a65a22a11ad95e5c99935aaaf934e12a8774c2c6dd5"
+    },
+    {
+      "id": "chara094",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara094/ill.png",
+      "sourceSHA256": "c9fc6217789f9ac4215d411d12a8e2a1d4f1a1e1915e172d47208cc16316299a",
+      "local": "assets/official-gallery/chara094.webp",
+      "outputSHA256": "52da3521527f11bdd27f8c93531c91c0e0f6ddb54ac57030b353445cbda12000"
+    },
+    {
+      "id": "chara095",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara095/ill.png",
+      "sourceSHA256": "8a2636709e41c40a791489f135aee0ed395a9658c77c049c1e6e9ab04474dd99",
+      "local": "assets/official-gallery/chara095.webp",
+      "outputSHA256": "484d9c4bd2a37d7b7b3ae600b6a5452db0b899deeb6ab96ae875ca333b615387"
+    },
+    {
+      "id": "chara096",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara096/ill.png",
+      "sourceSHA256": "7c15685219bad6023348ca629c847685302d91be893bb5f6648a1511100ab887",
+      "local": "assets/official-gallery/chara096.webp",
+      "outputSHA256": "a7c5777d1c433f410cd5fd4d856e768859385a1ee24760bd7338fec415dd9efe"
+    },
+    {
+      "id": "chara097",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara097/ill.png",
+      "sourceSHA256": "25d2d6bfaa8c4950e7b8389b24e8d9bb30b82784c1821855c01a1f428134b78f",
+      "local": "assets/official-gallery/chara097.webp",
+      "outputSHA256": "f8f13514b2abee3b4d8cb0ef4f18454d31b937f7a3085f718def7012f183eac6"
+    },
+    {
+      "id": "chara098",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara098/ill.png",
+      "sourceSHA256": "5b774dc923fe2b206ae36e504739346588296440ff04caad2cdc55af77322ef1",
+      "local": "assets/official-gallery/chara098.webp",
+      "outputSHA256": "122efeec66dfdd07606fd27236d56b20225e5d293f0dd1d23813cfd370a4c487"
+    },
+    {
+      "id": "chara100",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara100/ill.png",
+      "sourceSHA256": "64122c9e3169b226cd26671506d5f3f37dc284d81fdb81f1813f7a25c0b1e180",
+      "local": "assets/official-gallery/chara100.webp",
+      "outputSHA256": "48fb84a4b6e404b7c0b38b9c42492c81fdb4a87ba37865c83b5857ca56890ef4"
+    },
+    {
+      "id": "chara101",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara101/ill.png",
+      "sourceSHA256": "76c09bf7ee3cb52f72eb5d54ce6f479897ff521d69db5410c6d8104d3f8871ae",
+      "local": "assets/official-gallery/chara101.webp",
+      "outputSHA256": "227050354741e333729a75672b6708952e4b4b3eb7207b368f5604c327ab75d1"
+    },
+    {
+      "id": "chara102",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara102/ill.png",
+      "sourceSHA256": "20f0883c46a7c50941f004fad2b2dfdaf9420ae25fa05cefc3f1e993448f395f",
+      "local": "assets/official-gallery/chara102.webp",
+      "outputSHA256": "0ac49fe91615017c86f88881634cf5844ac86050b491e303e4fb0bdd98ea678d"
+    },
+    {
+      "id": "chara103",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara103/ill.png",
+      "sourceSHA256": "a1b396b6bfd585da11bc0bcc65ce61e84d2ad2aae87f076ab000c6645a07d320",
+      "local": "assets/official-gallery/chara103.webp",
+      "outputSHA256": "3c483f47635984b5f3484fb9818a7a0b1b0bc058b9ae76fd5f3b5b2767fec859"
+    },
+    {
+      "id": "chara104",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara104/ill.png",
+      "sourceSHA256": "4c51e910d5ddbd72761504bd7d4cf25df186ebd63b36bef66ab271aee69a816f",
+      "local": "assets/official-gallery/chara104.webp",
+      "outputSHA256": "4d59c2d903cbbb08318b877c5118e0bdd13dc232114474b5c18796c83bff7c89"
+    },
+    {
+      "id": "chara105",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara105/ill.png",
+      "sourceSHA256": "fe323c9e29372df7f81cab55ddec705493e366013fcf871a7ceae1d06c641b5c",
+      "local": "assets/official-gallery/chara105.webp",
+      "outputSHA256": "152070e97e5b606c88bc93d332276f98801d50f06f2ff81cbf61f2de3676817c"
+    },
+    {
+      "id": "chara106",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara106/ill.png",
+      "sourceSHA256": "95b2f0811e5e27ba1790ccd3dc7f6a617c447cc3b8e36f8e489c3464caca247a",
+      "local": "assets/official-gallery/chara106.webp",
+      "outputSHA256": "7dfe09189152a22f8b05575de3a84906259b74825297fb942e8f85e301f918bd"
+    },
+    {
+      "id": "chara107",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara107/ill.png",
+      "sourceSHA256": "75eb0031b654268f6d396c4d6ca02b7fd2ffcadfe2cff002ed2d27be4f0a01b0",
+      "local": "assets/official-gallery/chara107.webp",
+      "outputSHA256": "4defd1b970f78c83ddb375c0b10962f9b45846befe4f01833f727714f1657bcd"
+    },
+    {
+      "id": "chara108",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara108/ill.png",
+      "sourceSHA256": "7df6f134c2c2abf352a4b2111891418c3cb149259d30904a34c6924f9815000c",
+      "local": "assets/official-gallery/chara108.webp",
+      "outputSHA256": "50c1f0701502e842e2503f250debab7273eac349d4a784a3c176f13cf3557b75"
+    },
+    {
+      "id": "chara109",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara109/ill.png",
+      "sourceSHA256": "76578ccf87538fdce5bfc2aedd5a34320fe8a1a06c69a02bd7fbdd738b615f5b",
+      "local": "assets/official-gallery/chara109.webp",
+      "outputSHA256": "3a68bffa8493b8e595de1978f056a9a94c568369b821021db4bd7429974c2d6e"
+    },
+    {
+      "id": "chara110",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara110/ill.png",
+      "sourceSHA256": "097603848b635c0227d87391ab89227785058f59f96790e3f6895a5a52ef5af2",
+      "local": "assets/official-gallery/chara110.webp",
+      "outputSHA256": "06df55c25aa5f0b773291fd61ba425406c0ed26136f113e08e4c89913c603c2b"
+    },
+    {
+      "id": "chara111",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara111/ill.png",
+      "sourceSHA256": "8f1d9e95225cb2ca80613ab28e2bea8310d91df44fa810f60cb2dffe38f7001d",
+      "local": "assets/official-gallery/chara111.webp",
+      "outputSHA256": "faa82c9a35808c2b7797ef289004d07efd493314c3ff1e091e51af1fd693f6d7"
+    },
+    {
+      "id": "chara112",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara112/ill.png",
+      "sourceSHA256": "109a057e6439e6d5fba9c8f19c4006d5803bf2282a8f86047269e44781faa731",
+      "local": "assets/official-gallery/chara112.webp",
+      "outputSHA256": "bac454b70f8ae6ba762adf5398b7e75ad943a9bd314f5d7a7d53181eef3f96bd"
+    },
+    {
+      "id": "chara113",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara113/ill.png",
+      "sourceSHA256": "c3e365d6706add9c1a68b660ab29600d08bc75289c763d18ea0a0ca94f7f3aa2",
+      "local": "assets/official-gallery/chara113.webp",
+      "outputSHA256": "304375a29ace33d6c93516ba909b344efcfbac6a6760f2f18514f82d0cc6866b"
+    },
+    {
+      "id": "chara114",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara114/ill.png",
+      "sourceSHA256": "89d708489173ba6d3e9cab0dff2448261caec6113695b3893730db8db1a84445",
+      "local": "assets/official-gallery/chara114.webp",
+      "outputSHA256": "6c3d26b8472fc0778977aea368e029ff24824daaca943280ea181b1f0665e9e9"
+    },
+    {
+      "id": "chara115",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara115/ill.png",
+      "sourceSHA256": "9d07ab519f5f70a8595ca2960a7c5525baaf16ad585e5f665f7af25236dbdf5b",
+      "local": "assets/official-gallery/chara115.webp",
+      "outputSHA256": "e88d2a516a09c5a41ea2cbdbf01b54401c85e988c4b26c6513915e5697406408"
+    },
+    {
+      "id": "chara116",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara116/ill.png",
+      "sourceSHA256": "b9ba88705425d8154daf0493fc90c3310bb9f5bb547fb86edf454a409a0ac159",
+      "local": "assets/official-gallery/chara116.webp",
+      "outputSHA256": "b651e3490ebdc2416b1dee8d3100427cc45111b346f30f11aa59974230b887cd"
+    },
+    {
+      "id": "chara117",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara117/ill.png",
+      "sourceSHA256": "fef7b4e1bc9def11cdf278d57841d8f8ae044b8f89f896a943f934c9a732bf95",
+      "local": "assets/official-gallery/chara117.webp",
+      "outputSHA256": "a85c4e6b15ba896a6fbf415fcafdbaf769e6b3db3d41a7cfb14317f6d790cd94"
+    },
+    {
+      "id": "chara118",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara118/ill.png",
+      "sourceSHA256": "843d79d7dbc23b23b704057fef7091250136a0dd57dc2fc87d2cee70884d28ca",
+      "local": "assets/official-gallery/chara118.webp",
+      "outputSHA256": "5b192b3dfd756c29bb70419cbd88965415539ad0c4a9fccef61bfa5e1832eda6"
+    },
+    {
+      "id": "chara119",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara119/ill.png",
+      "sourceSHA256": "95df760550e3ab8e0770e8fb173e44a8556bbd984daf7d83fc91691d0535b9e4",
+      "local": "assets/official-gallery/chara119.webp",
+      "outputSHA256": "1023f7aceb9c4476e6e3fc23f13df572b92e5e88e6645c676a422252b0d79e81"
+    },
+    {
+      "id": "chara120",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara120/ill.png",
+      "sourceSHA256": "4c89e776013a66cc5e68259f32e33e962c2d3643b46fccefefe942585160d955",
+      "local": "assets/official-gallery/chara120.webp",
+      "outputSHA256": "f512f1d7e6a6d59230fad343e59d1d763a64bccf463de11d3a16127ecc8a07f1"
+    },
+    {
+      "id": "chara121",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara121/ill.png",
+      "sourceSHA256": "74dd773ec39f6b75f4947868c3abc4fd0249fa8d40536171723ca746f9e0af27",
+      "local": "assets/official-gallery/chara121.webp",
+      "outputSHA256": "d7956bb76141ee0ffc34caa5c31e6cbd79c4809d85b24ff47d8bd475c96e1cab"
+    },
+    {
+      "id": "chara122",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara122/ill.png",
+      "sourceSHA256": "14af5a12afbc39e3d1ffbe02d7837063805771e0db07a7127574be8637c0fc0f",
+      "local": "assets/official-gallery/chara122.webp",
+      "outputSHA256": "16954667f1d97f802daf2668109fcb91320b21699531bfe88aceb368052a6b44"
+    },
+    {
+      "id": "chara123",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara123/ill.png",
+      "sourceSHA256": "697c14f19bb6d1b3f2f7edb35559305635224491a9d2e553a54c37851d70353a",
+      "local": "assets/official-gallery/chara123.webp",
+      "outputSHA256": "0bb89d72f7f1ae80d1a2015b92b76c960b0d7bd52a2ac60343b619391929c694"
+    },
+    {
+      "id": "chara124",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara124/ill.png",
+      "sourceSHA256": "0983de92fdccc31c146b2a277af1f9ce94ea9ebfdc03a1e0f736771c712dc2a6",
+      "local": "assets/official-gallery/chara124.webp",
+      "outputSHA256": "772703f2255f1f9b58c904970398042eb6a328bebf4c66935c256786b7088430"
+    },
+    {
+      "id": "chara125",
+      "sourceArt": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara125/ill.png",
+      "sourceSHA256": "6a96d6ab04a562fc99905a7261d6b74224ab67f49e1ab59ce0bf841212027f7a",
+      "local": "assets/official-gallery/chara125.webp",
+      "outputSHA256": "5fb03748f6e9e5e4437cae60029fefa5998f148eb8da5b08e59f457ad5061928"
+    }
+  ]
+}

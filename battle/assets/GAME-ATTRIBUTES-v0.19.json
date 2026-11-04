@@ -1,0 +1,366 @@
+{
+  "version": "v0.19",
+  "basis": "游戏定位用的单属性分类，不是人物拥有的全部原作查克拉性质。每形态一个属性；全为独立第八类。",
+  "types": [
+    "火",
+    "风",
+    "雷",
+    "土",
+    "水",
+    "阴",
+    "阳",
+    "全"
+  ],
+  "forms": [
+    {
+      "character": "naruto",
+      "name": "漩涡鸣人",
+      "form": "young",
+      "form_name": "少年篇",
+      "attribute": "阳"
+    },
+    {
+      "character": "naruto",
+      "name": "漩涡鸣人",
+      "form": "shippuden",
+      "form_name": "疾风传",
+      "attribute": "风"
+    },
+    {
+      "character": "naruto",
+      "name": "漩涡鸣人",
+      "form": "sage",
+      "form_name": "仙人模式",
+      "attribute": "阳"
+    },
+    {
+      "character": "naruto",
+      "name": "漩涡鸣人",
+      "form": "kurama",
+      "form_name": "九尾查克拉",
+      "attribute": "全"
+    },
+    {
+      "character": "naruto",
+      "name": "漩涡鸣人",
+      "form": "one_tail",
+      "form_name": "第一尾",
+      "attribute": "阳"
+    },
+    {
+      "character": "naruto",
+      "name": "漩涡鸣人",
+      "form": "four_tail",
+      "form_name": "第四尾",
+      "attribute": "阳"
+    },
+    {
+      "character": "kakashi",
+      "name": "旗木卡卡西",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "雷"
+    },
+    {
+      "character": "kakashi",
+      "name": "旗木卡卡西",
+      "form": "branch",
+      "form_name": "万花筒写轮眼",
+      "attribute": "阴"
+    },
+    {
+      "character": "sasuke",
+      "name": "宇智波佐助",
+      "form": "base",
+      "form_name": "疾风传",
+      "attribute": "雷"
+    },
+    {
+      "character": "sasuke",
+      "name": "宇智波佐助",
+      "form": "curse",
+      "form_name": "咒印",
+      "attribute": "雷"
+    },
+    {
+      "character": "sasuke",
+      "name": "宇智波佐助",
+      "form": "mangekyo",
+      "form_name": "万花筒",
+      "attribute": "阴"
+    },
+    {
+      "character": "sasuke",
+      "name": "宇智波佐助",
+      "form": "susanoo",
+      "form_name": "须佐能乎",
+      "attribute": "阴"
+    },
+    {
+      "character": "sakura",
+      "name": "春野樱",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阳"
+    },
+    {
+      "character": "sakura",
+      "name": "春野樱",
+      "form": "branch",
+      "form_name": "百豪",
+      "attribute": "阳"
+    },
+    {
+      "character": "itachi",
+      "name": "宇智波鼬",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "火"
+    },
+    {
+      "character": "gaara",
+      "name": "我爱罗",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "土"
+    },
+    {
+      "character": "deidara",
+      "name": "迪达拉",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "土"
+    },
+    {
+      "character": "jiraiya",
+      "name": "自来也",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "火"
+    },
+    {
+      "character": "jugo",
+      "name": "重吾",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阳"
+    },
+    {
+      "character": "karin",
+      "name": "漩涡香磷",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阳"
+    },
+    {
+      "character": "killerbee",
+      "name": "奇拉比",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "雷"
+    },
+    {
+      "character": "kimimaro",
+      "name": "君麻吕",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阳"
+    },
+    {
+      "character": "konan",
+      "name": "小南",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "风"
+    },
+    {
+      "character": "lee",
+      "name": "李洛克",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阳"
+    },
+    {
+      "character": "lee",
+      "name": "李洛克",
+      "form": "branch",
+      "form_name": "杜门",
+      "attribute": "阳"
+    },
+    {
+      "character": "madara",
+      "name": "宇智波斑",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "全"
+    },
+    {
+      "character": "hinata",
+      "name": "日向雏田",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阳"
+    },
+    {
+      "character": "neji",
+      "name": "日向宁次",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阳"
+    },
+    {
+      "character": "obito",
+      "name": "宇智波带土",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "火"
+    },
+    {
+      "character": "obito",
+      "name": "宇智波带土",
+      "form": "branch",
+      "form_name": "忍界大战",
+      "attribute": "阴"
+    },
+    {
+      "character": "orochimaru",
+      "name": "大蛇丸",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阴"
+    },
+    {
+      "character": "pain",
+      "name": "佩恩",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阴"
+    },
+    {
+      "character": "suigetsu",
+      "name": "鬼灯水月",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "水"
+    },
+    {
+      "character": "temari",
+      "name": "手鞠",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "风"
+    },
+    {
+      "character": "minato",
+      "name": "波风水门",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "风"
+    },
+    {
+      "character": "ino",
+      "name": "山中井野",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阴"
+    },
+    {
+      "character": "kabuto",
+      "name": "药师兜",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阴"
+    },
+    {
+      "character": "sai",
+      "name": "佐井",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阴"
+    },
+    {
+      "character": "shikamaru",
+      "name": "奈良鹿丸",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阴"
+    },
+    {
+      "character": "tenten",
+      "name": "天天",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阳"
+    },
+    {
+      "character": "onoki",
+      "name": "大野木",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "土"
+    },
+    {
+      "character": "tsunade",
+      "name": "纲手",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阳"
+    },
+    {
+      "character": "utakata",
+      "name": "泡沫／羽高",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "水"
+    },
+    {
+      "character": "tobirama",
+      "name": "千手扉间",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "水"
+    },
+    {
+      "character": "sasori",
+      "name": "蝎",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阴"
+    },
+    {
+      "character": "kisame",
+      "name": "干柿鬼鲛",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "水"
+    },
+    {
+      "character": "guy",
+      "name": "迈特凯",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阳"
+    },
+    {
+      "character": "kankuro",
+      "name": "勘九郎",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "阴"
+    },
+    {
+      "character": "iruka",
+      "name": "海野伊鲁卡",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "火"
+    },
+    {
+      "character": "fukasaku_shima",
+      "name": "深作与志麻",
+      "form": "base",
+      "form_name": "基础形态",
+      "attribute": "风"
+    }
+  ]
+}

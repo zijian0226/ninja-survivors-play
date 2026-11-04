@@ -1,0 +1,68 @@
+{
+  "js": {
+    "sources": [
+      "skill-art-data.js",
+      "skill-kits-v23.js",
+      "characters.js",
+      "skill-catalog.js",
+      "hub.js",
+      "world.js",
+      "squad.js",
+      "recruitment.js",
+      "skill-lab.js",
+      "debug-mode.js",
+      "growth.js",
+      "ultimate-cue.js",
+      "build-inspect.js",
+      "skill-art.js",
+      "original-ninja.js",
+      "official-gallery.js",
+      "materials.js",
+      "game.js"
+    ],
+    "source_sha256": {
+      "skill-art-data.js": "6650319e671a0cc690c0d57f5f10318c729a5fe8ed8de0e7833906e0307dc82d",
+      "skill-kits-v23.js": "9c7066121c781e46764ad3ac939f5d04c84a004a52937d440d3cc0e1955af70e",
+      "characters.js": "c0699623151ecdbbc06d56205829694873f8ca3127443e42edd0f88a1b7f3a82",
+      "skill-catalog.js": "5c358d5b8e69fd84e41768b40184b3445e15e50a9bbcd1afeacb253d9f405368",
+      "hub.js": "0d4a11a6e0232d3ddf9199065e8eef50bf739d8e7e26c4933433b99254bdb5a1",
+      "world.js": "91a32fe29ab41cde63f7a229c440b8d52d53d171b4ed847ca1e76e362b25d291",
+      "squad.js": "0d07c340d36d7ca62e6bde66e23c61a6f5105fe01160963b42d7670aa529b910",
+      "recruitment.js": "5fc00d98f5cab4ab60d93222248c7ced27fae7fa7ea6b3c33da5be0637a086b3",
+      "skill-lab.js": "d3ed0d43b8226d793f5e74e4c4a666a622bd38972753c979bd500124a4ae4998",
+      "debug-mode.js": "b17f07138084b5f6f472f2020b32811bf28dc77a13796af48b77ce5aeb3844d6",
+      "growth.js": "462f33ed1a119311377817b62aac736cc5cc09afdb842637735bcdf923496b9a",
+      "ultimate-cue.js": "3b07cc8c8b68e5869681efa726cbb846bf1153a0f5272fc6526ed538eec36b90",
+      "build-inspect.js": "2a0fb78347def1107d871a2a0906f751b95db411a5e28236847385a1ff307ad9",
+      "skill-art.js": "a72ce8c75eef8044d0a661ff9c7cfcb59786cb1189ae52a2905a4b9dac101dd3",
+      "original-ninja.js": "064f73544f3476c17ff2cf52a6ed029375229601b705cc1cfd8549e41ae11d4e",
+      "official-gallery.js": "52622f52c5a294c4835a7875e9979f0614cd66cd21c9ceeb30019e31c8779b09",
+      "materials.js": "103e0fef39cfc8dd1bb7a556f1347a70614abd4d4d7fc69ee4bd37ffc0085fb6",
+      "game.js": "2395eb7292f7aa78226bf07cde0cce1767d40808b9265adaf190a7601c23a896"
+    },
+    "bytes": 773329,
+    "sha256": "9eef40bf55edd39a0f025c3ec72d918a2549d171803fcafcd6ebb71c0697164a"
+  },
+  "css": {
+    "sources": [
+      "style.css",
+      "hub.css",
+      "fullbody.css",
+      "squad.css",
+      "recruitment.css",
+      "official-gallery.css",
+      "materials.css"
+    ],
+    "source_sha256": {
+      "style.css": "7040d5d0e36d75949c0fd938857be67fa2b607480273eaf82173f56b44547ce5",
+      "hub.css": "c1f77676308ed687e8829baee5e6ac0f8f92308e7c12427c8101f4b848d7cf3a",
+      "fullbody.css": "b6321b51e784343391dee9991d291f07ff36b2081a0b61539b949c31fb17dd3b",
+      "squad.css": "120a52f3abdfad02561cad417f18820cfaecc3b3b27fee1d8d9294128620de84",
+      "recruitment.css": "121de811b745dfa59e0631e30aa3cdbf6226e7d2bb4e9d0ca1ceb1a05161ffc9",
+      "official-gallery.css": "b275748ae8f7cb7308d08c1f6be14e5628f5b27c94bcd245d9e24c57459f031c",
+      "materials.css": "a06f7d26a1b4f76823b57c9a86b4c7cc31a1d2bce716a8119a4f95df7873a540"
+    },
+    "bytes": 104192,
+    "sha256": "443c48ecaac776b6abbc201999e9bda6440b08635430b080a3e664e1475f54e2"
+  }
+}

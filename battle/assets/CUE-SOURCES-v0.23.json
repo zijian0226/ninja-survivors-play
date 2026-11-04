@@ -1,0 +1,122 @@
+[
+  {
+    "key": "naruto_shippuden",
+    "officialId": "chara002",
+    "source": "assets/official-gallery/chara002.webp",
+    "file": "assets/cue/naruto-shippuden.webp"
+  },
+  {
+    "key": "sasuke",
+    "officialId": "chara009",
+    "source": "assets/official-gallery/chara009.webp",
+    "file": "assets/cue/sasuke.webp"
+  },
+  {
+    "key": "kakashi",
+    "officialId": "chara024",
+    "source": "assets/official-gallery/chara024.webp",
+    "file": "assets/cue/kakashi.webp"
+  },
+  {
+    "key": "itachi",
+    "officialId": "chara079",
+    "source": "assets/official-gallery/chara079.webp",
+    "file": "assets/cue/itachi.webp"
+  },
+  {
+    "key": "pain",
+    "officialId": "chara085",
+    "source": "assets/official-gallery/chara085.webp",
+    "file": "assets/cue/pain.webp"
+  },
+  {
+    "key": "konan",
+    "officialId": "chara086",
+    "source": "assets/official-gallery/chara086.webp",
+    "file": "assets/cue/konan.webp"
+  },
+  {
+    "key": "obito",
+    "officialId": "chara089",
+    "source": "assets/official-gallery/chara089.webp",
+    "file": "assets/cue/obito.webp"
+  },
+  {
+    "key": "deidara",
+    "officialId": "chara083",
+    "source": "assets/official-gallery/chara083.webp",
+    "file": "assets/cue/deidara.webp"
+  },
+  {
+    "key": "madara",
+    "officialId": "chara146",
+    "source": "assets/official-gallery/chara146.webp",
+    "file": "assets/cue/madara.webp"
+  },
+  {
+    "key": "orochimaru",
+    "officialId": "chara116",
+    "source": "assets/official-gallery/chara116.webp",
+    "file": "assets/cue/orochimaru.webp"
+  },
+  {
+    "key": "kisame",
+    "officialId": "chara080",
+    "source": "assets/official-gallery/chara080.webp",
+    "file": "assets/cue/kisame.webp"
+  },
+  {
+    "key": "kakuzu",
+    "officialId": "chara081",
+    "source": "assets/official-gallery/chara081.webp",
+    "file": "assets/cue/kakuzu.webp"
+  },
+  {
+    "key": "gaara",
+    "officialId": "chara061",
+    "source": "assets/official-gallery/chara061.webp",
+    "file": "assets/cue/gaara.webp"
+  },
+  {
+    "key": "temari",
+    "officialId": "chara066",
+    "source": "assets/official-gallery/chara066.webp",
+    "file": "assets/cue/temari.webp"
+  },
+  {
+    "key": "suigetsu",
+    "officialId": "chara077",
+    "source": "assets/official-gallery/chara077.webp",
+    "file": "assets/cue/suigetsu.webp"
+  },
+  {
+    "key": "jiraiya",
+    "officialId": "chara049",
+    "source": "assets/official-gallery/chara049.webp",
+    "file": "assets/cue/jiraiya.webp"
+  },
+  {
+    "key": "killerbee",
+    "officialId": "chara068",
+    "source": "assets/official-gallery/chara068.webp",
+    "file": "assets/cue/killerbee.webp"
+  },
+  {
+    "key": "neji",
+    "officialId": "chara028",
+    "source": "assets/official-gallery/chara028.webp",
+    "file": "assets/cue/neji.webp"
+  },
+  {
+    "key": "hinata",
+    "officialId": "chara038",
+    "source": "assets/official-gallery/chara038.webp",
+    "file": "assets/cue/hinata.webp"
+  },
+  {
+    "key": "lee",
+    "officialId": "chara026",
+    "source": "assets/official-gallery/chara026.webp",
+    "file": "assets/cue/lee.webp"
+  }
+]

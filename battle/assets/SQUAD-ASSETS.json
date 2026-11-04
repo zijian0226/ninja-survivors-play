@@ -1,0 +1,50 @@
+{
+  "sasuke": {
+    "source": "5DPLAY BleachVsNaruto_TagAssets/fighters/sasuke",
+    "bitmap_ids": {
+      "idle": [
+        13,
+        48,
+        13,
+        48
+      ],
+      "run": [
+        82,
+        98,
+        82,
+        98
+      ],
+      "cast": [
+        48,
+        47,
+        91,
+        48
+      ]
+    }
+  },
+  "sakura": {
+    "source": "5DPLAY BleachVsNaruto_TagAssets/fighters/sakura",
+    "bitmap_ids": {
+      "idle": [
+        3,
+        5,
+        7,
+        9
+      ],
+      "run": [
+        17,
+        19,
+        21,
+        23,
+        25,
+        27
+      ],
+      "cast": [
+        109,
+        111,
+        113,
+        109
+      ]
+    }
+  }
+}

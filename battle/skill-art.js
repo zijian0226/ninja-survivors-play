@@ -1,0 +1,88 @@
+/* Source-frame playback. Readiness is per exact form, never per character family. */
+window.SkillArt={
+ registry:{},recent:[],cache:new Map(),loads:new Map(),active:[],metrics:{casts:0,pulses:0},
+ init(){
+  for(const [key,profile] of Object.entries(window.SKILL_KITS||{})){
+   const art=window.SKILL_ART_DATA?.[key];
+   const ready=!!art?.actor&&['primary','secondary','ultimate'].every(k=>art.skills[k]?.frames>0&&profile.kit[k]);
+   this.registry[key]={...profile,key,unitKey:key,ready};
+  }
+  RecruitRun.units=Object.values(this.registry).filter(u=>u.ready).sort((a,b)=>Number(!!b.original)-Number(!!a.original));
+  if(!RecruitRun.units.some(u=>u.key===RecruitRun.mainKey))RecruitRun.mainKey='naruto_shippuden';
+  for(const u of RecruitRun.units){forms[u.sprite]={name:u.name,tag:RecruitRun.natureText(u)+' · 专属忍术'};SkillLab.ultimates[u.key]=u.kit.ultimate.name;}
+ },
+ get readyOfficialIds(){return new Set(Object.values(this.registry).filter(u=>u.ready&&u.releaseComplete!==false).map(u=>u.officialId));},
+ isReady(key){return this.registry[key]?.ready===true;},
+ loaded(key){return this.cache.has(window.SKILL_ART_DATA?.[key]?.actor.file)&&['primary','secondary','ultimate'].every(k=>this.cache.has(window.SKILL_ART_DATA[key].skills[k].file));},
+ image(url){if(this.cache.has(url))return Promise.resolve(this.cache.get(url));if(this.loads.has(url))return this.loads.get(url);const p=new Promise((resolve,reject)=>{const im=new Image(),t=setTimeout(()=>reject(Error('技能素材加载超时')),15000);im.onload=()=>{clearTimeout(t);this.cache.set(url,im);resolve(im);};im.onerror=()=>{clearTimeout(t);reject(Error('技能素材加载失败'));};im.src=url;}).finally(()=>this.loads.delete(url));this.loads.set(url,p);return p;},
+ trim(key){this.recent=[key,...this.recent.filter(k=>k!==key)].slice(0,6);const keep=new Set([...this.recent,RecruitRun.mainKey,...(typeof s!=='undefined'&&s?[s.mainKey,...s.allies.map(a=>a.profile.key)]:[]),...this.active.map(q=>q.unit.key)]);for(const [k,d]of Object.entries(window.SKILL_ART_DATA))if(!keep.has(k))for(const c of Object.values(d.skills)){this.cache.delete(c.file);if(c.impact)this.cache.delete(c.impact.file);}},
+ async ensure(key){if(!this.isReady(key))throw Error('此形态尚未完成');const d=window.SKILL_ART_DATA[key];await Promise.all([this.image(d.actor.file),...Object.values(d.skills).flatMap(x=>[this.image(x.file),...(x.impact?[this.image(x.impact.file)]:[])])]);const u=this.registry[key],a=d.actor;images[u.sprite]=this.cache.get(a.file);spriteMeta[u.sprite]={file:a.file,renderScale:a.scale,animations:Object.fromEntries(['idle','run','cast'].map(k=>[k,{row:a.rows[k],count:a.counts[k],ms:a.ms[k]}]))};this.trim(key);},
+ portrait(u){return window.SKILL_ART_DATA?.[u?.key]?.portrait||'assets/'+(u?.sprite||'shippuden')+'-portrait.png';},
+ icon(u,slot){return window.SKILL_ART_DATA?.[u?.key]?.skills[slot]?.icon||this.portrait(u);},
+ clear(){for(const q of this.active)if(q.actor)q.actor.sourceMove=null;this.active=[];},
+ busy(a){return this.active.some(q=>q.actor===a&&q.composite&&q.age>=0&&q.age<q.duration);},
+ blocksMovement(a){return this.active.some(q=>q.actor===a&&q.composite&&q.age>=0&&q.age<q.duration&&!q.clip.allowMovement);},
+ reviewText(k){const v=k?.nameReview;if(!v)return '';if(v.status==='preview')return k.visualComplete?'动画已接入 · 正式术名待核':'源动作预览 · 术名/机制待核';return ({matched:'招式名称已核对',adapted:'已核对术名 · 像素玩法改编',preview:'演出待校正 · 当前名称为素材描述或局部招式',original:'本游戏原创被动',original_jutsu:'本游戏原创忍术'})[v.status]||'';},
+ frame(q){const c=q.clip;if(c.frame_times_ms?.length===c.frames){const total=c.frame_times_ms.reduce((a,b)=>a+b,0);let t=Math.max(0,Math.min(1,q.age/q.duration))*total;for(let i=0;i<c.frames;i++){t-=c.frame_times_ms[i];if(t<0)return i;}return c.frames-1;}if(c.frames<=3)return Math.floor(q.age*c.fps)%c.frames;return Math.min(c.frames-1,Math.floor(Math.min(1,q.age/q.duration)*c.frames));},
+ hidden(a){return this.active.some(q=>q.actor===a&&q.composite&&q.age>=0&&q.age<q.duration&&a.hp>0&&!(a.down>0)&&!(q.clip.emptyFrames||[]).includes(this.frame(q)));},
+ cast(a,u,slot,level=1,e){
+  if(state!=='play'||!this.isReady(u?.key)||!a||a.hp<=0||a.down>0||this.busy(a))return false;
+  if(!this.loaded(u.key)){this.ensure(u.key).catch(()=>{});return false;}
+  const kit=u.kit[slot],clip=window.SKILL_ART_DATA[u.key].skills[slot];if(!kit||!clip)return false;
+  e=e?.hp>0?e:Growth.nearestEnemy(a,kit.range||400);
+  if(!e||dist(a,e)>(kit.range||400))return false;
+  const isMain=a===s.p,l=isMain?level:1,boost=isMain?1+(s.power||0)*.12:1,team=1+(s.teamPower||0)*.1+(s.reserve||0)*.02;
+  const summon=kit.kind==='summon',melee=kit.kind==='melee',composite=clip.renderMode==='actor_composite';
+  a.facing=e.x>=a.x?1:-1;startCast(a);
+  const natural=clip.frame_times_ms?.reduce((a,b)=>a+b,0)/1000||clip.frames/clip.fps,duration=Math.max(kit.duration&&kit.kind!=='summon'?kit.duration:.45,Math.min(3.6,natural));
+  const radius=(kit.radius||50)*(l>=2?1.25:1)*(slot==='ultimate'&&l>=3?1.15:1);
+  let x=composite||summon||melee?a.x:e.x,y=composite||summon||melee?a.y:e.y;
+  if(!composite&&melee)x+=a.facing*30;
+  const q={actor:a,unit:u,slot,kit,clip,age:0,duration,x,y,damageX:e.x,damageY:e.y,fromX:a.x,fromY:a.y,target:e,facing:a.facing,composite,radius,damageEnd:duration*(clip.damageWindow?.[1]??.88),nextPulse:duration*(clip.damageWindow?.[0]??.15),damage:(kit.damage||38)*(u.personal||1)*boost*team*(1+(l-1)*.16),level:l,travel:kit.kind==='projectile'&&!composite?.28:0};
+  if(clip.damageOffset){q.damageX=a.x+a.facing*clip.damageOffset[0];q.damageY=a.y+clip.damageOffset[1];}
+  if(composite){a.sourceMove=q;a.action.duration=duration;}if(isMain&&slot==='ultimate'&&l>=2)this.active.push({...q,age:-duration-.16,damageEnd:duration*(clip.damageWindow?.[1]??.88),nextPulse:duration*(clip.damageWindow?.[0]??.15),damage:q.damage*.65});
+  this.active.push(q);if(isMain&&l>=3&&slot!=='ultimate'&&!summon){this.active.push({...q,age:-duration-.16,damageEnd:duration*(clip.damageWindow?.[1]??.88),nextPulse:duration*(clip.damageWindow?.[0]??.15),damage:q.damage*.6});if(l>=5)this.active.push({...q,age:-duration*2-.32,damageEnd:duration*(clip.damageWindow?.[1]??.88),nextPulse:duration*(clip.damageWindow?.[0]??.15),damage:q.damage*.4});}if(this.active.length>32)this.active.shift();this.metrics.casts++;
+  if(summon){
+   if(isMain){updateClones(0,40*boost*team,TeamSeven.cooldown());}
+   else if(s.supportClones.length+s.summons.length<8)s.supportClones.push({owner:a,x:a.x+a.facing*24,y:a.y+12,sprite:a.sprite,life:u.key==='kakashi'?5:8,atk:.25,facing:a.facing});
+  }
+  const center={x:e.x,y:e.y-24};
+  if(isMain&&slot==='primary'){SquadLinks.onPrimary(center,q.damage);SquadLinks.onImpact({...center,owner:a,element:kit.element,damage:q.damage});}
+  if(isMain&&slot==='secondary')SquadLinks.onImpact({...center,owner:a,element:kit.element,damage:q.damage});
+  if(slot==='ultimate'){const links=SquadLinks.onUltimate(a,u,e);UltimateCue.show(a,u,links);if(isMain&&l>=3)a.hp=Math.min(mainMaxHp(),a.hp+mainMaxHp()*.08);}
+  return true;
+ },
+ update(dt){
+  for(const q of this.active){
+   q.age+=dt;if(q.actor.hp<=0||q.actor.down>0){q.age=q.duration;continue;}
+   if(q.age>=q.nextPulse&&q.age<q.damageEnd&&q.kit.kind!=='summon'){
+    q.nextPulse+=.2;this.metrics.pulses++;
+    const near=q.kit.kind==='melee'&&!q.clip.damageOffset,cx=near?q.actor.x+q.facing*30:q.damageX,cy=near?q.actor.y-24:q.damageY-24;
+    const totalPulses=Math.max(1,Math.ceil((q.damageEnd-q.duration*(q.clip.damageWindow?.[0]??.15))/.2));
+    for(const e of skillTargets())if(e.hp>0&&Math.hypot(e.x-cx,e.y-24-cy)<q.radius+(e.r||12)){
+     hit(e,q.kit.damageMode==='periodic'?q.damage:q.damage/totalPulses);
+     if(q.kit.status==='slow')e.slow=Math.max(e.slow||0,2);
+     if(q.kit.status==='burn')e.skillBurn={left:2,next:.5,damage:q.damage*.04};
+     if(q.kit.status==='stun'&&e!==s.boss)e.skillStun=Math.max(e.skillStun||0,.35);
+     if(q.level>=4&&e!==s.boss&&q.kit.kind==='melee')s.world.move(e,q.facing*5,0,e.r||12,s.arena);
+    }
+   }
+   if(q.age>=q.duration&&q.actor.sourceMove===q)q.actor.sourceMove=null;
+  }
+  this.active=this.active.filter(q=>q.age<q.duration);
+  for(const e of Growth.enemies()){
+   if(e.skillStun>0)e.skillStun=Math.max(0,e.skillStun-dt);
+   const b=e.skillBurn;if(!b)continue;b.left-=dt;b.next-=dt;if(b.left<=0)e.skillBurn=null;else if(b.next<=0){hit(e,b.damage);b.next+=.5;}
+  }
+ },
+ lift(e){const q=this.active.find(q=>q.unit.key==='lee'&&q.slot==='ultimate'&&q.target===e&&q.age>=0);return q?-Math.sin(Math.min(1,q.age/q.duration)*Math.PI)*58:0;},
+ draw(entities){for(const q of this.active)entities.push({y:q.composite?q.actor.y:q.y,draw:()=>this.drawClip(q)});},
+ drawClip(q){if(q.age<0)return;const c=q.clip,im=this.cache.get(c.file);if(!im)return;const [w,h]=c.cell,[ax,ay]=c.anchor;let x=(q.composite?q.actor.x:q.x)+(c.offset?.[0]||0),y=(q.composite?q.actor.y:q.y)+(c.offset?.[1]||0);
+  if(q.travel&&q.age<q.travel){const t=q.age/q.travel;x=q.fromX+(q.x-q.fromX)*t;y=q.fromY+(q.y-q.fromY)*t;}
+  const progress=Math.min(1,q.age/q.duration),frame=this.frame(q),scale=c.renderScale||1;
+  if(q.unit.key==='lee'&&q.slot==='ultimate'&&q.clip.impact&&progress>.62){const impact=q.clip.impact,hitIm=this.cache.get(impact.file);if(hitIm){const [iw,ih]=impact.cell,i=Math.min(impact.frames-1,Math.floor((progress-.62)/.38*impact.frames));ctx.save();ctx.globalAlpha=Math.min(1,(1-progress)/.15);ctx.drawImage(hitIm,i*iw,0,iw,ih,q.target.x-impact.anchor[0],q.target.y-impact.anchor[1],iw,ih);ctx.restore();}}
+  ctx.save();ctx.imageSmoothingEnabled=false;ctx.translate(Math.round(x),Math.round(y));if(q.facing<0)ctx.scale(-1,1);ctx.globalAlpha=q.composite?1:Math.max(0,Math.min(1,q.age/.09,(q.duration-q.age)/.18));
+  const columns=c.columns||c.frames;ctx.drawImage(im,(frame%columns)*w,Math.floor(frame/columns)*h,w,h,Math.round(-ax*scale),Math.round(-ay*scale),Math.round(w*scale),Math.round(h*scale));ctx.restore();
+ },
+ description(slot,l){const u=Growth.main(),k=u.kit[slot];if(!k)return '';if(k.kind==='summon')return k.text+' ['+this.reviewText(k)+']'+` 当前${Growth.cloneCount()}个独立分身；近身忍术范围${s.clone>=5?52:s.clone>=3?44:32}；各自索敌与攻击。`;return k.text+' ['+this.reviewText(k)+']'+` 当前 Lv.${l}：范围×${l>=2?'1.25':'1'}，威力 +${Math.round((l-1)*16)}%${l>=3&&slot!=='ultimate'&&k.kind!=='summon'?'；追加'+(l>=5?'两次':'一次')+'追击':''}${l>=4&&k.kind==='melee'?'；命中击退杂兵':''}${slot==='ultimate'&&l>=2?'；追加一次奥义追击':''}${slot==='ultimate'&&l>=3?'；释放恢复自身8%生命':''}。`;}
+};

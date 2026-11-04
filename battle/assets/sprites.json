@@ -1,0 +1,299 @@
+{
+  "young": {
+    "file": "assets/young-actions.png",
+    "cell": 96,
+    "anchor": [
+      48,
+      84
+    ],
+    "animations": {
+      "idle": {
+        "row": 0,
+        "count": 6,
+        "ms": 160
+      },
+      "run": {
+        "row": 1,
+        "count": 6,
+        "ms": 90
+      },
+      "cast": {
+        "row": 2,
+        "count": 4,
+        "ms": 85
+      }
+    },
+    "renderScale": 1.0833,
+    "referenceBodyHeight": 48.0
+  },
+  "shippuden": {
+    "file": "assets/shippuden-actions.png",
+    "cell": 96,
+    "anchor": [
+      48,
+      84
+    ],
+    "animations": {
+      "idle": {
+        "row": 0,
+        "count": 4,
+        "ms": 160
+      },
+      "run": {
+        "row": 1,
+        "count": 7,
+        "ms": 90
+      },
+      "cast": {
+        "row": 2,
+        "count": 4,
+        "ms": 85
+      }
+    },
+    "renderScale": 1.0097,
+    "referenceBodyHeight": 51.5
+  },
+  "sage": {
+    "file": "assets/sage-actions.png",
+    "cell": 96,
+    "anchor": [
+      48,
+      84
+    ],
+    "animations": {
+      "idle": {
+        "row": 0,
+        "count": 4,
+        "ms": 160
+      },
+      "run": {
+        "row": 1,
+        "count": 7,
+        "ms": 90
+      },
+      "cast": {
+        "row": 2,
+        "count": 4,
+        "ms": 85
+      }
+    },
+    "renderScale": 0.9541,
+    "referenceBodyHeight": 54.5
+  },
+  "gold_old": {
+    "file": "assets/gold_old-actions.png",
+    "cell": 96,
+    "anchor": [
+      48,
+      84
+    ],
+    "animations": {
+      "idle": {
+        "row": 0,
+        "count": 4,
+        "ms": 160
+      },
+      "run": {
+        "row": 1,
+        "count": 2,
+        "ms": 90
+      },
+      "cast": {
+        "row": 2,
+        "count": 4,
+        "ms": 85
+      }
+    },
+    "renderScale": 0.9811,
+    "referenceBodyHeight": 53.0
+  },
+  "kakashi": {
+    "file": "assets/kakashi-actions.png",
+    "cell": 96,
+    "anchor": [
+      48,
+      84
+    ],
+    "animations": {
+      "idle": {
+        "row": 0,
+        "count": 6,
+        "ms": 150
+      },
+      "run": {
+        "row": 1,
+        "count": 7,
+        "ms": 90
+      },
+      "cast": {
+        "row": 2,
+        "count": 4,
+        "ms": 85
+      }
+    },
+    "renderScale": 1.2235,
+    "referenceBodyHeight": 42.5
+  },
+  "sasuke": {
+    "file": "assets/sasuke-actions.png",
+    "cell": 96,
+    "anchor": [
+      48,
+      84
+    ],
+    "animations": {
+      "idle": {
+        "row": 0,
+        "count": 4,
+        "ms": 160
+      },
+      "run": {
+        "row": 1,
+        "count": 4,
+        "ms": 100
+      },
+      "cast": {
+        "row": 2,
+        "count": 4,
+        "ms": 85
+      }
+    },
+    "renderScale": 0.9455,
+    "referenceBodyHeight": 55.0
+  },
+  "sakura": {
+    "file": "assets/sakura-actions.png",
+    "cell": 96,
+    "anchor": [
+      48,
+      84
+    ],
+    "animations": {
+      "idle": {
+        "row": 0,
+        "count": 4,
+        "ms": 160
+      },
+      "run": {
+        "row": 1,
+        "count": 6,
+        "ms": 100
+      },
+      "cast": {
+        "row": 2,
+        "count": 4,
+        "ms": 85
+      }
+    },
+    "renderScale": 1.0947,
+    "referenceBodyHeight": 47.5
+  },
+  "temari": {
+    "file": "assets/temari-actions.png",
+    "cell": 96,
+    "anchor": [
+      48,
+      84
+    ],
+    "animations": {
+      "idle": {
+        "row": 0,
+        "count": 4,
+        "ms": 160
+      },
+      "run": {
+        "row": 1,
+        "count": 4,
+        "ms": 95
+      },
+      "cast": {
+        "row": 2,
+        "count": 4,
+        "ms": 85
+      }
+    },
+    "renderScale": 0.8667,
+    "referenceBodyHeight": 60.0
+  },
+  "suigetsu": {
+    "file": "assets/suigetsu-actions.png",
+    "cell": 96,
+    "anchor": [
+      48,
+      84
+    ],
+    "animations": {
+      "idle": {
+        "row": 0,
+        "count": 4,
+        "ms": 160
+      },
+      "run": {
+        "row": 1,
+        "count": 6,
+        "ms": 95
+      },
+      "cast": {
+        "row": 2,
+        "count": 4,
+        "ms": 85
+      }
+    },
+    "renderScale": 0.9811,
+    "referenceBodyHeight": 53.0
+  },
+  "gaara": {
+    "file": "assets/gaara-actions.png",
+    "cell": 96,
+    "anchor": [
+      48,
+      84
+    ],
+    "animations": {
+      "idle": {
+        "row": 0,
+        "count": 4,
+        "ms": 160
+      },
+      "run": {
+        "row": 1,
+        "count": 4,
+        "ms": 95
+      },
+      "cast": {
+        "row": 2,
+        "count": 4,
+        "ms": 85
+      }
+    },
+    "renderScale": 0.963,
+    "referenceBodyHeight": 54.0
+  },
+  "deidara": {
+    "file": "assets/deidara-actions.png",
+    "cell": 96,
+    "anchor": [
+      48,
+      84
+    ],
+    "animations": {
+      "idle": {
+        "row": 0,
+        "count": 4,
+        "ms": 160
+      },
+      "run": {
+        "row": 1,
+        "count": 6,
+        "ms": 95
+      },
+      "cast": {
+        "row": 2,
+        "count": 4,
+        "ms": 85
+      }
+    },
+    "renderScale": 0.8966,
+    "referenceBodyHeight": 58.0
+  }
+}

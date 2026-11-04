@@ -1,0 +1,1034 @@
+[
+  {
+    "key": "naruto-young",
+    "source_id": "chara001",
+    "source_name": "うずまきナルト(少年篇)",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara001",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara001/ill.png",
+    "source_sha256": "8c1b20cba6515a265c39f266a04cf0b4b644e747ce43f38c11a24646213d26a8",
+    "source_size": [
+      458,
+      1025
+    ],
+    "crop": [
+      0,
+      0,
+      458,
+      1025
+    ],
+    "size": [
+      458,
+      1025
+    ],
+    "file": "assets/fullbody/naruto-young.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "naruto-shippuden",
+    "source_id": "chara002",
+    "source_name": "うずまきナルト",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara002",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara002/ill.png",
+    "source_sha256": "1217e69196aa3de40f5be7652c6fb8fec57dc87f4c9225d098daf3213ef694cf",
+    "source_size": [
+      449,
+      1157
+    ],
+    "crop": [
+      0,
+      0,
+      449,
+      1157
+    ],
+    "size": [
+      449,
+      1157
+    ],
+    "file": "assets/fullbody/naruto-shippuden.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "naruto-sage",
+    "source_id": "chara003",
+    "source_name": "うずまきナルト(仙人モード)",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara003",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara003/ill.png",
+    "source_sha256": "268049fdc0ea36701f5960e53bdcd264a2808b4875166e3cb63e025bcac5a395",
+    "source_size": [
+      556,
+      1081
+    ],
+    "crop": [
+      0,
+      0,
+      509,
+      1081
+    ],
+    "size": [
+      509,
+      1081
+    ],
+    "file": "assets/fullbody/naruto-sage.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "naruto-kurama",
+    "source_id": "chara004",
+    "source_name": "うずまきナルト（九喇嘛リンクモード）",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara004",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara004/ill.png",
+    "source_sha256": "583be0af9b87b22736ae72c6d905616b258f8b6f0cd6956eb47849baf3abdbe6",
+    "source_size": [
+      927,
+      1047
+    ],
+    "crop": [
+      0,
+      0,
+      927,
+      1047
+    ],
+    "size": [
+      927,
+      1047
+    ],
+    "file": "assets/fullbody/naruto-kurama.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "sasuke",
+    "source_id": "chara009",
+    "source_name": "うちはサスケ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara009",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara009/ill.png",
+    "source_sha256": "3131743bf53e4865e66d59d0d23b0f26e9bf43071bebd679f2dc201b2fb25319",
+    "source_size": [
+      435,
+      1103
+    ],
+    "crop": [
+      0,
+      0,
+      435,
+      1103
+    ],
+    "size": [
+      435,
+      1103
+    ],
+    "file": "assets/fullbody/sasuke.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "sasuke-mangekyo",
+    "source_id": "chara012",
+    "source_name": "うちはサスケ(五影会談)",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara012",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara012/ill.png",
+    "source_sha256": "08666bbef68b08f35bff924aeccedcf05b0b38509f9cf9b9ba264c804f482466",
+    "source_size": [
+      602,
+      1058
+    ],
+    "crop": [
+      0,
+      0,
+      602,
+      1058
+    ],
+    "size": [
+      602,
+      1058
+    ],
+    "file": "assets/fullbody/sasuke-mangekyo.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "sasuke-susanoo",
+    "source_id": "chara011",
+    "source_name": "うちはサスケ(永遠の万華鏡写輪眼)",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara011",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara011/ill.png",
+    "source_sha256": "a32a5ebcdf4f1be8a859c8d40ac0c743fa450c37c7ece9732889c61069dc120c",
+    "source_size": [
+      603,
+      1107
+    ],
+    "crop": [
+      0,
+      0,
+      603,
+      1107
+    ],
+    "size": [
+      603,
+      1107
+    ],
+    "file": "assets/fullbody/sasuke-susanoo.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "kakashi",
+    "source_id": "chara024",
+    "source_name": "はたけカカシ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara024",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara024/ill.png",
+    "source_sha256": "d37d056f9e5f8c82772fd763e1c8a1b62e24d11438fd40eeb6572c7c881c43e7",
+    "source_size": [
+      769,
+      1170
+    ],
+    "crop": [
+      0,
+      0,
+      769,
+      1170
+    ],
+    "size": [
+      769,
+      1170
+    ],
+    "file": "assets/fullbody/kakashi.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "sakura",
+    "source_id": "chara017",
+    "source_name": "春野サクラ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara017",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara017/ill.png",
+    "source_sha256": "33b3e97b9f551d5925b1edf2afecaabfc23bf4ce891f318b0d5f5c93eb7e6c55",
+    "source_size": [
+      530,
+      1057
+    ],
+    "crop": [
+      0,
+      0,
+      530,
+      1057
+    ],
+    "size": [
+      530,
+      1057
+    ],
+    "file": "assets/fullbody/sakura.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "itachi",
+    "source_id": "chara079",
+    "source_name": "うちはイタチ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara079",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara079/ill.png",
+    "source_sha256": "44229873b3172e8ca42a48fe40c5b736e2384dfdb1236bd676a6c2729fd2b0f1",
+    "source_size": [
+      650,
+      1142
+    ],
+    "crop": [
+      0,
+      0,
+      650,
+      1142
+    ],
+    "size": [
+      650,
+      1142
+    ],
+    "file": "assets/fullbody/itachi.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "gaara",
+    "source_id": "chara061",
+    "source_name": "風影・我愛羅",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara061",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara061/ill.png",
+    "source_sha256": "5fba824f468011bb4c411c1178e9334dcbf3a61e2413441ecc37a7a6af601af0",
+    "source_size": [
+      507,
+      1096
+    ],
+    "crop": [
+      0,
+      0,
+      507,
+      1096
+    ],
+    "size": [
+      507,
+      1096
+    ],
+    "file": "assets/fullbody/gaara.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "deidara",
+    "source_id": "chara083",
+    "source_name": "デイダラ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara083",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara083/ill.png",
+    "source_sha256": "449fa002a84be674ed9a3e205a64e31c1e312178c7a6ea2d3d6ccc71b7bc53cf",
+    "source_size": [
+      489,
+      1064
+    ],
+    "crop": [
+      0,
+      0,
+      489,
+      1064
+    ],
+    "size": [
+      489,
+      1064
+    ],
+    "file": "assets/fullbody/deidara.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "jiraiya",
+    "source_id": "chara049",
+    "source_name": "自来也",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara049",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara049/ill.png",
+    "source_sha256": "18fc5fe4a7d183773cd08ef62018996db0040ff6af9477b258d685d091668467",
+    "source_size": [
+      532,
+      1144
+    ],
+    "crop": [
+      0,
+      0,
+      532,
+      1144
+    ],
+    "size": [
+      532,
+      1144
+    ],
+    "file": "assets/fullbody/jiraiya.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "jugo",
+    "source_id": "chara078",
+    "source_name": "重吾",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara078",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara078/ill.png",
+    "source_sha256": "ea279bdbf2e4f66ee826064b280014f9baee72adfe24d31288f3b31b238ba3c0",
+    "source_size": [
+      646,
+      1119
+    ],
+    "crop": [
+      0,
+      0,
+      646,
+      1119
+    ],
+    "size": [
+      646,
+      1119
+    ],
+    "file": "assets/fullbody/jugo.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "karin",
+    "source_id": "chara076",
+    "source_name": "香燐",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara076",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara076/ill.png",
+    "source_sha256": "a3e264ec6baa9604cb135769eed65ec9b7fe93ddef53452c3efb06f6853b38d7",
+    "source_size": [
+      346,
+      1090
+    ],
+    "crop": [
+      0,
+      0,
+      346,
+      1090
+    ],
+    "size": [
+      346,
+      1090
+    ],
+    "file": "assets/fullbody/karin.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "killerbee",
+    "source_id": "chara068",
+    "source_name": "キラービー",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara068",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara068/ill.png",
+    "source_sha256": "da7ed98bdf6addf49f435f248dcc854a4db13f18f4865f58be4fb2944a8b9f65",
+    "source_size": [
+      580,
+      1053
+    ],
+    "crop": [
+      0,
+      0,
+      580,
+      1053
+    ],
+    "size": [
+      580,
+      1053
+    ],
+    "file": "assets/fullbody/killerbee.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "kimimaro",
+    "source_id": "chara120",
+    "source_name": "君麻呂",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara120",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara120/ill.png",
+    "source_sha256": "4c89e776013a66cc5e68259f32e33e962c2d3643b46fccefefe942585160d955",
+    "source_size": [
+      581,
+      994
+    ],
+    "crop": [
+      0,
+      0,
+      581,
+      994
+    ],
+    "size": [
+      581,
+      994
+    ],
+    "file": "assets/fullbody/kimimaro.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "konan",
+    "source_id": "chara086",
+    "source_name": "小南",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara086",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara086/ill.png",
+    "source_sha256": "2de7c5ddac6a7802b3d69a08235b5eb3f671974e90abd614b69c7c56b216396d",
+    "source_size": [
+      445,
+      1123
+    ],
+    "crop": [
+      0,
+      0,
+      445,
+      1123
+    ],
+    "size": [
+      445,
+      1123
+    ],
+    "file": "assets/fullbody/konan.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "lee",
+    "source_id": "chara026",
+    "source_name": "ロック・リー",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara026",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara026/ill.png",
+    "source_sha256": "107a5430978fd5adb0e77cc2d25cfac4cae35ea6727f29718b677dd3465d6790",
+    "source_size": [
+      327,
+      1056
+    ],
+    "crop": [
+      0,
+      0,
+      327,
+      1056
+    ],
+    "size": [
+      327,
+      1056
+    ],
+    "file": "assets/fullbody/lee.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "madara",
+    "source_id": "chara146",
+    "source_name": "うちはマダラ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara146",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara146/ill.png",
+    "source_sha256": "b1292e66bab57c70224a979990aee50864074dc9e9cab3bf6579e621ad8a4388",
+    "source_size": [
+      703,
+      1149
+    ],
+    "crop": [
+      0,
+      0,
+      703,
+      1149
+    ],
+    "size": [
+      703,
+      1149
+    ],
+    "file": "assets/fullbody/madara.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "hinata",
+    "source_id": "chara038",
+    "source_name": "日向ヒナタ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara038",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara038/ill.png",
+    "source_sha256": "0a8b8be1da66c47f586ee87bc099b52643868b480f43251ae586d93c7fc5df71",
+    "source_size": [
+      338,
+      1034
+    ],
+    "crop": [
+      0,
+      0,
+      338,
+      1034
+    ],
+    "size": [
+      338,
+      1034
+    ],
+    "file": "assets/fullbody/hinata.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "neji",
+    "source_id": "chara028",
+    "source_name": "日向ネジ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara028",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara028/ill.png",
+    "source_sha256": "34248afae2d2769c38cf360c0139a029840bfe932eaefda463945b662c7ddb6b",
+    "source_size": [
+      422,
+      1037
+    ],
+    "crop": [
+      0,
+      0,
+      422,
+      1037
+    ],
+    "size": [
+      422,
+      1037
+    ],
+    "file": "assets/fullbody/neji.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "obito",
+    "source_id": "chara087",
+    "source_name": "仮面の男",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara087",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara087/ill.png",
+    "source_sha256": "25d30c988a25052b102bb780c9c6552b02eb42a8cfb60158d00eb42836902fc4",
+    "source_size": [
+      914,
+      1133
+    ],
+    "crop": [
+      0,
+      0,
+      914,
+      1133
+    ],
+    "size": [
+      914,
+      1133
+    ],
+    "file": "assets/fullbody/obito.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "obito-unmasked",
+    "source_id": "chara090",
+    "source_name": "うちはオビト",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara090",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara090/ill.png",
+    "source_sha256": "047dc29d5e2cb249a4975cf25bbb87667a8f0e80533656591ce528e02751a30d",
+    "source_size": [
+      539,
+      1140
+    ],
+    "crop": [
+      0,
+      0,
+      539,
+      1140
+    ],
+    "size": [
+      539,
+      1140
+    ],
+    "file": "assets/fullbody/obito-unmasked.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "orochimaru",
+    "source_id": "chara116",
+    "source_name": "大蛇丸",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara116",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara116/ill.png",
+    "source_sha256": "b9ba88705425d8154daf0493fc90c3310bb9f5bb547fb86edf454a409a0ac159",
+    "source_size": [
+      395,
+      1129
+    ],
+    "crop": [
+      0,
+      0,
+      395,
+      1129
+    ],
+    "size": [
+      395,
+      1129
+    ],
+    "file": "assets/fullbody/orochimaru.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "pain",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡",
+    "source_id": "chara085",
+    "source_name": "ペイン",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara085",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara085/ill_sp.png",
+    "source_sha256": "18168d2a45de71de5ae2083a00220ded83751b3587cd83e657bcfdad867ecc64",
+    "source_size": [
+      633,
+      1057
+    ],
+    "crop": [
+      0,
+      0,
+      633,
+      1057
+    ],
+    "size": [
+      633,
+      1057
+    ],
+    "file": "assets/fullbody/pain.webp"
+  },
+  {
+    "key": "suigetsu",
+    "source_id": "chara077",
+    "source_name": "鬼灯水月",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara077",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara077/ill.png",
+    "source_sha256": "9778438257bef6edb29fff54a46d8e87deb50c7447e8325d8fd1194049eabbc7",
+    "source_size": [
+      453,
+      1124
+    ],
+    "crop": [
+      0,
+      0,
+      453,
+      1124
+    ],
+    "size": [
+      453,
+      1124
+    ],
+    "file": "assets/fullbody/suigetsu.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "temari",
+    "source_id": "chara066",
+    "source_name": "テマリ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara066",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara066/ill.png",
+    "source_sha256": "30c154f53f70b90189a30e64adb4b7d47e6a9170ac1836021be22e063f1e3d50",
+    "source_size": [
+      1027,
+      1131
+    ],
+    "crop": [
+      0,
+      0,
+      1027,
+      1131
+    ],
+    "size": [
+      1027,
+      1131
+    ],
+    "file": "assets/fullbody/temari.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "minato",
+    "source_id": "chara055",
+    "source_name": "波風ミナト",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara055",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara055/ill.png",
+    "source_sha256": "c4c6fdff86c335de62074a291cc4ec21c8766a7604bb527eb6d5ff82ba8cedd7",
+    "source_size": [
+      468,
+      1144
+    ],
+    "crop": [
+      0,
+      0,
+      468,
+      1144
+    ],
+    "size": [
+      468,
+      1144
+    ],
+    "file": "assets/fullbody/minato.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "ino",
+    "source_id": "chara032",
+    "source_name": "山中いの",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara032",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara032/ill.png",
+    "source_sha256": "7d73838ea91241f05a0541778eb894e18ee9a283f5f053f1b0b9742c9cedf109",
+    "source_size": [
+      376,
+      1118
+    ],
+    "crop": [
+      0,
+      0,
+      376,
+      1118
+    ],
+    "size": [
+      376,
+      1118
+    ],
+    "file": "assets/fullbody/ino.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "kabuto",
+    "source_id": "chara117",
+    "source_name": "薬師カブト",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara117",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara117/ill.png",
+    "source_sha256": "fef7b4e1bc9def11cdf278d57841d8f8ae044b8f89f896a943f934c9a732bf95",
+    "source_size": [
+      524,
+      1145
+    ],
+    "crop": [
+      0,
+      0,
+      524,
+      1145
+    ],
+    "size": [
+      524,
+      1145
+    ],
+    "file": "assets/fullbody/kabuto.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "sai",
+    "source_id": "chara046",
+    "source_name": "サイ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara046",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara046/ill.png",
+    "source_sha256": "fa8a047084ab094c088b703136b38995810904e68496ddc0244b507cef946763",
+    "source_size": [
+      388,
+      1082
+    ],
+    "crop": [
+      0,
+      0,
+      388,
+      1082
+    ],
+    "size": [
+      388,
+      1082
+    ],
+    "file": "assets/fullbody/sai.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "shikamaru",
+    "source_id": "chara034",
+    "source_name": "奈良シカマル",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara034",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara034/ill.png",
+    "source_sha256": "4bf641f69ad33fcc28c6f180ed11a3ba5d04511c27bcd93f6407a1082f52da8a",
+    "source_size": [
+      420,
+      1130
+    ],
+    "crop": [
+      0,
+      0,
+      420,
+      1130
+    ],
+    "size": [
+      420,
+      1130
+    ],
+    "file": "assets/fullbody/shikamaru.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "tenten",
+    "source_id": "chara030",
+    "source_name": "テンテン",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara030",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara030/ill.png",
+    "source_sha256": "f8715a73b5b44de9872ac15c2d1dc2fd5eff1b1f56ca102879c57d56a749760e",
+    "source_size": [
+      509,
+      1007
+    ],
+    "crop": [
+      0,
+      0,
+      509,
+      1007
+    ],
+    "size": [
+      509,
+      1007
+    ],
+    "file": "assets/fullbody/tenten.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "onoki",
+    "source_id": "chara072",
+    "source_name": "オオノキ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara072",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara072/ill.png",
+    "source_sha256": "c81ea58a7dfab710473dff695392af92a56daf581a1e011a89f555a3a7e69592",
+    "source_size": [
+      613,
+      768
+    ],
+    "crop": [
+      0,
+      0,
+      613,
+      768
+    ],
+    "size": [
+      613,
+      768
+    ],
+    "file": "assets/fullbody/onoki.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "tsunade",
+    "source_id": "chara050",
+    "source_name": "綱手",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara050",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara050/ill.png",
+    "source_sha256": "3f5d42b379feb93fe374d0fb7244ff4088a702aea20a2a988df32fa4df8f8dfc",
+    "source_size": [
+      417,
+      1114
+    ],
+    "crop": [
+      0,
+      0,
+      417,
+      1114
+    ],
+    "size": [
+      417,
+      1114
+    ],
+    "file": "assets/fullbody/tsunade.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "utakata",
+    "source_id": "chara104",
+    "source_name": "ウタカタ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara104",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara104/ill.png",
+    "source_sha256": "4c51e910d5ddbd72761504bd7d4cf25df186ebd63b36bef66ab271aee69a816f",
+    "source_size": [
+      325,
+      1094
+    ],
+    "crop": [
+      0,
+      0,
+      325,
+      1094
+    ],
+    "size": [
+      325,
+      1094
+    ],
+    "file": "assets/fullbody/utakata.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "tobirama",
+    "source_id": "chara107",
+    "source_name": "二代目火影 千手扉間",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara107",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara107/ill.png",
+    "source_sha256": "75eb0031b654268f6d396c4d6ca02b7fd2ffcadfe2cff002ed2d27be4f0a01b0",
+    "source_size": [
+      413,
+      1166
+    ],
+    "crop": [
+      0,
+      0,
+      413,
+      1166
+    ],
+    "size": [
+      413,
+      1166
+    ],
+    "file": "assets/fullbody/tobirama.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "sasori",
+    "source_id": "chara084",
+    "source_name": "サソリ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara084",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara084/ill.png",
+    "source_sha256": "f148d515daa9723e9b36ab0187f727345b77133ff1e11805de968cbc394a588c",
+    "source_size": [
+      881,
+      1119
+    ],
+    "crop": [
+      0,
+      0,
+      881,
+      1119
+    ],
+    "size": [
+      881,
+      1119
+    ],
+    "file": "assets/fullbody/sasori.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "kisame",
+    "source_id": "chara080",
+    "source_name": "干柿鬼鮫",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara080",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara080/ill.png",
+    "source_sha256": "c449058a592418d164f98cd875363fe15d1908de5001c8700f5ed59c9ae734fe",
+    "source_size": [
+      562,
+      1125
+    ],
+    "crop": [
+      0,
+      0,
+      562,
+      1125
+    ],
+    "size": [
+      562,
+      1125
+    ],
+    "file": "assets/fullbody/kisame.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "guy",
+    "source_id": "chara044",
+    "source_name": "マイト・ガイ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara044",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara044/ill.png",
+    "source_sha256": "1c1ba256db2ff1ed777344a9f0e6548edc2806647a911e61bf8e4ee58f427c4f",
+    "source_size": [
+      380,
+      1125
+    ],
+    "crop": [
+      0,
+      0,
+      380,
+      1125
+    ],
+    "size": [
+      380,
+      1125
+    ],
+    "file": "assets/fullbody/guy.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "kankuro",
+    "source_id": "chara064",
+    "source_name": "カンクロウ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara064",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara064/ill.png",
+    "source_sha256": "d64fe54cf21e3c64cce163f938b3f6796dc7180b033932aa814fdf90822e2b0a",
+    "source_size": [
+      853,
+      1091
+    ],
+    "crop": [
+      0,
+      0,
+      853,
+      1091
+    ],
+    "size": [
+      853,
+      1091
+    ],
+    "file": "assets/fullbody/kankuro.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  },
+  {
+    "key": "iruka",
+    "source_id": "chara048",
+    "source_name": "うみのイルカ",
+    "source_page": "https://naruto-game-sc.bn-ent.net/character/detail.php?c=chara048",
+    "source_image": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara048/ill.png",
+    "source_sha256": "c38373cc938787a2f4aa657ddb4526c168dcc5107e21eb4cf4f93b7c95646e98",
+    "source_size": [
+      444,
+      1126
+    ],
+    "crop": [
+      0,
+      0,
+      444,
+      1126
+    ],
+    "size": [
+      444,
+      1126
+    ],
+    "file": "assets/fullbody/iruka.webp",
+    "visual_status": "已检查完整人物及形态；保留原图姿势与随身武器/傀儡"
+  }
+]

@@ -1,0 +1,62 @@
+{
+  "scroll": {
+    "source_page": "https://narutostory.net/items.php?item=2345",
+    "source_url": "https://narutostory.net/layout/images/items/item_3232.png",
+    "source_name": "HEAVEN SCROLL",
+    "file": "pickup-scroll-existing.png",
+    "sha256": "f0de70947fee8cee4ea2649c73b82153a05e182f03bae866c04ffc4fa4d198b5"
+  },
+  "pill": {
+    "source_page": "https://narutostory.net/items.php?item=12901",
+    "source_url": "https://narutostory.net/layout/images/items/item_12413.png",
+    "source_name": "MILITARY RATIONS PILL",
+    "file": "pickup-pill-existing.png",
+    "sha256": "12db35eddd1f0d67b4822fe6105954d768eeb6dd3e56a80b6daa7a1457c9116b"
+  },
+  "rasengan": {
+    "source_page": "https://spritedatabase.net/file/11302",
+    "game": "Naruto Shippuden: Shinobi Rumble",
+    "contributor": "Neimad",
+    "sheet": "RASENGAN-SOURCE-SHEET.png",
+    "region_label": "SPECIAL MOVE 1 (WEAK): RASENGAN",
+    "source_crops": [
+      [
+        438,
+        2953,
+        467,
+        2990
+      ],
+      [
+        472,
+        2953,
+        502,
+        2990
+      ]
+    ],
+    "method": "Remove only the sheet background, crop visible pixels, pad each frame to 32x32. Two stationary orb effect frames; not a full character attack timeline.",
+    "atlas": "rasengan-ds-loop.png"
+  },
+  "oodama": {
+    "game": "Naruto Shippuden: Shinobi Rumble",
+    "contributor": "Neimad",
+    "source_page": "https://spritedatabase.net/file/11302",
+    "sheet": "RASENGAN-SOURCE-SHEET.png",
+    "region_label": "SPECIAL MOVE 1 (STRONG): OODAMA RASENGAN",
+    "source_crops": [
+      [
+        479,
+        3184,
+        506,
+        3225
+      ],
+      [
+        512,
+        3184,
+        541,
+        3225
+      ]
+    ],
+    "atlas": "oodama-ds-loop.png",
+    "method": "Remove only the sheet background, crop visible pixels, center in 32x32 cells. Use the original orb phases with subtle fade; no mixed impact/dispersal frames."
+  }
+}

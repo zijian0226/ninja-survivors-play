@@ -1,0 +1,89 @@
+{
+  "temari": {
+    "source_pack": "fighters__temari.swf",
+    "bitmaps": {
+      "idle": [
+        8,
+        28,
+        8,
+        28
+      ],
+      "run": [
+        6,
+        9,
+        37,
+        9
+      ],
+      "cast": [
+        8,
+        45,
+        17,
+        8
+      ]
+    },
+    "method": "original bitmap pixels; separate alpha-column islands for Deidara strips; pad to 96px foot anchor"
+  },
+  "suigetsu": {
+    "source_pack": "fighters__suigetsu.swf",
+    "bitmaps": {
+      "idle": [
+        11,
+        13,
+        15,
+        13
+      ],
+      "run": [
+        24,
+        26,
+        28,
+        30,
+        32,
+        34
+      ],
+      "cast": [
+        11,
+        40,
+        100,
+        11
+      ]
+    },
+    "method": "original bitmap pixels; separate alpha-column islands for Deidara strips; pad to 96px foot anchor"
+  },
+  "gaara": {
+    "source_pack": "fighters__gaara.swf",
+    "bitmaps": {
+      "idle": [
+        219,
+        221,
+        223,
+        225
+      ],
+      "run": [
+        228,
+        230,
+        232,
+        234
+      ],
+      "cast": [
+        219,
+        246,
+        248,
+        219
+      ]
+    },
+    "method": "original bitmap pixels; separate alpha-column islands for Deidara strips; pad to 96px foot anchor"
+  },
+  "deidara": {
+    "source_pack": "fighters__deidara.swf",
+    "bitmaps": {
+      "idle": 7,
+      "run": 13,
+      "cast": [
+        7,
+        21,
+        7
+      ]
+    },
+    "method": "original bitmap pixels; separate alpha-column islands for Deidara strips; pad to 96px foot anchor"
+  }
+}

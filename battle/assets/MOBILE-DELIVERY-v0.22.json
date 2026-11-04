@@ -1,0 +1,207 @@
+{
+  "font": {
+    "original": 701520,
+    "delivery": 43216,
+    "unique_characters": 1452
+  },
+  "map": {
+    "original": 358194,
+    "delivery": 82614,
+    "lossless_pixels_verified": true
+  },
+  "cues": [
+    {
+      "key": "naruto-young",
+      "source_bytes": 75248,
+      "cue_bytes": 10726,
+      "crop": [
+        40,
+        0,
+        409,
+        369
+      ]
+    },
+    {
+      "key": "naruto-shippuden",
+      "source_bytes": 67116,
+      "cue_bytes": 9022,
+      "crop": [
+        -2,
+        0,
+        415,
+        417
+      ]
+    },
+    {
+      "key": "naruto-sage",
+      "source_bytes": 68528,
+      "cue_bytes": 8272,
+      "crop": [
+        65,
+        0,
+        454,
+        389
+      ]
+    },
+    {
+      "key": "naruto-kurama",
+      "source_bytes": 117792,
+      "cue_bytes": 12782,
+      "crop": [
+        210,
+        0,
+        587,
+        377
+      ]
+    },
+    {
+      "key": "sasuke",
+      "source_bytes": 67662,
+      "cue_bytes": 6798,
+      "crop": [
+        15,
+        0,
+        412,
+        397
+      ]
+    },
+    {
+      "key": "sakura",
+      "source_bytes": 58306,
+      "cue_bytes": 7300,
+      "crop": [
+        59,
+        0,
+        440,
+        381
+      ]
+    },
+    {
+      "key": "kakashi",
+      "source_bytes": 95810,
+      "cue_bytes": 12378,
+      "crop": [
+        143,
+        0,
+        564,
+        421
+      ]
+    },
+    {
+      "key": "temari",
+      "source_bytes": 93722,
+      "cue_bytes": 6318,
+      "crop": [
+        361,
+        0,
+        768,
+        407
+      ]
+    },
+    {
+      "key": "suigetsu",
+      "source_bytes": 63710,
+      "cue_bytes": 8332,
+      "crop": [
+        1,
+        0,
+        406,
+        405
+      ]
+    },
+    {
+      "key": "deidara",
+      "source_bytes": 65126,
+      "cue_bytes": 8652,
+      "crop": [
+        43,
+        0,
+        426,
+        383
+      ]
+    },
+    {
+      "key": "gaara",
+      "source_bytes": 77658,
+      "cue_bytes": 8660,
+      "crop": [
+        61,
+        0,
+        456,
+        395
+      ]
+    }
+  ],
+  "actor_scale": [
+    {
+      "key": "young",
+      "source_idle_height": 48.0,
+      "render_scale": 1.0833,
+      "target_height": 52
+    },
+    {
+      "key": "shippuden",
+      "source_idle_height": 51.5,
+      "render_scale": 1.0097,
+      "target_height": 52
+    },
+    {
+      "key": "sage",
+      "source_idle_height": 54.5,
+      "render_scale": 0.9541,
+      "target_height": 52
+    },
+    {
+      "key": "gold_old",
+      "source_idle_height": 53.0,
+      "render_scale": 0.9811,
+      "target_height": 52
+    },
+    {
+      "key": "kakashi",
+      "source_idle_height": 42.5,
+      "render_scale": 1.2235,
+      "target_height": 52
+    },
+    {
+      "key": "sasuke",
+      "source_idle_height": 55.0,
+      "render_scale": 0.9455,
+      "target_height": 52
+    },
+    {
+      "key": "sakura",
+      "source_idle_height": 47.5,
+      "render_scale": 1.0947,
+      "target_height": 52
+    },
+    {
+      "key": "temari",
+      "source_idle_height": 60.0,
+      "render_scale": 0.8667,
+      "target_height": 52
+    },
+    {
+      "key": "suigetsu",
+      "source_idle_height": 53.0,
+      "render_scale": 0.9811,
+      "target_height": 52
+    },
+    {
+      "key": "gaara",
+      "source_idle_height": 54.0,
+      "render_scale": 0.963,
+      "target_height": 52
+    },
+    {
+      "key": "deidara",
+      "source_idle_height": 58.0,
+      "render_scale": 0.8966,
+      "target_height": 52
+    }
+  ],
+  "home_default": {
+    "original": 67116,
+    "delivery": 39194
+  }
+}

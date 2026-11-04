@@ -1,0 +1,59 @@
+人物、忍术与卡卡西特效：剑jian / 5DPLAY Game Studio，BleachVsNaruto_TagAssets 公共仓库。
+https://github.com/5DPLAY-Game-Studio/BleachVsNaruto_TagAssets
+小鸣人：Naruto: Ninja Council 2，精灵表提取贡献者 Deekman。
+https://www.spriters-resource.com/game_boy_advance/narutonc2/asset/14390/
+像素字体：TakWolf / Fusion Pixel Font，OFL-1.1；见 FONT-LICENSE.txt。
+https://github.com/TakWolf/fusion-pixel-font
+场景整合、宝箱与界面：本原型制作；地图及外围素材来源见下文。角色及原作内容归相应权利人；同人非官方样机。
+大地图地表、树木与场景物件：Kenney / Roguelike RPG Pack，CC0。
+https://kenney.nl/assets/roguelike-rpg-pack
+宝箱、吸铁石图标：本原型制作；卷轴已替换为下方列出的原版素材。
+木叶村中央街区：Naruto RPG: Uketsugareshi Hi no Ishi (GBA)，素材提取者 Naruto[NU]。原始精灵表署名保留在 konoha-source.gif。
+https://www.spriters-resource.com/game_boy_advance/narutorpg/asset/14388/
+手里剑：5DPLAY Game Studio 公开素材 kakashi / 1051，旋转由游戏渲染实现。
+
+大厅背景：火影忍者手游场景截图，17173 展示，原作素材权利归相应权利人。
+https://news.17173.com/z/hyrz/content/01282016/144319336_all.shtml
+卷轴、补给罐、木叶标志与标题素材：Naruto: Ninja Council 2，Naruto[NU] 提取。补给罐在本样机用作兵粮丸容器。
+https://www.spriters-resource.com/game_boy_advance/narutonc2/asset/14415/
+
+忍术卷轴图标：本原型绘制的透明卷轴 UI，红色卷轴轴头与封印带造型。
+螺旋丸循环补帧：5DPLAY 公开素材 naruto_hermit / 181，与原 174 帧交替播放。
+
+当前卷轴与兵粮丸：Naruto Story OTS 现有像素资源。此前自绘卷轴和补给罐已停用。
+天之卷轴页面：https://narutostory.net/items.php?item=2345
+原图：https://narutostory.net/layout/images/items/item_3232.png
+兵粮丸页面：https://narutostory.net/items.php?item=12901
+原图：https://narutostory.net/layout/images/items/item_12413.png
+当前螺旋丸：Naruto Shippuden: Shinobi Rumble (Nintendo DS)，Neimad 提取图集。
+https://spritedatabase.net/file/11302
+使用图集 SPECIAL MOVE 1 (WEAK): RASENGAN 的两个独立球体效果帧，保持原像素与比例，固定位置循环；不是完整角色出招动画。完整图集保留于 RASENGAN-SOURCE-SHEET.png。
+素材 URL、裁切坐标与校验值见 VERIFIED-ASSETS.json。
+
+通用施法动作：少年鸣人使用 Ninja Council 2 / Deekman 原图姿态；其他鸣人形象与卡卡西使用 5DPLAY 公开 BVN 图集中原有姿态。以同一 4 帧 340ms 流程对齐，不是各忍术完整专属动画。帧来源见 CAST-SOURCES.json。
+螺旋丸出现、持续、消散帧均来自已附的 DS Shinobi Rumble 图集；本次完整视觉序列的裁切位置见 CAST-SOURCES.json。
+
+当前大玉螺旋丸帧使用 DS 原图集 SPECIAL MOVE 1 (STRONG): OODAMA RASENGAN 的专门球体效果，普通螺旋丸使用 WEAK 行。现版本不再使用前次出现/爆散图拼接；统一轻微淡入淡出，完整角色大玉动作不在当前样机内。具体裁切坐标见 VERIFIED-ASSETS.json。
+
+角色与技能素材清单：本次审计 5DPLAY BleachVsNaruto_TagAssets，固定仓库树 53dd55b6c98c0877f054b1b36cff3313602880eb。新增目录头像来自该仓库各角色包原有 face / face_big 图，未将其计作已接入角色。逐包来源、动作标签与帧段见 assets/catalog/index.html、catalog.json。原作角色及图像版权归各权利人；公开仓库不等同于开源许可或商用授权。
+
+当前手机首页（2026-11-01）：像素 Logo、14 个像素图标及 stage.svg 简化舞台背景由 scripts/draw-hub-assets.py 确定性代码绘制，未新增生成图片。
+非像素忍者立绘：Naruto Mobile Hub 公开忍者图鉴，原图来源、原图 SHA-256 与裁切边界见 assets/illustrations/SOURCES.json。
+https://narutomobilehub.com/zh/ninja/
+双仙人插图：Narutopedia / Two Great Sage Toads。https://naruto.fandom.com/wiki/Two_Great_Sage_Toads
+历史大厅木叶截图仍保留为原始素材，当前首页未引用。当前战斗人物与技能来源沿用上述记录。
+
+2026-11-01 首页全身立绘：Bandai Namco NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS 官方角色页 https://naruto-game-sc.bn-ent.net/character/ 。43 张透明全身图，裁去透明空白并转 WebP，原图来源及校验值见 fullbody/SOURCES.json。官方公开图片，非开源授权素材。首页矢量图标及舞台背景由 scripts/draw-fullbody-hub-assets.py 绘制。
+
+第七班小队 v0.14：佐助、小樱像素待机/跑动/通用施法帧及佐助火球取自5DPLAY BleachVsNaruto_TagAssets的fighters/sasuke与fighters/sakura原始位图。帧号见SQUAD-ASSETS.json。樱花冲冲击圈与治疗提示由Canvas绘制，千鸟/雷切复用已有雷遁特效。
+
+技能机制强化与小队联动（v0.20）：使用代码组合现有螺旋丸、雷电、风刃、砂、治疗和人物动作素材；未新增生成人物或专属合体技动图。联动名称和规则为本游戏设计，不代表原作已有对应合体忍术。
+
+手机交付优化（v0.22）：cue/ 为上述官方全身立绘的头肩裁图与压缩版本，home-lite/ 为同源缩小交付图；原图保留。pixel-ui.woff2 为随包字体的游戏文字子集，遵循同包OFL许可。木叶地图WebP可见像素和透明度与原PNG一致。
+
+
+v0.23 additions: 20 exact character forms and 60 source-frame active animations. Full source bitmap IDs, SWF hashes, artist credits, transformations and manifest provenance are recorded in docs/skill-art-v23/. Kisame DS sheet: Ploaj / The Spriters Resource asset 98898; Kakuzu Ninja Council 3-style custom sprite sheet: Kari_ufo / Sprite Database custom 374 (give credits). Official illustrations: Bandai Namco Naruto x Boruto Ultimate Ninja Storm Connections, https://naruto-game-sc.bn-ent.net/character/ . These source images do not carry an asserted open-source license. No official affiliation.
+
+
+v0.25 原创角色：宇智波·绯璃
+白发高领人物、独立动作、魅惑／花焰／神女须佐为本项目按用户设定生成的原创同人素材，经切帧、锚点和尺寸适配。不是BVN提取素材或原作官方角色。角色与须佐的运行实现见 original-ninja.js。

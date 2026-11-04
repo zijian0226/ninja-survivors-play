@@ -24,7 +24,7 @@ window.UI = (function () {
     }
     function swap(el, e) {
       if (el.getAttribute('src') === e.url) return;
-      el.src = e.url; el.classList.remove('pix'); el.classList.add('portrait');
+      el.src = e.url; el.classList.toggle('pix',e.pixel); el.classList.toggle('portrait',!e.pixel);
     }
     function apply(id) {
       const e = cache[id];
@@ -39,7 +39,7 @@ window.UI = (function () {
       let img;
       try { img = new Image(); } catch (_) { return e; }
       e.state = 'loading';
-      const url = b + encodeURIComponent(id) + '.png';
+      const ch=D.charById[id]; e.pixel=!!ch?.pixelPortrait; const url=ch?.portraitURL || b+encodeURIComponent(id)+'.png';
       img.onload = () => {
         img.onload = img.onerror = null;
         if (!img.naturalWidth) { e.state = 'fail'; return; }
@@ -51,7 +51,7 @@ window.UI = (function () {
     }
     return {
       load, apply,
-      preloadAll() { try { (D.characters || []).forEach(c => load(c.id)); } catch (_) { } },
+      preloadAll() { try { (D.characters || []).slice(0,4).forEach(c => load(c.id)); } catch (_) { } },
       ready: id => !!(cache[id] && cache[id].state === 'ok'),
       url: id => cache[id] && cache[id].url,
       state: id => cache[id] ? cache[id].state : 'none'
@@ -61,8 +61,8 @@ window.UI = (function () {
   /* 角色大图：有立绘用立绘，否则用 scale 倍放大的像素精灵 */
   function charImg(id, scale, cls, attrs) {
     Portraits.load(id);
-    const ok = Portraits.ready(id);
-    return `<img class="${ok ? 'portrait' : 'pix'} ${cls || ''}" data-portrait="${id}" src="${ok ? Portraits.url(id) : Sprites.portraitURL(id, scale)}"${attrs ? ' ' + attrs : ''}>`;
+    const ok=Portraits.ready(id),direct=D.charById[id]?.portraitURL;
+    return `<img class="${(ok||direct)&&!D.charById[id]?.pixelPortrait?'portrait':'pix'} ${cls || ''}" data-portrait="${id}" src="${ok?Portraits.url(id):direct||Sprites.portraitURL(id,scale)}"${attrs ? ' ' + attrs : ''}>`;
   }
 
   function show(id) {
@@ -80,11 +80,12 @@ window.UI = (function () {
     const s = S(), ch = D.charById[s.selected];
     $('topbar').innerHTML = `
       <div class="tb-profile"><div class="tb-avatar" style="--c:${ch.color}"><img class="pix" src="${Sprites.headURL(ch.id, 3)}"></div>
-        <div class="tb-name"><b>木叶忍者</b><small>最高存活 ${fmtTime(s.stats.bestTime)}</small></div></div>
+        <div class="tb-name"><b>木叶忍者</b><button id="ui-debug-toggle" class="tb-debug" type="button" role="switch" aria-checked="${Game.debug()}">调试 ${Game.debug()?'开启':'关闭'}</button></div></div>
       <div class="tb-cur">
         <div class="cur-pill"><img class="pix" src="${Sprites.iconURL('coin', 3)}"><b id="cur-coins">${s.coins}</b><button class="plus" data-tip="coin">+</button></div>
         <div class="cur-pill gy"><img class="pix" src="${Sprites.iconURL('magatama', 3)}"><b id="cur-gouyu">${s.gouyu}</b><button class="plus" data-tip="gy">+</button></div>
       </div>`;
+    $('ui-debug-toggle').onclick=()=>{Game.setDebug(!Game.debug());U.go(U.page==='roster'?'roster':'lobby');};
     $('topbar').querySelectorAll('.plus').forEach(b => b.onclick = () => { Sfx.play('click'); U.toast(b.dataset.tip === 'gy' ? '勾玉可通过战斗存活与击败BOSS获得（本作无任何付费）' : '金币可通过战斗获得'); });
   }
   const navItems = [
@@ -118,7 +119,7 @@ window.UI = (function () {
       <path d="M100 100 m0 -30 a30 30 0 1 1 -21 51 a18 18 0 1 0 21 -33 a8 8 0 1 1 6 -12" stroke-width="3"/></g></svg>`;
   }
   function renderLobby(m) {
-    const s = S(), ch = D.charById[s.selected], st = s.owned[ch.id].stars;
+    const s=S(),ch=D.charById[s.displaySelected||s.selected],st=s.owned[ch.id]?.stars||1;
     m.innerHTML = `
       <div class="lobby" style="--c:${ch.color};--c2:${ch.color2}">
         <div class="lobby-bg"><div class="lb-grad"></div><div class="lb-rays"></div>${sealSvg('lb-seal')}
@@ -147,11 +148,11 @@ window.UI = (function () {
         <button class="btn-battle" id="btn-battle">
           <span class="bb-shine"></span>
           <span class="bb-main">出 战</span>
-          <span class="bb-sub">存活10分钟即胜利</span>
+          <span class="bb-sub">15分钟试炼 · 升级招募小队</span>
         </button>
       </div>`;
-    $('btn-battle').onclick = () => { Sfx.play('select'); U.startBattle(); };
-    $('btn-notice').onclick = () => { Sfx.play('click'); modal('公告', `<p>欢迎来到《忍界幸存者》原型版！</p><ul><li>拖动屏幕任意位置移动，忍术会自动释放。</li><li>收集经验勾玉升级，三选一强化忍术。</li><li>螺旋丸Lv5+风之卷轴、千鸟Lv5+查克拉卷轴可进化！</li><li>每3分钟出现BOSS，击败后掉落宝箱。</li><li>存活10分钟即为胜利。</li></ul><p class="muted">本作为粉丝向原型，非官方作品；所有美术均为程序生成的原创像素画。</p>`); };
+    $('btn-battle').onclick = () => { Sfx.play('select'); U.openBattlePrep(); };
+    $('btn-notice').onclick=()=>{Sfx.play('click');modal('公告',`<p>欢迎来到《忍者：无尽试炼》。</p><ul><li>拖动移动，忍术自动释放；近身忍术需接近目标。</li><li>单人开局，升级招募最多3名支援；支援倒地5秒复活。</li><li>5/10分钟小首领、13分钟大首领，15分钟超时。</li><li>战斗支持1、1.5、2、3倍速；暂停查看技能和联动。</li></ul><p class="muted">已接入35个形态，6个完成正式核验。调试默认开启，预览形态不计正式战绩。</p>`);};
   }
 
   /* ---------- 角色 ---------- */
@@ -170,23 +171,23 @@ window.UI = (function () {
           <div class="ro-name">${ch.name}<small>${ch.fullName}</small></div>
           <div class="ro-title">${ch.title}</div>
           ${own ? stars(own.stars) : '<span class="lock-tag">未解锁</span>'}
-          ${statBar('体力', ch.stats.hp, 150)}${statBar('攻击', Math.round(ch.stats.might * 100), 130)}${statBar('速度', Math.round(ch.stats.speed * 100), 120)}${statBar('暴击', Math.round(ch.stats.crit * 100) + '%', 20)}
+          ${statBar('体力',ch.current.hp,900)}<div class="form-review">${ch.current.releaseComplete?'已核验':'动画已接入 · 调试预览'}</div>
         </div>
-        <div class="ro-skill"><img class="pix" src="${Sprites.iconURL(w.icon, 4)}"><div><b>初始忍术 · ${w.name}</b><small>${w.desc[0]}</small></div></div>
-        <div class="ro-skill trait"><div class="trait-ic">特</div><div><b>${ch.trait.name}</b><small>${ch.trait.desc}</small></div></div>
-        <p class="ro-desc">${ch.desc}</p>
-        ${own ? (s.selected === sel ? '<button class="pbtn disabled">出战中</button>' : '<button class="pbtn primary" id="btn-setmain">设为出战</button>') : '<button class="pbtn gold" data-go="summon">前往召唤解锁</button>'}
+        <div class="current-skill-list">${ch.current.skills.map(k=>`<article class="current-skill"><small>${k.slot}</small><b>${k.name}</b><p>${k.effect}</p></article>`).join('')}</div>
+        <p class="ro-desc">${ch.desc}</p>${Game.debug()?'<button id="roster-lab" class="pbtn">技能试放</button>':''}
+        ${own ? ((s.displaySelected||s.selected)===sel?'<button class="pbtn disabled">首页展示中</button>':'<button class="pbtn primary" id="btn-setmain">设为首页展示</button>') : '<button class="pbtn gold" data-go="summon">前往召唤解锁</button>'}
       </div>
       <div class="ro-grid">${D.characters.map(c => {
         const o = s.owned[c.id];
         return `<div class="ro-card rarbg-${c.rarity} ${c.id === sel ? 'sel' : ''} ${o ? '' : 'locked'}" data-id="${c.id}" style="--c:${c.color}">
           <div class="rc-face">${charImg(c.id, 4)}</div>${rarityBadge(c.rarity)}
           <div class="rc-name">${c.name}</div>${o ? stars(o.stars) : '<div class="rc-lock">🔒 未解锁</div>'}
-          ${s.selected === c.id ? '<div class="rc-main">出战</div>' : ''}</div>`;
+          ${(s.displaySelected||s.selected)===c.id?'<div class="rc-main">展示</div>':''}</div>`;
       }).join('')}</div>`;
     m.querySelectorAll('.ro-card').forEach(c => c.onclick = () => { Sfx.play('click'); renderRoster(m, c.dataset.id); bindGo(m); });
+    if($('roster-lab'))$('roster-lab').onclick=()=>{show('battle');Game.start(sel,{lab:true});};
     const b = $('btn-setmain');
-    if (b) b.onclick = () => { Sfx.play('select'); s.selected = sel; Save.save(); renderTop(); renderRoster(m, sel); bindGo(m); U.toast(ch.name + ' 已设为出战角色'); };
+    if (b) b.onclick = () => { Sfx.play('select'); s.displaySelected=sel; Save.save(); renderTop(); renderRoster(m, sel); bindGo(m); U.toast(ch.name+' 已设为首页展示'); };
   }
   function bindGo(m) { m.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { Sfx.play('click'); U.go(b.dataset.go); }); }
 
@@ -210,7 +211,7 @@ window.UI = (function () {
         <button class="pbtn summon1" id="btn-s1"><span>召唤 ×1</span><em><img class="pix" src="${Sprites.iconURL('magatama', 2)}">${g.cost1}</em></button>
         <button class="pbtn summon10 gold" id="btn-s10"><span>召唤 ×10</span><em><img class="pix" src="${Sprites.iconURL('magatama', 2)}">${g.cost10}</em><i class="sm-note">必得SR以上</i></button>
       </div>
-      <p class="muted center">勾玉仅能通过游戏内战斗获得，本作不含任何真实付费。</p>`;
+      <p class="muted center">勾玉仅通过游戏内获得，无真实付费。收藏星级暂不改变战斗属性。</p>`;
     $('btn-s1').onclick = () => doSummon(1);
     $('btn-s10').onclick = () => doSummon(10);
     $('btn-rates').onclick = () => {
@@ -289,13 +290,13 @@ window.UI = (function () {
   /* ---------- 强化 ---------- */
   function renderUpgrade(m) {
     const s = S();
-    m.innerHTML = `<div class="page-head"><h2>强化</h2><span>TRAINING · 永久生效</span></div>
-      <div class="up-list">${D.metaUpgrades.map(u => {
+    m.innerHTML = `<div class="page-head"><h2>强化</h2><span>TRAINING · 局外方案</span></div>
+      <p class="prep-copy">强化方案展示，暂未接入战斗。当前仅局内三选一会改变战斗属性，不消耗金币。</p><div class="up-list">${D.metaUpgrades.map(u => {
         const lv = s.upgrades[u.id] || 0, max = lv >= u.max, cost = D.upgradeCost(u, lv);
         return `<div class="up-row"><div class="up-ic"><img class="pix" src="${Sprites.iconURL(u.icon, 4)}"></div>
           <div class="up-info"><b>${u.name}</b><small>${u.desc}</small>
           <div class="up-pips">${Array.from({ length: u.max }, (_, i) => `<i class="${i < lv ? 'on' : ''}"></i>`).join('')}</div></div>
-          <button class="pbtn up-buy ${max ? 'disabled' : s.coins < cost ? 'poor' : 'primary'}" data-id="${u.id}">${max ? 'MAX' : `<img class="pix" src="${Sprites.iconURL('coin', 2)}">${cost}`}</button></div>`;
+          <button disabled aria-label="暂未接入战斗" class="pbtn up-buy ${max ? 'disabled' : s.coins < cost ? 'poor' : 'primary'}" data-id="${u.id}">待开放</button></div>`;
       }).join('')}</div>
       <button class="link-btn" id="btn-refund">重置强化（返还全部金币）</button>`;
     m.querySelectorAll('.up-buy').forEach(b => b.onclick = () => {
@@ -318,17 +319,12 @@ window.UI = (function () {
     const s = S().settings;
     const tg = (k, name, desc) => `<div class="set-row"><div><b>${name}</b><small>${desc}</small></div><button class="toggle ${s[k] ? 'on' : ''}" data-k="${k}"><i></i></button></div>`;
     m.innerHTML = `<div class="page-head"><h2>设置</h2><span>SETTINGS</span></div>
-      <div class="panel set-list">${tg('sfx', '音效', '技能与界面音效')}${tg('music', '音乐', '8-bit 合成背景音乐')}${tg('shake', '屏幕震动', '受击与爆炸时震屏')}${tg('dmgNum', '伤害数字', '显示敌人受到的伤害')}
-        <div class="set-row"><div><b>画质 / 性能档</b><small>自动按帧率升降档；同屏上限 低350/中550/高800</small></div><button class="pbtn" id="btn-perf" style="white-space:nowrap;min-width:64px;flex:none">${PERF_NAMES[s.perfTier || 'auto']}</button></div></div>
-      <div class="panel about"><b>关于</b><p>《忍界幸存者》粉丝向原型 v0.1<br>灵感来自忍者题材动漫；非官方作品，与任何版权方无关。<br>所有角色像素画、音效与音乐均为程序生成的原创内容。</p></div>
+      <div class="panel set-list">${tg('sfx','音效','技能与界面音效')}${tg('music','大厅音乐','8-bit 合成背景音乐')}<div class="set-row"><div><b>屏幕震动</b><small>沿用当前战斗版本，暂不支持切换</small></div><button class="toggle" disabled aria-label="震动设置暂未接入"><i></i></button></div><div class="set-row"><div><b>伤害数字</b><small>战斗内默认显示</small></div><button class="toggle on" disabled aria-label="伤害数字默认显示"><i></i></button></div>
+        <div class="set-row"><div><b>战斗设置</b><small>战斗暂停页可调整1～3倍速</small></div><button class="pbtn" id="btn-perf" style="white-space:nowrap;min-width:64px;flex:none">查看说明</button></div></div>
+      <div class="panel about"><b>关于</b><p>《忍者：无尽试炼》界面整合版 v0.29<br>灵感来自忍者题材动漫；非官方作品，与任何版权方无关。<br>技能动作包含已收集的像素素材与原创角色素材，来源见源码中的素材记录。</p></div>
       <button class="pbtn danger" id="btn-reset">清除存档</button>`;
-    $('btn-perf').onclick = () => {
-      const order = ['auto', 'low', 'mid', 'high'], cur = s.perfTier || 'auto';
-      s.perfTier = order[(order.indexOf(cur) + 1) % order.length]; Save.save(); Sfx.play('click');
-      if (window.Perf) Perf.init();
-      $('btn-perf').textContent = PERF_NAMES[s.perfTier];
-    };
-    m.querySelectorAll('.toggle').forEach(b => b.onclick = () => { s[b.dataset.k] = !s[b.dataset.k]; Save.save(); Sfx.apply(); Sfx.play('click'); b.classList.toggle('on', s[b.dataset.k]); });
+    $('btn-perf').onclick=()=>modal('战斗设置','<p>进入战斗后点击暂停，可查看队友、连携、倍速；开启首页调试后还可升级、跳转首领。</p>');
+    m.querySelectorAll('.toggle[data-k]').forEach(b => b.onclick = () => { s[b.dataset.k] = !s[b.dataset.k]; Save.save(); Sfx.apply(); Game.syncSettings(); Sfx.play('click'); b.classList.toggle('on', s[b.dataset.k]); });
     $('btn-reset').onclick = () => modal('清除存档', '<p>确定要清除所有进度吗？此操作不可恢复。</p>', () => { Save.reset(); Sfx.apply(); U.toast('存档已清除'); U.go('lobby'); });
   }
 
@@ -344,6 +340,20 @@ window.UI = (function () {
   U.modal = modal;
 
   /* ---------- 出战 & 结算 ---------- */
+  U.openBattlePrep=function(){
+    let selected=Game.available(D.charById[S().selected])?S().selected:'naruto';
+    let excluded=[...(Game.excluded||[])];
+    modal('出战准备','');const body=$('modal').querySelector('.md-body');
+    function render(){body.innerHTML=`<p class="prep-copy">首页展示与出战独立。单人开局，升级招募最多3名支援。${Game.debug()?'调试开启：35个形态均可预览。':'调试关闭：仅开放6个已核验形态。'}</p><div class="prep-grid">${D.characters.map(c=>`<button class="prep-card ${c.id===selected?'active':''}" data-prep="${c.id}" ${Game.available(c)?'':'disabled'}>${charImg(c.id,3)}<b>${c.current.name}</b><small>${c.element}${c.current.releaseComplete?'':' · 预览'}</small></button>`).join('')}</div><h3 class="prep-title">排除招募属性 ${excluded.length}/3</h3><div class="prep-types">${['火','风','雷','土','水','阴','阳','全'].map(n=>`<button data-exclude="${n}" aria-pressed="${excluded.includes(n)}" class="${excluded.includes(n)?'active':''}">${n}</button>`).join('')}</div><p class="prep-copy">可排除0–3种属性。“全”为独立类别。每关2个小首领、1个大首领；支持1.5/2/3倍速。</p>`;
+     body.querySelectorAll('[data-prep]').forEach(b=>b.onclick=()=>{selected=b.dataset.prep;render();});
+     body.querySelectorAll('[data-exclude]').forEach(b=>b.onclick=()=>{const n=b.dataset.exclude;if(excluded.includes(n))excluded=excluded.filter(x=>x!==n);else if(excluded.length<3)excluded.push(n);else{U.toast('最多排除3种属性');return;}const top=body.scrollTop;render();body.scrollTop=top;});
+    }
+    render();const buttons=$('modal').querySelector('.md-btns');buttons.innerHTML='<button class="pbtn" id="prep-cancel">取消</button><button class="pbtn primary" id="prep-start">进入试炼</button>'+(Game.debug()?'<button class="pbtn" id="prep-lab">技能试放</button>':'');
+    $('prep-cancel').onclick=()=>$('modal').classList.add('hidden');
+    const start=lab=>{S().selected=selected;Game.excluded=excluded;Save.save();$('modal').classList.add('hidden');if(lab){show('battle');Game.start(selected,{excluded,lab:true});}else U.startBattle();};
+    $('prep-start').onclick=()=>start(false);if($('prep-lab'))$('prep-lab').onclick=()=>start(true);
+  };
+
   U.startBattle = function () {
     const s = S(), ch = D.charById[s.selected];
     const cut = document.createElement('div');
@@ -356,9 +366,9 @@ window.UI = (function () {
   };
   U.showResult = function (res) {
     const s = S();
-    s.coins += res.coins; s.gouyu += res.gouyu;
-    s.stats.runs++; s.stats.totalKills += res.kills; if (res.win) s.stats.wins++;
-    const best = res.time > s.stats.bestTime; if (best) s.stats.bestTime = res.time;
+    if(!res.debug){s.coins+=res.coins;s.gouyu+=res.gouyu;}
+    if(!res.debug){s.stats.runs++;s.stats.totalKills+=res.kills;if(res.win)s.stats.wins++;}
+    const best=!res.debug&&res.time>s.stats.bestTime; if (best) s.stats.bestTime = res.time;
     Save.save();
     const ch = D.charById[res.charId];
     const el = $('result');
@@ -366,7 +376,7 @@ window.UI = (function () {
     el.innerHTML = `<div class="rs-box">
       <div class="rs-title">${res.win ? '任务完成' : res.retreat ? '撤退' : '任务失败'}<small>${res.win ? 'VICTORY' : res.retreat ? 'RETREAT' : 'DEFEAT'}</small></div>
       <div class="rs-char">${charImg(ch.id, 6)}<div class="rs-quote">${res.win ? '「这就是我的忍道！」' : '「下次一定会赢的……」'}</div></div>
-      <div class="rs-stats">
+      ${res.debug?'<p class="prep-copy center">调试预览局 · 不计战绩与奖励</p>':''}<div class="rs-stats">
         <div><small>存活时间</small><b>${fmtTime(res.time)}${best ? '<em>NEW</em>' : ''}</b></div>
         <div><small>击杀数</small><b>${res.kills}</b></div>
         <div><small>等级</small><b>Lv ${res.level}</b></div>
@@ -381,7 +391,7 @@ window.UI = (function () {
   U.showTitle = function () {
     Portraits.preloadAll();
     show('title-screen');
-    $('title-chars').innerHTML = D.characters.map((c, i) => charImg(c.id, 6, 'tc tc' + i)).join('');
+    $('title-chars').innerHTML = D.characters.slice(0,4).map((c,i)=>charImg(c.id,6,'tc tc'+i)).join('');
   };
   return U;
 })();

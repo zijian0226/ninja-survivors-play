@@ -6,7 +6,7 @@ window.Save = (function () {
     GameData.characters.forEach(c => { if (c.unlocked) owned[c.id] = { stars: 1 }; });
     return {
       coins: 800, gouyu: 1000,
-      owned, selected: GameData.characters.find(c => c.unlocked).id,
+      displaySelected:'naruto', owned, selected: GameData.characters.find(c => c.unlocked).id,
       upgrades: {},
       settings: { sfx: true, music: true, shake: true, dmgNum: true, perfTier: 'auto' },
       stats: { bestTime: 0, totalKills: 0, runs: 0, wins: 0 },
@@ -26,6 +26,9 @@ window.Save = (function () {
         if (!d.owned[d.selected]) d.selected = Object.keys(d.owned)[0];
       }
     } catch (e) { console.warn('save load failed', e); }
+    d.owned=Object.assign(defaults().owned,d.owned||{});
+    if(!GameData.charById[d.selected])d.selected='naruto';
+    if(!GameData.charById[d.displaySelected])d.displaySelected=d.selected;
     S.data = d;
     return d;
   };

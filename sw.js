@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v6';
+const VERSION = 'v29-ui';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -24,10 +24,12 @@ const PRECACHE = [
   './src/bvn.js',
   './src/sprites.js',
   './src/perf.js',
-  './src/game.js',
-  './src/ui.js',
+  './src/battle-bridge.js?v=ui29',
+  './src/data/roster-current.js',
+  './css/current-ui.css?v=ui29',
+  './src/ui.js?v=ui29',
   './src/mobile.js',
-  './src/main.js',
+  './src/main.js?v=ui29',
   // BVN 战斗精灵（docs/art-guide §2.2）
   './assets/sprites/characters/naruto.json',
   './assets/sprites/characters/naruto.png',
@@ -86,13 +88,14 @@ self.addEventListener('fetch', event => {
   event.respondWith((async () => {
     const cache = await caches.open(CACHE);
     const hit = await cache.match(req, { ignoreSearch: isNav });
-    if (hit) return hit;
+    if (hit && !isNav && !/\.(?:js|css)$/.test(url.pathname)) return hit;
     try {
       const res = await fetch(req);
       if (res && res.ok && res.type === 'basic') cache.put(req, res.clone()).catch(() => { });
       return res;
     } catch (e) {
-      if (isNav) { const shell = await cache.match('./index.html'); if (shell) return shell; }
+      if(hit)return hit;
+      if(isNav&&url.pathname===SCOPE){const shell=await cache.match('./index.html');if(shell)return shell;}
       return new Response('', { status: 504, statusText: 'Offline' });
     }
   })());

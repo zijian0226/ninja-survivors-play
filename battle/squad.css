@@ -1,0 +1,41 @@
+.squad-roster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.squad-roster-card{position:relative;border:1px solid #76919b55;background:linear-gradient(140deg,#24414b,#152e3a);border-radius:9px;overflow:hidden;padding:9px;text-align:center}.squad-roster-card.main{border-color:#d2b374}.squad-roster-card>img{display:block;height:145px;width:100%;object-fit:contain;image-rendering:auto}.squad-roster-card small{display:block;font-size:10px;color:#c7b687;margin:5px 0}.squad-roster-card strong{display:block;font-size:15px;color:#eee1c2}.squad-roster-card span{display:block;font-size:10px;color:#9db7bc;margin-top:6px}.squad-roster-card.main:before{content:'主控';position:absolute;left:8px;top:8px;padding:2px 6px;font-size:10px;color:#1b2d35;background:#ddc18b;border-radius:4px}
+
+@media(max-height:740px){.squad-roster-card>img{height:105px}}
+/* Portrait mobile combat: fixed touch target sizes and a compact HUD, with no ally strip. */
+body[data-home="false"] .hud{top:calc(env(safe-area-inset-top,0px) + 10px);left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px))}
+body[data-home="false"] .battle-top{height:44px}
+body[data-home="false"] .battle-pause{width:44px;height:44px;font-size:26px;border-width:2px;box-shadow:1px 2px #111c16}
+body[data-home="false"] .battle-top>#timer{font-size:32px;letter-spacing:1px;text-shadow:1px 2px #172018}
+body[data-home="false"] .battle-counters{min-width:60px;font-size:10px;gap:2px}
+body[data-home="false"] .battle-counters>span{padding:1px 5px;height:20px}
+body[data-home="false"] .battle-counters img{width:16px;height:16px}
+body[data-home="false"] .battle-experience{margin-top:9px}
+body[data-home="false"] .battle-experience .bar.xp{height:9px;border:2px solid #111d17;overflow:hidden}
+body[data-home="false"] .battle-experience>#level{font-size:10px;line-height:1.4;padding:2px 9px 2px 4px}
+body[data-home="false"] .hud #bossHud{width:100%;max-width:none;padding:6px 8px;margin:4px 0 0;box-shadow:none;background:#201f1be0}
+body[data-home="false"] .boss-hud-title{font-size:11px;line-height:1.4;gap:6px}
+body[data-home="false"] .boss-hud-title span{font-size:9px}
+body[data-home="false"] #bossHud .bar{margin-top:5px;height:7px;overflow:hidden}
+body[data-home="false"] #bossHud .posture{height:4px;margin-top:4px}
+body[data-home="false"] .posture-label{font:9px/1.3 system-ui,sans-serif;margin-top:3px}
+body[data-home="false"] .world-status{top:calc(env(safe-area-inset-top,0px) + 100px);left:12px}
+body[data-home="false"] .world-status>#waveGuide{font:10px/1.4 system-ui,sans-serif;padding:3px 6px}
+body[data-home="false"] .bottom-hud{bottom:calc(env(safe-area-inset-bottom,0px) + 16px);right:14px;left:auto}
+body[data-home="false"] .build-btn,body[data-home="false"] .battle-map{width:44px;height:44px;box-shadow:none;border-width:1px}
+body[data-home="false"] .battle-map{right:14px;bottom:calc(env(safe-area-inset-bottom,0px) + 72px)}
+body[data-home="false"] .touch-guide{width:92px;height:92px;border-width:2px;bottom:14%}
+body[data-home="false"] .touch-guide i{width:36px;height:36px;border-width:2px}
+body[data-home="false"] .battle-toast{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 132px);left:14%;right:14%;font:11px/1.5 system-ui,sans-serif;padding:7px 9px}
+/* The pause sheet owns its scroll area so the Resume button always remains reachable. */
+body[data-home="false"] #modal.squad-pause{inset:0;width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:calc(env(safe-area-inset-top,0px) + 14px) 14px calc(env(safe-area-inset-bottom,0px) + 14px);display:flex;align-items:center;justify-content:center;overflow:hidden;background:#0b181fe8;backdrop-filter:blur(3px);font-family:system-ui,sans-serif}
+#modal.squad-pause>.pause-panel{width:100%;max-width:440px;max-height:100%;min-height:0;display:flex;flex-direction:column;background:#182c30;border:1px solid #738a7d;border-radius:12px;text-align:left;overflow:hidden}
+.pause-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 16px 12px;border-bottom:1px solid #78918433;flex-shrink:0}
+.pause-top small{font:9px/1.4 monospace;letter-spacing:1px;color:#a7b8a5}.squad-pause .pause-top h2{font:600 21px/1.4 system-ui,sans-serif;color:#ecd8aa;letter-spacing:1px;margin:5px 0 0}.pause-top>b{font:600 23px/1.2 system-ui;color:#d7c797}
+.pause-scroll{padding:12px 14px;overflow-y:auto;min-height:0;flex:1;overscroll-behavior:contain;scrollbar-width:thin}.pause-scroll h3{font:600 12px/1.5 system-ui;color:#c7b584;margin:14px 0 8px;letter-spacing:1px}
+.pause-main,.pause-ally{display:flex;gap:8px;align-items:center;padding:10px 8px;background:#22393b;border:1px solid #91a08733;border-radius:7px;margin-bottom:9px}.pause-main{border-color:#c2a56d88}.pause-main>img,.pause-ally>img{width:45px;height:54px;object-fit:cover;object-position:center bottom;flex-shrink:0;image-rendering:pixelated}.pause-main>div,.pause-ally>div{min-width:0;flex:1}.pause-main strong{font-size:14px;color:#ede1c2}.pause-main em{font:10px/1.4 system-ui;font-style:normal;color:#d7be88;white-space:nowrap}.pause-main small{display:block;font:11px/1.4 system-ui;color:#b2c29f;margin-top:4px}
+.squad-pause .pause-main p,.squad-pause .pause-ally p{font:11px/1.5 system-ui;margin:5px 0 0;color:#d5dcc0}.pause-ally-title{display:flex;align-items:center;justify-content:space-between;gap:5px;flex-wrap:wrap}.pause-ally-title strong{font-size:14px;color:#e2ddc7}.pause-ally-title>span{font-size:10px;color:#a5c09b;white-space:nowrap}.pause-ally-title>span.fallen{color:#e6b58c}.pause-ally p>span{display:inline-block;margin:0 9px 2px 0}.pause-ally p b{font-weight:500;color:#d6b77b}.pause-ally small{font-size:10px;line-height:1.4;color:#94aca8;display:block;margin-top:3px}
+.squad-pause .pause-team-buffs p{font:11px/1.8 system-ui;color:#a7bca9;margin:0}.pause-team-buffs h3{margin-top:12px}
+.pause-actions{padding:12px 14px 10px;border-top:1px solid #78918433;flex-shrink:0;background:#14272c;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.squad-pause .pause-actions .primary{grid-column:1/-1;width:100%;min-height:46px;font:600 15px/1.4 system-ui;letter-spacing:1px;box-shadow:none;border:1px solid #ebcf98;border-radius:6px;margin:0;padding:10px;background:#d9ba7e;color:#223330}
+.pause-actions .pause-secondary,.squad-pause .pause-actions .text-btn{font:11px/1.4 system-ui;min-height:44px;letter-spacing:0;margin:0;padding:5px 8px;background:#22373b;border:1px solid #738a7d55;border-radius:5px;color:#c3d1be}.pause-secondary small{display:block;font-size:9px;color:#8fa5a0;margin-top:3px}
+@media(max-height:700px){.pause-top{padding:10px 13px}.squad-pause .pause-top h2{font-size:19px}.pause-scroll{padding:9px 11px}.pause-main,.pause-ally{padding:7px 6px;gap:6px}.pause-main>img,.pause-ally>img{width:38px;height:47px}.pause-actions{padding:9px 11px}.pause-scroll h3{margin-top:10px}}

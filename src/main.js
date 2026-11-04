@@ -8,6 +8,7 @@
   Game.onEnd = res => UI.showResult(res);
   document.getElementById('btn-pause').addEventListener('click', e => { e.stopPropagation(); Sfx.play('click'); Game.togglePause(); });
   UI.showTitle();
+  Promise.all(GameData.characters.slice(0,4).map(c=>new Promise(resolve=>{const im=new Image();im.onload=im.onerror=resolve;im.src=c.portraitURL;}))).then(()=>{document.getElementById('entry-progress').textContent='忍者集结完毕';});
   const ts = document.getElementById('title-screen');
   ts.addEventListener('click', () => { Sfx.init(); Sfx.play('select'); UI.go('lobby'); });
   // PWA：仅在 http(s) 下注册 Service Worker（file:// 与单文件版跳过）；URL 带 ?nosw 时注销（开发调试用）

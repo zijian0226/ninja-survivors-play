@@ -1,0 +1,502 @@
+{
+  "basis": "陣之书人物性质口径；参考译文及资料站交叉核对。未声称逐页核验所有原书扫描。",
+  "categories": [
+    "火",
+    "风",
+    "雷",
+    "土",
+    "水",
+    "阴",
+    "阳"
+  ],
+  "sources": [
+    "https://narutoversity.wordpress.com/fourth-databook-character-files-part-1/",
+    "https://narutoversity.wordpress.com/fourth-databook-character-files-part-2/",
+    "https://leafninja.com/biographies-H.php"
+  ],
+  "characters": [
+    {
+      "id": "naruto",
+      "name": "漩涡鸣人",
+      "natures": [
+        "火",
+        "风",
+        "雷",
+        "土",
+        "水",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "人物生涯汇总；陣之书列五大性质与阳，阴未列入；不表示少年形态已掌握全部。",
+      "source": "https://naruto.fandom.com/wiki/Naruto_Uzumaki"
+    },
+    {
+      "id": "kakashi",
+      "name": "旗木卡卡西",
+      "natures": [
+        "火",
+        "风",
+        "雷",
+        "土",
+        "水",
+        "阴",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "七性质人物记录；招式仍按自身属性结算。",
+      "source": "https://naruto.fandom.com/wiki/Kakashi_Hatake"
+    },
+    {
+      "id": "sasuke",
+      "name": "宇智波佐助",
+      "natures": [
+        "火",
+        "风",
+        "雷",
+        "土",
+        "水",
+        "阴"
+      ],
+      "status": "资料交叉核对",
+      "note": "陣之书人物汇总，阳未列入。",
+      "source": "https://naruto.fandom.com/wiki/Sasuke_Uchiha"
+    },
+    {
+      "id": "sakura",
+      "name": "春野樱",
+      "natures": [
+        "土",
+        "水",
+        "阴",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "排除仅小说出现的火。",
+      "source": "https://naruto.fandom.com/wiki/Sakura_Haruno"
+    },
+    {
+      "id": "itachi",
+      "name": "宇智波鼬",
+      "natures": [
+        "火",
+        "风",
+        "水",
+        "阴",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "第四公式书译文人物记录。",
+      "source": "https://naruto.fandom.com/wiki/Itachi_Uchiha"
+    },
+    {
+      "id": "gaara",
+      "name": "我爱罗",
+      "natures": [
+        "风",
+        "雷",
+        "土"
+      ],
+      "status": "资料交叉核对",
+      "note": "只取七性质，不纳入小说追加磁遁。",
+      "source": "https://naruto.fandom.com/wiki/Gaara"
+    },
+    {
+      "id": "deidara",
+      "name": "迪达拉",
+      "natures": [
+        "雷",
+        "土"
+      ],
+      "status": "资料交叉核对",
+      "note": "爆遁另作机制标签，不因爆炸火光添加火。",
+      "source": "https://naruto.fandom.com/wiki/Deidara"
+    },
+    {
+      "id": "jiraiya",
+      "name": "自来也",
+      "natures": [
+        "火",
+        "风",
+        "土",
+        "水",
+        "阴",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "人物性质汇总。",
+      "source": "https://naruto.fandom.com/wiki/Jiraiya"
+    },
+    {
+      "id": "jugo",
+      "name": "重吾",
+      "natures": [
+        "风",
+        "土",
+        "水",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "重吾自然能量能力不额外当第八性质。",
+      "source": "https://naruto.fandom.com/wiki/J%C5%ABgo"
+    },
+    {
+      "id": "karin",
+      "name": "漩涡香磷",
+      "natures": [
+        "土",
+        "水",
+        "阴",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "感知与恢复不是单一阳属性的替代依据。",
+      "source": "https://naruto.fandom.com/wiki/Karin"
+    },
+    {
+      "id": "killerbee",
+      "name": "奇拉比",
+      "natures": [
+        "火",
+        "雷",
+        "水",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "人物性质汇总。",
+      "source": "https://naruto.fandom.com/wiki/Killer_B"
+    },
+    {
+      "id": "kimimaro",
+      "name": "君麻吕",
+      "natures": [],
+      "status": "未记载/待核",
+      "note": "当前资料未核实公式书七性质，暂不凭骨脉推断土或阳。",
+      "source": "https://naruto.fandom.com/wiki/Kimimaro"
+    },
+    {
+      "id": "konan",
+      "name": "小南",
+      "natures": [
+        "风",
+        "土",
+        "水",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "纸术不自动归火。",
+      "source": "https://naruto.fandom.com/wiki/Konan"
+    },
+    {
+      "id": "lee",
+      "name": "李洛克",
+      "natures": [],
+      "status": "未记载/待核",
+      "note": "未记载；不能以使用体术为由虚构阳。",
+      "source": "https://naruto.fandom.com/wiki/Rock_Lee"
+    },
+    {
+      "id": "madara",
+      "name": "宇智波斑",
+      "natures": [
+        "火",
+        "风",
+        "雷",
+        "土",
+        "水",
+        "阴",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "第四公式书人物汇总；不把木遁等增加为筛选项。",
+      "source": "https://naruto.fandom.com/wiki/Madara_Uchiha"
+    },
+    {
+      "id": "hinata",
+      "name": "日向雏田",
+      "natures": [
+        "火",
+        "雷"
+      ],
+      "status": "资料交叉核对",
+      "note": "白眼/柔拳不是七性质中的新属性。",
+      "source": "https://naruto.fandom.com/wiki/Hinata_Hy%C5%ABga"
+    },
+    {
+      "id": "neji",
+      "name": "日向宁次",
+      "natures": [
+        "火",
+        "土",
+        "水"
+      ],
+      "status": "资料交叉核对",
+      "note": "人物记录。",
+      "source": "https://naruto.fandom.com/wiki/Neji_Hy%C5%ABga"
+    },
+    {
+      "id": "obito",
+      "name": "宇智波带土",
+      "natures": [
+        "火",
+        "风",
+        "雷",
+        "土",
+        "水",
+        "阴",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "人物生涯汇总，形态能力另行限制。",
+      "source": "https://naruto.fandom.com/wiki/Obito_Uchiha"
+    },
+    {
+      "id": "orochimaru",
+      "name": "大蛇丸",
+      "natures": [
+        "火",
+        "风",
+        "雷",
+        "土",
+        "水",
+        "阴",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "人物汇总，木遁等不增加第八筛选项。",
+      "source": "https://naruto.fandom.com/wiki/Orochimaru"
+    },
+    {
+      "id": "pain",
+      "name": "佩恩",
+      "natures": [
+        "火",
+        "风",
+        "雷",
+        "土",
+        "水",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "佩恩按长门人物记录；不因轮回眼自行补阴。",
+      "source": "https://naruto.fandom.com/wiki/Nagato"
+    },
+    {
+      "id": "suigetsu",
+      "name": "鬼灯水月",
+      "natures": [
+        "风",
+        "水"
+      ],
+      "status": "资料交叉核对",
+      "note": "水化、刀术不自行补土。",
+      "source": "https://naruto.fandom.com/wiki/Suigetsu_H%C5%8Dzuki"
+    },
+    {
+      "id": "temari",
+      "name": "手鞠",
+      "natures": [
+        "风"
+      ],
+      "status": "资料交叉核对",
+      "note": "人物记录。",
+      "source": "https://naruto.fandom.com/wiki/Temari"
+    },
+    {
+      "id": "minato",
+      "name": "波风水门",
+      "natures": [
+        "火",
+        "风",
+        "雷",
+        "阴",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "人物记录。",
+      "source": "https://naruto.fandom.com/wiki/Minato_Namikaze"
+    },
+    {
+      "id": "ino",
+      "name": "山中井野",
+      "natures": [
+        "土",
+        "水",
+        "阴",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "剔除动画追加火。",
+      "source": "https://naruto.fandom.com/wiki/Ino_Yamanaka"
+    },
+    {
+      "id": "kabuto",
+      "name": "药师兜",
+      "natures": [
+        "风",
+        "土",
+        "水",
+        "阴",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "剔除动画追加火。",
+      "source": "https://naruto.fandom.com/wiki/Kabuto_Yakushi"
+    },
+    {
+      "id": "sai",
+      "name": "佐井",
+      "natures": [
+        "火",
+        "土",
+        "水",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "墨术不自行补阴。",
+      "source": "https://naruto.fandom.com/wiki/Sai"
+    },
+    {
+      "id": "shikamaru",
+      "name": "奈良鹿丸",
+      "natures": [
+        "火",
+        "土",
+        "阴"
+      ],
+      "status": "资料交叉核对",
+      "note": "影子术不等于唯一性质。",
+      "source": "https://naruto.fandom.com/wiki/Shikamaru_Nara"
+    },
+    {
+      "id": "tenten",
+      "name": "天天",
+      "natures": [],
+      "status": "未记载/待核",
+      "note": "未记载；忍具不构成七性质。",
+      "source": "https://naruto.fandom.com/wiki/Tenten"
+    },
+    {
+      "id": "onoki",
+      "name": "大野木",
+      "natures": [
+        "火",
+        "风",
+        "雷",
+        "土",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "尘遁另作标签。",
+      "source": "https://naruto.fandom.com/wiki/%C5%8Cnoki"
+    },
+    {
+      "id": "tsunade",
+      "name": "纲手",
+      "natures": [
+        "火",
+        "雷",
+        "土",
+        "水",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "剔除动画追加阴。",
+      "source": "https://naruto.fandom.com/wiki/Tsunade"
+    },
+    {
+      "id": "utakata",
+      "name": "泡沫／羽高",
+      "natures": [
+        "水"
+      ],
+      "status": "资料交叉核对",
+      "note": "泡沫属于水遁方向。",
+      "source": "https://naruto.fandom.com/wiki/Utakata"
+    },
+    {
+      "id": "tobirama",
+      "name": "千手扉间",
+      "natures": [
+        "火",
+        "风",
+        "雷",
+        "土",
+        "水",
+        "阴",
+        "阳"
+      ],
+      "status": "资料交叉核对",
+      "note": "人物七性质记录。",
+      "source": "https://naruto.fandom.com/wiki/Tobirama_Senju"
+    },
+    {
+      "id": "sasori",
+      "name": "蝎",
+      "natures": [],
+      "status": "未记载/待核",
+      "note": "当前未核实公式书七性质；傀儡喷火/水不直接推断本体性质。",
+      "source": "https://naruto.fandom.com/wiki/Sasori"
+    },
+    {
+      "id": "kisame",
+      "name": "干柿鬼鲛",
+      "natures": [
+        "火",
+        "风",
+        "土",
+        "水"
+      ],
+      "status": "资料交叉核对",
+      "note": "人物记录。",
+      "source": "https://naruto.fandom.com/wiki/Kisame_Hoshigaki"
+    },
+    {
+      "id": "guy",
+      "name": "迈特凯",
+      "natures": [
+        "火",
+        "雷"
+      ],
+      "status": "资料交叉核对",
+      "note": "使用体术不等于没有查克拉性质；昼虎仍非风遁。",
+      "source": "https://naruto.fandom.com/wiki/Might_Guy"
+    },
+    {
+      "id": "kankuro",
+      "name": "勘九郎",
+      "natures": [
+        "风",
+        "雷",
+        "土",
+        "水"
+      ],
+      "status": "资料交叉核对",
+      "note": "傀儡师人物记录。",
+      "source": "https://naruto.fandom.com/wiki/Kankur%C5%8D"
+    },
+    {
+      "id": "iruka",
+      "name": "海野伊鲁卡",
+      "natures": [
+        "火",
+        "水",
+        "阴"
+      ],
+      "status": "资料交叉核对",
+      "note": "人物记录。",
+      "source": "https://naruto.fandom.com/wiki/Iruka_Umino"
+    },
+    {
+      "id": "fukasaku_shima",
+      "name": "深作与志麻",
+      "natures": [
+        "火",
+        "风",
+        "阴"
+      ],
+      "status": "资料交叉核对",
+      "note": "双人单位取深作和志麻合并；不纳入深作动画追加水。",
+      "source": "https://naruto.fandom.com/wiki/Fukasaku"
+    }
+  ]
+}

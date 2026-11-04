@@ -1,0 +1,1137 @@
+[
+  {
+    "key": "naruto-young",
+    "source_id": "90001001",
+    "source_name": "漩涡鸣人",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90001001/",
+    "source_image": "https://narutomobilehub.com/img/90001001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      83,
+      111,
+      616,
+      880
+    ],
+    "size": [
+      533,
+      769
+    ],
+    "source_sha256": "331bf34fd8a89bedaeeebcdb0f583797da6a645889349dd65608cbbab00a9e12",
+    "file": "assets/illustrations/naruto-young.webp"
+  },
+  {
+    "key": "naruto-shippuden",
+    "source_id": "90035001",
+    "source_name": "漩涡鸣人 疾风传",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90035001/",
+    "source_image": "https://narutomobilehub.com/img/90035001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      58,
+      92,
+      673,
+      880
+    ],
+    "size": [
+      615,
+      788
+    ],
+    "source_sha256": "0fc71699bb60ff343b6d2a043f7a2c464a6b34554329c73986825e303cec9409",
+    "file": "assets/illustrations/naruto-shippuden.webp"
+  },
+  {
+    "key": "naruto-sage",
+    "source_id": "90058001",
+    "source_name": "漩涡鸣人 仙人模式",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90058001/",
+    "source_image": "https://narutomobilehub.com/img/90058001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      0,
+      83,
+      692,
+      880
+    ],
+    "size": [
+      692,
+      797
+    ],
+    "source_sha256": "d36e111f4a7f66b061daa9281e162c3826d93196f03f02ddad4e12c52b7ee342",
+    "file": "assets/illustrations/naruto-sage.webp"
+  },
+  {
+    "key": "naruto-kurama",
+    "source_id": "90099001",
+    "source_name": "漩涡鸣人 九尾查克拉",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90099001/",
+    "source_image": "https://narutomobilehub.com/img/90099001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      41,
+      0,
+      660,
+      880
+    ],
+    "size": [
+      619,
+      880
+    ],
+    "source_sha256": "c854c99d1bc1e72505c58b70f7f77eca8a4da681999c33ad836d4ebaf98404c5",
+    "file": "assets/illustrations/naruto-kurama.webp"
+  },
+  {
+    "key": "naruto-one-tail",
+    "source_id": "90027001",
+    "source_name": "漩涡鸣人 第一尾",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90027001/",
+    "source_image": "https://narutomobilehub.com/img/90027001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      63,
+      154,
+      630,
+      880
+    ],
+    "size": [
+      567,
+      726
+    ],
+    "source_sha256": "6ad12894a41ea98d923764249dfdbf4ef3fdcfa0222cb544ed4f9945664edcd6",
+    "file": "assets/illustrations/naruto-one-tail.webp"
+  },
+  {
+    "key": "naruto-four-tail",
+    "source_id": "90111001",
+    "source_name": "漩涡鸣人 第四尾",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90111001/",
+    "source_image": "https://narutomobilehub.com/img/90111001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      0,
+      0,
+      692,
+      880
+    ],
+    "size": [
+      692,
+      880
+    ],
+    "source_sha256": "c25ff6cf76a52ce02c8bdd4c5b32fd1a277ab602bc8c21bfe76e7daf3eee2bb6",
+    "file": "assets/illustrations/naruto-four-tail.webp"
+  },
+  {
+    "key": "sasuke",
+    "source_id": "90036001",
+    "source_name": "宇智波佐助 疾风传",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90036001/",
+    "source_image": "https://narutomobilehub.com/img/90036001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      28,
+      87,
+      692,
+      880
+    ],
+    "size": [
+      664,
+      793
+    ],
+    "source_sha256": "d23c15116de4157b3875157938a56b81706225b66154b20cad0498ca95f5432b",
+    "file": "assets/illustrations/sasuke.webp"
+  },
+  {
+    "key": "sasuke-curse",
+    "source_id": "90274001",
+    "source_name": "宇智波佐助 疾风传咒印",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90274001/",
+    "source_image": "https://narutomobilehub.com/img/90274001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      0,
+      106,
+      692,
+      880
+    ],
+    "size": [
+      692,
+      774
+    ],
+    "source_sha256": "9cb088a12b684ed603b1dd8e5564fa7f092e7aa6d602a8e433aeee3725ef5625",
+    "file": "assets/illustrations/sasuke-curse.webp"
+  },
+  {
+    "key": "sasuke-susanoo",
+    "source_id": "90097001",
+    "source_name": "宇智波佐助 须佐能乎",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90097001/",
+    "source_image": "https://narutomobilehub.com/img/90097001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      1,
+      105,
+      692,
+      880
+    ],
+    "size": [
+      691,
+      775
+    ],
+    "source_sha256": "fe128170daf2a0a91578c485d3888a46cfef959512316c2ec4d1f54d60c05a79",
+    "file": "assets/illustrations/sasuke-susanoo.webp"
+  },
+  {
+    "key": "sasuke-mangekyo",
+    "source_id": "90059001",
+    "source_name": "宇智波佐助 万花筒写轮眼",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90059001/",
+    "source_image": "https://narutomobilehub.com/img/90059001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      78,
+      75,
+      628,
+      880
+    ],
+    "size": [
+      550,
+      805
+    ],
+    "source_sha256": "347f5670569c97b40fe2826205b10319afdb3cabc57e51e5a739d1239d7593a7",
+    "file": "assets/illustrations/sasuke-mangekyo.webp"
+  },
+  {
+    "key": "kakashi",
+    "source_id": "90009001",
+    "source_name": "旗木卡卡西",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90009001/",
+    "source_image": "https://narutomobilehub.com/img/90009001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      102,
+      107,
+      564,
+      880
+    ],
+    "size": [
+      462,
+      773
+    ],
+    "source_sha256": "b2c9d4b0db5022bd3be210a8da46d40e0bfa74f2d17ae3c032b7fb2cd38db3b8",
+    "file": "assets/illustrations/kakashi.webp"
+  },
+  {
+    "key": "kakashi-kamui",
+    "source_id": "90095001",
+    "source_name": "旗木卡卡西 万花筒写轮眼",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90095001/",
+    "source_image": "https://narutomobilehub.com/img/90095001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      56,
+      54,
+      568,
+      880
+    ],
+    "size": [
+      512,
+      826
+    ],
+    "source_sha256": "7935e2bb7797f37096e82e3926f8b929b3d44e08f64626b09883115c588246d9",
+    "file": "assets/illustrations/kakashi-kamui.webp"
+  },
+  {
+    "key": "sakura",
+    "source_id": "90037001",
+    "source_name": "春野樱 疾风传",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90037001/",
+    "source_image": "https://narutomobilehub.com/img/90037001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      120,
+      145,
+      518,
+      880
+    ],
+    "size": [
+      398,
+      735
+    ],
+    "source_sha256": "beb185e5c2c8f9559a364811ce3c02ad17cea4d0002a486eaddde64a24179cef",
+    "file": "assets/illustrations/sakura.webp"
+  },
+  {
+    "key": "sakura-byakugo",
+    "source_id": "90230001",
+    "source_name": "春野樱 百豪",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90230001/",
+    "source_image": "https://narutomobilehub.com/img/90230001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      63,
+      146,
+      636,
+      880
+    ],
+    "size": [
+      573,
+      734
+    ],
+    "source_sha256": "d69eed1962b675d588fb16e9aae846a737f2f055dd69b9059701239130bac903",
+    "file": "assets/illustrations/sakura-byakugo.webp"
+  },
+  {
+    "key": "itachi",
+    "source_id": "90022001",
+    "source_name": "宇智波鼬",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90022001/",
+    "source_image": "https://narutomobilehub.com/img/90022001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      76,
+      136,
+      644,
+      880
+    ],
+    "size": [
+      568,
+      744
+    ],
+    "source_sha256": "70dbf3c8bbe698a15424de4cfdf011e67e31f0e9822c802effa90d577bb49402",
+    "file": "assets/illustrations/itachi.webp"
+  },
+  {
+    "key": "gaara",
+    "source_id": "90034001",
+    "source_name": "我爱罗 疾风传",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90034001/",
+    "source_image": "https://narutomobilehub.com/img/90034001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      0,
+      110,
+      638,
+      880
+    ],
+    "size": [
+      638,
+      770
+    ],
+    "source_sha256": "3f879e5d83cec09beb7b6aaf4809131b50107d5d1635327469ba48862917df5d",
+    "file": "assets/illustrations/gaara.webp"
+  },
+  {
+    "key": "deidara",
+    "source_id": "90038001",
+    "source_name": "迪达拉",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90038001/",
+    "source_image": "https://narutomobilehub.com/img/90038001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      100,
+      94,
+      645,
+      880
+    ],
+    "size": [
+      545,
+      786
+    ],
+    "source_sha256": "6ca98e204bfd777bca28e78b38da361713dc6a706a6c9bb2bafab45b35317bd2",
+    "file": "assets/illustrations/deidara.webp"
+  },
+  {
+    "key": "jiraiya",
+    "source_id": "90010001",
+    "source_name": "自来也",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90010001/",
+    "source_image": "https://narutomobilehub.com/img/90010001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      11,
+      94,
+      692,
+      880
+    ],
+    "size": [
+      681,
+      786
+    ],
+    "source_sha256": "663b8880480b64415ca3df66d72cc136a4963ff8cb7d32d84d1d5a61bb755a9c",
+    "file": "assets/illustrations/jiraiya.webp"
+  },
+  {
+    "key": "jugo",
+    "source_id": "90050001",
+    "source_name": "重吾",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90050001/",
+    "source_image": "https://narutomobilehub.com/img/90050001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      84,
+      85,
+      637,
+      880
+    ],
+    "size": [
+      553,
+      795
+    ],
+    "source_sha256": "0c1165b645e0c62348e0c39c20edef131b49ba57c0297a2ccc0074d7b64a6076",
+    "file": "assets/illustrations/jugo.webp"
+  },
+  {
+    "key": "karin",
+    "source_id": "90048001",
+    "source_name": "香燐",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90048001/",
+    "source_image": "https://narutomobilehub.com/img/90048001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      50,
+      146,
+      558,
+      880
+    ],
+    "size": [
+      508,
+      734
+    ],
+    "source_sha256": "a1cafc29335482672f3ae4372dd01a1114a612e91e3850760e0ab9a08e19865f",
+    "file": "assets/illustrations/karin.webp"
+  },
+  {
+    "key": "killerbee",
+    "source_id": "90056001",
+    "source_name": "奇拉比",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90056001/",
+    "source_image": "https://narutomobilehub.com/img/90056001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      0,
+      87,
+      692,
+      880
+    ],
+    "size": [
+      692,
+      793
+    ],
+    "source_sha256": "e86d110430fac5daa2751ddb06bdd5d58f86e3d18f101fe994dd40ea5b1c28dc",
+    "file": "assets/illustrations/killerbee.webp"
+  },
+  {
+    "key": "kimimaro",
+    "source_id": "90029001",
+    "source_name": "君麻吕",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90029001/",
+    "source_image": "https://narutomobilehub.com/img/90029001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      0,
+      145,
+      637,
+      880
+    ],
+    "size": [
+      637,
+      735
+    ],
+    "source_sha256": "66e48c9c87dc11d8fc724816e411fc20993f902a91798297c872540c3ae30a03",
+    "file": "assets/illustrations/kimimaro.webp"
+  },
+  {
+    "key": "konan",
+    "source_id": "90057001",
+    "source_name": "小南",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90057001/",
+    "source_image": "https://narutomobilehub.com/img/90057001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      66,
+      117,
+      654,
+      880
+    ],
+    "size": [
+      588,
+      763
+    ],
+    "source_sha256": "639d037bd242cb1031866e3eeb9dc0b1c87846063d52b88426b43e61193cb911",
+    "file": "assets/illustrations/konan.webp"
+  },
+  {
+    "key": "lee",
+    "source_id": "90109001",
+    "source_name": "李洛克 疾风传",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90109001/",
+    "source_image": "https://narutomobilehub.com/img/90109001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      126,
+      153,
+      640,
+      880
+    ],
+    "size": [
+      514,
+      727
+    ],
+    "source_sha256": "0177cf6d7d19851d774d18129b6c9ff32deaa43e600bb21278459b917356783b",
+    "file": "assets/illustrations/lee.webp"
+  },
+  {
+    "key": "lee-gates",
+    "source_id": "90122001",
+    "source_name": "李洛克 杜门",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90122001/",
+    "source_image": "https://narutomobilehub.com/img/90122001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      77,
+      176,
+      578,
+      880
+    ],
+    "size": [
+      501,
+      704
+    ],
+    "source_sha256": "32f64d1baf3820ad420ef333fe7134de8a7df45fcab0fca3257d5828f17514f7",
+    "file": "assets/illustrations/lee-gates.webp"
+  },
+  {
+    "key": "madara",
+    "source_id": "90100001",
+    "source_name": "宇智波斑",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90100001/",
+    "source_image": "https://narutomobilehub.com/img/90100001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      10,
+      76,
+      692,
+      880
+    ],
+    "size": [
+      682,
+      804
+    ],
+    "source_sha256": "f272879ac28703636092829a86f7c8b12d67971be8ceb2c86aaee3b5574ba70d",
+    "file": "assets/illustrations/madara.webp"
+  },
+  {
+    "key": "hinata",
+    "source_id": "90051001",
+    "source_name": "日向雏田 疾风传",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90051001/",
+    "source_image": "https://narutomobilehub.com/img/90051001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      56,
+      151,
+      630,
+      880
+    ],
+    "size": [
+      574,
+      729
+    ],
+    "source_sha256": "b78f9da936bb86e981d27d71e477ed15be50022e9b6b25279260cd1c01855cde",
+    "file": "assets/illustrations/hinata.webp"
+  },
+  {
+    "key": "neji",
+    "source_id": "90107001",
+    "source_name": "日向宁次 疾风传",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90107001/",
+    "source_image": "https://narutomobilehub.com/img/90107001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      50,
+      132,
+      668,
+      880
+    ],
+    "size": [
+      618,
+      748
+    ],
+    "source_sha256": "0a105ef7fd9057c4447178e164f4a4ed13b120bb5385b8b9471b7cc2d9ed936d",
+    "file": "assets/illustrations/neji.webp"
+  },
+  {
+    "key": "obito",
+    "source_id": "90174001",
+    "source_name": "神秘面具男",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90174001/",
+    "source_image": "https://narutomobilehub.com/img/90174001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      122,
+      125,
+      598,
+      880
+    ],
+    "size": [
+      476,
+      755
+    ],
+    "source_sha256": "7cda8c48d278d599957a15466953115ce3b8c9dfcbfab3318b17aba1b6e83d83",
+    "file": "assets/illustrations/obito.webp"
+  },
+  {
+    "key": "obito-unmasked",
+    "source_id": "90114001",
+    "source_name": "宇智波带土 忍界大战",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90114001/",
+    "source_image": "https://narutomobilehub.com/img/90114001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      72,
+      80,
+      655,
+      880
+    ],
+    "size": [
+      583,
+      800
+    ],
+    "source_sha256": "2a0bb3383ff27be347fc22ee7f2bb0dd69e3d58206f9cf6422766ca31ec2b600",
+    "file": "assets/illustrations/obito-unmasked.webp"
+  },
+  {
+    "key": "orochimaru",
+    "source_id": "90021001",
+    "source_name": "大蛇丸",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90021001/",
+    "source_image": "https://narutomobilehub.com/img/90021001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      118,
+      151,
+      570,
+      880
+    ],
+    "size": [
+      452,
+      729
+    ],
+    "source_sha256": "66f586df5974ba60747a78177343b19d9db26c544eb4662bd35647c3b13b0392",
+    "file": "assets/illustrations/orochimaru.webp"
+  },
+  {
+    "key": "pain",
+    "source_id": "90055001",
+    "source_name": "佩恩 天道",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90055001/",
+    "source_image": "https://narutomobilehub.com/img/90055001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      67,
+      98,
+      625,
+      880
+    ],
+    "size": [
+      558,
+      782
+    ],
+    "source_sha256": "7f504d23399de5d70a9923963f0d9df46c15a263e8bb7dd35fdda7c51b5b3240",
+    "file": "assets/illustrations/pain.webp"
+  },
+  {
+    "key": "suigetsu",
+    "source_id": "90049001",
+    "source_name": "鬼灯水月",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90049001/",
+    "source_image": "https://narutomobilehub.com/img/90049001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      137,
+      139,
+      555,
+      880
+    ],
+    "size": [
+      418,
+      741
+    ],
+    "source_sha256": "011a880c3893f563659624f2742066baa16f4750adb680d7e6c4f48a1bcb6286",
+    "file": "assets/illustrations/suigetsu.webp"
+  },
+  {
+    "key": "temari",
+    "source_id": "90077001",
+    "source_name": "手鞠 疾风传",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90077001/",
+    "source_image": "https://narutomobilehub.com/img/90077001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      108,
+      46,
+      614,
+      880
+    ],
+    "size": [
+      506,
+      834
+    ],
+    "source_sha256": "0d6c60be50a4611a11885ceec5649d114860a8978f05249f8ce335315c1a56b8",
+    "file": "assets/illustrations/temari.webp"
+  },
+  {
+    "key": "minato",
+    "source_id": "90011001",
+    "source_name": "波风水门",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90011001/",
+    "source_image": "https://narutomobilehub.com/img/90011001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      92,
+      95,
+      596,
+      880
+    ],
+    "size": [
+      504,
+      785
+    ],
+    "source_sha256": "fa4f36e30099931cbaf857c5206f334ceb146e0cdb049ab023b86615684cac5d",
+    "file": "assets/illustrations/minato.webp"
+  },
+  {
+    "key": "ino",
+    "source_id": "90113001",
+    "source_name": "山中井野 疾风传",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90113001/",
+    "source_image": "https://narutomobilehub.com/img/90113001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      134,
+      103,
+      610,
+      880
+    ],
+    "size": [
+      476,
+      777
+    ],
+    "source_sha256": "16ac1be352fa848b99c11de68f1de7b3d39875b5b18e89d94307d0c3ac06fa7b",
+    "file": "assets/illustrations/ino.webp"
+  },
+  {
+    "key": "kabuto",
+    "source_id": "90031001",
+    "source_name": "药师兜",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90031001/",
+    "source_image": "https://narutomobilehub.com/img/90031001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      123,
+      133,
+      573,
+      880
+    ],
+    "size": [
+      450,
+      747
+    ],
+    "source_sha256": "61c60233527e1f0bde271591929ffeb62580be346268974480aa76ca2df9fab8",
+    "file": "assets/illustrations/kabuto.webp"
+  },
+  {
+    "key": "sai",
+    "source_id": "90042001",
+    "source_name": "佐井",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90042001/",
+    "source_image": "https://narutomobilehub.com/img/90042001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      119,
+      120,
+      561,
+      880
+    ],
+    "size": [
+      442,
+      760
+    ],
+    "source_sha256": "74ae4917e6852944dd7e964fb0956db88d22669199487688d1927494dbe192bd",
+    "file": "assets/illustrations/sai.webp"
+  },
+  {
+    "key": "shikamaru",
+    "source_id": "90046001",
+    "source_name": "奈良鹿丸 疾风传",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90046001/",
+    "source_image": "https://narutomobilehub.com/img/90046001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      114,
+      45,
+      573,
+      880
+    ],
+    "size": [
+      459,
+      835
+    ],
+    "source_sha256": "86f69e2799a702ff2ec290bb0eabda0eb04379bacfcee827dd7060f1d1e6c6ef",
+    "file": "assets/illustrations/shikamaru.webp"
+  },
+  {
+    "key": "tenten",
+    "source_id": "90108001",
+    "source_name": "天天 疾风传",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90108001/",
+    "source_image": "https://narutomobilehub.com/img/90108001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      134,
+      130,
+      637,
+      880
+    ],
+    "size": [
+      503,
+      750
+    ],
+    "source_sha256": "d67927eda883c2dcc097e48339bc513fcc7d577eb513713098a952978375787f",
+    "file": "assets/illustrations/tenten.webp"
+  },
+  {
+    "key": "onoki",
+    "source_id": "90062001",
+    "source_name": "大野木 三代目土影",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90062001/",
+    "source_image": "https://narutomobilehub.com/img/90062001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      130,
+      187,
+      553,
+      880
+    ],
+    "size": [
+      423,
+      693
+    ],
+    "source_sha256": "f358b94ab90a68d056109631689ccfafc89f90d8a01f66c79536aade185cc5c4",
+    "file": "assets/illustrations/onoki.webp"
+  },
+  {
+    "key": "tsunade",
+    "source_id": "90012001",
+    "source_name": "纲手",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90012001/",
+    "source_image": "https://narutomobilehub.com/img/90012001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      90,
+      138,
+      606,
+      880
+    ],
+    "size": [
+      516,
+      742
+    ],
+    "source_sha256": "7ed2a8210c13ae835c9d157fef09348af218a8fd17bd9a8d8efc70d399434b1f",
+    "file": "assets/illustrations/tsunade.webp"
+  },
+  {
+    "key": "utakata",
+    "source_id": "90089001",
+    "source_name": "羽高 六尾人柱力",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90089001/",
+    "source_image": "https://narutomobilehub.com/img/90089001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      136,
+      110,
+      678,
+      880
+    ],
+    "size": [
+      542,
+      770
+    ],
+    "source_sha256": "ba1f319f652b3f54011808c7a5b0e1ef5f551d32ab7ecdff1cb36767722d5f3f",
+    "file": "assets/illustrations/utakata.webp"
+  },
+  {
+    "key": "tobirama",
+    "source_id": "90025001",
+    "source_name": "千手扉间",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90025001/",
+    "source_image": "https://narutomobilehub.com/img/90025001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      14,
+      94,
+      662,
+      880
+    ],
+    "size": [
+      648,
+      786
+    ],
+    "source_sha256": "b8a7c150c33497ff6c6fffdf33fa42975d80d01cc93c9746f9b25d827f411ffa",
+    "file": "assets/illustrations/tobirama.webp"
+  },
+  {
+    "key": "sasori",
+    "source_id": "90039001",
+    "source_name": "蝎",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90039001/",
+    "source_image": "https://narutomobilehub.com/img/90039001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      80,
+      126,
+      601,
+      880
+    ],
+    "size": [
+      521,
+      754
+    ],
+    "source_sha256": "a14d1aacd474bcf962afd93d2b6cc3b429634207d11750ce0ab5c292ef8143ac",
+    "file": "assets/illustrations/sasori.webp"
+  },
+  {
+    "key": "kisame",
+    "source_id": "90023001",
+    "source_name": "干柿鬼鲛",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90023001/",
+    "source_image": "https://narutomobilehub.com/img/90023001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      50,
+      101,
+      690,
+      880
+    ],
+    "size": [
+      640,
+      779
+    ],
+    "source_sha256": "a1723fcbedad56273edfc0df2f7caf55cee11db6c3b6e926950cbb789a7da1a3",
+    "file": "assets/illustrations/kisame.webp"
+  },
+  {
+    "key": "guy",
+    "source_id": "90013001",
+    "source_name": "迈特凯",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90013001/",
+    "source_image": "https://narutomobilehub.com/img/90013001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      111,
+      131,
+      613,
+      880
+    ],
+    "size": [
+      502,
+      749
+    ],
+    "source_sha256": "2947ec909dfe297a16ec5f1e8c096660f6d592603e9aefd0138e058a1607f32f",
+    "file": "assets/illustrations/guy.webp"
+  },
+  {
+    "key": "kankuro",
+    "source_id": "90078001",
+    "source_name": "勘九郎 疾风传",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90078001/",
+    "source_image": "https://narutomobilehub.com/img/90078001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      132,
+      92,
+      564,
+      880
+    ],
+    "size": [
+      432,
+      788
+    ],
+    "source_sha256": "6130579833d7bf0c5e7b4dfcb15d55942ce52b158f0d20df02dfe0e8cb8ba4e0",
+    "file": "assets/illustrations/kankuro.webp"
+  },
+  {
+    "key": "iruka",
+    "source_id": "90105001",
+    "source_name": "海野伊鲁卡",
+    "source_page": "https://narutomobilehub.com/zh/ninja/90105001/",
+    "source_image": "https://narutomobilehub.com/img/90105001/portrait.webp",
+    "source_size": [
+      692,
+      880
+    ],
+    "crop": [
+      124,
+      88,
+      558,
+      880
+    ],
+    "size": [
+      434,
+      792
+    ],
+    "source_sha256": "5b761435ec8f0e7ed753cc214fa4227376ba7b9cf2a6d8bd8bb3c8e946939ae9",
+    "file": "assets/illustrations/iruka.webp"
+  },
+  {
+    "key": "fukasaku-shima",
+    "source_page": "https://naruto.fandom.com/wiki/Two_Great_Sage_Toads",
+    "source_image": "https://static.wikia.nocookie.net/naruto/images/7/7f/Two_Great_Sages.png",
+    "file": "assets/illustrations/fukasaku-shima.webp",
+    "file_sha256": "802fcaef78d1a7139256070960a51ad76465d9f15612ad16c4ca1bc4f00ee132",
+    "note": "现有插图转换为 WebP，非本次生图。"
+  }
+]
