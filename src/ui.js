@@ -100,6 +100,7 @@ window.UI = (function () {
     $('bottom-nav').querySelectorAll('.nav-btn').forEach(b => b.onclick = () => { Sfx.play('click'); U.go(b.dataset.go); });
   }
   U.go = function (page, arg) {
+    U.disposePortrait?.();U.disposePortrait=null;
     U.page = page;
     show('ui');
     renderTop(); renderNav();
@@ -124,7 +125,8 @@ window.UI = (function () {
       <div class="lobby" style="--c:${ch.color};--c2:${ch.color2}">
         <div class="lobby-bg"><div class="lb-grad"></div><div class="lb-rays"></div>${sealSvg('lb-seal')}
           <div class="lb-kanji">忍</div>${Array.from({ length: 8 }, (_, i) => `<i class="leaf" style="--i:${i}"></i>`).join('')}</div>
-        <div class="splash-wrap">${charImg(ch.id, 12, 'splash')}<div class="splash-shadow"></div></div>
+        <div class="splash-wrap home-portrait-stage" aria-label="首页展示立绘，可拖动和双指缩放">${charImg(ch.id, 12, 'splash','draggable="false" alt="'+ch.name+'"')}</div>
+        <div class="portrait-tools"><span>拖动调整 · 双指缩放</span><button type="button" data-portrait-reset aria-label="恢复默认上半身构图">复位</button></div>
         <div class="char-plate">
           <div class="cp-top">${rarityBadge(ch.rarity)}<span class="cp-elem">${ch.element}属性</span></div>
           <div class="cp-name">${ch.name}</div>
@@ -151,6 +153,7 @@ window.UI = (function () {
           <span class="bb-sub">15分钟试炼 · 升级招募小队</span>
         </button>
       </div>`;
+    U.disposePortrait=HomePortrait.mount(m.querySelector('.home-portrait-stage'),ch.id);
     $('btn-battle').onclick = () => { Sfx.play('select'); U.openBattlePrep(); };
     $('btn-notice').onclick=()=>{Sfx.play('click');modal('公告',`<p>欢迎来到《忍者：无尽试炼》。</p><ul><li>拖动移动，忍术自动释放；近身忍术需接近目标。</li><li>单人开局，升级招募最多3名支援；支援倒地5秒复活。</li><li>5/10分钟小首领、13分钟大首领，15分钟超时。</li><li>战斗支持1、1.5、2、3倍速；暂停查看技能和联动。</li></ul><p class="muted">35个已接入形态开放测试，其余图鉴角色锁定。开屏只准备首页，战斗与技能资源按包加载。</p>`);};
   }
