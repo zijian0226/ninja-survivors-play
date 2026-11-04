@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v33-packs';
+const VERSION = 'v34-movement';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -14,22 +14,22 @@ const PRECACHE = [
   './index.html',
   './play.html',
   './manifest.webmanifest',
-  './css/style.css?v=packs33',
-  './src/data/characters.js?v=packs33',
-  './src/data/skills.js?v=packs33',
-  './src/data/enemies.js?v=packs33',
-  './src/data/upgrades.js?v=packs33',
-  './src/art/pixelArt.js?v=packs33',
-  './src/save.js?v=packs33',
-  './src/audio.js?v=packs33',
-  './src/sprites.js?v=packs33',
-  './src/battle-bridge.js?v=packs33',
-  './src/data/roster-current.js?v=packs33',
-  './src/data/character-packs.js?v=packs33',
-  './css/current-ui.css?v=packs33',
-  './src/ui.js?v=packs33',
-  './src/mobile.js?v=packs33',
-  './src/main.js?v=packs33',
+  './css/style.css?v=move34',
+  './src/data/characters.js?v=move34',
+  './src/data/skills.js?v=move34',
+  './src/data/enemies.js?v=move34',
+  './src/data/upgrades.js?v=move34',
+  './src/art/pixelArt.js?v=move34',
+  './src/save.js?v=move34',
+  './src/audio.js?v=move34',
+  './src/sprites.js?v=move34',
+  './src/battle-bridge.js?v=move34',
+  './src/data/roster-current.js?v=move34',
+  './src/data/character-packs.js?v=move34',
+  './css/current-ui.css?v=move34',
+  './src/ui.js?v=move34',
+  './src/mobile.js?v=move34',
+  './src/main.js?v=move34',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
@@ -70,8 +70,8 @@ self.addEventListener('activate', event => {
         channel.port1.onmessage=event=>done(event.data);
         try{client.postMessage({type:'NINJA_CLIENT_STATUS'},[channel.port2]);}catch{done(null);}
       });
-      if(status?.release==='packs33')return;
-      url.pathname=SCOPE+'play.html';url.searchParams.set('release','packs33');
+      if(status?.release==='move34')return;
+      url.pathname=SCOPE+'play.html';url.searchParams.set('release','move34');
       // Navigation must run after activation has settled; awaiting it inside activate deadlocks.
       let tries=0;
       const navigate=()=>{
