@@ -1,0 +1,797 @@
+[
+  {
+    "number": 1,
+    "id": "naruto",
+    "name": "普通鸣人",
+    "sourceId": "chara002",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara002/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "1217e69196aa3de40f5be7652c6fb8fec57dc87f4c9225d098daf3213ef694cf",
+    "outputSHA256": "66f9ffd3ad17e06087d4fe2a55bf334b327ed3bec451c69858ec0ec1714e8888",
+    "size": [
+      388,
+      1000
+    ]
+  },
+  {
+    "number": 2,
+    "id": "naruto_sage",
+    "name": "仙人鸣人",
+    "sourceId": "chara003",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara003/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "268049fdc0ea36701f5960e53bdcd264a2808b4875166e3cb63e025bcac5a395",
+    "outputSHA256": "2a93e7963a104e7f960fede9dd54b1b5985194e0695df3f5acdf704593c6992a",
+    "size": [
+      471,
+      1000
+    ]
+  },
+  {
+    "number": 3,
+    "id": "naruto_four_tail",
+    "name": "四尾鸣人",
+    "sourceId": "90111",
+    "composition": "bust",
+    "source": "https://ninja.hyrz.qq.com/hyrz/prod/ninja/90111/bd1.png",
+    "credit": "Tencent / Naruto Mobile 官方角色展示",
+    "sourceSHA256": "44321f2b9d334712af449b40e3f0d92ebcdded99eac8655584893319b7bb4658",
+    "outputSHA256": "e4fa442fe4dabe2293d01de152389010959a677ac5c5e2e7210256f6bba9bf61",
+    "size": [
+      460,
+      500
+    ]
+  },
+  {
+    "number": 4,
+    "id": "sasuke",
+    "name": "普通佐助",
+    "sourceId": "chara009",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara009/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "3131743bf53e4865e66d59d0d23b0f26e9bf43071bebd679f2dc201b2fb25319",
+    "outputSHA256": "156897b8ddc8d98e25cd036603cef400ef9b5134fb377e53c0c435e43afd2ada",
+    "size": [
+      394,
+      1000
+    ]
+  },
+  {
+    "number": 5,
+    "id": "sasuke_curse",
+    "name": "咒印二佐助",
+    "sourceId": "90274",
+    "composition": "bust",
+    "source": "https://ninja.hyrz.qq.com/hyrz/prod/ninja/90274/bd1.png",
+    "credit": "Tencent / Naruto Mobile 官方角色展示",
+    "sourceSHA256": "a3fb94694ca8acf1a3a13aee8a0da26fc733ae884d1cbef70c76fbe7b5b0a915",
+    "outputSHA256": "27755825986584b59f06e826e8f8256ef4aff20356944dfcb895fc7f26312fea",
+    "size": [
+      458,
+      468
+    ]
+  },
+  {
+    "number": 6,
+    "id": "sakura",
+    "name": "春野樱",
+    "sourceId": "chara017",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara017/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "33b3e97b9f551d5925b1edf2afecaabfc23bf4ce891f318b0d5f5c93eb7e6c55",
+    "outputSHA256": "f053e5c3796cc97d101975bd5db754cf98378b43907fdfd428b3c0cdb4516bd5",
+    "size": [
+      501,
+      1000
+    ]
+  },
+  {
+    "number": 7,
+    "id": "kakashi",
+    "name": "旗木卡卡西",
+    "sourceId": "chara024",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara024/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "d37d056f9e5f8c82772fd763e1c8a1b62e24d11438fd40eeb6572c7c881c43e7",
+    "outputSHA256": "e2c7e6276d25d6f5ddc8a436146891516bee6dd33c2c60e7e20c2c8adbe7617f",
+    "size": [
+      447,
+      1000
+    ]
+  },
+  {
+    "number": 8,
+    "id": "sai",
+    "name": "佐井",
+    "sourceId": "chara046",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara046/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "fa8a047084ab094c088b703136b38995810904e68496ddc0244b507cef946763",
+    "outputSHA256": "4643e3934b3fc90bceefadfe733f44760afbbaee605d8f5f55a8154205e6c89e",
+    "size": [
+      359,
+      1000
+    ]
+  },
+  {
+    "number": 9,
+    "id": "yamato",
+    "name": "大和",
+    "sourceId": "chara047",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara047/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "4bb8bd83dd38782cf2b0eec6680a2b0b0843ccf4982b4b034637c996300a278f",
+    "outputSHA256": "bb1fd0ba92f44efd6d63e3e11234ed97559aa1227d53d307d2b99272ed130b62",
+    "size": [
+      331,
+      1000
+    ]
+  },
+  {
+    "number": 10,
+    "id": "shikamaru",
+    "name": "奈良鹿丸",
+    "sourceId": "chara034",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara034/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "4bf641f69ad33fcc28c6f180ed11a3ba5d04511c27bcd93f6407a1082f52da8a",
+    "outputSHA256": "0292529420149b7312b997888a703bf0e58c12ee3183daa6c826be9cbad452a2",
+    "size": [
+      372,
+      1000
+    ]
+  },
+  {
+    "number": 11,
+    "id": "choji",
+    "name": "秋道丁次",
+    "sourceId": "chara036",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara036/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "159059866947ef0d5751953f0d720f5c17b8ac376186b4c21154461abe5fefbb",
+    "outputSHA256": "8440645663e9ba6e587e97538c14b7b1f3bcf46d459915c0f64ccd92b8486637",
+    "size": [
+      475,
+      1000
+    ]
+  },
+  {
+    "number": 12,
+    "id": "ino",
+    "name": "山中井野",
+    "sourceId": "chara032",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara032/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "7d73838ea91241f05a0541778eb894e18ee9a283f5f053f1b0b9742c9cedf109",
+    "outputSHA256": "bb1afc41a92c50f690ef65fd776cd9599cd06c0bad7db555c4d6d66d8e127256",
+    "size": [
+      336,
+      1000
+    ]
+  },
+  {
+    "number": 13,
+    "id": "hinata",
+    "name": "日向雏田",
+    "sourceId": "chara038",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara038/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "0a8b8be1da66c47f586ee87bc099b52643868b480f43251ae586d93c7fc5df71",
+    "outputSHA256": "05458cfcfdb0995573dd0844ac35a93d0df7ce46607444729ffce060d8b77b4b",
+    "size": [
+      327,
+      1000
+    ]
+  },
+  {
+    "number": 14,
+    "id": "kiba",
+    "name": "犬冢牙",
+    "sourceId": "chara041",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara041/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "fd8fe218c1a35822d15357bdfd9b9e1e7d5f4ec6680200da3384118ee2ad0b1c",
+    "outputSHA256": "d85a1f858b753c63e875ee5a6e1bcac0a9d7e0dcdec65d086da57d067e1ebc08",
+    "size": [
+      346,
+      1000
+    ]
+  },
+  {
+    "number": 15,
+    "id": "shino",
+    "name": "油女志乃",
+    "sourceId": "chara043",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara043/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "d85d4c0ab3ad2e99e4275d49ca193fccf999d17b281e0b8c71fefde8940a91c9",
+    "outputSHA256": "a086ef477abbbd93253ea1475ae6f252d0ca13ff1b9935cf374f0eec942854b6",
+    "size": [
+      386,
+      1000
+    ]
+  },
+  {
+    "number": 16,
+    "id": "neji",
+    "name": "日向宁次",
+    "sourceId": "chara028",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara028/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "34248afae2d2769c38cf360c0139a029840bfe932eaefda463945b662c7ddb6b",
+    "outputSHA256": "49a3497385eca9adb9a7a41b0c8536443e3fbab8dc7005417f4a6ffc6baab9cb",
+    "size": [
+      407,
+      1000
+    ]
+  },
+  {
+    "number": 17,
+    "id": "lee",
+    "name": "李洛克",
+    "sourceId": "chara026",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara026/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "107a5430978fd5adb0e77cc2d25cfac4cae35ea6727f29718b677dd3465d6790",
+    "outputSHA256": "6839f7fb3c09be5a51e35d637ce4c24d7803546435cdede40039b58e493a4459",
+    "size": [
+      310,
+      1000
+    ]
+  },
+  {
+    "number": 18,
+    "id": "tenten",
+    "name": "天天",
+    "sourceId": "chara030",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara030/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "f8715a73b5b44de9872ac15c2d1dc2fd5eff1b1f56ca102879c57d56a749760e",
+    "outputSHA256": "a520ca66abe1a7b97cbcd748a3c7eddecae1316f44c95dff944d1ef3746425a5",
+    "size": [
+      505,
+      1000
+    ]
+  },
+  {
+    "number": 19,
+    "id": "guy",
+    "name": "迈特凯",
+    "sourceId": "chara044",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara044/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "1c1ba256db2ff1ed777344a9f0e6548edc2806647a911e61bf8e4ee58f427c4f",
+    "outputSHA256": "36d833734d286a977bbca8f475b17e686fc186e1379c9d30dfea638e490450a3",
+    "size": [
+      338,
+      1000
+    ]
+  },
+  {
+    "number": 20,
+    "id": "asuma",
+    "name": "猿飞阿斯玛",
+    "sourceId": "chara045",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara045/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "40b7ac84949910e93e3aadf896194273e3ee63612e25e93fec13b1fa10e6f6ca",
+    "outputSHA256": "8598f9ad8a0632ab11794accba39b93a882f43878513702549248ef7e03cc044",
+    "size": [
+      265,
+      1000
+    ]
+  },
+  {
+    "number": 21,
+    "id": "kurenai",
+    "name": "夕日红",
+    "sourceId": "new13",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/new13/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "12afede99c20d20840514a5abe278fafecfc3bdbae5dd2289750c70bac0a27b5",
+    "outputSHA256": "7f697adc7c13c7ad0f89a143da7aeda8d33580256df394116fbb8419447c64b3",
+    "size": [
+      439,
+      1000
+    ]
+  },
+  {
+    "number": 22,
+    "id": "konohamaru",
+    "name": "猿飞木叶丸",
+    "sourceId": "chara053",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara053/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "5e1f2d341291efca7f1da1364d91b1c02cc0b048710327f51d9693cfb7c15351",
+    "outputSHA256": "011a1e2fbdac0c164b43c2db6052cc5cfc3651d20a36a8005a9d816953aa24c3",
+    "size": [
+      623,
+      922
+    ]
+  },
+  {
+    "number": 23,
+    "id": "tsunade",
+    "name": "纲手",
+    "sourceId": "chara050",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara050/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "3f5d42b379feb93fe374d0fb7244ff4088a702aea20a2a988df32fa4df8f8dfc",
+    "outputSHA256": "073ec0ac09452db73bac10b577703502d031f85b3ae6a520b94b1dd0ae3281cb",
+    "size": [
+      374,
+      1000
+    ]
+  },
+  {
+    "number": 24,
+    "id": "jiraiya",
+    "name": "普通自来也",
+    "sourceId": "chara049",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara049/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "18fc5fe4a7d183773cd08ef62018996db0040ff6af9477b258d685d091668467",
+    "outputSHA256": "d64ce75d8ed53aa09f83bcf86ee2e63acbd093e86750ac8d22ee0e0be2d015c2",
+    "size": [
+      465,
+      1000
+    ]
+  },
+  {
+    "number": 25,
+    "id": "jiraiya_sage",
+    "name": "仙人自来也",
+    "sourceId": "90052",
+    "composition": "bust",
+    "source": "https://ninja.hyrz.qq.com/hyrz/prod/ninja/90052/bd1.png",
+    "credit": "Tencent / Naruto Mobile 官方角色展示",
+    "sourceSHA256": "d979a1fde2b17fe178d1d588967eeece6094a0f195788007ecb90bcff1896156",
+    "outputSHA256": "c217a41c42d49352eec56e9f18175036cb0ea6981ec01bd632103fc9299c2d05",
+    "size": [
+      457,
+      499
+    ]
+  },
+  {
+    "number": 26,
+    "id": "orochimaru",
+    "name": "大蛇丸",
+    "sourceId": "chara116",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara116/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "b9ba88705425d8154daf0493fc90c3310bb9f5bb547fb86edf454a409a0ac159",
+    "outputSHA256": "701f8135bf39f20c6f8ddea7515e648c2fd407cc8e39f5657b1e0a0a3ef17394",
+    "size": [
+      350,
+      1000
+    ]
+  },
+  {
+    "number": 27,
+    "id": "kabuto",
+    "name": "药师兜",
+    "sourceId": "chara117",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara117/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "fef7b4e1bc9def11cdf278d57841d8f8ae044b8f89f896a943f934c9a732bf95",
+    "outputSHA256": "f164154aa39dbde5b7918098ba2c370c65471cfca7f1fa7d4057bf8013155a65",
+    "size": [
+      458,
+      1000
+    ]
+  },
+  {
+    "number": 28,
+    "id": "minato",
+    "name": "波风水门",
+    "sourceId": "chara055",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara055/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "c4c6fdff86c335de62074a291cc4ec21c8766a7604bb527eb6d5ff82ba8cedd7",
+    "outputSHA256": "741831b62655ad7561d29f0272c505c01d093d460f896482f6a6b5bdbf7c2434",
+    "size": [
+      409,
+      1000
+    ]
+  },
+  {
+    "number": 29,
+    "id": "hiruzen",
+    "name": "猿飞日斩",
+    "sourceId": "chara108",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara108/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "7df6f134c2c2abf352a4b2111891418c3cb149259d30904a34c6924f9815000c",
+    "outputSHA256": "8bca3f6c8f35ba2f32751a54be2c2e1a5b22ac5633a86ec3c56ef59f037a61dc",
+    "size": [
+      507,
+      961
+    ]
+  },
+  {
+    "number": 30,
+    "id": "hashirama",
+    "name": "千手柱间",
+    "sourceId": "chara051",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara051/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "fb6e3753a3345410302168a8f44c334200b2465c3d94131b201869b291dd4aca",
+    "outputSHA256": "886e1d0553990429c0c51d0a0eabc03a6d80784bff310ba2ef28626c86984b16",
+    "size": [
+      427,
+      1000
+    ]
+  },
+  {
+    "number": 31,
+    "id": "tobirama",
+    "name": "千手扉间",
+    "sourceId": "chara107",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara107/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "75eb0031b654268f6d396c4d6ca02b7fd2ffcadfe2cff002ed2d27be4f0a01b0",
+    "outputSHA256": "e1b06c7e990f2c0c1b0d52d7e55f059dd754fb1166a631e3a82f5499f0316625",
+    "size": [
+      354,
+      1000
+    ]
+  },
+  {
+    "number": 32,
+    "id": "gaara",
+    "name": "我爱罗",
+    "sourceId": "chara061",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara061/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "5fba824f468011bb4c411c1178e9334dcbf3a61e2413441ecc37a7a6af601af0",
+    "outputSHA256": "6a8fdd377f1cc3553024e15fa2a16d7afbb34a0bf55357a148acf26d14790998",
+    "size": [
+      463,
+      1000
+    ]
+  },
+  {
+    "number": 33,
+    "id": "kankuro",
+    "name": "勘九郎",
+    "sourceId": "chara064",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara064/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "d64fe54cf21e3c64cce163f938b3f6796dc7180b033932aa814fdf90822e2b0a",
+    "outputSHA256": "7231109444043250bce3e1b4c4c4361b8854c188c22f01e3a042d80d12381ee4",
+    "size": [
+      782,
+      1000
+    ]
+  },
+  {
+    "number": 34,
+    "id": "temari",
+    "name": "手鞠",
+    "sourceId": "chara066",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara066/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "30c154f53f70b90189a30e64adb4b7d47e6a9170ac1836021be22e063f1e3d50",
+    "outputSHA256": "7d6783f0781963c74c9ba65f4cf7bc0e0635a9a1835c7455a0d418bfbd74095d",
+    "size": [
+      908,
+      1000
+    ]
+  },
+  {
+    "number": 35,
+    "id": "chiyo",
+    "name": "千代婆婆",
+    "sourceId": "chara067",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara067/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "3e14e02f07fb52483c3df3bd56a0571118ea6399a733c5ccf713c8100f39b884",
+    "outputSHA256": "15f1ae356fb9bb44d9f34edf3d15712adf0daab7d5fafa38b92ac89c9bb0c159",
+    "size": [
+      708,
+      1000
+    ]
+  },
+  {
+    "number": 36,
+    "id": "itachi",
+    "name": "宇智波鼬",
+    "sourceId": "chara079",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara079/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "44229873b3172e8ca42a48fe40c5b736e2384dfdb1236bd676a6c2729fd2b0f1",
+    "outputSHA256": "bd4ab5fcd46a162c9d352a22b5e141a8a13e9c27bd11914c1f53ea3ce82f7df4",
+    "size": [
+      569,
+      1000
+    ]
+  },
+  {
+    "number": 37,
+    "id": "kisame",
+    "name": "干柿鬼鲛",
+    "sourceId": "chara080",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara080/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "c449058a592418d164f98cd875363fe15d1908de5001c8700f5ed59c9ae734fe",
+    "outputSHA256": "e0250cf0ffa160e11ec392ebb6e180261c222ff2707e4167f22af3e807aa6b75",
+    "size": [
+      500,
+      1000
+    ]
+  },
+  {
+    "number": 38,
+    "id": "deidara",
+    "name": "迪达拉",
+    "sourceId": "chara083",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara083/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "449fa002a84be674ed9a3e205a64e31c1e312178c7a6ea2d3d6ccc71b7bc53cf",
+    "outputSHA256": "cf700a8baad7da1e169eb6bc3e9d6069b4a511ea2ebd4c43e4af93f1d156d2a8",
+    "size": [
+      460,
+      1000
+    ]
+  },
+  {
+    "number": 39,
+    "id": "sasori",
+    "name": "赤砂之蝎",
+    "sourceId": "chara084",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara084/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "f148d515daa9723e9b36ab0187f727345b77133ff1e11805de968cbc394a588c",
+    "outputSHA256": "f8eae1e13975426eb3d08839593840efbfb74c2eaaaa1f6e5fead330433ee300",
+    "size": [
+      787,
+      1000
+    ]
+  },
+  {
+    "number": 40,
+    "id": "hidan",
+    "name": "飞段",
+    "sourceId": "chara082",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara082/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "58ed10605fec059d89a72f0bbcd189f71edcf37a9884f5643cbe9f7fd6e4fb80",
+    "outputSHA256": "e83a6d759700743b929437371ed5f28dd37af93cbecfd0db7f1bda308203a265",
+    "size": [
+      692,
+      1000
+    ]
+  },
+  {
+    "number": 41,
+    "id": "kakuzu",
+    "name": "角都",
+    "sourceId": "chara081",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara081/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "c8c2dc46a244e26a0a757a9cda541c4261dd57da57264d36fba0407a07b9c680",
+    "outputSHA256": "2d7c9791973bc5092e7f8a264031c07f357cf8aa7ae6f0f77601782b0c8ff7f3",
+    "size": [
+      494,
+      1000
+    ]
+  },
+  {
+    "number": 42,
+    "id": "konan",
+    "name": "小南",
+    "sourceId": "chara086",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara086/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "2de7c5ddac6a7802b3d69a08235b5eb3f671974e90abd614b69c7c56b216396d",
+    "outputSHA256": "8e1b64c78f234d51669f74199967464b0e798da03770e99e496e9dc3ef5b0c8d",
+    "size": [
+      397,
+      1000
+    ]
+  },
+  {
+    "number": 43,
+    "id": "pain",
+    "name": "天道佩恩",
+    "sourceId": "90055",
+    "composition": "bust",
+    "source": "https://ninja.hyrz.qq.com/hyrz/prod/ninja/90055/bd1.png",
+    "credit": "Tencent / Naruto Mobile 官方角色展示",
+    "sourceSHA256": "2a2e993716649cc273e1f1e42d94e02f1d1b5d4d9454419a1129aa062af4a767",
+    "outputSHA256": "9d58711dcc17cddc4d7a0b8fde71a36ee5c24698e34b720a7241fbf18322a4e4",
+    "size": [
+      352,
+      484
+    ]
+  },
+  {
+    "number": 44,
+    "id": "pain_asura",
+    "name": "修罗道佩恩",
+    "sourceId": "90149",
+    "composition": "bust",
+    "source": "https://ninja.hyrz.qq.com/hyrz/prod/ninja/90149/bd1.png",
+    "credit": "Tencent / Naruto Mobile 官方角色展示",
+    "sourceSHA256": "1cc258d84dea8d312a64d7543ffab0850d3aefaf44bf417d441fd7db873e459e",
+    "outputSHA256": "f4701853ec3d4b333f28f73149d3962578b0e38a16c84618cd9fbb7c6173f254",
+    "size": [
+      409,
+      438
+    ]
+  },
+  {
+    "number": 45,
+    "id": "pain_animal",
+    "name": "畜生道佩恩",
+    "sourceId": "90154",
+    "composition": "bust",
+    "source": "https://ninja.hyrz.qq.com/hyrz/prod/ninja/90154/bd1.png",
+    "credit": "Tencent / Naruto Mobile 官方角色展示",
+    "sourceSHA256": "f7bc4a4bb09750ced7a53076c9b21541eca36467e6a1c4b0ebf48ad870797b30",
+    "outputSHA256": "2c64ba27fccb91753fe307f1389d1ddf9ee01b6645bf9c242c46ac2e4136e726",
+    "size": [
+      363,
+      492
+    ]
+  },
+  {
+    "number": 46,
+    "id": "jugo",
+    "name": "重吾",
+    "sourceId": "chara078",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara078/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "ea279bdbf2e4f66ee826064b280014f9baee72adfe24d31288f3b31b238ba3c0",
+    "outputSHA256": "b9558df512477e661cd4cd8161f405bdaa4a2c6104a69f79a9c7f98413e387d1",
+    "size": [
+      577,
+      1000
+    ]
+  },
+  {
+    "number": 47,
+    "id": "suigetsu",
+    "name": "鬼灯水月",
+    "sourceId": "chara077",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara077/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "9778438257bef6edb29fff54a46d8e87deb50c7447e8325d8fd1194049eabbc7",
+    "outputSHA256": "4a2498473b8ccda2afbcf79f8a8f19d3c5235f0cde74a5a67ca30043138f2dee",
+    "size": [
+      403,
+      1000
+    ]
+  },
+  {
+    "number": 48,
+    "id": "killerbee",
+    "name": "普通奇拉比",
+    "sourceId": "chara068",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara068/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "da7ed98bdf6addf49f435f248dcc854a4db13f18f4865f58be4fb2944a8b9f65",
+    "outputSHA256": "a48533629d44182bd0473fdb5785b67480110a35eb8e8f015813a049827edea5",
+    "size": [
+      551,
+      1000
+    ]
+  },
+  {
+    "number": 49,
+    "id": "killerbee_eight_tail",
+    "name": "完全八尾化奇拉比",
+    "sourceId": "gyuki",
+    "composition": "beast",
+    "source": "https://www.deviantart.com/maxiuchiha22/art/Hachibi-render-NxB-Ninja-Voltage-792894446",
+    "credit": "Maxiuchiha22 / Naruto x Boruto Ninja Voltage",
+    "sourceSHA256": "e28e81f0345a6b95459aadf809dc1311530f5007e61ed944b65d9929df04d809",
+    "outputSHA256": "26e5f64a427bbb4ba9dcb135c7959c0b4f8422581fb567668ebba7153115b764",
+    "size": [
+      930,
+      624
+    ]
+  },
+  {
+    "number": 50,
+    "id": "yugito",
+    "name": "二位由木人",
+    "sourceId": "chara100",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara100/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "64122c9e3169b226cd26671506d5f3f37dc284d81fdb81f1813f7a25c0b1e180",
+    "outputSHA256": "7d362276ba717039fb3ea81413dfb7552c56bcb20b9c72260b9f028bec57df0e",
+    "size": [
+      370,
+      1000
+    ]
+  },
+  {
+    "number": 51,
+    "id": "zabuza",
+    "name": "桃地再不斩",
+    "sourceId": "chara073",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara073/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "555d757ac0a391f1c8e6218cf9da98c1527318e16a03ce18f8d919f804c2f74d",
+    "outputSHA256": "0d2613306000c0b506ae44a305c3ed5e06ca20ce29c7ff36df7685a55b753403",
+    "size": [
+      664,
+      1000
+    ]
+  },
+  {
+    "number": 52,
+    "id": "haku",
+    "name": "白",
+    "sourceId": "chara074",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara074/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "25dc19637bc12858eda781cbfa0bd544d98a9b7b231c8f08ea7d6063d29cd725",
+    "outputSHA256": "265b9bb2b05b9d5f93d38d02a0809e9bd7a7df79389f9b5b303aa6593cc27107",
+    "size": [
+      347,
+      1000
+    ]
+  },
+  {
+    "number": 53,
+    "id": "kimimaro",
+    "name": "君麻吕",
+    "sourceId": "chara120",
+    "composition": "full",
+    "source": "https://naruto-game-sc.bn-ent.net/images/character/detail/chara120/ill.png",
+    "credit": "Bandai Namco / CyberConnect2 官方角色展示",
+    "sourceSHA256": "4c89e776013a66cc5e68259f32e33e962c2d3643b46fccefefe942585160d955",
+    "outputSHA256": "f31aa10e50a7f2d3dd1b79d2fab30306d9bac5d7f0e06db5d3993a5598da4c23",
+    "size": [
+      581,
+      994
+    ]
+  }
+]

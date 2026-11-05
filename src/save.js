@@ -27,7 +27,7 @@ window.Save = (function () {
       }
     } catch (e) { console.warn('save load failed', e); }
     d.owned=Object.assign(defaults().owned,d.owned||{});
-    if(!GameData.charById[d.selected])d.selected='naruto';
+    if(!GameData.charById[d.selected]||GameData.charById[d.selected].catalogOnly)d.selected='naruto';
     if(!GameData.charById[d.displaySelected])d.displaySelected=d.selected;
     S.data = d;
     return d;

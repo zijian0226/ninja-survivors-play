@@ -15,12 +15,12 @@ window.HomePortrait = (function () {
   boundsCache.set(img.src,box);return box;
  }
  function mount(stage,key){
-  const img=stage.querySelector('img'),points=new Map();let box,view,baseline,ready=false;
+  const img=stage.querySelector('img'),points=new Map(),art=NinjaArt.get(key);let box,view,baseline,ready=false;
   const frame=()=>document.getElementById('app').getBoundingClientRect();
-  const baseHeight=(w,h)=>Math.min(h*1.15,w*2.15);
+  const baseHeight=(w,h)=>Math.min(h*1.15,w*2.15)*(art.composition==='bust' ? .58 : art.composition==='beast' ? .65 : 1);
   const defaultView=()=>{const r=frame();return {z:1,x:.5,y:.11+baseHeight(r.width,r.height)/r.height/2};};
   view=defaultView();
-  const saved=Save.data.homePortraits?.[key],art=NinjaArt.get(key);let centerHead=true;
+  const saved=Save.data.homePortraits?.[key];stage.dataset.composition=art.composition||'full';let centerHead=true;
   if(saved&&['z','x','y'].every(k=>Number.isFinite(saved[k]))){
    if(saved.layout===3&&saved.art===art.file){view={z:saved.z,x:saved.x,y:saved.y};centerHead=false;}
    else if(saved.layout>=2){view={z:saved.z,x:.5,y:saved.y};}

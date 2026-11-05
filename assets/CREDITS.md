@@ -116,3 +116,7 @@ Ma Shan Zheng（马善政毛笔字体），Copyright 2018 The Ma Shan Zheng Proj
 ## v0.44 属性图标
 
 火、风、雷、土、水采用 [Naruto Online Combo Simulator](https://github.com/senboni/Combo-Simulator/tree/master/ComboSimulator/Client/wwwroot/assets/attributes) 的现有图标；原文件、映射与仓库许可证见 `nature-icons/SOURCES.md`、`nature-icons/SOURCE-LICENSE.txt`。阴、阳、全为本项目代码绘制的配套 SVG 徽记。
+
+## v0.45 第一阶段53角色立绘
+
+46张既有《终极风暴 CONNECTIONS》官方立绘，6张腾讯《火影忍者手游》官方半身图，1张Maxiuchiha22整理的《Ninja Voltage》八尾牛鬼透明图。逐角色来源与原图/输出校验见 `phase-one/SOURCES.md`、`phase-one/SOURCES.json`。仅调整显示裁切与压缩，未制作新的战斗美术。
