@@ -120,3 +120,23 @@
 /* Kimimaro's diagonal source pose is individually balanced around the head. */
 .page-roster .ninja-card[data-id="kimimaro"] .ninja-card-portrait img{transform-origin:50% 25.5%;transform:rotate(-16deg)}
 .ninja-detail-hero[data-portrait-id="kimimaro"] img.ninja-detail-portrait{transform-origin:calc(var(--head-x) * 100%) calc(var(--head-y) * 100%);transform:translateX(calc(-100% * var(--head-x))) rotate(-16deg)}
+
+/* All eight attributes and All stay visible in one phone-width row. */
+.ninja-filter-bar{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:2px;overflow:visible;touch-action:pan-y}
+.ninja-filter-bar button,.ninja-filter-bar button:first-child{min-width:0;min-height:44px;padding:0;justify-content:center}
+.ninja-filter-bar .nature-logo{width:clamp(23px,7.2vw,32px);height:clamp(23px,7.2vw,32px)}
+/* Keep the illustration clear; the nameplate alone carries a dark backing. */
+.ninja-card-shade{inset:auto 1px 1px;height:44px;background:linear-gradient(180deg,#111a28ed,#0c1421)}
+.ninja-card-shade:after{inset:0}
+.ninja-card-caption{left:8px;right:8px;bottom:8px;min-height:29px;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.ninja-card-caption>.ninja-card-rule{position:absolute;left:0;top:-3px;width:15px;height:1px;margin:0;opacity:.85}
+.ninja-card-caption b{font:600 13px/1.25 'Songti SC','Noto Serif CJK SC',serif;letter-spacing:.5px;color:#f5e9d5;text-shadow:0 1px 2px #000}
+.ninja-card-caption.is-long b{font-size:11px;letter-spacing:0}
+.ninja-card-caption .ninja-form-tag{align-self:flex-start;min-height:0;margin:0;font:500 8px/1.2 system-ui;letter-spacing:.8px;color:#cbb68e;white-space:nowrap}
+.page-roster .ninja-card .rc-main{bottom:49px}
+.ninja-card[data-composition="bust"] .ninja-card-portrait img,.ninja-detail-hero.is-bust img.ninja-detail-portrait,.ninja-detail-hero.is-beast img.ninja-detail-portrait{-webkit-mask-image:none;mask-image:none}
+.ninja-detail-hero.is-bust img.ninja-detail-portrait,.ninja-detail-hero.is-beast img.ninja-detail-portrait{width:92%;height:calc(100% - 144px);left:4%;top:8px;transform:none;object-fit:contain}
+.ninja-detail-hero.is-bust .ninja-hero-shade,.ninja-detail-hero.is-beast .ninja-hero-shade{background:linear-gradient(180deg,transparent 76%,#151c28 100%)}
+.ninja-detail-title h2{font-size:30px;letter-spacing:2px}
+.ninja-detail-title .ninja-form-tag{display:inline-block;margin-top:9px;padding:3px 9px;border:1px solid #cfb78b4d;background:#111b29aa;color:#d7c09b;font:500 11px/1.4 system-ui;letter-spacing:2px}
+@media(max-width:350px){.ninja-card-caption b{font-size:12px}.ninja-card-caption.is-long b{font-size:10px}.ninja-filter-bar button:first-child{font-size:11px}}
