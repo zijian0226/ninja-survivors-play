@@ -131,3 +131,7 @@ Ma Shan Zheng（马善政毛笔字体），Copyright 2018 The Ma Shan Zheng Proj
 - 仙人自来也：Vdb1000（镜像标题署名，d64y52c），[下载页](https://www.pngaaa.com/detail/1375285)。
 - 四尾鸣人：[下载页](https://www.pngaaa.com/detail/7428974)，镜像未核实原作者，不宣称为官方绘制或开源授权。
 角色 IP 和图片权利归原权利人；镜像页面为个人/非商用用途素材记录。未删除作品内署名。保留原始半身文件，替换图位于 assets/phase-one-full，来源哈希与核验见私有源码 docs/portraits-v51/sources.json。
+
+
+## v0.52 已生成立绘接入
+咒印二佐助、四尾鸣人、佩恩天道/修罗道/畜生道：AI生成补绘，参考此前收集的对应半身图及《终极风暴》官网角色图。不是官网原图，不冒用原作者署名；火影 IP 归原权利人。当前游戏立绘路径包含 `-generated.webp`；旧原图保留。来源记录见源码 `docs/portraits-v52/sources.json`。
