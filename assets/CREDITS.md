@@ -112,3 +112,7 @@ Ma Shan Zheng（马善政毛笔字体），Copyright 2018 The Ma Shan Zheng Proj
 ## v0.40 已接入敌人
 
 现有 `assets/sprites_hd/enemies/` 中5套 BVN 衍生敌人（紫衣忍者、红衣忍者、白发忍者、紫头巾巨汉、灰狼）无损打包至 `battle/assets/enemies/atlas.png` 并接入战斗。来源和逐动作限制见 `battle/assets/enemies/manifest.json`、`battle/assets/enemies/CREDITS.md`；未新增绘制或声称原素材不存在的灰狼攻击动作。
+
+## v0.44 属性图标
+
+火、风、雷、土、水采用 [Naruto Online Combo Simulator](https://github.com/senboni/Combo-Simulator/tree/master/ComboSimulator/Client/wwwroot/assets/attributes) 的现有图标；原文件、映射与仓库许可证见 `nature-icons/SOURCES.md`、`nature-icons/SOURCE-LICENSE.txt`。阴、阳、全为本项目代码绘制的配套 SVG 徽记。
