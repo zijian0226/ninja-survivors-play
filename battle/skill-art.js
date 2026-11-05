@@ -13,18 +13,18 @@ window.SkillArt={
  },
  get readyOfficialIds(){return new Set(Object.values(this.registry).filter(u=>u.ready&&u.releaseComplete!==false).map(u=>u.officialId));},
  isReady(key){return this.registry[key]?.ready===true;},
- loaded(key){return this.cache.has(window.SKILL_ART_DATA?.[key]?.actor.file)&&['primary','secondary','ultimate'].every(k=>this.cache.has(window.SKILL_ART_DATA[key].skills[k].file));},
+ loaded(key){return this.cache.has(window.SKILL_ART_DATA?.[key]?.actor.file)&&['primary','secondary','ultimate'].every(k=>this.cache.has(window.SKILL_ART_DATA[key].skills[k].file)&&(!window.SKILL_ART_DATA[key].skills[k].caster||this.cache.has(window.SKILL_ART_DATA[key].skills[k].caster.file)));},
  image(url){if(this.cache.has(url))return Promise.resolve(this.cache.get(url));if(this.loads.has(url))return this.loads.get(url);const p=new Promise((resolve,reject)=>{const im=new Image(),t=setTimeout(()=>reject(Error('技能素材加载超时')),15000);im.onload=()=>{clearTimeout(t);this.cache.set(url,im);resolve(im);};im.onerror=()=>{clearTimeout(t);reject(Error('技能素材加载失败'));};im.src=url;}).finally(()=>this.loads.delete(url));this.loads.set(url,p);return p;},
- trim(key){this.recent=[key,...this.recent.filter(k=>k!==key)].slice(0,6);const keep=new Set([...this.recent,RecruitRun.mainKey,...(typeof s!=='undefined'&&s?[s.mainKey,...s.allies.map(a=>a.profile.key)]:[]),...this.active.map(q=>q.unit.key)]);for(const [k,d]of Object.entries(window.SKILL_ART_DATA))if(!keep.has(k))for(const c of Object.values(d.skills)){this.cache.delete(c.file);if(c.impact)this.cache.delete(c.impact.file);}},
- async ensure(key){if(!this.isReady(key))throw Error('此形态尚未完成');const d=window.SKILL_ART_DATA[key];await Promise.all([this.image(d.actor.file),...Object.values(d.skills).flatMap(x=>[this.image(x.file),...(x.impact?[this.image(x.impact.file)]:[])])]);const u=this.registry[key],a=d.actor;images[u.sprite]=this.cache.get(a.file);spriteMeta[u.sprite]={file:a.file,renderScale:a.scale,animations:Object.fromEntries(['idle','run','cast'].map(k=>[k,{row:a.rows[k],count:a.counts[k],ms:a.ms[k]}]))};this.trim(key);},
+ trim(key){this.recent=[key,...this.recent.filter(k=>k!==key)].slice(0,6);const keep=new Set([...this.recent,RecruitRun.mainKey,...(typeof s!=='undefined'&&s?[s.mainKey,...s.allies.map(a=>a.profile.key)]:[]),...this.active.map(q=>q.unit.key)]);for(const [k,d]of Object.entries(window.SKILL_ART_DATA))if(!keep.has(k))for(const c of Object.values(d.skills)){this.cache.delete(c.file);if(c.impact)this.cache.delete(c.impact.file);if(c.caster)this.cache.delete(c.caster.file);}},
+ async ensure(key){if(!this.isReady(key))throw Error('此形态尚未完成');const d=window.SKILL_ART_DATA[key];await Promise.all([this.image(d.actor.file),...Object.values(d.skills).flatMap(x=>[this.image(x.file),...(x.impact?[this.image(x.impact.file)]:[]),...(x.caster?[this.image(x.caster.file)]:[])])]);const u=this.registry[key],a=d.actor;images[u.sprite]=this.cache.get(a.file);spriteMeta[u.sprite]={file:a.file,renderScale:a.scale,animations:Object.fromEntries(['idle','run','cast'].map(k=>[k,{row:a.rows[k],count:a.counts[k],ms:a.ms[k]}]))};this.trim(key);},
  portrait(u){return window.SKILL_ART_DATA?.[u?.key]?.portrait||'assets/'+(u?.sprite||'shippuden')+'-portrait.png';},
  icon(u,slot){return window.SKILL_ART_DATA?.[u?.key]?.skills[slot]?.icon||this.portrait(u);},
  clear(){for(const q of this.active)if(q.actor)q.actor.sourceMove=null;this.active=[];},
- busy(a){return this.active.some(q=>q.actor===a&&q.composite&&q.age>=0&&q.age<q.duration);},
+ busy(a){return this.active.some(q=>q.actor===a&&q.age>=0&&(q.composite?q.age<q.duration:q.age<(q.clip.caster?.duration||0)));},
  blocksMovement(a){return this.active.some(q=>q.actor===a&&q.composite&&q.age>=0&&q.age<q.duration&&!q.clip.allowMovement);},
- reviewText(k){const v=k?.nameReview;if(!v)return '';if(v.status==='preview')return k.visualComplete?'动画已接入 · 正式术名待核':'源动作预览 · 术名/机制待核';return ({matched:'招式名称已核对',adapted:'已核对术名 · 像素玩法改编',preview:'演出待校正 · 当前名称为素材描述或局部招式',original:'本游戏原创被动',original_jutsu:'本游戏原创忍术'})[v.status]||'';},
+ reviewText(k){const v=k?.nameReview;if(!v)return '';if(v.status==='preview')return k.visualComplete?'动画已接入 · 正式术名待核':'源动作预览 · 术名/机制待核';return ({game_adaptation:'游戏化招式 · 原作能力改编',matched:'招式名称已核对',adapted:'已核对术名 · 像素玩法改编',preview:'演出待校正 · 当前名称为素材描述或局部招式',original:'本游戏原创被动',original_jutsu:'本游戏原创忍术'})[v.status]||'';},
  frame(q){const c=q.clip;if(c.frame_times_ms?.length===c.frames){const total=c.frame_times_ms.reduce((a,b)=>a+b,0);let t=Math.max(0,Math.min(1,q.age/q.duration))*total;for(let i=0;i<c.frames;i++){t-=c.frame_times_ms[i];if(t<0)return i;}return c.frames-1;}if(c.frames<=3)return Math.floor(q.age*c.fps)%c.frames;return Math.min(c.frames-1,Math.floor(Math.min(1,q.age/q.duration)*c.frames));},
- hidden(a){return this.active.some(q=>q.actor===a&&q.composite&&q.age>=0&&q.age<q.duration&&a.hp>0&&!(a.down>0)&&!(q.clip.emptyFrames||[]).includes(this.frame(q)));},
+ hidden(a){return this.active.some(q=>q.actor===a&&q.age>=0&&(q.composite?q.age<q.duration:q.age<(q.clip.caster?.duration||0))&&a.hp>0&&!(a.down>0)&&!(q.clip.emptyFrames||[]).includes(this.frame(q)));},
  cast(a,u,slot,level=1,e){
   if(state!=='play'||!this.isReady(u?.key)||!a||a.hp<=0||a.down>0||this.busy(a))return false;
   if(!this.loaded(u.key)){this.ensure(u.key).catch(()=>{});return false;}
@@ -60,8 +60,16 @@ window.SkillArt={
     const near=q.kit.kind==='melee'&&!q.clip.damageOffset,cx=near?q.actor.x+q.facing*30:q.damageX,cy=near?q.actor.y-24:q.damageY-24;
     const totalPulses=Math.max(1,Math.ceil((q.damageEnd-q.duration*(q.clip.damageWindow?.[0]??.15))/.2));
     for(const e of skillTargets())if(e.hp>0&&Math.hypot(e.x-cx,e.y-24-cy)<q.radius+(e.r||12)){
-     hit(e,q.kit.damageMode==='periodic'?q.damage:q.damage/totalPulses);
-     if(q.kit.status==='slow')e.slow=Math.max(e.slow||0,2);
+     let damage=q.kit.damageMode==='periodic'?q.damage:q.damage/totalPulses;
+     if(q.unit.key==='shikamaru'&&(e.skillStun>0||e.slow>0))damage*=1.15;
+     if(q.unit.key==='hidan'&&(e.bloodMark||0)>s.t)damage*=1.15;
+     hit(e,damage);
+     if(q.unit.batch47){const duration=(q.kit.statusDuration||1)*(q.unit.controlDuration||1);
+      if(q.kit.status==='root'){if(e!==s.boss)e.skillStun=Math.max(e.skillStun||0,duration);e.slow=Math.max(e.slow||0,duration);}
+      if(q.kit.status==='charm'){if(e===s.boss)e.slow=Math.max(e.slow||0,duration);else{e.originalCharm=Math.max(e.originalCharm||0,duration);e.originalCharmAtk=e.originalCharmAtk??.3;e.originalCharmDamage=q.damage*.08;}}
+      if(q.kit.status==='blood')e.bloodMark=s.t+duration;
+     }
+     if(q.kit.status==='slow')e.slow=Math.max(e.slow||0,q.unit.batch47?q.kit.statusDuration||2:2);
      if(q.kit.status==='burn')e.skillBurn={left:2,next:.5,damage:q.damage*.04};
      if(q.kit.status==='stun'&&e!==s.boss)e.skillStun=Math.max(e.skillStun||0,.35);
      if(q.level>=4&&e!==s.boss&&q.kit.kind==='melee')s.world.move(e,q.facing*5,0,e.r||12,s.arena);
@@ -76,7 +84,9 @@ window.SkillArt={
   }
  },
  lift(e){const q=this.active.find(q=>q.unit.key==='lee'&&q.slot==='ultimate'&&q.target===e&&q.age>=0);return q?-Math.sin(Math.min(1,q.age/q.duration)*Math.PI)*58:0;},
- draw(entities){for(const q of this.active)entities.push({y:q.composite?q.actor.y:q.y,draw:()=>this.drawClip(q)});},
+ survive(a){const u=a===s.p?Growth.main():a.profile;if(u?.key!=='hidan'||a.hp>0||s.t-(a.lastImmortal??-Infinity)<24)return false;a.lastImmortal=s.t;a.hp=1;a.inv=1.5;floating(a.x,a.y-58,'不死之身','#efb5c1');effect(a.x,a.y-20,34,'smoke',.4);return true;},
+ draw(entities){for(const q of this.active){entities.push({y:q.composite?q.actor.y:q.y,draw:()=>this.drawClip(q)});if(q.clip.caster&&q.age>=0&&q.age<q.clip.caster.duration)entities.push({y:q.actor.y,draw:()=>this.drawCaster(q)});}},
+ drawCaster(q){if(q.actor.hp<=0||q.actor.down>0)return;const c=q.clip.caster;this.drawClip({...q,clip:c,composite:true,x:q.actor.x,y:q.actor.y,duration:c.duration,travel:0});},
  drawClip(q){if(q.age<0)return;const c=q.clip,im=this.cache.get(c.file);if(!im)return;const [w,h]=c.cell,[ax,ay]=c.anchor;let x=(q.composite?q.actor.x:q.x)+(c.offset?.[0]||0),y=(q.composite?q.actor.y:q.y)+(c.offset?.[1]||0);
   if(q.travel&&q.age<q.travel){const t=q.age/q.travel;x=q.fromX+(q.x-q.fromX)*t;y=q.fromY+(q.y-q.fromY)*t;}
   const progress=Math.min(1,q.age/q.duration),frame=this.frame(q),scale=c.renderScale||1;

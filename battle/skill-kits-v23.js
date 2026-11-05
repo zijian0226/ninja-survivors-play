@@ -4989,5 +4989,673 @@ window.SKILL_KITS = {
       "死门·回旋踢": 1
     },
     "nameReviewPending": 3
+  },
+  "shikamaru": {
+    "key": "shikamaru",
+    "family": "shikamaru",
+    "sprite": "v47_shikamaru",
+    "art": "shikamaru",
+    "name": "奈良鹿丸",
+    "officialId": "chara034",
+    "attribute": "阴",
+    "hp": 660,
+    "passive": "影控增伤：自身忍术攻击被束缚或减速的敌人时，伤害提高15%。",
+    "skills": {
+      "影子模仿术": 1,
+      "影缝之术": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "影控增伤",
+        "text": "自身忍术攻击被束缚或减速的敌人时，伤害提高15%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "用户V6被动的游戏化数值实现。"
+        }
+      },
+      "primary": {
+        "name": "影子模仿术",
+        "text": "影子延伸后束缚范围内杂兵1.4秒；首领仅减速。",
+        "kind": "area",
+        "element": "yin",
+        "range": 280,
+        "radius": 58,
+        "damage": 90,
+        "cd": 5,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "影子模仿术",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 1.4
+      },
+      "secondary": {
+        "name": "影缝之术",
+        "text": "影刺连续穿刺目标区域，持续造成伤害并减速。",
+        "kind": "area",
+        "element": "yin",
+        "range": 300,
+        "radius": 75,
+        "damage": 150,
+        "cd": 8,
+        "duration": 1.7,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "影缝之术",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 2
+      },
+      "ultimate": {
+        "name": "影首缚之术",
+        "text": "影子化为手臂收拢，持续攻击并束缚范围内杂兵2秒。",
+        "kind": "area",
+        "element": "yin",
+        "range": 300,
+        "radius": 95,
+        "damage": 310,
+        "cd": 26,
+        "duration": 2.1,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "影首缚之术",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 2
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch47": true,
+    "artBatch": "0.47",
+    "attributeNote": "每形态单属性游戏定位。",
+    "sourceNote": "来源帧重编排适配俯视玩法；※为游戏化组合招式，不代表官方独立术名。"
+  },
+  "ino": {
+    "key": "ino",
+    "family": "ino",
+    "sprite": "v47_ino",
+    "art": "ino",
+    "name": "山中井野",
+    "officialId": "chara032",
+    "attribute": "阴",
+    "hp": 610,
+    "controlDuration": 1.2,
+    "passive": "精神扰动：自身忍术施加的精神控制持续时间提高20%；首领转为减速。",
+    "skills": {
+      "心转身之术": 1,
+      "心乱身之术": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "精神扰动",
+        "text": "自身忍术施加的精神控制持续时间提高20%；首领转为减速。",
+        "effects": {
+          "controlDuration": 1.2
+        },
+        "nameReview": {
+          "status": "original",
+          "note": "用户V6被动的游戏化数值实现。"
+        }
+      },
+      "primary": {
+        "name": "心转身之术",
+        "text": "精神体命中目标区域，控制杂兵1.4秒，使其攻击其他敌人；首领仅减速。",
+        "kind": "area",
+        "element": "yin",
+        "range": 280,
+        "radius": 48,
+        "damage": 65,
+        "cd": 6,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "心转身之术",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。",
+          "fullAnimationVerified": true
+        },
+        "status": "charm",
+        "statusDuration": 1.4
+      },
+      "secondary": {
+        "name": "心乱身之术",
+        "text": "扰乱区域内敌人的行动，使杂兵互相攻击1.6秒。",
+        "kind": "area",
+        "element": "yin",
+        "range": 280,
+        "radius": 72,
+        "damage": 110,
+        "cd": 9,
+        "duration": 1.7,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "心乱身之术",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。 用户V6保留候选：本期前期实战展示不充分。",
+          "fullAnimationVerified": true
+        },
+        "status": "charm",
+        "statusDuration": 1.6
+      },
+      "ultimate": {
+        "name": "群体心转身※",
+        "text": "同时释放多个精神体，持续伤害并控制范围内杂兵2秒。组合型游戏化奥义。",
+        "kind": "area",
+        "element": "yin",
+        "range": 320,
+        "radius": 105,
+        "damage": 230,
+        "cd": 28,
+        "duration": 2.1,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "群体心转身※",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。",
+          "fullAnimationVerified": true
+        },
+        "status": "charm",
+        "statusDuration": 2
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch47": true,
+    "artBatch": "0.47",
+    "attributeNote": "每形态单属性游戏定位。",
+    "sourceNote": "来源帧重编排适配俯视玩法；※为游戏化组合招式，不代表官方独立术名。"
+  },
+  "choji": {
+    "key": "choji",
+    "family": "choji",
+    "sprite": "v47_choji",
+    "art": "choji",
+    "name": "秋道丁次",
+    "officialId": "chara036",
+    "attribute": "阳",
+    "hp": 900,
+    "reduction": 0.08,
+    "passive": "倍化体质：高基础生命值，自身受到伤害降低8%。",
+    "skills": {
+      "肉弹战车": 1,
+      "超倍化之术": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "倍化体质",
+        "text": "高基础生命值，自身受到伤害降低8%。",
+        "effects": {
+          "reduction": 0.08
+        },
+        "nameReview": {
+          "status": "original",
+          "note": "用户V6被动的游戏化数值实现。"
+        }
+      },
+      "primary": {
+        "name": "肉弹战车",
+        "text": "靠近敌群后蜷身旋转，沿移动方向碾压周围敌人。",
+        "kind": "melee",
+        "element": "impact",
+        "range": 100,
+        "radius": 60,
+        "damage": 140,
+        "cd": 5,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "肉弹战车",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "超倍化之术",
+        "text": "身体逐渐倍化后压击周围敌群，短暂眩晕杂兵。",
+        "kind": "melee",
+        "element": "impact",
+        "range": 125,
+        "radius": 90,
+        "damage": 190,
+        "cd": 9,
+        "duration": 1.7,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "超倍化之术",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 0.65
+      },
+      "ultimate": {
+        "name": "超张手",
+        "text": "巨大手掌连续向前推出，持续打击周围敌群。",
+        "kind": "melee",
+        "element": "impact",
+        "range": 160,
+        "radius": 105,
+        "damage": 390,
+        "cd": 27,
+        "duration": 2.1,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "超张手",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 1.2
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch47": true,
+    "artBatch": "0.47",
+    "attributeNote": "每形态单属性游戏定位。",
+    "sourceNote": "来源帧重编排适配俯视玩法；※为游戏化组合招式，不代表官方独立术名。"
+  },
+  "sai": {
+    "key": "sai",
+    "family": "sai",
+    "sprite": "v47_sai",
+    "art": "sai",
+    "name": "佐井",
+    "officialId": "chara046",
+    "attribute": "阴",
+    "hp": 650,
+    "personal": 1.12,
+    "passive": "墨兽协同：自身墨兽忍术伤害提高12%；墨兽不占用小队支援位置。",
+    "skills": {
+      "超兽伪画·狮子": 1,
+      "超兽伪画·鸟": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "墨兽协同",
+        "text": "自身墨兽忍术伤害提高12%；墨兽不占用小队支援位置。",
+        "effects": {
+          "personal": 1.12
+        },
+        "nameReview": {
+          "status": "original",
+          "note": "用户V6被动的游戏化数值实现。"
+        }
+      },
+      "primary": {
+        "name": "超兽伪画·狮子",
+        "text": "展开画卷，墨狮扑向目标区域并持续撕咬。",
+        "kind": "ink_summon",
+        "element": "yin",
+        "range": 310,
+        "radius": 65,
+        "damage": 120,
+        "cd": 5,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "超兽伪画·狮子",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "超兽伪画·鸟",
+        "text": "绘出双鸟俯冲目标区域，持续造成伤害。",
+        "kind": "ink_summon",
+        "element": "yin",
+        "range": 340,
+        "radius": 75,
+        "damage": 160,
+        "cd": 8,
+        "duration": 1.7,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "超兽伪画·鸟",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 1.2
+      },
+      "ultimate": {
+        "name": "墨兽群袭※",
+        "text": "墨狮、墨鸟与墨蛇同时出击，持续攻击目标区域。组合型游戏化奥义。",
+        "kind": "ink_summon",
+        "element": "yin",
+        "range": 360,
+        "radius": 110,
+        "damage": 340,
+        "cd": 26,
+        "duration": 2.1,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "墨兽群袭※",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 1.8
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch47": true,
+    "artBatch": "0.47",
+    "attributeNote": "每形态单属性游戏定位。",
+    "sourceNote": "来源帧重编排适配俯视玩法；※为游戏化组合招式，不代表官方独立术名。"
+  },
+  "hidan": {
+    "key": "hidan",
+    "family": "hidan",
+    "sprite": "v47_hidan",
+    "art": "hidan",
+    "name": "飞段",
+    "officialId": "chara082",
+    "attribute": "阴",
+    "hp": 760,
+    "passive": "不死之身：受到致命伤时保留1点生命并无敌1.5秒，每24秒最多触发一次；支援也适用。",
+    "skills": {
+      "三刃镰刀攻击※": 1,
+      "取血诅咒※": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "不死之身",
+        "text": "受到致命伤时保留1点生命并无敌1.5秒，每24秒最多触发一次；支援也适用。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "用户V6被动的游戏化数值实现。"
+        }
+      },
+      "primary": {
+        "name": "三刃镰刀攻击※",
+        "text": "靠近敌人挥动三刃镰刀，连续斩击周围敌群。",
+        "kind": "melee",
+        "element": "yin",
+        "range": 100,
+        "radius": 78,
+        "damage": 145,
+        "cd": 5,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "三刃镰刀攻击※",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "取血诅咒※",
+        "text": "镰刀取血并留下6秒血咒标记；飞段忍术对标记敌人的伤害提高15%。",
+        "kind": "area",
+        "element": "yin",
+        "range": 280,
+        "radius": 70,
+        "damage": 140,
+        "cd": 8,
+        "duration": 1.7,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "取血诅咒※",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。",
+          "fullAnimationVerified": true
+        },
+        "status": "blood",
+        "statusDuration": 6
+      },
+      "ultimate": {
+        "name": "咒术·死司凭血",
+        "text": "切换为黑白咒术状态，血阵持续攻击目标区域；命中带血咒标记。",
+        "kind": "area",
+        "element": "yin",
+        "range": 320,
+        "radius": 100,
+        "damage": 370,
+        "cd": 28,
+        "duration": 2.1,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "咒术·死司凭血",
+          "note": "按用户V6方案，来源像素动作重编排；※组合型招式。",
+          "fullAnimationVerified": true
+        },
+        "status": "blood",
+        "statusDuration": 6
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch47": true,
+    "artBatch": "0.47",
+    "attributeNote": "每形态单属性游戏定位。",
+    "sourceNote": "来源帧重编排适配俯视玩法；※为游戏化组合招式，不代表官方独立术名。"
   }
 };

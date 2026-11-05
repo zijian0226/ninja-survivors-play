@@ -150,7 +150,7 @@ window.UI = (function () {
       </div>`;
     U.disposePortrait=HomePortrait.mount(m.querySelector('.home-portrait-stage'),ch.id);
     $('btn-battle').onclick = () => { Sfx.play('select'); U.openBattlePrep(); };
-    $('btn-notice').onclick=()=>{Sfx.play('click');modal('公告',`<p>欢迎来到《忍者：无尽试炼》。</p><ul><li>拖动移动，忍术自动释放；近身忍术需接近目标。</li><li>单人开局，升级招募最多3名支援；支援倒地5秒复活。</li><li>5/10分钟小首领、13分钟大首领，15分钟超时。</li><li>战斗支持1、1.5、2、3倍速；暂停查看技能和联动。</li></ul><p class="muted">第一阶段53个角色立绘已解锁，可在角色页设为首页展示。已有35个战斗形态可测试，新角色战斗素材待后续更新。开屏只准备首页，战斗与技能资源按包加载。</p>`);};
+    $('btn-notice').onclick=()=>{Sfx.play('click');modal('公告',`<p>欢迎来到《忍者：无尽试炼》。</p><ul><li>拖动移动，忍术自动释放；近身忍术需接近目标。</li><li>单人开局，升级招募最多3名支援；支援倒地5秒复活。</li><li>5/10分钟小首领、13分钟大首领，15分钟超时。</li><li>战斗支持1、1.5、2、3倍速；暂停查看技能和联动。</li></ul><p class="muted">第一阶段53个角色立绘已解锁，可在角色页设为首页展示。已有40个战斗形态可测试，新角色战斗素材待后续更新。开屏只准备首页，战斗与技能资源按包加载。</p>`);};
   }
 
   /* ---------- 角色 ---------- */
@@ -308,11 +308,11 @@ window.UI = (function () {
 
   /* ---------- 出战 & 结算 ---------- */
   U.openBattlePrep=function(){
-    if(Game.runtimeId!=='ninja-v28-squad35'){location.replace(new URL('play.html?release=entry31',location.href).href);return;}
+    if(Game.runtimeId!=='ninja-v47-squad40'){location.replace(new URL('play.html?release=entry31',location.href).href);return;}
     let selected=Game.available(D.charById[S().selected])?S().selected:'naruto';
     let excluded=[...(Game.excluded||[])];
     modal('出战准备','');const body=$('modal').querySelector('.md-body');
-    function render(){body.innerHTML=`<p class="prep-copy">首页展示与出战独立。单人开局，升级招募最多3名支援。35个已接入战斗形态可选；新增图鉴角色已解锁展示，战斗素材待后续制作。角色包在选择后单独载入。</p><div class="prep-grid">${D.characters.map(c=>`<button class="prep-card ${c.id===selected?'active':''}" data-prep="${c.id}" ${Game.available(c)?'':'disabled'}>${charImg(c.id,3)}<b>${c.current.name}</b><small>${c.element}${c.catalogOnly?' · 战斗待制作':c.current.releaseComplete?'':' · 预览'}</small></button>`).join('')}</div><h3 class="prep-title">排除招募属性 ${excluded.length}/3</h3><div class="prep-types">${['火','风','雷','土','水','阴','阳','全'].map(n=>`<button data-exclude="${n}" aria-pressed="${excluded.includes(n)}" class="${excluded.includes(n)?'active':''}">${n}</button>`).join('')}</div><p class="prep-copy">可排除0–3种属性。“全”为独立类别。每关2个小首领、1个大首领；支持1.5/2/3倍速。</p>`;
+    function render(){body.innerHTML=`<p class="prep-copy">首页展示与出战独立。单人开局，升级招募最多3名支援。40个已接入战斗形态可选；新增图鉴角色已解锁展示，战斗素材待后续制作。角色包在选择后单独载入。</p><div class="prep-grid">${D.characters.map(c=>`<button class="prep-card ${c.id===selected?'active':''}" data-prep="${c.id}" ${Game.available(c)?'':'disabled'}>${charImg(c.id,3)}<b>${c.current.name}</b><small>${c.element}${c.catalogOnly?' · 战斗待制作':c.current.releaseComplete?'':' · 预览'}</small></button>`).join('')}</div><h3 class="prep-title">排除招募属性 ${excluded.length}/3</h3><div class="prep-types">${['火','风','雷','土','水','阴','阳','全'].map(n=>`<button data-exclude="${n}" aria-pressed="${excluded.includes(n)}" class="${excluded.includes(n)?'active':''}">${n}</button>`).join('')}</div><p class="prep-copy">可排除0–3种属性。“全”为独立类别。每关2个小首领、1个大首领；支持1.5/2/3倍速。</p>`;
      body.querySelectorAll('[data-prep]').forEach(b=>b.onclick=()=>{selected=b.dataset.prep;render();});
      body.querySelectorAll('[data-exclude]').forEach(b=>b.onclick=()=>{const n=b.dataset.exclude;if(excluded.includes(n))excluded=excluded.filter(x=>x!==n);else if(excluded.length<3)excluded.push(n);else{U.toast('最多排除3种属性');return;}const top=body.scrollTop;render();body.scrollTop=top;});
     }

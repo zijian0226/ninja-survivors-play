@@ -120,3 +120,7 @@ Ma Shan Zheng（马善政毛笔字体），Copyright 2018 The Ma Shan Zheng Proj
 ## v0.45 第一阶段53角色立绘
 
 46张既有《终极风暴 CONNECTIONS》官方立绘，6张腾讯《火影忍者手游》官方半身图，1张Maxiuchiha22整理的《Ninja Voltage》八尾牛鬼透明图。逐角色来源与原图/输出校验见 `phase-one/SOURCES.md`、`phase-one/SOURCES.json`。仅调整显示裁切与压缩，未制作新的战斗美术。
+
+
+## v0.47 五角色技能美术
+鹿丸（Salah）、井野（CobraG6）、丁次（Mikel8888）、佐井（CobraG6）、飞段（Frak20）的社区来源与静态解码记录见 `battle/assets/CREDITS-v47.md`；不将素材公开下载当作开源授权。
