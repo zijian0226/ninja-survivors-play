@@ -140,3 +140,9 @@
 .ninja-detail-title h2{font-size:30px;letter-spacing:2px}
 .ninja-detail-title .ninja-form-tag{display:inline-block;margin-top:9px;padding:3px 9px;border:1px solid #cfb78b4d;background:#111b29aa;color:#d7c09b;font:500 11px/1.4 system-ui;letter-spacing:2px}
 @media(max-width:350px){.ninja-card-caption b{font-size:12px}.ninja-card-caption.is-long b{font-size:10px}.ninja-filter-bar button:first-child{font-size:11px}}
+
+/* Full replacement art is shown head-to-toe; retained busts use an intentional close-up. */
+.ninja-detail-hero.is-full-figure img.ninja-detail-portrait{width:94%;height:calc(100% - 144px);left:3%;top:8px;transform:none;object-fit:contain;-webkit-mask-image:none;mask-image:none}
+.ninja-detail-hero.is-full-figure .ninja-hero-shade{background:none}
+.ninja-detail-hero.is-bust img.ninja-detail-portrait{width:100%;height:100%;left:0;top:0;object-fit:cover;object-position:50% 0;transform:none}
+.ninja-detail-hero.is-bust .ninja-hero-shade{background:linear-gradient(180deg,transparent 65%,#151c28 100%)}

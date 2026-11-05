@@ -124,3 +124,10 @@ Ma Shan Zheng（马善政毛笔字体），Copyright 2018 The Ma Shan Zheng Proj
 
 ## v0.47 五角色技能美术
 鹿丸（Salah）、井野（CobraG6）、丁次（Mikel8888）、佐井（CobraG6）、飞段（Frak20）的社区来源与静态解码记录见 `battle/assets/CREDITS-v47.md`；不将素材公开下载当作开源授权。
+
+
+## v0.51 完整身体立绘替换
+- 咒印二佐助：Lwisf3rxd（来源站署名），[下载页](https://www.pngitem.com/middle/hmhxxJR_sasuke-shippuden-curse-seal-2-render-by-lwisf3rxd/)。
+- 仙人自来也：Vdb1000（镜像标题署名，d64y52c），[下载页](https://www.pngaaa.com/detail/1375285)。
+- 四尾鸣人：[下载页](https://www.pngaaa.com/detail/7428974)，镜像未核实原作者，不宣称为官方绘制或开源授权。
+角色 IP 和图片权利归原权利人；镜像页面为个人/非商用用途素材记录。未删除作品内署名。保留原始半身文件，替换图位于 assets/phase-one-full，来源哈希与核验见私有源码 docs/portraits-v51/sources.json。
