@@ -8,6 +8,7 @@ window.HomePortrait=(function(){
   stage.dataset.composition=art.composition||'full';
   function baseScale(w,h){
    const hb=f.headBox,headW=(hb[2]-hb[0])*img.naturalWidth,headH=(hb[3]-hb[1])*img.naturalHeight;
+   if(f.presentation?.mode==='portrait'){const spec=f.presentation.home;return Math.min(w*spec.headWidthFraction/headH,h*spec.maxHeadViewportHeight/headH,w*(spec.maxHeadWidth||.44)/headW);}
    if(f.layout!=='portrait'||art.pixel){
     const hx=art.head[0]*img.naturalWidth-box.x;
     return Math.min(w*.94/box.w,h*.73/box.h,(w/2-16)/Math.max(hx,box.w-hx));
@@ -52,7 +53,7 @@ window.HomePortrait=(function(){
    const scale=bs*view.z,bw=box.w*scale,bh=box.h*scale;
    const hx=(art.head[0]*img.naturalWidth-box.x)*scale,hy=(art.head[1]*img.naturalHeight-box.y)*scale;
    if(centerHead){
-    const targetY=f.layout==='portrait'?Math.max(h*(art.composition==='bust'?.30:.25),header+14+hh*scale/2):Math.max(h*.28,header+14+hy);
+    const targetY=f.layout==='portrait'||f.presentation?.mode==='portrait'?Math.max(h*(f.presentation?.home.headCenterY??(art.composition==='bust'?.30:.25)),header+14+hh*scale/2):Math.max(h*.28,header+14+hy);
     view.x=(w/2-hx+bw/2)/w;view.y=(targetY-hy+bh/2)/h;centerHead=false;
    }
    const left=(hb[0]*img.naturalWidth-box.x)*scale,right=(hb[2]*img.naturalWidth-box.x)*scale;

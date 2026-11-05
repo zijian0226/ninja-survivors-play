@@ -30,7 +30,7 @@
   prepare();
   // A worker may ask whether this is the migrated shell. Reply without resetting active runs.
   if('serviceWorker' in navigator)navigator.serviceWorker.addEventListener('message',event=>{
-    if(event.data?.type==='NINJA_CLIENT_STATUS')event.ports[0]?.postMessage({release:'portraits52',active:Game.active});
+    if(event.data?.type==='NINJA_CLIENT_STATUS')event.ports[0]?.postMessage({release:'framing53',active:Game.active});
   });
   // PWA：仅在 http(s) 下注册 Service Worker（file:// 与单文件版跳过）；URL 带 ?nosw 时注销（开发调试用）
   if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol) && !window.__SINGLE_FILE__) {
