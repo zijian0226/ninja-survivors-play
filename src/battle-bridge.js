@@ -27,7 +27,7 @@ window.Game=(function(){
   $('pack-label').textContent=message;$('pack-retry').hidden=!retry;$('pack-meter').hidden=progress===null;$('pack-percent').hidden=progress===null;
   if(progress!==null){const percent=Math.floor(Math.max(0,Math.min(1,progress))*100);$('pack-fill').style.width=percent+'%';$('pack-meter').setAttribute('aria-valuenow',percent);$('pack-percent').textContent=percent+'%';}el.hidden=false;
  }
- function ensureFrame(){if(frame)return;frame=document.createElement('iframe');frame.id='battle-frame';frame.title='忍者：无尽试炼 · 战斗';frame.allow='autoplay; fullscreen';frame.src='battle/play.html?embedded=1&v=phase53&main='+encodeURIComponent(G.currentKey||'naruto_shippuden');frame.hidden=true;$('battle').appendChild(frame);}
+ function ensureFrame(){if(frame)return;frame=document.createElement('iframe');frame.id='battle-frame';frame.title='忍者：无尽试炼 · 战斗';frame.allow='autoplay; fullscreen';frame.src='battle/play.html?embedded=1&v=frame46&main='+encodeURIComponent(G.currentKey||'naruto_shippuden');frame.hidden=true;$('battle').appendChild(frame);}
  function prepareBase(){post({type:'prepare',allowedKeys:CharacterPacks.playable});}
  function baseFail(message){clearTimeout(baseTimer);const reject=baseReject;baseResolve=baseReject=null;G.assetsPrepared=false;if(reject)reject(Error(message));}
  G.preload=function(report=()=>{}){baseReport=report;if(G.assetsPrepared)return Promise.resolve();if(basePromise)return basePromise;basePromise=new Promise((resolve,reject)=>{baseResolve=resolve;baseReject=reject;});baseTimer=setTimeout(()=>baseFail('基础包加载超时'),120000);ensureFrame();if(ready)prepareBase();return basePromise;};
