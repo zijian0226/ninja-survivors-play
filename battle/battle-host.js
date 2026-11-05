@@ -1,7 +1,7 @@
 /* Package loading and test access only; the original combat core stays unchanged. */
 (function(){
  if(parent===window)return;
- const RUNTIME='ninja-v47-squad40',CHANNEL='ninja-current-battle-v1';let active=false,starting=false,prepared=false,runEpoch=0,latestRequest=null,testOrder=(parent.CharacterPacks?.playable||parent.CurrentRoster?.map(u=>u.key)||[]).filter(key=>RecruitRun.get(key));
+ const RUNTIME='ninja-v54-squad50',CHANNEL='ninja-current-battle-v1';let active=false,starting=false,prepared=false,runEpoch=0,latestRequest=null,testOrder=(parent.CharacterPacks?.playable||parent.CurrentRoster?.map(u=>u.key)||[]).filter(key=>RecruitRun.get(key));
  const allowed=new Set(testOrder),jobs=new Map(),complete=new Set(),extras=new Set(),progress=new Map();
  RecruitRun.units=RecruitRun.units.filter(u=>allowed.has(u.key));
  const hinted=new URLSearchParams(location.search).get('main');if(allowed.has(hinted))RecruitRun.mainKey=hinted;
@@ -10,7 +10,7 @@
  const nativeHome=goHome,nativeFinish=finish,nativeReset=reset,nativeEnsure=SkillArt.ensure.bind(SkillArt),nativeImage=SkillArt.image.bind(SkillArt);
  goHome=function(){nativeHome();if(active){active=false;send('home');}};
  finish=function(win,reason){const valid=state==='play';nativeFinish(win,reason);if(valid&&active){active=false;send('result',{result:{win,reason,time:s.t,kills:s.kills,level:s.level,bosses:s.bossLedger.filter(x=>x==='defeated').length,debug:s.debugUsed}});}};
- // The 40 integrated forms remain selectable with debug tools switched off. Review flags remain intact.
+ // The 50 integrated forms remain selectable with debug tools switched off. Review flags remain intact.
  RecruitRun.mainOptions=()=>RecruitRun.units.filter(u=>allowed.has(u.key)&&SkillArt.isReady(u.key));
  RecruitRun.candidates=function(excluded=s?.excludedNatures||this.excluded,main=s?.mainKey||this.mainKey,owned=s?.allies||[]){const used=new Set(owned.map(a=>a.id));return this.units.filter(u=>allowed.has(u.key)&&u.key!==main&&!used.has(u.key)&&this.natures(u).length&&!this.natures(u).some(n=>excluded.includes(n)));};
  reset=function(quick=false){const u=RecruitRun.get(RecruitRun.mainKey);if(!u||!allowed.has(u.key))return;const review=u.releaseComplete;u.releaseComplete=true;try{nativeReset(quick);}finally{u.releaseComplete=review;}if(review===false&&state==='play')s.debugUsed=true;};

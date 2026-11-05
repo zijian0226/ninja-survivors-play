@@ -42,6 +42,7 @@ window.SkillArt={
   if(clip.damageOffset){q.damageX=a.x+a.facing*clip.damageOffset[0];q.damageY=a.y+clip.damageOffset[1];}
   if(composite){a.sourceMove=q;a.action.duration=duration;}if(isMain&&slot==='ultimate'&&l>=2)this.active.push({...q,age:-duration-.16,damageEnd:duration*(clip.damageWindow?.[1]??.88),nextPulse:duration*(clip.damageWindow?.[0]??.15),damage:q.damage*.65});
   this.active.push(q);if(isMain&&l>=3&&slot!=='ultimate'&&!summon){this.active.push({...q,age:-duration-.16,damageEnd:duration*(clip.damageWindow?.[1]??.88),nextPulse:duration*(clip.damageWindow?.[0]??.15),damage:q.damage*.6});if(l>=5)this.active.push({...q,age:-duration*2-.32,damageEnd:duration*(clip.damageWindow?.[1]??.88),nextPulse:duration*(clip.damageWindow?.[0]??.15),damage:q.damage*.4});}if(this.active.length>32)this.active.shift();this.metrics.casts++;
+  if(u.batch54&&kit.healFraction){const max=isMain?mainMaxHp():TeamSeven.maxHp(a);a.hp=Math.min(max,a.hp+max*kit.healFraction);}
   if(summon){
    if(isMain){updateClones(0,40*boost*team,TeamSeven.cooldown());}
    else if(s.supportClones.length+s.summons.length<8)s.supportClones.push({owner:a,x:a.x+a.facing*24,y:a.y+12,sprite:a.sprite,life:u.key==='kakashi'?5:8,atk:.25,facing:a.facing});
@@ -53,9 +54,10 @@ window.SkillArt={
   return true;
  },
  update(dt){
+  for(const a of TeamSeven.living())if((a===s.p?Growth.main():a.profile)?.key==='kabuto')a.hp=Math.min(a===s.p?mainMaxHp():TeamSeven.maxHp(a),a.hp+4*dt);
   for(const q of this.active){
    q.age+=dt;if(q.actor.hp<=0||q.actor.down>0){q.age=q.duration;continue;}
-   if(q.age>=q.nextPulse&&q.age<q.damageEnd&&q.kit.kind!=='summon'){
+   if(q.age>=q.nextPulse&&q.age<q.damageEnd&&q.kit.kind!=='summon'&&!q.kit.noDamage){
     q.nextPulse+=.2;this.metrics.pulses++;
     const near=q.kit.kind==='melee'&&!q.clip.damageOffset,cx=near?q.actor.x+q.facing*30:q.damageX,cy=near?q.actor.y-24:q.damageY-24;
     const totalPulses=Math.max(1,Math.ceil((q.damageEnd-q.duration*(q.clip.damageWindow?.[0]??.15))/.2));
@@ -63,13 +65,20 @@ window.SkillArt={
      let damage=q.kit.damageMode==='periodic'?q.damage:q.damage/totalPulses;
      if(q.unit.key==='shikamaru'&&(e.skillStun>0||e.slow>0))damage*=1.15;
      if(q.unit.key==='hidan'&&(e.bloodMark||0)>s.t)damage*=1.15;
+     if(q.unit.batch54){
+      if(q.unit.key==='asuma'&&q.kit.kind==='melee')damage*=1.1;
+      if(q.unit.key==='zabuza'&&(e.slow>0||e.skillStun>0))damage*=1.15;
+      if(q.unit.key==='minato'){if((e.flyingRaijinMark||0)>s.t)damage*=1.12;e.flyingRaijinMark=s.t+4;}
+      if(q.unit.key==='shino'&&s.t-(q.actor.lastInsectCharge??-Infinity)>=.8){q.actor.lastInsectCharge=s.t;if(q.actor===s.p)s.ultimateCd=Math.max(0,s.ultimateCd-.3);else q.actor.ultimateCd=Math.max(0,(q.actor.ultimateCd??45)-.3);}
+      if(['kurenai','yamato'].includes(q.unit.key)&&s.t-(e['passive54_'+q.unit.key]??-Infinity)>=2&&Math.random()<.15){e['passive54_'+q.unit.key]=s.t;if(e===s.boss)e.slow=Math.max(e.slow||0,.6);else if(q.unit.key==='yamato')e.skillStun=Math.max(e.skillStun||0,.6);else{e.originalCharm=Math.max(e.originalCharm||0,1);e.originalCharmAtk=e.originalCharmAtk??.3;e.originalCharmDamage=q.damage*.08;}}
+     }
      hit(e,damage);
-     if(q.unit.batch47){const duration=(q.kit.statusDuration||1)*(q.unit.controlDuration||1);
+     if(q.unit.batch47||q.unit.batch54){const duration=(q.kit.statusDuration||1)*(q.unit.controlDuration||1);
       if(q.kit.status==='root'){if(e!==s.boss)e.skillStun=Math.max(e.skillStun||0,duration);e.slow=Math.max(e.slow||0,duration);}
       if(q.kit.status==='charm'){if(e===s.boss)e.slow=Math.max(e.slow||0,duration);else{e.originalCharm=Math.max(e.originalCharm||0,duration);e.originalCharmAtk=e.originalCharmAtk??.3;e.originalCharmDamage=q.damage*.08;}}
       if(q.kit.status==='blood')e.bloodMark=s.t+duration;
      }
-     if(q.kit.status==='slow')e.slow=Math.max(e.slow||0,q.unit.batch47?q.kit.statusDuration||2:2);
+     if(q.kit.status==='slow')e.slow=Math.max(e.slow||0,q.unit.batch47||q.unit.batch54?q.kit.statusDuration||2:2);
      if(q.kit.status==='burn')e.skillBurn={left:2,next:.5,damage:q.damage*.04};
      if(q.kit.status==='stun'&&e!==s.boss)e.skillStun=Math.max(e.skillStun||0,.35);
      if(q.level>=4&&e!==s.boss&&q.kit.kind==='melee')s.world.move(e,q.facing*5,0,e.r||12,s.arena);
@@ -87,7 +96,7 @@ window.SkillArt={
  survive(a){const u=a===s.p?Growth.main():a.profile;if(u?.key!=='hidan'||a.hp>0||s.t-(a.lastImmortal??-Infinity)<24)return false;a.lastImmortal=s.t;a.hp=1;a.inv=1.5;floating(a.x,a.y-58,'不死之身','#efb5c1');effect(a.x,a.y-20,34,'smoke',.4);return true;},
  draw(entities){for(const q of this.active){entities.push({y:q.composite?q.actor.y:q.y,draw:()=>this.drawClip(q)});if(q.clip.caster&&q.age>=0&&q.age<q.clip.caster.duration)entities.push({y:q.actor.y,draw:()=>this.drawCaster(q)});}},
  drawCaster(q){if(q.actor.hp<=0||q.actor.down>0)return;const c=q.clip.caster;this.drawClip({...q,clip:c,composite:true,x:q.actor.x,y:q.actor.y,duration:c.duration,travel:0});},
- drawClip(q){if(q.age<0)return;const c=q.clip,im=this.cache.get(c.file);if(!im)return;const [w,h]=c.cell,[ax,ay]=c.anchor;let x=(q.composite?q.actor.x:q.x)+(c.offset?.[0]||0),y=(q.composite?q.actor.y:q.y)+(c.offset?.[1]||0);
+ drawClip(q){if(q.age<0)return;const c=q.clip,im=this.cache.get(c.file);if(!im)return;const [w,h]=c.cell,[ax,ay]=c.anchor;let x=(q.composite||c.followCaster?q.actor.x:q.x)+(c.offset?.[0]||0),y=(q.composite||c.followCaster?q.actor.y:q.y)+(c.offset?.[1]||0);
   if(q.travel&&q.age<q.travel){const t=q.age/q.travel;x=q.fromX+(q.x-q.fromX)*t;y=q.fromY+(q.y-q.fromY)*t;}
   const progress=Math.min(1,q.age/q.duration),frame=this.frame(q),scale=c.renderScale||1;
   if(q.unit.key==='lee'&&q.slot==='ultimate'&&q.clip.impact&&progress>.62){const impact=q.clip.impact,hitIm=this.cache.get(impact.file);if(hitIm){const [iw,ih]=impact.cell,i=Math.min(impact.frames-1,Math.floor((progress-.62)/.38*impact.frames));ctx.save();ctx.globalAlpha=Math.min(1,(1-progress)/.15);ctx.drawImage(hitIm,i*iw,0,iw,ih,q.target.x-impact.anchor[0],q.target.y-impact.anchor[1],iw,ih);ctx.restore();}}

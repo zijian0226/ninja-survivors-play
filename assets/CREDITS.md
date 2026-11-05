@@ -135,3 +135,20 @@ Ma Shan Zheng（马善政毛笔字体），Copyright 2018 The Ma Shan Zheng Proj
 
 ## v0.52 已生成立绘接入
 咒印二佐助、四尾鸣人、佩恩天道/修罗道/畜生道：AI生成补绘，参考此前收集的对应半身图及《终极风暴》官网角色图。不是官网原图，不冒用原作者署名；火影 IP 归原权利人。当前游戏立绘路径包含 `-generated.webp`；旧原图保留。来源记录见源码 `docs/portraits-v52/sources.json`。
+
+
+## v0.54 十个新增技能美术包
+
+来源静态像素经重编排，角色与技能特效分层输出；不执行来源人物脚本。
+- asuma：Hermoduro，https://www.andersonkenya1.net/files/file/54728-asuma/
+- shino：CobraG6，https://www.andersonkenya1.net/files/file/54781-shino/
+- tenten：Mikel8888，https://www.andersonkenya1.net/files/file/55033-tenten/
+- kiba：Mikel8888，https://www.andersonkenya1.net/files/file/55005-kiba/
+- kurenai：CobraG6，https://www.andersonkenya1.net/files/file/61423-kurenai-yuhi-jus-naruto-series/
+- kabuto：CobraG6，https://www.andersonkenya1.net/files/file/54754-kabuto/
+- yamato：Monkey_D._Yomi，https://www.andersonkenya1.net/files/file/55034-yamato/
+- zabuza：Vovan99，https://www.andersonkenya1.net/files/file/61430-zabuza-jus/
+- kimimaro：Mikel8888，https://www.andersonkenya1.net/files/file/61426-kimimaro-jus-naruto-series/
+- minato：CobraG6，https://www.andersonkenya1.net/files/file/61094-minato-namikaze-jus-omhy-style-naruto-series/
+
+本批未生成人物立绘。纲手预览、修罗道/畜生道素材缺口不计入可出战角色。技能为本游戏适配，来源与差异详见私有源码 docs/skills-v54/README.md。

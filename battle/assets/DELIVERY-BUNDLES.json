@@ -21,8 +21,8 @@
       "game.js"
     ],
     "source_sha256": {
-      "skill-art-data.js": "d95d7ca8fc6320a4ab1d8c31b16f788ff5717ab929af0ce50edc46cdb2883d0f",
-      "skill-kits-v23.js": "6e05bc2006fff1a4c1088c456b27339e9bbcf64ce9c898da0c74f0867b74ac62",
+      "skill-art-data.js": "46755de4d201c76d900e4be5397ae01894767996959ae7eaf23dd2f61d70da94",
+      "skill-kits-v23.js": "1a87c14f1e9bed80f186079b5059c2e9bd9744dae8de565d16a8bce3ce62b0b8",
       "characters.js": "c0699623151ecdbbc06d56205829694873f8ca3127443e42edd0f88a1b7f3a82",
       "skill-catalog.js": "5c358d5b8e69fd84e41768b40184b3445e15e50a9bbcd1afeacb253d9f405368",
       "hub.js": "0d4a11a6e0232d3ddf9199065e8eef50bf739d8e7e26c4933433b99254bdb5a1",
@@ -34,14 +34,14 @@
       "growth.js": "462f33ed1a119311377817b62aac736cc5cc09afdb842637735bcdf923496b9a",
       "ultimate-cue.js": "3b07cc8c8b68e5869681efa726cbb846bf1153a0f5272fc6526ed538eec36b90",
       "build-inspect.js": "2a0fb78347def1107d871a2a0906f751b95db411a5e28236847385a1ff307ad9",
-      "skill-art.js": "2471eee1a035791eca7468b9b3970440fcf996b54ec1f7c0c38fcf2424951cdd",
+      "skill-art.js": "de74a7a78630b3f297d86247557ac5d26bee5ae03450965aab06e840845066a0",
       "original-ninja.js": "064f73544f3476c17ff2cf52a6ed029375229601b705cc1cfd8549e41ae11d4e",
       "official-gallery.js": "52622f52c5a294c4835a7875e9979f0614cd66cd21c9ceeb30019e31c8779b09",
       "materials.js": "103e0fef39cfc8dd1bb7a556f1347a70614abd4d4d7fc69ee4bd37ffc0085fb6",
       "game.js": "3badce962ca17fcb15f8843c4bb19abe8f7be8d3e84f2569e3edc7935aa40b42"
     },
-    "bytes": 830210,
-    "sha256": "7804e005ac1562bb59384003aa8743e085468e306511dad9d848937dd5f7102c"
+    "bytes": 936318,
+    "sha256": "73457eeb5412f3538e40887cc348f2b84c2280ac52810250c8affc26c27b9fea"
   },
   "css": {
     "sources": [

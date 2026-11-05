@@ -1,6 +1,6 @@
-/* Mobile casting policy, scoped to the first 16 preparation forms and five v0.47 forms. */
+/* Mobile casting policy, scoped to the previously tested forms and ten v0.54 forms. */
 (function(){
- const keys=new Set(['naruto_shippuden','sasuke','sakura','kakashi','original_hiri','itachi','pain','konan','obito','deidara','madara','orochimaru','kisame','kakuzu','gaara','temari','shikamaru','ino','choji','sai','hidan']);
+ const keys=new Set(['naruto_shippuden','sasuke','sakura','kakashi','original_hiri','itachi','pain','konan','obito','deidara','madara','orochimaru','kisame','kakuzu','gaara','temari','shikamaru','ino','choji','sai','hidan','asuma','shino','tenten','kiba','kurenai','kabuto','yamato','zabuza','kimimaro','minato']);
  const keyOf=a=>a&&s&&a===s.p?s.mainKey:a?.profile?.key;
  const enabled=a=>keys.has(keyOf(a));
  // A circular stick preserves direction even when the finger leaves its ring.

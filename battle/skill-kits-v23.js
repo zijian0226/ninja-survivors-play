@@ -1,4 +1,4 @@
-/* Kits retain separate animation and name review gates. */
+/* Source-linked kits, main upgrades only. */
 window.SKILL_KITS = {
   "naruto_shippuden": {
     "key": "naruto_shippuden",
@@ -5657,5 +5657,1294 @@ window.SKILL_KITS = {
     "artBatch": "0.47",
     "attributeNote": "每形态单属性游戏定位。",
     "sourceNote": "来源帧重编排适配俯视玩法；※为游戏化组合招式，不代表官方独立术名。"
+  },
+  "asuma": {
+    "key": "asuma",
+    "family": "asuma",
+    "sprite": "v54_asuma",
+    "art": "asuma",
+    "name": "猿飞阿斯玛",
+    "officialId": "chara045",
+    "attribute": "风",
+    "hp": 700,
+    "passive": "风遁查克拉刀：近战忍术伤害提高10%。",
+    "skills": {
+      "飞燕": 1,
+      "火遁·灰积烧": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "风遁查克拉刀",
+        "text": "近战忍术伤害提高10%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "飞燕",
+        "text": "挥动风遁查克拉刀，近身连续切割敌群。",
+        "kind": "melee",
+        "element": "wind",
+        "range": 105,
+        "radius": 70,
+        "damage": 155,
+        "cd": 4,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "飞燕",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "火遁·灰积烧",
+        "text": "释放灰烟后点燃，持续造成范围伤害并灼烧。",
+        "kind": "area",
+        "element": "fire",
+        "range": 300,
+        "radius": 86,
+        "damage": 185,
+        "cd": 8,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "火遁·灰积烧",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "burn",
+        "statusDuration": 2
+      },
+      "ultimate": {
+        "name": "查克拉刀连斩※",
+        "text": "连续挥动查克拉双刀，攻击近身大片敌群。",
+        "kind": "melee",
+        "element": "wind",
+        "range": 115,
+        "radius": 100,
+        "damage": 420,
+        "cd": 27,
+        "duration": 2.2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "查克拉刀连斩※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch54": true,
+    "artBatch": "0.54",
+    "sourceNote": "来源像素重编排；※为游戏化组合招式。"
+  },
+  "shino": {
+    "key": "shino",
+    "family": "shino",
+    "sprite": "v54_shino",
+    "art": "shino",
+    "name": "油女志乃",
+    "officialId": "chara043",
+    "attribute": "土",
+    "hp": 700,
+    "passive": "寄坏虫：忍术命中时缩短自身奥义冷却0.3秒，每0.8秒最多触发一次。",
+    "skills": {
+      "虫分身之术": 1,
+      "寄坏虫攻击※": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "寄坏虫",
+        "text": "忍术命中时缩短自身奥义冷却0.3秒，每0.8秒最多触发一次。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "虫分身之术",
+        "text": "虫群组成短暂分身，向前侵蚀目标区域。",
+        "kind": "area",
+        "element": "insect",
+        "range": 280,
+        "radius": 75,
+        "damage": 130,
+        "cd": 6,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "虫分身之术",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "寄坏虫攻击※",
+        "text": "寄坏虫群穿行并持续攻击，命中减速2秒。",
+        "kind": "projectile",
+        "element": "insect",
+        "range": 320,
+        "radius": 78,
+        "damage": 170,
+        "cd": 7,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "寄坏虫攻击※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 2
+      },
+      "ultimate": {
+        "name": "虫群围困※",
+        "text": "虫群环绕围困区域，持续造成伤害并减速2秒。",
+        "kind": "area",
+        "element": "insect",
+        "range": 320,
+        "radius": 108,
+        "damage": 370,
+        "cd": 29,
+        "duration": 2.2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "虫群围困※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 2
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch54": true,
+    "artBatch": "0.54",
+    "sourceNote": "来源像素重编排；※为游戏化组合招式。"
+  },
+  "tenten": {
+    "key": "tenten",
+    "family": "tenten",
+    "sprite": "v54_tenten",
+    "art": "tenten",
+    "name": "天天",
+    "officialId": "chara030",
+    "attribute": "阳",
+    "hp": 700,
+    "passive": "忍具精通：忍具技能伤害提高10%。",
+    "skills": {
+      "双升龙": 1,
+      "忍具散射※": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "忍具精通",
+        "text": "忍具技能伤害提高10%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "双升龙",
+        "text": "双路盘旋忍具向上展开，持续攻击目标区域。",
+        "kind": "area",
+        "element": "weapon",
+        "range": 310,
+        "radius": 90,
+        "damage": 145,
+        "cd": 6,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "双升龙",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "忍具散射※",
+        "text": "向目标散射苦无、手里剑和刀具。",
+        "kind": "projectile",
+        "element": "weapon",
+        "range": 340,
+        "radius": 85,
+        "damage": 170,
+        "cd": 7,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "忍具散射※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "ultimate": {
+        "name": "忍具连环阵※",
+        "text": "忍具围成连环阵，持续切割大范围敌群。",
+        "kind": "area",
+        "element": "weapon",
+        "range": 340,
+        "radius": 112,
+        "damage": 380,
+        "cd": 28,
+        "duration": 2.2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "忍具连环阵※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch54": true,
+    "artBatch": "0.54",
+    "sourceNote": "来源像素重编排；※为游戏化组合招式。",
+    "personal": 1.1
+  },
+  "kiba": {
+    "key": "kiba",
+    "family": "kiba",
+    "sprite": "v54_kiba",
+    "art": "kiba",
+    "name": "犬冢牙",
+    "officialId": "chara041",
+    "attribute": "阳",
+    "hp": 700,
+    "passive": "赤丸协同：赤丸协同使牙的忍术伤害提高10%。",
+    "skills": {
+      "兽人分身": 1,
+      "牙通牙": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "赤丸协同",
+        "text": "赤丸协同使牙的忍术伤害提高10%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "兽人分身",
+        "text": "赤丸与兽化协同身影交错攻击目标区域。",
+        "kind": "area",
+        "element": "physical",
+        "range": 230,
+        "radius": 75,
+        "damage": 145,
+        "cd": 6,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "兽人分身",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "牙通牙",
+        "text": "与赤丸旋转突袭，持续攻击近身区域。",
+        "kind": "melee",
+        "element": "physical",
+        "range": 110,
+        "radius": 85,
+        "damage": 190,
+        "cd": 7,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "牙通牙",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "ultimate": {
+        "name": "牙狼牙",
+        "text": "双头狼与旋转牙击连续攻击近身敌群。",
+        "kind": "melee",
+        "element": "physical",
+        "range": 125,
+        "radius": 105,
+        "damage": 420,
+        "cd": 27,
+        "duration": 2.2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "牙狼牙",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch54": true,
+    "artBatch": "0.54",
+    "sourceNote": "来源像素重编排；※为游戏化组合招式。",
+    "personal": 1.1
+  },
+  "kurenai": {
+    "key": "kurenai",
+    "family": "kurenai",
+    "sprite": "v54_kurenai",
+    "art": "kurenai",
+    "name": "夕日红",
+    "officialId": "new13",
+    "attribute": "阴",
+    "hp": 700,
+    "passive": "幻术精通：忍术命中杂兵有15%概率使其迷惑1秒；同一敌人2秒内最多触发一次。",
+    "skills": {
+      "魔幻·树缚杀": 1,
+      "花瓣幻术（动画）": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "幻术精通",
+        "text": "忍术命中杂兵有15%概率使其迷惑1秒；同一敌人2秒内最多触发一次。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "魔幻·树缚杀",
+        "text": "幻术枯木自目标处长出，束缚杂兵1.2秒；首领仅减速。",
+        "kind": "area",
+        "element": "yin",
+        "range": 300,
+        "radius": 75,
+        "damage": 120,
+        "cd": 7,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "魔幻·树缚杀",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 1.2
+      },
+      "secondary": {
+        "name": "花瓣幻术（动画）",
+        "text": "花瓣幻境围绕目标旋转，使杂兵迷惑1.4秒；首领仅减速。",
+        "kind": "area",
+        "element": "yin",
+        "range": 310,
+        "radius": 90,
+        "damage": 155,
+        "cd": 8,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "花瓣幻术（动画）",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "charm",
+        "statusDuration": 1.4
+      },
+      "ultimate": {
+        "name": "树缚幻术连杀※",
+        "text": "多处幻树围困并以花瓣攻击，束缚杂兵1.5秒；首领仅减速。",
+        "kind": "area",
+        "element": "yin",
+        "range": 320,
+        "radius": 110,
+        "damage": 365,
+        "cd": 30,
+        "duration": 2.2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "树缚幻术连杀※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 1.5
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch54": true,
+    "artBatch": "0.54",
+    "sourceNote": "来源像素重编排；※为游戏化组合招式。"
+  },
+  "kabuto": {
+    "key": "kabuto",
+    "family": "kabuto",
+    "sprite": "v54_kabuto",
+    "art": "kabuto",
+    "name": "药师兜",
+    "officialId": "chara117",
+    "attribute": "阴",
+    "hp": 720,
+    "passive": "医疗忍术：存活时每秒恢复4点生命；主控和支援均适用。",
+    "skills": {
+      "查克拉手术刀": 1,
+      "死魂之术": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "医疗忍术",
+        "text": "存活时每秒恢复4点生命；主控和支援均适用。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "查克拉手术刀",
+        "text": "双手凝聚查克拉手术刀，持续切割近身敌人。",
+        "kind": "melee",
+        "element": "chakra",
+        "range": 100,
+        "radius": 72,
+        "damage": 150,
+        "cd": 5,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "查克拉手术刀",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "死魂之术",
+        "text": "操控死魂人形连续攻击目标范围。",
+        "kind": "area",
+        "element": "yin",
+        "range": 290,
+        "radius": 82,
+        "damage": 170,
+        "cd": 8,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "死魂之术",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "ultimate": {
+        "name": "阴愈伤灭",
+        "text": "以医疗查克拉覆盖自身，回复18%最大生命；不造成伤害。",
+        "kind": "area",
+        "element": "yang",
+        "range": 310,
+        "radius": 70,
+        "damage": 0,
+        "cd": 30,
+        "duration": 2.2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "阴愈伤灭",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "healFraction": 0.18,
+        "noDamage": true
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch54": true,
+    "artBatch": "0.54",
+    "sourceNote": "来源像素重编排；※为游戏化组合招式。"
+  },
+  "yamato": {
+    "key": "yamato",
+    "family": "yamato",
+    "sprite": "v54_yamato",
+    "art": "yamato",
+    "name": "大和",
+    "officialId": "chara047",
+    "attribute": "土",
+    "hp": 700,
+    "passive": "木遁控制：忍术命中杂兵有15%概率束缚0.6秒；同一敌人2秒内最多触发一次。",
+    "skills": {
+      "木遁·木锭壁": 1,
+      "木遁·四柱牢之术": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "木遁控制",
+        "text": "忍术命中杂兵有15%概率束缚0.6秒；同一敌人2秒内最多触发一次。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "木遁·木锭壁",
+        "text": "木壁从目标两侧升起，持续攻击并减速2秒；演出不会形成地图障碍。",
+        "kind": "area",
+        "element": "wood",
+        "range": 280,
+        "radius": 82,
+        "damage": 130,
+        "cd": 7,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "木遁·木锭壁",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 2
+      },
+      "secondary": {
+        "name": "木遁·四柱牢之术",
+        "text": "木柱与枝条围困敌群，束缚杂兵1.2秒；首领仅减速。",
+        "kind": "area",
+        "element": "wood",
+        "range": 300,
+        "radius": 84,
+        "damage": 165,
+        "cd": 8,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "木遁·四柱牢之术",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 1.4
+      },
+      "ultimate": {
+        "name": "木遁·范围封锁※",
+        "text": "木枝在大范围交错生长，束缚杂兵1.5秒；首领仅减速。",
+        "kind": "area",
+        "element": "wood",
+        "range": 320,
+        "radius": 115,
+        "damage": 380,
+        "cd": 29,
+        "duration": 2.2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "木遁·范围封锁※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 1.5
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch54": true,
+    "artBatch": "0.54",
+    "sourceNote": "来源像素重编排；※为游戏化组合招式。"
+  },
+  "zabuza": {
+    "key": "zabuza",
+    "family": "zabuza",
+    "sprite": "v54_zabuza",
+    "art": "zabuza",
+    "name": "桃地再不斩",
+    "officialId": "chara073",
+    "attribute": "水",
+    "hp": 700,
+    "passive": "无声杀人术：对减速或被束缚目标造成的忍术伤害提高15%。",
+    "skills": {
+      "水遁·水龙弹之术": 1,
+      "水遁·水牢之术": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "无声杀人术",
+        "text": "对减速或被束缚目标造成的忍术伤害提高15%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "水遁·水龙弹之术",
+        "text": "水龙在目标处卷起，持续伤害并减速2秒。",
+        "kind": "projectile",
+        "element": "water",
+        "range": 330,
+        "radius": 82,
+        "damage": 170,
+        "cd": 6,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "水遁·水龙弹之术",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 2
+      },
+      "secondary": {
+        "name": "水遁·水牢之术",
+        "text": "水流形成牢笼，束缚杂兵1.3秒；首领仅减速。",
+        "kind": "area",
+        "element": "water",
+        "range": 300,
+        "radius": 78,
+        "damage": 140,
+        "cd": 8,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "水遁·水牢之术",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 1.4
+      },
+      "ultimate": {
+        "name": "雾隐无声连斩※",
+        "text": "雾气与斩首大刀斩影连续攻击近身区域，命中减速2秒。",
+        "kind": "melee",
+        "element": "physical",
+        "range": 125,
+        "radius": 110,
+        "damage": 420,
+        "cd": 28,
+        "duration": 2.2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "雾隐无声连斩※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 2
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch54": true,
+    "artBatch": "0.54",
+    "sourceNote": "来源像素重编排；※为游戏化组合招式。"
+  },
+  "kimimaro": {
+    "key": "kimimaro",
+    "family": "kimimaro",
+    "sprite": "v54_kimimaro",
+    "art": "kimimaro",
+    "name": "君麻吕",
+    "officialId": "chara120",
+    "attribute": "阳",
+    "hp": 800,
+    "passive": "尸骨脉：自身受到的伤害降低8%。",
+    "skills": {
+      "柳之舞": 1,
+      "椿之舞": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "尸骨脉",
+        "text": "自身受到的伤害降低8%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "柳之舞",
+        "text": "骨刃横向连斩，持续攻击近身敌群。",
+        "kind": "melee",
+        "element": "bone",
+        "range": 105,
+        "radius": 75,
+        "damage": 155,
+        "cd": 5,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "柳之舞",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "椿之舞",
+        "text": "骨刃前刺配合旋斩，攻击近身范围。",
+        "kind": "melee",
+        "element": "bone",
+        "range": 115,
+        "radius": 86,
+        "damage": 195,
+        "cd": 7,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "椿之舞",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "ultimate": {
+        "name": "早蕨之舞",
+        "text": "多根骨刺从目标区域生长，持续造成大范围伤害。",
+        "kind": "area",
+        "element": "bone",
+        "range": 310,
+        "radius": 115,
+        "damage": 410,
+        "cd": 29,
+        "duration": 2.2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "早蕨之舞",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch54": true,
+    "artBatch": "0.54",
+    "sourceNote": "来源像素重编排；※为游戏化组合招式。",
+    "reduction": 0.08
+  },
+  "minato": {
+    "key": "minato",
+    "family": "minato",
+    "sprite": "v54_minato",
+    "art": "minato",
+    "name": "波风水门",
+    "officialId": "chara055",
+    "attribute": "风",
+    "hp": 700,
+    "passive": "飞雷神标记：忍术命中留下4秒标记，后续忍术对标记目标伤害提高12%。",
+    "skills": {
+      "飞雷神之术": 1,
+      "螺旋丸": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "飞雷神标记",
+        "text": "忍术命中留下4秒标记，后续忍术对标记目标伤害提高12%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "飞雷神之术",
+        "text": "以飞雷神苦无和金色闪光突袭目标区域，附加标记；本版不强制改变玩家位置。",
+        "kind": "area",
+        "element": "space",
+        "range": 260,
+        "radius": 76,
+        "damage": 155,
+        "cd": 6,
+        "duration": 1.4,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "飞雷神之术",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "螺旋丸",
+        "text": "靠近敌人释放螺旋丸，漩涡查克拉持续攻击。",
+        "kind": "melee",
+        "element": "rasengan",
+        "range": 100,
+        "radius": 78,
+        "damage": 190,
+        "cd": 7,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "螺旋丸",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "ultimate": {
+        "name": "飞雷神连击※",
+        "text": "飞雷神术式展开，多道苦无与金色斩影连续追击。",
+        "kind": "area",
+        "element": "space",
+        "range": 320,
+        "radius": 110,
+        "damage": 425,
+        "cd": 29,
+        "duration": 2.2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "飞雷神连击※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch54": true,
+    "artBatch": "0.54",
+    "sourceNote": "来源像素重编排；※为游戏化组合招式。"
   }
 };
