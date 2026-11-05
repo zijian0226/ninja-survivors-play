@@ -36,11 +36,17 @@ window.HomePortrait=(function(){
     }
    }
   }
+  function visibleHeadBox(){
+   const hb=f.headBox;if(!f.rotationDeg)return hb;
+   const angle=f.rotationDeg*Math.PI/180,c=Math.cos(angle),sn=Math.sin(angle),w=img.naturalWidth,h=img.naturalHeight,cx=art.head[0]*w,cy=art.head[1]*h;
+   const points=[[hb[0],hb[1]],[hb[2],hb[1]],[hb[0],hb[3]],[hb[2],hb[3]]].map(([x,y])=>[cx+c*(x*w-cx)-sn*(y*h-cy),cy+sn*(x*w-cx)+c*(y*h-cy)]);
+   return [Math.min(...points.map(p=>p[0]))/w,Math.min(...points.map(p=>p[1]))/h,Math.max(...points.map(p=>p[0]))/w,Math.max(...points.map(p=>p[1]))/h];
+  }
   function apply(){
    if(!ready||!stage.isConnected)return;
    const screen=frame();Object.assign(stage.style,{left:screen.left+'px',top:screen.top+'px',width:screen.width+'px',height:screen.height+'px'});
    const w=stage.clientWidth,h=stage.clientHeight;if(!w||!h)return;restore(w,h);
-   const header=document.getElementById('topbar').getBoundingClientRect().bottom-screen.top,bs=baseScale(w,h),hb=f.headBox;
+   const header=document.getElementById('topbar').getBoundingClientRect().bottom-screen.top,bs=baseScale(w,h),hb=visibleHeadBox();
    const hw=(hb[2]-hb[0])*img.naturalWidth,hh=(hb[3]-hb[1])*img.naturalHeight;
    view.z=clamp(view.z,.5,Math.min(1.7,(w-32)/(hw*bs),(h*.67-header-12)/(hh*bs)));
    const scale=bs*view.z,bw=box.w*scale,bh=box.h*scale;
@@ -53,7 +59,7 @@ window.HomePortrait=(function(){
    const top=(hb[1]*img.naturalHeight-box.y)*scale,bottom=(hb[3]*img.naturalHeight-box.y)*scale;
    const bx=clamp(view.x*w-bw/2,16-left,w-16-right),by=clamp(view.y*h-bh/2,header+12-top,h*.67-bottom);
    view.x=(bx+bw/2)/w;view.y=(by+bh/2)/h;
-   Object.assign(img.style,{width:img.naturalWidth*scale+'px',height:img.naturalHeight*scale+'px',transform:`translate(${bx-box.x*scale}px,${by-box.y*scale}px)`});
+   Object.assign(img.style,{width:img.naturalWidth*scale+'px',height:img.naturalHeight*scale+'px',transformOrigin:`${art.head[0]*100}% ${art.head[1]*100}%`,transform:`translate(${bx-box.x*scale}px,${by-box.y*scale}px) rotate(${f.rotationDeg||0}deg)`});
    stage.dataset.ready='true';stage.dataset.custom=String(custom);
   }
   function save(){if(!ready)return;Save.data.homePortraits||={};Save.data.homePortraits[key]={...view,layout:4,framing:f.revision,custom,art:art.file};Save.save();}

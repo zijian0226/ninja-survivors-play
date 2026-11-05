@@ -117,7 +117,6 @@
 .page-roster .ninja-card{min-height:0;aspect-ratio:.60}
 .ninja-detail-hero.is-group img.ninja-detail-portrait{width:94%;height:87%;left:3%;top:3%;transform:none;object-fit:contain}
 
-/* A small head overlap sits inside each cell's reserved area, without recropping art. */
-.page-roster .ninja-card-frame{top:max(12px,var(--frame-top,12px))}
-.page-roster .ninja-card>.ninja-nature{top:calc(max(12px,var(--frame-top,12px)) + 4px)}
-.page-roster .ninja-card-rarity{top:calc(max(12px,var(--frame-top,12px)) + 7px)}
+/* Kimimaro's diagonal source pose is individually balanced around the head. */
+.page-roster .ninja-card[data-id="kimimaro"] .ninja-card-portrait img{transform-origin:50% 25.5%;transform:rotate(-16deg)}
+.ninja-detail-hero[data-portrait-id="kimimaro"] img.ninja-detail-portrait{transform-origin:calc(var(--head-x) * 100%) calc(var(--head-y) * 100%);transform:translateX(calc(-100% * var(--head-x))) rotate(-16deg)}
