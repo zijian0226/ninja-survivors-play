@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v47-skills';
+const VERSION = 'v48-mobile-scroll';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -14,27 +14,27 @@ const PRECACHE = [
   './index.html',
   './play.html',
   './manifest.webmanifest',
-  './css/style.css?v=skills47',
-  './src/data/characters.js?v=skills47',
-  './src/data/skills.js?v=skills47',
-  './src/data/enemies.js?v=skills47',
-  './src/data/upgrades.js?v=skills47',
-  './src/art/pixelArt.js?v=skills47',
-  './src/save.js?v=skills47',
-  './src/audio.js?v=skills47',
-  './src/sprites.js?v=skills47',
-  './src/battle-bridge.js?v=skills47',
-  './src/data/roster-current.js?v=skills47',
-  './src/data/phase-one.js?v=skills47',
-  './src/data/character-packs.js?v=skills47',
-  './css/current-ui.css?v=skills47',
-  './css/roster.css?v=skills47',
-  './src/data/portrait-layout.js?v=skills47',
-  './src/roster-ui.js?v=skills47',
-  './src/home-portrait.js?v=skills47',
-  './src/ui.js?v=skills47',
-  './src/mobile.js?v=skills47',
-  './src/main.js?v=skills47',
+  './css/style.css?v=ui48',
+  './src/data/characters.js?v=ui48',
+  './src/data/skills.js?v=ui48',
+  './src/data/enemies.js?v=ui48',
+  './src/data/upgrades.js?v=ui48',
+  './src/art/pixelArt.js?v=ui48',
+  './src/save.js?v=ui48',
+  './src/audio.js?v=ui48',
+  './src/sprites.js?v=ui48',
+  './src/battle-bridge.js?v=ui48',
+  './src/data/roster-current.js?v=ui48',
+  './src/data/phase-one.js?v=ui48',
+  './src/data/character-packs.js?v=ui48',
+  './css/current-ui.css?v=ui48',
+  './css/roster.css?v=ui48',
+  './src/data/portrait-layout.js?v=ui48',
+  './src/roster-ui.js?v=ui48',
+  './src/home-portrait.js?v=ui48',
+  './src/ui.js?v=ui48',
+  './src/mobile.js?v=ui48',
+  './src/main.js?v=ui48',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
@@ -75,8 +75,8 @@ self.addEventListener('activate', event => {
         channel.port1.onmessage=event=>done(event.data);
         try{client.postMessage({type:'NINJA_CLIENT_STATUS'},[channel.port2]);}catch{done(null);}
       });
-      if(status?.release==='skills47')return;
-      url.pathname=SCOPE+'play.html';url.searchParams.set('release','skills47');
+      if(status?.release==='ui48')return;
+      url.pathname=SCOPE+'play.html';url.searchParams.set('release','ui48');
       // Navigation must run after activation has settled; awaiting it inside activate deadlocks.
       let tries=0;
       const navigate=()=>{

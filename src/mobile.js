@@ -27,7 +27,10 @@ window.Mobile = (function () {
   function scrollableAncestor(el) {
     for (; el && el !== doc.body && el.nodeType === 1; el = el.parentNode) {
       if (el.id === 'battle') return null;               // 战斗画面永不滚动
-      if (el.id === 'ui-main' || (el.classList && el.classList.contains('md-box'))) return el;
+      if (el.id === 'ui-main' || el.classList?.contains('md-body') || el.classList?.contains('md-box')) {
+        const overflow = getComputedStyle(el).overflowY;
+        if (/auto|scroll/.test(overflow) && el.scrollHeight > el.clientHeight + 1) return el;
+      }
     }
     return null;
   }
@@ -53,6 +56,7 @@ window.Mobile = (function () {
       if (!sc) { e.preventDefault(); return; }
       // 在可滚动区域的顶/底端继续拖动会把滚动链传给 body（iOS 橡皮筋），在边界处阻止
       const y = e.touches[0] ? e.touches[0].clientY : 0, dy = y - startY;
+      startY = y; // Follow the latest movement so a held finger can reverse at either edge.
       const atTop = sc.scrollTop <= 0, atBottom = sc.scrollTop + sc.clientHeight >= sc.scrollHeight - 1;
       if ((atTop && dy > 0) || (atBottom && dy < 0)) e.preventDefault();
     }, { passive: false });

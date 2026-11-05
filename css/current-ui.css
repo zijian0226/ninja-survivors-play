@@ -60,3 +60,8 @@
 /* Keep portrait reset above the banner even on narrow, short phone viewports. */
 .lobby-banner{height:64px}.lbn-txt{min-width:0}.lbn-txt b,.lbn-txt small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .portrait-tools{bottom:190px;z-index:3}
+
+/* The body owns modal scrolling; the header and actions stay reachable on phones. */
+#modal .md-box{overflow:hidden}
+#modal .md-title,#modal .md-btns{flex-shrink:0}
+#modal .md-body{flex:1 1 auto;-webkit-overflow-scrolling:touch;touch-action:pan-y}
