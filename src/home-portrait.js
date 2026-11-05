@@ -20,11 +20,12 @@ window.HomePortrait = (function () {
   const baseHeight=(w,h)=>Math.min(h*1.15,w*2.15);
   const defaultView=()=>{const r=frame();return {z:1,x:.5,y:.11+baseHeight(r.width,r.height)/r.height/2};};
   view=defaultView();
-  const saved=Save.data.homePortraits?.[key];
+  const saved=Save.data.homePortraits?.[key],art=NinjaArt.get(key);let centerHead=true;
   if(saved&&['z','x','y'].every(k=>Number.isFinite(saved[k]))){
-   if(saved.layout===2)view={z:saved.z,x:saved.x,y:saved.y};
-   else if(Math.abs(saved.z-1)>1e-5||Math.abs(saved.x-.5)>1e-5||Math.abs(saved.y-.925)>1e-5){
-    const r=frame();view={z:saved.z*1.6*r.height/baseHeight(r.width,r.height),x:saved.x,y:saved.y};
+   if(saved.layout===3&&saved.art===art.file){view={z:saved.z,x:saved.x,y:saved.y};centerHead=false;}
+   else if(saved.layout>=2){view={z:saved.z,x:.5,y:saved.y};}
+   else if(Math.abs(saved.z-1)>1e-5||Math.abs(saved.y-.925)>1e-5){
+    const r=frame();view={z:saved.z*1.6*r.height/baseHeight(r.width,r.height),x:.5,y:saved.y};
    }
   }
   function geometry(){const w=stage.clientWidth,h=stage.clientHeight;return {w,h,scale:baseHeight(w,h)*view.z/box.h};}
@@ -35,14 +36,17 @@ window.HomePortrait = (function () {
    view.z=clamp(view.z,.5,1.7);const {w,h,scale}=geometry();if(!w||!h)return;
    const bw=box.w*scale,bh=box.h*scale;
    // Small art stays inside; enlarged art retains limited headroom below the HUD.
-   const bx=clamp(view.x*w-bw/2,Math.min(0,w-bw),Math.max(0,w-bw));
-   const by=clamp(view.y*h-bh/2,Math.min(0,h-bh),Math.max(h*.15,h-bh));
+   const hx=(art.head[0]*img.naturalWidth-box.x)*scale,hy=(art.head[1]*img.naturalHeight-box.y)*scale;
+   if(centerHead){view.x=(w/2-hx+bw/2)/w;view.y=(h*.23-hy+bh/2)/h;centerHead=false;}
+   const bx=clamp(view.x*w-bw/2,20-hx,w-20-hx);
+   const header=document.getElementById('topbar').getBoundingClientRect();
+   const by=clamp(view.y*h-bh/2,Math.min(h*.20,header.bottom-screen.top+12)-hy,h*.65-hy);
    view.x=(bx+bw/2)/w;view.y=(by+bh/2)/h;
    img.style.width=img.naturalWidth*scale+'px';img.style.height=img.naturalHeight*scale+'px';
    img.style.transform=`translate(${bx-box.x*scale}px,${by-box.y*scale}px)`;
    stage.dataset.ready='true';
   }
-  function save(){if(!ready)return;Save.data.homePortraits||={};Save.data.homePortraits[key]={...view,layout:2};Save.save();}
+  function save(){if(!ready)return;Save.data.homePortraits||={};Save.data.homePortraits[key]={...view,layout:3,art:art.file};Save.save();}
   function anchor(){
    const p=[...points.values()],r=stage.getBoundingClientRect();
    const center=p.length>1?{x:(p[0].x+p[1].x)/2-r.left,y:(p[0].y+p[1].y)/2-r.top}:{x:p[0]?.x-r.left,y:p[0]?.y-r.top};
@@ -61,8 +65,8 @@ window.HomePortrait = (function () {
   });
   function end(e){if(!points.delete(e.pointerId))return;if(points.size)anchor();save();}
   for(const event of ['pointerup','pointercancel','lostpointercapture'])stage.addEventListener(event,end);
-  stage.parentElement.querySelector('[data-portrait-reset]').onclick=()=>{view=defaultView();apply();save();};
-  function loaded(){if(!img.naturalWidth)return;box=artworkBounds(img);ready=true;apply();}
+  stage.parentElement.querySelector('[data-portrait-reset]').onclick=()=>{view=defaultView();centerHead=true;apply();save();};
+  function loaded(){if(!img.naturalWidth)return;const b=art.bounds;box={x:b[0],y:b[1],w:b[2]-b[0],h:b[3]-b[1]};ready=true;apply();}
   img.addEventListener('load',loaded);if(img.complete)loaded();
   const observer=new ResizeObserver(()=>{apply();if(points.size)anchor();});observer.observe(document.getElementById('app'));
   return ()=>{save();observer.disconnect();};

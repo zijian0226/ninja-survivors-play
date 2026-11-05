@@ -1,0 +1,63 @@
+/* Portrait phone collection: ink, restrained metal accents, large character art. */
+.page-roster{background:#141a26;color:#ece9e2;--archive-gold:#d4bc95}
+.ninja-archive{min-height:100%;padding:24px 16px 28px;background:radial-gradient(ellipse at 88% 2%,#3e333733,transparent 48%),linear-gradient(145deg,#1b2432,#111721 75%)}
+.ninja-archive-head{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;padding:0 2px 22px;border-bottom:1px solid #cdb48b25}
+.ninja-archive-head small{font:500 8px/1.5 system-ui;letter-spacing:3px;color:#ad9d86}
+.ninja-archive-head h2{font:500 29px/1.3 'Songti SC','Noto Serif SC',serif;letter-spacing:4px;margin:5px 0 0}
+.ninja-archive-head>span{font-size:10px;color:#a5a9b2;white-space:nowrap;padding-bottom:4px}.ninja-archive-head b{font:400 20px Georgia,serif;color:#d8c3a5;margin-right:3px}
+.ninja-filter-bar{position:sticky;top:0;z-index:4;display:flex;gap:5px;margin:0 -16px;padding:12px 16px;overflow-x:auto;scrollbar-width:none;background:#151c29f5;border-bottom:1px solid #ffffff0d;touch-action:pan-x}
+.ninja-filter-bar::-webkit-scrollbar{display:none}
+.ninja-filter-bar button{flex:0 0 auto;min-height:44px;padding:0 12px;border:1px solid #ffffff12;border-radius:3px;background:#ffffff03;color:#939ba8;font:500 12px system-ui;display:flex;align-items:center;gap:6px}
+.ninja-filter-bar button.active{color:#f4e2c5;border-color:#d3b68b88;background:#d3b68b12}
+.ninja-filter-bar i{font:400 12px serif;font-style:normal;color:var(--nature);border:1px solid currentColor;border-radius:50%;width:21px;height:21px;display:grid;place-items:center}.ninja-filter-bar span{font-size:11px}
+.ninja-list-caption{display:flex;justify-content:space-between;align-items:center;padding:16px 1px 11px;color:#aeb4bd;font-size:10px;letter-spacing:1px}
+.page-roster .ninja-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:0;margin:0}
+.page-roster .ninja-card{position:relative;min-width:0;min-height:160px;aspect-ratio:.64;margin:0;border:1px solid #c7c2b52e;border-radius:3px;overflow:hidden;cursor:pointer;background:#253041;background:radial-gradient(ellipse at 50% 25%,color-mix(in srgb,var(--nature) 25%,#263142),#182130 78%);box-shadow:0 4px 12px #0003;isolation:isolate}
+.page-roster .ninja-card:active{transform:scale(.98)}.page-roster .ninja-card:focus-visible{outline:2px solid #d5bc94;outline-offset:3px}
+.ninja-card-portrait{position:absolute;inset:0;pointer-events:none}.ninja-card-portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.ninja-card-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#0c121724,transparent 35%,#10162212 50%,#0c121aee 100%)}
+.ninja-nature{color:var(--nature);border:1px solid currentColor;width:23px;height:23px;border-radius:50%;display:inline-grid;place-items:center;font:500 12px/1 'Songti SC',serif;background:#16202bd9;flex:none}
+.ninja-card>.ninja-nature{position:absolute;left:7px;top:7px}
+.page-roster .ninja-card .rc-main{position:absolute;top:9px;right:5px;bottom:auto;left:auto;font:500 8px/1.5 system-ui;letter-spacing:0;padding:1px 4px;background:#d9c29fdf;border:0;border-radius:1px;color:#21252c}
+.ninja-card-caption{position:absolute;left:9px;right:7px;bottom:10px;text-align:left;pointer-events:none}
+.ninja-card-caption>span{display:block;font:400 9px Georgia,serif;letter-spacing:1.5px;color:#d8bb8c;margin-bottom:5px}
+.ninja-card-caption b{display:block;font:600 13px/1.4 system-ui;color:#f5f0e8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 3px #000}
+.ninja-card-caption small{display:block;font:400 8px/1.5 system-ui;color:#afb5be;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.ninja-art-pending{position:absolute;left:0;right:0;top:52%;text-align:center;font:400 9px system-ui;color:#b7bdc6;letter-spacing:1px;text-shadow:0 1px 4px #000}
+.page-roster .ninja-locked{margin:25px 0 0;padding:14px 0 0;border:0;border-top:1px solid #cdb48b25;border-radius:0;background:none;color:#8a94a5}
+.ninja-locked summary{font:500 12px system-ui;cursor:pointer}.ninja-locked summary span{float:right;font-size:10px;font-weight:400;color:#718093}.ninja-locked p{font-size:10px;color:#788496;line-height:1.7}
+.page-roster .ninja-locked .locked-card{background:#202a38;color:#727e90;border:1px solid #ffffff07;overflow-wrap:anywhere;border-radius:2px}
+.ninja-empty{text-align:center;padding:50px 12px;color:#8793a4;font-size:12px}
+.ninja-detail{min-height:100%;background:radial-gradient(ellipse at 85% 20%,#61454b25,transparent 45%),#151c28;color:#ece9e2}
+.ninja-detail-head{position:sticky;top:0;z-index:5;display:flex;align-items:center;height:48px;padding:0 14px;background:#151c28ed;border-bottom:1px solid #cdb48b20;backdrop-filter:blur(12px)}
+.ninja-detail-head button{width:44px;height:44px;margin-left:-10px;background:none;color:#dfcbb0;font-size:24px}.ninja-detail-head>span{font:500 12px system-ui;letter-spacing:2px}.ninja-detail-head small{margin-left:auto;font:400 16px Georgia,serif;letter-spacing:2px;color:#dfc395}
+.ninja-detail-hero{position:relative;isolation:isolate;height:360px;height:clamp(300px,48dvh,420px);overflow:hidden;background:radial-gradient(ellipse at 50% 38%,#53616c69,transparent 66%),linear-gradient(160deg,#252e3b,#151c28)}
+.ninja-hero-circle{position:absolute;left:2%;top:7%;width:96%;aspect-ratio:1;border:1px solid #c1ad8c24;border-radius:50%;box-shadow:inset 0 0 0 18px #11192515,inset 0 0 0 19px #c1ad8c14;transform:rotate(-25deg)}
+.ninja-hero-circle:after{content:'';position:absolute;left:50%;top:-10%;width:1px;height:120%;background:linear-gradient(transparent,#c1ad8c35,transparent)}
+.ninja-detail-hero img.ninja-detail-portrait{position:absolute;left:50%;top:calc(18% - 145% * var(--head-y));height:145%;width:auto;max-width:none;transform:translateX(calc(-100% * var(--head-x)));filter:drop-shadow(0 5px 15px #0004);image-rendering:auto}
+.ninja-detail-hero.is-pixel img.ninja-detail-portrait{width:68%;height:74%;object-fit:contain;top:12%;left:50%;transform:translateX(-50%);image-rendering:pixelated}
+.ninja-hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,#151c2800 50%,#151c2840 70%,#151c28 100%);pointer-events:none}
+.ninja-detail-title{position:absolute;left:22px;right:22px;bottom:20px;text-shadow:0 2px 10px #0007}.ninja-detail-title>span{font:500 10px system-ui;letter-spacing:2px;color:#d9c3a0}.ninja-detail-title i{display:inline-block;width:18px;height:1px;vertical-align:middle;margin:0 8px;background:#c6ac82}
+.ninja-detail-title h2{font:500 32px/1.25 'Songti SC','Noto Serif SC',serif;letter-spacing:2px;margin:8px 0 0;color:#f4eee5}.ninja-detail-title p{font:400 11px/1.5 system-ui;letter-spacing:1px;color:#bbbcc1;margin:7px 0 0}
+.ninja-detail-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 22px;padding:4px 0 20px;border-bottom:1px solid #cdb48b26}.ninja-detail-stats small{display:block;color:#7f8b9b;font-size:10px;margin-bottom:8px}.ninja-detail-stats b{font:500 15px/1.4 system-ui;color:#e4e3e0;display:flex;align-items:center;gap:5px}.ninja-detail-stats em{font:400 11px system-ui;color:#798697;font-style:normal}
+.ninja-detail-tabs{display:flex;position:sticky;top:48px;z-index:4;padding:0 22px;background:#151c28ed;backdrop-filter:blur(12px);border-bottom:1px solid #ffffff08}.ninja-detail-tabs button{flex:1;min-height:52px;padding:0;border-bottom:2px solid transparent;background:none;color:#788497;font:500 12px system-ui;letter-spacing:2px}.ninja-detail-tabs button.active{color:#e3c79e;border-color:#d3ad77}
+.page-roster .ninja-skill-list{display:block;margin:0;padding:0 22px}.page-roster .ninja-skill{display:flex;gap:13px;align-items:flex-start;padding:19px 0;margin:0;border:0;border-bottom:1px solid #ffffff0c;background:none;border-radius:0;color:#d8dce2}
+.ninja-skill-number{display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;border:1px solid #bda17a4d;background:linear-gradient(145deg,#4d443238,#212c3b);color:#d8b581;font:400 19px 'Songti SC',serif;border-radius:3px}.ninja-skill-number img{width:34px;height:34px;object-fit:contain}
+.page-roster .ninja-skill small{font:400 9px system-ui;color:#a4937b;letter-spacing:2px;margin-bottom:5px;display:block}.ninja-skill b{font:500 14px/1.5 system-ui;letter-spacing:.3px}.page-roster .ninja-skill p{font:400 12px/1.9 system-ui;color:#a5afbd;margin:8px 0 0;overflow-wrap:anywhere}
+.ninja-role-rule{padding:14px 22px;margin:0;color:#6e7b8e;font:400 10px/1.8 system-ui}.ninja-bio{padding:23px 22px 35px;min-height:200px}.ninja-bio h3{font:500 17px 'Songti SC',serif;color:#dcc39f}.ninja-bio p{color:#a7b0bd;font:400 12px/1.9 system-ui}.ninja-bio .ninja-art-note{border-left:2px solid #bd9f70;padding-left:10px;color:#c9b38c}
+.ninja-detail-actions{display:flex;gap:10px;position:sticky;bottom:0;z-index:5;background:#151c28f5;padding:12px 18px;border-top:1px solid #cdb48b20;backdrop-filter:blur(12px)}
+.ninja-detail-actions button{flex:1;min-height:46px;background:#ffffff03;border:1px solid #b5a17d55;color:#cfc6b8;border-radius:3px;font:500 12px system-ui;letter-spacing:1px}.ninja-detail-actions button span{margin-left:7px}.ninja-detail-actions .ninja-display-action{background:linear-gradient(110deg,#cbb189,#e2cba6);border-color:#e0c69c;color:#242a33}.ninja-detail-actions button:disabled{opacity:.58;cursor:default}
+@media(max-width:350px){.ninja-archive{padding-left:12px;padding-right:12px}.ninja-filter-bar{margin-left:-12px;margin-right:-12px;padding-left:12px;padding-right:12px}.page-roster .ninja-card-grid{gap:7px}.ninja-card-caption{left:7px;right:5px}.ninja-card-caption b{font-size:12px}.ninja-detail-title h2{font-size:28px}}
+#ui-main.page-roster{touch-action:pan-x pan-y}
+/* Override the legacy 64px roster avatars for the new tall portrait cards. */
+.page-roster .ninja-card{padding:0}
+.page-roster .ninja-card .ninja-card-portrait img{display:block;width:100%;height:100%;max-width:none;max-height:none;margin:0;object-fit:cover;object-position:center}
+#ui[data-page="roster"] #topbar{background:#151e2d;box-shadow:none;border-bottom:1px solid #ffffff0a}
+#ui[data-page="roster"] #bottom-nav{background:#131b28;border-color:#ffffff14;box-shadow:none}
+#ui[data-page="roster"] .nav-btn{background:none;border-color:transparent;color:#8995a7;box-shadow:none}
+#ui[data-page="roster"] .nav-btn.active{background:#c5aa7d12;color:#dfc296;border-color:#b8a08040}
+#ui[data-page="roster"] .nav-btn img{width:24px;height:24px;opacity:.75}
+#ui[data-page="roster"] .nav-btn.active img{opacity:1}
+.ninja-filter-bar{overscroll-behavior-x:contain}
+.ninja-skill>div{min-width:0}.ninja-detail-title h2{overflow-wrap:anywhere}
+.ninja-card-caption small{min-height:12px}

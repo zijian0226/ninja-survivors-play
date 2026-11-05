@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v42-matte';
+const VERSION = 'v43-roster';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -14,23 +14,26 @@ const PRECACHE = [
   './index.html',
   './play.html',
   './manifest.webmanifest',
-  './css/style.css?v=matte42',
-  './src/data/characters.js?v=matte42',
-  './src/data/skills.js?v=matte42',
-  './src/data/enemies.js?v=matte42',
-  './src/data/upgrades.js?v=matte42',
-  './src/art/pixelArt.js?v=matte42',
-  './src/save.js?v=matte42',
-  './src/audio.js?v=matte42',
-  './src/sprites.js?v=matte42',
-  './src/battle-bridge.js?v=matte42',
-  './src/data/roster-current.js?v=matte42',
-  './src/data/character-packs.js?v=matte42',
-  './css/current-ui.css?v=matte42',
-  './src/home-portrait.js?v=matte42',
-  './src/ui.js?v=matte42',
-  './src/mobile.js?v=matte42',
-  './src/main.js?v=matte42',
+  './css/style.css?v=roster43',
+  './src/data/characters.js?v=roster43',
+  './src/data/skills.js?v=roster43',
+  './src/data/enemies.js?v=roster43',
+  './src/data/upgrades.js?v=roster43',
+  './src/art/pixelArt.js?v=roster43',
+  './src/save.js?v=roster43',
+  './src/audio.js?v=roster43',
+  './src/sprites.js?v=roster43',
+  './src/battle-bridge.js?v=roster43',
+  './src/data/roster-current.js?v=roster43',
+  './src/data/character-packs.js?v=roster43',
+  './css/current-ui.css?v=roster43',
+  './css/roster.css?v=roster43',
+  './src/data/portrait-layout.js?v=roster43',
+  './src/roster-ui.js?v=roster43',
+  './src/home-portrait.js?v=roster43',
+  './src/ui.js?v=roster43',
+  './src/mobile.js?v=roster43',
+  './src/main.js?v=roster43',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
@@ -71,8 +74,8 @@ self.addEventListener('activate', event => {
         channel.port1.onmessage=event=>done(event.data);
         try{client.postMessage({type:'NINJA_CLIENT_STATUS'},[channel.port2]);}catch{done(null);}
       });
-      if(status?.release==='matte42')return;
-      url.pathname=SCOPE+'play.html';url.searchParams.set('release','matte42');
+      if(status?.release==='roster43')return;
+      url.pathname=SCOPE+'play.html';url.searchParams.set('release','roster43');
       // Navigation must run after activation has settled; awaiting it inside activate deadlocks.
       let tries=0;
       const navigate=()=>{

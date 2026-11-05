@@ -102,6 +102,7 @@ window.UI = (function () {
   U.go = function (page, arg) {
     U.disposePortrait?.();U.disposePortrait=null;
     U.page = page;
+    $('ui').dataset.page=page;
     show('ui');
     renderTop(); renderNav();
     const m = $('ui-main');
@@ -125,7 +126,7 @@ window.UI = (function () {
       <div class="lobby" style="--c:${ch.color};--c2:${ch.color2}">
         <div class="lobby-bg"><div class="lb-grad"></div><div class="lb-rays"></div>${sealSvg('lb-seal')}
           <div class="lb-kanji">忍</div>${Array.from({ length: 8 }, (_, i) => `<i class="leaf" style="--i:${i}"></i>`).join('')}</div>
-        <div class="splash-wrap home-portrait-stage" aria-label="首页展示立绘，可拖动和双指缩放">${charImg(ch.id, 12, 'splash','draggable="false" alt="'+ch.name+'"')}</div>
+        <div class="splash-wrap home-portrait-stage" aria-label="首页展示立绘，可拖动和双指缩放">${NinjaArt.tag(ch.id,'splash')}</div>
         <div class="portrait-tools"><span>拖动调整 · 双指缩放</span><button type="button" data-portrait-reset aria-label="恢复默认上半身构图">复位</button></div>
         <div class="lobby-side">
           <button class="side-btn" data-go="roster"><img class="pix" src="${Sprites.iconURL('clone', 3)}"><span>换人</span></button>
@@ -154,39 +155,7 @@ window.UI = (function () {
 
   /* ---------- 角色 ---------- */
   function statBar(label, v, max) { return `<div class="stat"><span>${label}</span><div class="sbar"><i style="width:${Math.min(100, v / max * 100)}%"></i></div><b>${v}</b></div>`; }
-  function renderRoster(m, sel) {
-    const s = S();
-    sel = sel || U.rosterSel || s.selected;
-    U.rosterSel = sel;
-    const ch = D.charById[sel], own = s.owned[sel], w = D.weapons[ch.startSkill];
-    m.innerHTML = `
-      <div class="page-head"><h2>角色</h2><span>ROSTER · 35个形态可测试</span></div>
-      <div class="ro-detail rarbg-${ch.rarity}" style="--c:${ch.color};--c2:${ch.color2}">
-        <div class="ro-art">${sealSvg('ro-seal')}${charImg(ch.id, 8, own ? '' : 'locked-img')}</div>
-        <div class="ro-info">
-          <div class="cp-top">${rarityBadge(ch.rarity)}<span class="cp-elem">${ch.element}属性</span></div>
-          <div class="ro-name">${ch.name}<small>${ch.fullName}</small></div>
-          <div class="ro-title">${ch.title}</div>
-          ${own ? stars(own.stars) : '<span class="lock-tag">未解锁</span>'}
-          ${statBar('体力',ch.current.hp,900)}<div class="form-review">${ch.current.releaseComplete?'已核验':'已接入 · 可测试'} · ${Game.hasPack(ch.current.key)?'缓存就绪':'按需加载'} · ${(CharacterPacks.packages[ch.current.key].bytes/1048576).toFixed(2)} MB</div>
-        </div>
-        <div class="current-skill-list">${ch.current.skills.map(k=>`<article class="current-skill"><small>${k.slot}</small><b>${k.name}</b><p>${k.effect}</p></article>`).join('')}</div>
-        <p class="ro-desc">${ch.desc}</p>${Game.debug()?'<button id="roster-lab" class="pbtn">技能试放</button>':''}
-        ${own ? ((s.displaySelected||s.selected)===sel?'<button class="pbtn disabled">首页展示中</button>':'<button class="pbtn primary" id="btn-setmain">设为首页展示</button>') : '<button class="pbtn gold" data-go="summon">前往召唤解锁</button>'}
-      </div>
-      <div class="ro-grid">${D.characters.map(c => {
-        const o = s.owned[c.id];
-        return `<div class="ro-card rarbg-${c.rarity} ${c.id === sel ? 'sel' : ''} ${o ? '' : 'locked'}" data-id="${c.id}" style="--c:${c.color}">
-          <div class="rc-face">${charImg(c.id, 4)}</div>${rarityBadge(c.rarity)}
-          <div class="rc-name">${c.name}</div>${o ? stars(o.stars) : '<div class="rc-lock">🔒 未解锁</div>'}
-          ${(s.displaySelected||s.selected)===c.id?'<div class="rc-main">展示</div>':''}${Game.debug()?'<button class="ro-quick-test" data-test-unit="'+c.id+'">试放</button>':''}</div>`;
-      }).join('')}</div><details class="locked-archive"><summary>未开放图鉴形态 · ${CharacterPacks.locked.length}项（已锁定）</summary><p class="prep-copy">当前仅开放上方35个测试形态。以下图鉴条目不进入出战、招募和召唤池。</p><div class="locked-grid">${CharacterPacks.locked.map(c=>`<button disabled class="locked-card"><span>🔒</span>${c.name}</button>`).join('')}</div></details>`;
-    m.querySelectorAll('.ro-card').forEach(c => c.onclick = () => { Sfx.play('click'); renderRoster(m, c.dataset.id); bindGo(m); });
-    m.querySelectorAll('[data-test-unit]').forEach(b=>b.onclick=e=>{e.stopPropagation();show('battle');Game.start(b.dataset.testUnit,{lab:true});});
-    if($('roster-lab'))$('roster-lab').onclick=()=>{show('battle');Game.start(sel,{lab:true});};
-    const b = $('btn-setmain');
-    if (b) b.onclick = () => { Sfx.play('select'); s.displaySelected=sel; Save.save(); renderTop(); renderRoster(m, sel); bindGo(m); U.toast(ch.name+' 已设为首页展示'); };
-  }
+  function renderRoster(m, sel) { NinjaRoster.render(m, sel); }
   function bindGo(m) { m.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { Sfx.play('click'); U.go(b.dataset.go); }); }
 
   /* ---------- 召唤 ---------- */
