@@ -1,7 +1,7 @@
 /* Package loading and test access only; the original combat core stays unchanged. */
 (function(){
  if(parent===window)return;
- const RUNTIME='ninja-v54-squad50',CHANNEL='ninja-current-battle-v1';let active=false,starting=false,prepared=false,runEpoch=0,latestRequest=null,testOrder=(parent.CharacterPacks?.playable||parent.CurrentRoster?.map(u=>u.key)||[]).filter(key=>RecruitRun.get(key));
+ const RUNTIME='ninja-v56-squad64',CHANNEL='ninja-current-battle-v1';let active=false,starting=false,prepared=false,runEpoch=0,latestRequest=null,testOrder=(parent.CharacterPacks?.playable||parent.CurrentRoster?.map(u=>u.key)||[]).filter(key=>RecruitRun.get(key));
  const allowed=new Set(testOrder),jobs=new Map(),complete=new Set(),extras=new Set(),progress=new Map();
  RecruitRun.units=RecruitRun.units.filter(u=>allowed.has(u.key));
  const hinted=new URLSearchParams(location.search).get('main');if(allowed.has(hinted))RecruitRun.mainKey=hinted;
@@ -10,13 +10,13 @@
  const nativeHome=goHome,nativeFinish=finish,nativeReset=reset,nativeEnsure=SkillArt.ensure.bind(SkillArt),nativeImage=SkillArt.image.bind(SkillArt);
  goHome=function(){nativeHome();if(active){active=false;send('home');}};
  finish=function(win,reason){const valid=state==='play';nativeFinish(win,reason);if(valid&&active){active=false;send('result',{result:{win,reason,time:s.t,kills:s.kills,level:s.level,bosses:s.bossLedger.filter(x=>x==='defeated').length,debug:s.debugUsed}});}};
- // The 50 integrated forms remain selectable with debug tools switched off. Review flags remain intact.
+ // The 64 integrated forms remain selectable with debug tools switched off. Review flags remain intact.
  RecruitRun.mainOptions=()=>RecruitRun.units.filter(u=>allowed.has(u.key)&&SkillArt.isReady(u.key));
  RecruitRun.candidates=function(excluded=s?.excludedNatures||this.excluded,main=s?.mainKey||this.mainKey,owned=s?.allies||[]){const used=new Set(owned.map(a=>a.id));return this.units.filter(u=>allowed.has(u.key)&&u.key!==main&&!used.has(u.key)&&this.natures(u).length&&!this.natures(u).some(n=>excluded.includes(n)));};
  reset=function(quick=false){const u=RecruitRun.get(RecruitRun.mainKey);if(!u||!allowed.has(u.key))return;const review=u.releaseComplete;u.releaseComplete=true;try{nativeReset(quick);}finally{u.releaseComplete=review;}if(review===false&&state==='play')s.debugUsed=true;};
  function packFiles(key){const d=SKILL_ART_DATA[key],u=RecruitRun.get(key),files=new Set(),images=new Set();
   const add=(url,image=false)=>{if(url){files.add(url);if(image)images.add(url);}};
-  add(d.actor.file,true);add(d.portrait);for(const clip of Object.values(d.skills)){add(clip.file,true);add(clip.icon);if(clip.impact)add(clip.impact.file,true);if(clip.caster)add(clip.caster.file,true);}add(UltimateCue.art(u));return{files,images};
+  add(d.actor.file,true);if(d.woodActor)add(d.woodActor.file,true);add(d.portrait);for(const clip of Object.values(d.skills)){add(clip.file,true);add(clip.icon);if(clip.impact)add(clip.impact.file,true);if(clip.caster)add(clip.caster.file,true);}add(UltimateCue.art(u));return{files,images};
  }
  function mark(url){for(const [key,p]of progress)if(p.files.has(url)&&!p.done.has(url)){p.done.add(url);send('pack-loading',{key,name:RecruitRun.get(key).name,done:p.done.size,total:p.files.size});}}
  SkillArt.image=async function(url){const image=await nativeImage(url);mark(url);return image;};

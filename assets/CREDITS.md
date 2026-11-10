@@ -152,3 +152,8 @@ Ma Shan Zheng（马善政毛笔字体），Copyright 2018 The Ma Shan Zheng Proj
 - minato：CobraG6，https://www.andersonkenya1.net/files/file/61094-minato-namikaze-jus-omhy-style-naruto-series/
 
 本批未生成人物立绘。纲手预览、修罗道/畜生道素材缺口不计入可出战角色。技能为本游戏适配，来源与差异详见私有源码 docs/skills-v54/README.md。
+
+
+## v0.56 第一阶段补完
+
+新增14个战斗形态；来源、补绘及差异见 `battle/assets/CREDITS-v56.md`，私有源码 `docs/skills-v56/README.md`。保留原有立绘。

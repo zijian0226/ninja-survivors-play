@@ -1,6 +1,6 @@
-/* Mobile casting policy, scoped to the previously tested forms and ten v0.54 forms. */
+/* Mobile casting policy, scoped to the previously tested forms, v0.54 forms and fourteen v0.56 forms. */
 (function(){
- const keys=new Set(['naruto_shippuden','sasuke','sakura','kakashi','original_hiri','itachi','pain','konan','obito','deidara','madara','orochimaru','kisame','kakuzu','gaara','temari','shikamaru','ino','choji','sai','hidan','asuma','shino','tenten','kiba','kurenai','kabuto','yamato','zabuza','kimimaro','minato']);
+ const keys=new Set(['naruto_shippuden','sasuke','sakura','kakashi','original_hiri','itachi','pain','konan','obito','deidara','madara','orochimaru','kisame','kakuzu','gaara','temari','shikamaru','ino','choji','sai','hidan','asuma','shino','tenten','kiba','kurenai','kabuto','yamato','zabuza','kimimaro','minato','guy','konohamaru','tsunade','jiraiya_sage','hiruzen','hashirama','tobirama','kankuro','chiyo','pain_asura','pain_animal','killerbee_eight_tail','yugito','haku']);
  const keyOf=a=>a&&s&&a===s.p?s.mainKey:a?.profile?.key;
  const enabled=a=>keys.has(keyOf(a));
  // A circular stick preserves direction even when the finger leaves its ring.

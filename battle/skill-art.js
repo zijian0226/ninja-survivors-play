@@ -40,8 +40,8 @@ window.SkillArt={
   if(!composite&&melee)x+=a.facing*30;
   const q={actor:a,unit:u,slot,kit,clip,age:0,duration,x,y,damageX:e.x,damageY:e.y,fromX:a.x,fromY:a.y,target:e,facing:a.facing,composite,radius,damageEnd:duration*(clip.damageWindow?.[1]??.88),nextPulse:duration*(clip.damageWindow?.[0]??.15),damage:(kit.damage||38)*(u.personal||1)*boost*team*(1+(l-1)*.16),level:l,travel:kit.kind==='projectile'&&!composite?.28:0};
   if(clip.damageOffset){q.damageX=a.x+a.facing*clip.damageOffset[0];q.damageY=a.y+clip.damageOffset[1];}
-  if(composite){a.sourceMove=q;a.action.duration=duration;}if(isMain&&slot==='ultimate'&&l>=2)this.active.push({...q,age:-duration-.16,damageEnd:duration*(clip.damageWindow?.[1]??.88),nextPulse:duration*(clip.damageWindow?.[0]??.15),damage:q.damage*.65});
-  this.active.push(q);if(isMain&&l>=3&&slot!=='ultimate'&&!summon){this.active.push({...q,age:-duration-.16,damageEnd:duration*(clip.damageWindow?.[1]??.88),nextPulse:duration*(clip.damageWindow?.[0]??.15),damage:q.damage*.6});if(l>=5)this.active.push({...q,age:-duration*2-.32,damageEnd:duration*(clip.damageWindow?.[1]??.88),nextPulse:duration*(clip.damageWindow?.[0]??.15),damage:q.damage*.4});}if(this.active.length>32)this.active.shift();this.metrics.casts++;
+  if(composite){a.sourceMove=q;a.action.duration=duration;}if(isMain&&slot==='ultimate'&&l>=2&&!kit.noEcho)this.active.push({...q,age:-duration-.16,damageEnd:duration*(clip.damageWindow?.[1]??.88),nextPulse:duration*(clip.damageWindow?.[0]??.15),damage:q.damage*.65});
+  this.active.push(q);if(isMain&&l>=3&&slot!=='ultimate'&&!summon&&!kit.noEcho){this.active.push({...q,age:-duration-.16,damageEnd:duration*(clip.damageWindow?.[1]??.88),nextPulse:duration*(clip.damageWindow?.[0]??.15),damage:q.damage*.6});if(l>=5)this.active.push({...q,age:-duration*2-.32,damageEnd:duration*(clip.damageWindow?.[1]??.88),nextPulse:duration*(clip.damageWindow?.[0]??.15),damage:q.damage*.4});}if(this.active.length>32)this.active.shift();this.metrics.casts++;
   if(u.batch54&&kit.healFraction){const max=isMain?mainMaxHp():TeamSeven.maxHp(a);a.hp=Math.min(max,a.hp+max*kit.healFraction);}
   if(summon){
    if(isMain){updateClones(0,40*boost*team,TeamSeven.cooldown());}
@@ -72,14 +72,16 @@ window.SkillArt={
       if(q.unit.key==='shino'&&s.t-(q.actor.lastInsectCharge??-Infinity)>=.8){q.actor.lastInsectCharge=s.t;if(q.actor===s.p)s.ultimateCd=Math.max(0,s.ultimateCd-.3);else q.actor.ultimateCd=Math.max(0,(q.actor.ultimateCd??45)-.3);}
       if(['kurenai','yamato'].includes(q.unit.key)&&s.t-(e['passive54_'+q.unit.key]??-Infinity)>=2&&Math.random()<.15){e['passive54_'+q.unit.key]=s.t;if(e===s.boss)e.slow=Math.max(e.slow||0,.6);else if(q.unit.key==='yamato')e.skillStun=Math.max(e.skillStun||0,.6);else{e.originalCharm=Math.max(e.originalCharm||0,1);e.originalCharmAtk=e.originalCharmAtk??.3;e.originalCharmDamage=q.damage*.08;}}
      }
+     if(q.unit.key==='konohamaru'&&s.t-(q.actor.lastShadowAssist??-Infinity)>=.8&&Math.random()<.15){hit(e,damage*.2);q.actor.lastShadowAssist=s.t;}
      hit(e,damage);
-     if(q.unit.batch47||q.unit.batch54){const duration=(q.kit.statusDuration||1)*(q.unit.controlDuration||1);
+     if(q.unit.batch47||q.unit.batch54||q.unit.batch56){const duration=(q.kit.statusDuration||1)*(q.unit.controlDuration||1);
       if(q.kit.status==='root'){if(e!==s.boss)e.skillStun=Math.max(e.skillStun||0,duration);e.slow=Math.max(e.slow||0,duration);}
       if(q.kit.status==='charm'){if(e===s.boss)e.slow=Math.max(e.slow||0,duration);else{e.originalCharm=Math.max(e.originalCharm||0,duration);e.originalCharmAtk=e.originalCharmAtk??.3;e.originalCharmDamage=q.damage*.08;}}
       if(q.kit.status==='blood')e.bloodMark=s.t+duration;
      }
-     if(q.kit.status==='slow')e.slow=Math.max(e.slow||0,q.unit.batch47||q.unit.batch54?q.kit.statusDuration||2:2);
+     if(q.kit.status==='slow')e.slow=Math.max(e.slow||0,q.unit.batch47||q.unit.batch54||q.unit.batch56?q.kit.statusDuration||2:2);
      if(q.kit.status==='burn')e.skillBurn={left:2,next:.5,damage:q.damage*.04};
+     if(q.kit.status==='poison')e.skillPoison={left:2,next:.5,damage:q.damage*.04};
      if(q.kit.status==='stun'&&e!==s.boss)e.skillStun=Math.max(e.skillStun||0,.35);
      if(q.level>=4&&e!==s.boss&&q.kit.kind==='melee')s.world.move(e,q.facing*5,0,e.r||12,s.arena);
     }
@@ -89,7 +91,7 @@ window.SkillArt={
   this.active=this.active.filter(q=>q.age<q.duration);
   for(const e of Growth.enemies()){
    if(e.skillStun>0)e.skillStun=Math.max(0,e.skillStun-dt);
-   const b=e.skillBurn;if(!b)continue;b.left-=dt;b.next-=dt;if(b.left<=0)e.skillBurn=null;else if(b.next<=0){hit(e,b.damage);b.next+=.5;}
+   for(const key of ['skillBurn','skillPoison']){const b=e[key];if(!b)continue;b.left-=dt;b.next-=dt;if(b.left<=0)e[key]=null;else if(b.next<=0){hit(e,b.damage);b.next+=.5;}}
   }
  },
  lift(e){const q=this.active.find(q=>q.unit.key==='lee'&&q.slot==='ultimate'&&q.target===e&&q.age>=0);return q?-Math.sin(Math.min(1,q.age/q.duration)*Math.PI)*58:0;},

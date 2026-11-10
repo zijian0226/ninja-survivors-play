@@ -33,7 +33,7 @@ window.TeamSeven={
    for(const other of this.living()){if(other===a)continue;const gap=dist(a,other)||1;if(gap<40){vx+=(a.x-other.x)/gap*(40-gap)*5;vy+=(a.y-other.y)/gap*(40-gap)*5;}}
    if(s.boss?.phase==='warn'&&s.boss.pattern==='pulse'){const gap=dist(a,s.boss)||1;if(gap<RunFlow.plans[s.bossStep].radius+30){vx=(a.x-s.boss.x)/gap*220;vy=(a.y-s.boss.y)/gap*220;}}else if(s.boss?.phase==='warn'&&s.boss.dash){const q=s.boss.dash,along=(a.x-q.x)*q.dx+(a.y-q.y)*q.dy,side=(a.x-q.x)*(-q.dy)+(a.y-q.y)*q.dx;if(along>-30&&along<850&&Math.abs(side)<65){const sign=side>=0?1:-1;vx=-q.dy*sign*205;vy=q.dx*sign*205;}}
    a.moving=Math.hypot(vx,vy)>4;if(a.moving&&!SkillArt.blocksMovement(a)){s.world.move(a,vx*dt,vy*dt,12,s.arena);if(Math.abs(vx)>3)a.facing=vx>0?1:-1;}
-   if(e&&a.atk<=0&&dist(a,e)<400){this.projectile(a,e,12);a.atk=1.05*this.cooldown();}
+   if(e&&a.atk<=0&&dist(a,e)<400){this.projectile(a,e,12);a.atk=1.05*this.cooldown()/(a.profile?.attackSpeed||1);}
    const style=a.profile?.style||a.id;
    if(e&&a.jutsu<=0)this.castPrimary(a,e);
    if(a.secondary<=0)this.castSecondary(a,e);

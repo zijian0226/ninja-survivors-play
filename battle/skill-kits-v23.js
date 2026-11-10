@@ -6946,5 +6946,1832 @@ window.SKILL_KITS = {
     "batch54": true,
     "artBatch": "0.54",
     "sourceNote": "来源像素重编排；※为游戏化组合招式。"
+  },
+  "guy": {
+    "key": "guy",
+    "family": "guy",
+    "sprite": "v56_guy",
+    "art": "guy",
+    "name": "迈特凯",
+    "officialId": "chara044",
+    "attribute": "阳",
+    "hp": 720,
+    "passive": "体术连击：普通攻击速度提高15%。",
+    "skills": {
+      "木叶刚力旋风": 1,
+      "动力前奏": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "体术连击",
+        "text": "普通攻击速度提高15%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "木叶刚力旋风",
+        "text": "旋身踢击，持续攻击近身敌群。",
+        "kind": "melee",
+        "element": "physical",
+        "range": 110,
+        "radius": 78,
+        "damage": 180,
+        "cd": 5,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "木叶刚力旋风",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "动力前奏",
+        "text": "向前连续踢击，攻击近身范围；不会强制打断玩家移动。",
+        "kind": "melee",
+        "element": "physical",
+        "range": 115,
+        "radius": 82,
+        "damage": 190,
+        "cd": 7,
+        "duration": 2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "动力前奏",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "ultimate": {
+        "name": "朝孔雀",
+        "text": "高速拳击形成火焰冲击，持续攻击近身范围并附加灼烧。",
+        "kind": "melee",
+        "element": "fire",
+        "range": 125,
+        "radius": 112,
+        "damage": 450,
+        "cd": 29,
+        "duration": 2.6,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "朝孔雀",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "burn",
+        "statusDuration": 2
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch56": true,
+    "artBatch": "0.56",
+    "sourceNote": "原素材与标注的补绘像素混合制作；技能演出适配俯视玩法，※为游戏化组合。",
+    "attackSpeed": 1.15
+  },
+  "konohamaru": {
+    "key": "konohamaru",
+    "family": "konohamaru",
+    "sprite": "v56_konohamaru",
+    "art": "konohamaru",
+    "name": "猿飞木叶丸",
+    "officialId": "chara053",
+    "attribute": "风",
+    "hp": 720,
+    "passive": "影分身辅助：忍术命中有15%概率追加一次20%威力的伤害；每0.8秒最多触发一次。",
+    "skills": {
+      "影分身之术": 1,
+      "色诱之术": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "影分身辅助",
+        "text": "忍术命中有15%概率追加一次20%威力的伤害；每0.8秒最多触发一次。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "影分身之术",
+        "text": "召出2个独立行动的分身，持续8秒，各自寻找并攻击敌人。主控技能Lv.3起增加到3个。",
+        "kind": "source_summon",
+        "element": "chakra",
+        "range": 300,
+        "radius": 75,
+        "damage": 120,
+        "cd": 8,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "影分身之术",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "noDamage": true,
+        "noEcho": true
+      },
+      "secondary": {
+        "name": "色诱之术",
+        "text": "以烟雾和幻象扰乱敌群，杂兵迷惑1.4秒；首领只减速。采用无裸露的游戏化演出。",
+        "kind": "area",
+        "element": "yin",
+        "range": 290,
+        "radius": 85,
+        "damage": 125,
+        "cd": 8,
+        "duration": 2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "色诱之术",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "charm",
+        "statusDuration": 1.4
+      },
+      "ultimate": {
+        "name": "螺旋丸",
+        "text": "靠近敌人释放螺旋丸，查克拉漩涡持续造成范围伤害。",
+        "kind": "melee",
+        "element": "rasengan",
+        "range": 105,
+        "radius": 76,
+        "damage": 390,
+        "cd": 28,
+        "duration": 2.6,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "螺旋丸",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch56": true,
+    "artBatch": "0.56",
+    "sourceNote": "原素材与标注的补绘像素混合制作；技能演出适配俯视玩法，※为游戏化组合。"
+  },
+  "tsunade": {
+    "key": "tsunade",
+    "family": "tsunade",
+    "sprite": "v56_tsunade",
+    "art": "tsunade",
+    "name": "纲手",
+    "officialId": "chara050",
+    "attribute": "阳",
+    "hp": 800,
+    "passive": "阴封印：存活时每秒恢复3点生命。",
+    "skills": {
+      "怪力拳※": 1,
+      "通灵·蛞蝓": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "阴封印",
+        "text": "存活时每秒恢复3点生命。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "怪力拳※",
+        "text": "怪力拳震裂地面，持续攻击近身范围。",
+        "kind": "melee",
+        "element": "physical",
+        "range": 110,
+        "radius": 84,
+        "damage": 190,
+        "cd": 5,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "怪力拳※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "通灵·蛞蝓",
+        "text": "召出蛞蝓喷吐酸液，附加2秒中毒；同时回复附近存活队员4%最大生命。",
+        "kind": "area",
+        "element": "acid",
+        "range": 310,
+        "radius": 82,
+        "damage": 150,
+        "cd": 8,
+        "duration": 2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "通灵·蛞蝓",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "poison",
+        "statusDuration": 2,
+        "healTeamFraction": 0.04
+      },
+      "ultimate": {
+        "name": "创造再生",
+        "text": "解开阴封印，回复自身20%最大生命并展开医疗查克拉；不造成伤害。",
+        "kind": "area",
+        "element": "yang",
+        "range": 310,
+        "radius": 75,
+        "damage": 0,
+        "cd": 30,
+        "duration": 2.6,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "创造再生",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "healFraction": 0.2,
+        "noDamage": true,
+        "noEcho": true
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch56": true,
+    "artBatch": "0.56",
+    "sourceNote": "原素材与标注的补绘像素混合制作；技能演出适配俯视玩法，※为游戏化组合。"
+  },
+  "jiraiya_sage": {
+    "key": "jiraiya_sage",
+    "family": "jiraiya_sage",
+    "sprite": "v56_jiraiya_sage",
+    "art": "jiraiya_sage",
+    "name": "仙人自来也",
+    "officialId": "90052",
+    "attribute": "火",
+    "hp": 720,
+    "passive": "仙术强化：自身忍术伤害提高12%。",
+    "skills": {
+      "仙法·毛针千本": 1,
+      "仙法·五右卫门": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "仙术强化",
+        "text": "自身忍术伤害提高12%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "仙法·毛针千本",
+        "text": "白发化作针雨，连续攻击目标区域。",
+        "kind": "projectile",
+        "element": "physical",
+        "range": 330,
+        "radius": 85,
+        "damage": 165,
+        "cd": 6,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "仙法·毛针千本",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "仙法·五右卫门",
+        "text": "仙术火焰覆盖目标区域，持续伤害并附加灼烧。",
+        "kind": "area",
+        "element": "fire",
+        "range": 330,
+        "radius": 110,
+        "damage": 210,
+        "cd": 9,
+        "duration": 2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "仙法·五右卫门",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "burn",
+        "statusDuration": 2
+      },
+      "ultimate": {
+        "name": "魔幻·蛤蟆临唱",
+        "text": "肩头二大仙人发出共鸣，持续攻击并束缚杂兵1.5秒；首领只减速。",
+        "kind": "area",
+        "element": "yin",
+        "range": 330,
+        "radius": 115,
+        "damage": 395,
+        "cd": 30,
+        "duration": 2.6,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "魔幻·蛤蟆临唱",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 1.5
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch56": true,
+    "artBatch": "0.56",
+    "sourceNote": "原素材与标注的补绘像素混合制作；技能演出适配俯视玩法，※为游戏化组合。",
+    "personal": 1.12
+  },
+  "hiruzen": {
+    "key": "hiruzen",
+    "family": "hiruzen",
+    "sprite": "v56_hiruzen",
+    "art": "hiruzen",
+    "name": "猿飞日斩",
+    "officialId": "chara108",
+    "attribute": "火",
+    "hp": 720,
+    "passive": "忍术教授：自身忍术伤害提高10%。",
+    "skills": {
+      "火遁·火龙炎弹": 1,
+      "土遁·土流壁": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "忍术教授",
+        "text": "自身忍术伤害提高10%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "火遁·火龙炎弹",
+        "text": "喷出火龙炎弹，持续攻击目标区域并附加灼烧。",
+        "kind": "area",
+        "element": "fire",
+        "range": 330,
+        "radius": 90,
+        "damage": 180,
+        "cd": 6,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "火遁·火龙炎弹",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "burn",
+        "statusDuration": 2
+      },
+      "secondary": {
+        "name": "土遁·土流壁",
+        "text": "土墙从地面升起，持续攻击并减速；仅为技能演出，不产生地图障碍。",
+        "kind": "area",
+        "element": "earth",
+        "range": 300,
+        "radius": 88,
+        "damage": 150,
+        "cd": 8,
+        "duration": 2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "土遁·土流壁",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 2
+      },
+      "ultimate": {
+        "name": "尸鬼封尽",
+        "text": "死神显现并伸手封缚，持续攻击并束缚杂兵1.5秒；首领只减速，不执行秒杀。",
+        "kind": "area",
+        "element": "yin",
+        "range": 320,
+        "radius": 115,
+        "damage": 445,
+        "cd": 32,
+        "duration": 2.6,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "尸鬼封尽",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 1.5
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch56": true,
+    "artBatch": "0.56",
+    "sourceNote": "原素材与标注的补绘像素混合制作；技能演出适配俯视玩法，※为游戏化组合。",
+    "personal": 1.1
+  },
+  "hashirama": {
+    "key": "hashirama",
+    "family": "hashirama",
+    "sprite": "v56_hashirama",
+    "art": "hashirama",
+    "name": "千手柱间",
+    "officialId": "chara051",
+    "attribute": "土",
+    "hp": 720,
+    "passive": "木遁：木遁忍术伤害提高10%，控制招式附加束缚。",
+    "skills": {
+      "木遁·树界降诞": 1,
+      "木遁·木分身": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "木遁",
+        "text": "木遁忍术伤害提高10%，控制招式附加束缚。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "木遁·树界降诞",
+        "text": "树木从目标周围生长，持续伤害并束缚杂兵1.2秒；首领只减速。",
+        "kind": "area",
+        "element": "wood",
+        "range": 310,
+        "radius": 95,
+        "damage": 180,
+        "cd": 7,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "木遁·树界降诞",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 1.2
+      },
+      "secondary": {
+        "name": "木遁·木分身",
+        "text": "召出2个独立索敌的木分身，持续8秒；主控技能Lv.3起增加到3个。",
+        "kind": "source_summon",
+        "element": "wood",
+        "range": 300,
+        "radius": 82,
+        "damage": 120,
+        "cd": 9,
+        "duration": 2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "木遁·木分身",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "noDamage": true,
+        "noEcho": true
+      },
+      "ultimate": {
+        "name": "木遁·森林围攻※",
+        "text": "多处树木交错围攻，持续伤害并束缚杂兵1.5秒；首领只减速，不产生障碍。",
+        "kind": "area",
+        "element": "wood",
+        "range": 330,
+        "radius": 120,
+        "damage": 415,
+        "cd": 30,
+        "duration": 2.6,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "木遁·森林围攻※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 1.5
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch56": true,
+    "artBatch": "0.56",
+    "sourceNote": "原素材与标注的补绘像素混合制作；技能演出适配俯视玩法，※为游戏化组合。",
+    "personal": 1.1
+  },
+  "tobirama": {
+    "key": "tobirama",
+    "family": "tobirama",
+    "sprite": "v56_tobirama",
+    "art": "tobirama",
+    "name": "千手扉间",
+    "officialId": "chara107",
+    "attribute": "水",
+    "hp": 720,
+    "passive": "水遁精通：水遁忍术伤害提高12%。",
+    "skills": {
+      "水遁·水阵壁": 1,
+      "水遁·水龙弹之术": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "水遁精通",
+        "text": "水遁忍术伤害提高12%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "水遁·水阵壁",
+        "text": "水阵形成屏障，持续攻击并减速，同时获得相当于自身最大生命6%的护盾，持续3秒。",
+        "kind": "area",
+        "element": "water",
+        "range": 310,
+        "radius": 85,
+        "damage": 145,
+        "cd": 7,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "水遁·水阵壁",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 2,
+        "shieldFraction": 0.06
+      },
+      "secondary": {
+        "name": "水遁·水龙弹之术",
+        "text": "水龙向目标卷击，持续造成范围伤害并减速。",
+        "kind": "projectile",
+        "element": "water",
+        "range": 330,
+        "radius": 90,
+        "damage": 185,
+        "cd": 7,
+        "duration": 2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "水遁·水龙弹之术",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 2
+      },
+      "ultimate": {
+        "name": "大型水遁冲击※",
+        "text": "多重水流形成范围冲击，持续攻击大范围敌群并减速。",
+        "kind": "area",
+        "element": "water",
+        "range": 340,
+        "radius": 120,
+        "damage": 420,
+        "cd": 29,
+        "duration": 2.6,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "大型水遁冲击※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 2
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch56": true,
+    "artBatch": "0.56",
+    "sourceNote": "原素材与标注的补绘像素混合制作；技能演出适配俯视玩法，※为游戏化组合。",
+    "personal": 1.12
+  },
+  "kankuro": {
+    "key": "kankuro",
+    "family": "kankuro",
+    "sprite": "v56_kankuro",
+    "art": "kankuro",
+    "name": "勘九郎",
+    "officialId": "chara064",
+    "attribute": "阴",
+    "hp": 720,
+    "passive": "傀儡操控：傀儡辅助使自身受到伤害降低8%。",
+    "skills": {
+      "乌鸦·暗器※": 1,
+      "黑蚁·捕获※": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "傀儡操控",
+        "text": "傀儡辅助使自身受到伤害降低8%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "乌鸦·暗器※",
+        "text": "乌鸦傀儡伸展机关，持续攻击目标区域。",
+        "kind": "area",
+        "element": "puppet",
+        "range": 310,
+        "radius": 83,
+        "damage": 165,
+        "cd": 6,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "乌鸦·暗器※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "黑蚁·捕获※",
+        "text": "黑蚁张开躯壳捕获，束缚杂兵1.4秒；首领只减速。",
+        "kind": "area",
+        "element": "puppet",
+        "range": 300,
+        "radius": 80,
+        "damage": 150,
+        "cd": 8,
+        "duration": 2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "黑蚁·捕获※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 1.4
+      },
+      "ultimate": {
+        "name": "黑秘技·机机一发",
+        "text": "黑蚁闭合躯壳，配合乌鸦机关连续切割，束缚杂兵1.5秒；首领只减速。",
+        "kind": "area",
+        "element": "puppet",
+        "range": 330,
+        "radius": 110,
+        "damage": 420,
+        "cd": 30,
+        "duration": 2.6,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "黑秘技·机机一发",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 1.5
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch56": true,
+    "artBatch": "0.56",
+    "sourceNote": "原素材与标注的补绘像素混合制作；技能演出适配俯视玩法，※为游戏化组合。",
+    "reduction": 0.08
+  },
+  "chiyo": {
+    "key": "chiyo",
+    "family": "chiyo",
+    "sprite": "v56_chiyo",
+    "art": "chiyo",
+    "name": "千代婆婆",
+    "officialId": "chara067",
+    "attribute": "阴",
+    "hp": 720,
+    "passive": "傀儡大师：傀儡忍术伤害提高15%。",
+    "skills": {
+      "父与母傀儡": 1,
+      "傀儡机关连击※": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "傀儡大师",
+        "text": "傀儡忍术伤害提高15%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "父与母傀儡",
+        "text": "父与母傀儡配合攻击，持续打击目标范围。",
+        "kind": "area",
+        "element": "puppet",
+        "range": 310,
+        "radius": 85,
+        "damage": 160,
+        "cd": 6,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "父与母傀儡",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "傀儡机关连击※",
+        "text": "父母傀儡交错突刺，持续攻击较大区域。",
+        "kind": "area",
+        "element": "puppet",
+        "range": 310,
+        "radius": 92,
+        "damage": 185,
+        "cd": 8,
+        "duration": 2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "傀儡机关连击※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "ultimate": {
+        "name": "白秘技·近松十人众",
+        "text": "近松十人众展开围攻，十具不同的白衣傀儡持续攻击大范围敌群。",
+        "kind": "area",
+        "element": "puppet",
+        "range": 340,
+        "radius": 125,
+        "damage": 425,
+        "cd": 30,
+        "duration": 2.6,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "白秘技·近松十人众",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch56": true,
+    "artBatch": "0.56",
+    "sourceNote": "原素材与标注的补绘像素混合制作；技能演出适配俯视玩法，※为游戏化组合。",
+    "personal": 1.15
+  },
+  "pain_asura": {
+    "key": "pain_asura",
+    "family": "pain_asura",
+    "sprite": "v56_pain_asura",
+    "art": "pain_asura",
+    "name": "修罗道佩恩",
+    "officialId": "90149",
+    "attribute": "雷",
+    "hp": 800,
+    "passive": "机械改造：机械护甲使自身受到伤害降低10%。",
+    "skills": {
+      "怪腕火箭弹": 1,
+      "机械臂突袭※": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "机械改造",
+        "text": "机械护甲使自身受到伤害降低10%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "怪腕火箭弹",
+        "text": "多枚怪腕火箭弹飞向目标，持续造成范围伤害。",
+        "kind": "projectile",
+        "element": "mechanical",
+        "range": 330,
+        "radius": 85,
+        "damage": 170,
+        "cd": 6,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "怪腕火箭弹",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "机械臂突袭※",
+        "text": "伸出分节机械臂并以铁拳突袭，攻击近身范围。",
+        "kind": "melee",
+        "element": "mechanical",
+        "range": 110,
+        "radius": 85,
+        "damage": 190,
+        "cd": 7,
+        "duration": 2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "机械臂突袭※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "ultimate": {
+        "name": "机械炮齐射※",
+        "text": "多路机械炮束持续扫射目标区域；窄束演出保留地面预警可见性。",
+        "kind": "area",
+        "element": "lightning",
+        "range": 340,
+        "radius": 115,
+        "damage": 430,
+        "cd": 29,
+        "duration": 2.6,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "机械炮齐射※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch56": true,
+    "artBatch": "0.56",
+    "sourceNote": "原素材与标注的补绘像素混合制作；技能演出适配俯视玩法，※为游戏化组合。",
+    "reduction": 0.1
+  },
+  "pain_animal": {
+    "key": "pain_animal",
+    "family": "pain_animal",
+    "sprite": "v56_pain_animal",
+    "art": "pain_animal",
+    "name": "畜生道佩恩",
+    "officialId": "90154",
+    "attribute": "阳",
+    "hp": 720,
+    "passive": "通灵协同：自身通灵忍术伤害提高12%。",
+    "skills": {
+      "通灵·增殖地狱犬": 1,
+      "通灵·八咫鸟": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "通灵协同",
+        "text": "自身通灵忍术伤害提高12%。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "通灵·增殖地狱犬",
+        "text": "增殖地狱犬向目标扑击，攻击中分裂出额外犬影，持续造成范围伤害。",
+        "kind": "area",
+        "element": "summon",
+        "range": 310,
+        "radius": 90,
+        "damage": 175,
+        "cd": 7,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "通灵·增殖地狱犬",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "通灵·八咫鸟",
+        "text": "八咫鸟从上方掠过目标，持续打击范围内敌人。",
+        "kind": "area",
+        "element": "summon",
+        "range": 330,
+        "radius": 95,
+        "damage": 195,
+        "cd": 8,
+        "duration": 2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "通灵·八咫鸟",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "ultimate": {
+        "name": "多通灵兽齐攻※",
+        "text": "增殖犬、犀牛与八咫鸟共同攻击，持续造成大范围伤害。",
+        "kind": "area",
+        "element": "summon",
+        "range": 340,
+        "radius": 125,
+        "damage": 440,
+        "cd": 30,
+        "duration": 2.6,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "多通灵兽齐攻※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch56": true,
+    "artBatch": "0.56",
+    "sourceNote": "原素材与标注的补绘像素混合制作；技能演出适配俯视玩法，※为游戏化组合。",
+    "personal": 1.12
+  },
+  "killerbee_eight_tail": {
+    "key": "killerbee_eight_tail",
+    "family": "killerbee_eight_tail",
+    "sprite": "v56_killerbee_eight_tail",
+    "art": "killerbee_eight_tail",
+    "name": "完全八尾化奇拉比",
+    "officialId": "gyuki",
+    "attribute": "阳",
+    "hp": 1100,
+    "passive": "八尾之躯：基础生命1100，触手技能拥有较大的作用范围。",
+    "skills": {
+      "触手横扫※": 1,
+      "触手缠绕※": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "八尾之躯",
+        "text": "基础生命1100，触手技能拥有较大的作用范围。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "触手横扫※",
+        "text": "触手横扫，持续攻击近身较大范围。",
+        "kind": "melee",
+        "element": "physical",
+        "range": 135,
+        "radius": 110,
+        "damage": 195,
+        "cd": 6,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "触手横扫※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      },
+      "secondary": {
+        "name": "触手缠绕※",
+        "text": "双触手夹击目标区域，束缚杂兵1.4秒；首领只减速。",
+        "kind": "area",
+        "element": "physical",
+        "range": 310,
+        "radius": 110,
+        "damage": 205,
+        "cd": 8,
+        "duration": 2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "触手缠绕※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 1.4
+      },
+      "ultimate": {
+        "name": "尾兽玉",
+        "text": "黑色查克拉球短暂汇聚后爆发，持续造成大范围伤害。",
+        "kind": "area",
+        "element": "chakra",
+        "range": 350,
+        "radius": 130,
+        "damage": 470,
+        "cd": 31,
+        "duration": 2.6,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "尾兽玉",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        }
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch56": true,
+    "artBatch": "0.56",
+    "sourceNote": "原素材与标注的补绘像素混合制作；技能演出适配俯视玩法，※为游戏化组合。",
+    "movement": 0.92
+  },
+  "yugito": {
+    "key": "yugito",
+    "family": "yugito",
+    "sprite": "v56_yugito",
+    "art": "yugito",
+    "name": "二位由木人",
+    "officialId": "chara100",
+    "attribute": "火",
+    "hp": 720,
+    "passive": "二尾查克拉：忍术命中附加2秒灼烧。",
+    "skills": {
+      "火焰爪击※": 1,
+      "鼠尾球玉": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "二尾查克拉",
+        "text": "忍术命中附加2秒灼烧。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "火焰爪击※",
+        "text": "蓝焰包裹爪击，持续攻击近身区域并灼烧。",
+        "kind": "melee",
+        "element": "fire",
+        "range": 110,
+        "radius": 80,
+        "damage": 175,
+        "cd": 5,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "火焰爪击※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "burn",
+        "statusDuration": 2
+      },
+      "secondary": {
+        "name": "鼠尾球玉",
+        "text": "发射带长尾轨迹的蓝焰球，持续攻击目标区域并灼烧。",
+        "kind": "projectile",
+        "element": "fire",
+        "range": 330,
+        "radius": 85,
+        "damage": 185,
+        "cd": 7,
+        "duration": 2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "鼠尾球玉",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "burn",
+        "statusDuration": 2
+      },
+      "ultimate": {
+        "name": "二尾化冲击※",
+        "text": "短暂以二尾之形扑击，持续攻击近身范围并灼烧；结束后恢复人形，可移动施放。",
+        "kind": "melee",
+        "element": "fire",
+        "range": 135,
+        "radius": 118,
+        "damage": 435,
+        "cd": 29,
+        "duration": 2.6,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "二尾化冲击※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "burn",
+        "statusDuration": 2
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch56": true,
+    "artBatch": "0.56",
+    "sourceNote": "原素材与标注的补绘像素混合制作；技能演出适配俯视玩法，※为游戏化组合。"
+  },
+  "haku": {
+    "key": "haku",
+    "family": "haku",
+    "sprite": "v56_haku",
+    "art": "haku",
+    "name": "白",
+    "officialId": "chara074",
+    "attribute": "水",
+    "hp": 720,
+    "passive": "冰遁：冰遁技能附加减速；奥义可束缚杂兵，首领只减速。",
+    "skills": {
+      "千杀水翔": 1,
+      "冰镜穿梭※": 1
+    },
+    "kit": {
+      "passive": {
+        "name": "冰遁",
+        "text": "冰遁技能附加减速；奥义可束缚杂兵，首领只减速。",
+        "effects": {},
+        "nameReview": {
+          "status": "original",
+          "note": "第一阶段被动的游戏化实现。"
+        }
+      },
+      "primary": {
+        "name": "千杀水翔",
+        "text": "冰针成扇形连续射出，持续攻击目标区域并减速。",
+        "kind": "projectile",
+        "element": "ice",
+        "range": 330,
+        "radius": 85,
+        "damage": 165,
+        "cd": 6,
+        "duration": 1.8,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "千杀水翔",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 2
+      },
+      "secondary": {
+        "name": "冰镜穿梭※",
+        "text": "两面冰镜间的身影穿梭，持续伤害并减速。",
+        "kind": "area",
+        "element": "ice",
+        "range": 320,
+        "radius": 95,
+        "damage": 175,
+        "cd": 8,
+        "duration": 2,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "game_adaptation",
+          "referenceName": "冰镜穿梭※",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "slow",
+        "statusDuration": 2
+      },
+      "ultimate": {
+        "name": "秘术·魔镜冰晶",
+        "text": "多面冰镜围成环阵，冰针向中心交错攻击，束缚杂兵1.5秒；首领只减速。",
+        "kind": "area",
+        "element": "ice",
+        "range": 340,
+        "radius": 125,
+        "damage": 415,
+        "cd": 30,
+        "duration": 2.6,
+        "damageMode": "hit",
+        "autoCast": true,
+        "requiresEnemy": true,
+        "target": "nearest",
+        "upgradable": "main_only",
+        "visualComplete": true,
+        "nameReview": {
+          "status": "adapted",
+          "referenceName": "秘术·魔镜冰晶",
+          "note": "用户第一阶段方案；来源像素重排为俯视玩法，采样帧不等于独立原画。",
+          "fullAnimationVerified": true
+        },
+        "status": "root",
+        "statusDuration": 1.5
+      }
+    },
+    "roles": {
+      "main": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "upgradable": [
+          "passive",
+          "primary",
+          "secondary",
+          "ultimate"
+        ]
+      },
+      "support": {
+        "autoCast": [
+          "primary",
+          "secondary",
+          "ultimate"
+        ],
+        "skillLevel": 1,
+        "upgradeable": false,
+        "syncCharacterLevel": true,
+        "reviveSeconds": 5
+      }
+    },
+    "visualComplete": true,
+    "releaseComplete": true,
+    "batch56": true,
+    "artBatch": "0.56",
+    "sourceNote": "原素材与标注的补绘像素混合制作；技能演出适配俯视玩法，※为游戏化组合。"
   }
 };
