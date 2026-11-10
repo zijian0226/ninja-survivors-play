@@ -1,0 +1,92 @@
+/* v0.57 / portrait-only sunset lobby, reference composition in live HTML layers. */
+@font-face{font-family:NinjaBrush;src:url('../assets/lobby-v57/ninja-brush.ttf') format('truetype');font-display:swap}
+#ui[data-page="lobby"]{background:#514555;isolation:isolate}
+#ui[data-page="lobby"] #ui-main{position:absolute;inset:0;overflow:hidden!important;touch-action:none}
+#ui[data-page="lobby"] .lobby{overflow:hidden;isolation:isolate}
+#ui[data-page="lobby"] #topbar{position:absolute;top:0;left:0;right:0;height:9%;min-height:54px;padding:8px 8px 3px;background:linear-gradient(180deg,#11182788,transparent);box-shadow:none;align-items:flex-start;gap:5px;pointer-events:none}
+#ui[data-page="lobby"] #topbar button,#ui[data-page="lobby"] #topbar .tb-profile{pointer-events:auto}
+#ui[data-page="lobby"] .tb-profile{width:46%;gap:5px;min-width:0}
+#ui[data-page="lobby"] .tb-avatar{width:43px;height:43px;flex-shrink:0;transform:none;border-radius:50%;border:2px solid #f7d383;box-shadow:0 0 0 2px #392b37,0 2px 8px #100b25aa;background:radial-gradient(#515f8a,#162037)}
+#ui[data-page="lobby"] .tb-avatar img{width:36px;image-rendering:pixelated}
+#ui[data-page="lobby"] .tb-name{flex:1;min-width:0;padding-top:2px;text-shadow:0 1px 3px #101326}
+#ui[data-page="lobby"] .tb-name b{font:600 clamp(11px,3.2vw,15px) Georgia,'Noto Serif CJK SC',serif;white-space:nowrap}
+#ui[data-page="lobby"] .tb-name em{font-size:11px;font-weight:400}
+.profile-meter{height:5px;border:1px solid #bb9459;border-radius:8px;background:#282132cc;margin-top:4px;width:100%;overflow:hidden}
+.profile-meter i{display:block;height:100%;background:linear-gradient(90deg,#b87420,#ffe48a)}
+#ui[data-page="lobby"] .tb-debug{font-size:9px;color:#f6e3bb;margin-top:2px;min-height:18px;padding-right:9px;opacity:.9}
+#ui[data-page="lobby"] .tb-cur{display:flex;gap:8px;width:52%;padding-top:2px}
+#ui[data-page="lobby"] .cur-pill{height:24px;padding:0 1px 0 0;border-color:#d7b475;background:linear-gradient(#24273fd9,#171628dd);box-shadow:0 2px 5px #13102177;flex:1;min-width:0;gap:1px}
+#ui[data-page="lobby"] .cur-pill>.lobby-icon{width:27px;height:29px;margin-left:-3px;flex-shrink:0}
+#ui[data-page="lobby"] .cur-pill b{font:600 clamp(11px,3vw,14px) Georgia,serif;min-width:0;flex:1;text-align:center;overflow:hidden}
+#ui[data-page="lobby"] .cur-pill .plus{flex-shrink:0;width:18px;height:18px;line-height:15px;font-size:18px;border:1px solid #ffdc88;background:linear-gradient(#9c3b2b,#531c2a);color:#ffe49e}
+.cinematic-lobby .konoha-sunset{position:absolute;inset:0;background:#8f779b url('../assets/lobby-v57/konoha-sunset.webp') center center/cover no-repeat}
+.cinematic-lobby .lobby-vignette{position:absolute;inset:0;background:linear-gradient(180deg,#101b3a22,transparent 22%,transparent 76%,#33202f22),linear-gradient(90deg,#28243b13,transparent 60%);pointer-events:none}
+.cinematic-lobby .home-portrait-stage .splash{filter:drop-shadow(1px 3px 2px #27233266);animation:none}
+.cinematic-lobby .lobby-shortcuts{position:absolute;top:7.6%;right:2%;display:flex;justify-content:flex-end;gap:2px;width:52%;z-index:4!important}
+.lobby-shortcuts button{min-width:0;flex:1;display:flex;align-items:center;flex-direction:column;gap:0;color:#fff1d2;text-shadow:0 2px 3px #1c1832,1px 0 #322233;font-family:Georgia,'Noto Serif CJK SC',serif;font-size:11px}
+.lobby-icon{display:block;width:30px;height:30px;object-fit:contain;flex-shrink:0}
+.lobby-shortcuts .lobby-icon{width:34px;height:34px;filter:drop-shadow(0 2px 2px #251a3c)}
+.lobby-rail{position:absolute;left:2%;top:15%;width:10.5%;display:flex;flex-direction:column;gap:0;filter:drop-shadow(0 3px 5px #251c37aa);background:linear-gradient(90deg,#f4dc8c,#886e43,#f4dc8c);padding:1px;clip-path:polygon(50% 0,100% 4%,100% 96%,50% 100%,0 96%,0 4%)}
+.lobby-rail::before{content:"";position:absolute;inset:1px;background:linear-gradient(110deg,#242331ef,#3b3036ce,#242331ef);clip-path:inherit;z-index:-1}
+.lobby-rail button{min-height:55px;display:flex;align-items:center;flex-direction:column;justify-content:center;gap:1px;color:#fff1d5;text-shadow:0 2px 2px #171321;font-family:Georgia,'Noto Serif CJK SC',serif;font-size:12px;position:relative}
+.lobby-rail button:first-child{padding-top:8px}.lobby-rail button:last-child{padding-bottom:8px}
+.lobby-rail button+button::before{content:"";position:absolute;top:0;left:14%;right:14%;height:1px;background:linear-gradient(90deg,transparent,#bea67888,transparent)}
+.lobby-rail .lobby-icon{width:32px;height:32px}
+.portrait-controls{position:absolute;left:3%;bottom:13.8%;display:flex;gap:5px;z-index:4!important}
+.portrait-controls button{color:#fff5d9;font-size:10px;display:flex;gap:3px;align-items:center;min-height:32px;padding:3px 7px;background:#2c253c88;border:1px solid #c7ae7e88;border-radius:3px;backdrop-filter:blur(4px);text-shadow:0 1px 2px #211b31}
+.portrait-controls .lobby-icon{width:16px;height:16px}.portrait-controls [data-portrait-reset]{font-size:9px}
+.lobby-cards{position:absolute;right:2.5%;top:36.6%;width:49%;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 7px auto auto;gap:8px;filter:drop-shadow(0 3px 4px #18132988)}
+.gold-frame{position:relative;padding:8px;background:linear-gradient(120deg,#fff1b5,#cba366 28%,#6b4e34 48%,#e7c37e 73%,#fff0ac);clip-path:polygon(8% 0,96% 0,100% 10%,100% 88%,93% 100%,4% 100%,0 91%,0 11%);color:#ffedc7;isolation:isolate}
+.gold-frame::before{content:"";position:absolute;inset:2px;clip-path:inherit;background:linear-gradient(125deg,#2a2636f5,#242634e8 53%,#58414ce6);z-index:-1}
+.gold-frame::after{content:"";position:absolute;inset:5px;clip-path:inherit;pointer-events:none;border:1px solid #d8b07166;z-index:5}
+.home-summon{height:clamp(65px,11.2vh,105px);text-align:left;padding:13px 12px;overflow:hidden}
+.summon-lightning{position:absolute;inset:2px;background:radial-gradient(ellipse at 75% 15%,#be7bffbb,transparent 55%),linear-gradient(140deg,#221745,#7536ae);z-index:-1;clip-path:inherit}
+.summon-lightning::before,.summon-lightning::after{content:"";position:absolute;left:33%;top:3%;height:110%;width:28%;background:#d5b4ff;opacity:.6;filter:drop-shadow(0 0 4px #be75ff);clip-path:polygon(85% 0,45% 38%,68% 36%,8% 100%,29% 53%,8% 57%,60% 0)}
+.summon-lightning::after{left:74%;transform:rotate(17deg);opacity:.45}
+.summon-hero{position:absolute;right:-3%;top:-16%;height:145%;width:65%;object-fit:cover;object-position:50% 0;z-index:-1;mask-image:linear-gradient(90deg,transparent,#000 25%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 25%)}
+.summon-copy{position:relative;text-shadow:0 2px 2px #201134;white-space:nowrap}
+.summon-copy b{display:block;font:600 clamp(15px,4.4vw,22px) Georgia,'Noto Serif CJK SC',serif;letter-spacing:1px}
+.summon-copy small{display:block;font-size:10px;margin-top:4px;color:#f7e4ff;max-width:87%;overflow:hidden;text-overflow:ellipsis}
+.banner-chevron{position:absolute;right:6px;top:32%;font-size:24px;color:#ffe8a6}
+.banner-dots{display:flex;justify-content:center;align-items:center;gap:7px;height:7px;margin-top:-3px}
+.banner-dots i{width:5px;height:5px;border:1px solid #f7dda1;border-radius:50%;box-shadow:0 1px 3px #251929}.banner-dots i.active{background:#ffdf65;box-shadow:0 0 6px #ffd568}
+.home-squad{padding:7px 9px 8px}
+.squad-title{display:flex;align-items:center;justify-content:space-between;gap:2px;margin:0 0 6px;white-space:nowrap}
+.squad-title>b{font:600 clamp(11px,3.4vw,16px) Georgia,'Noto Serif CJK SC',serif}.squad-title small{font:11px Georgia,serif;color:#dfd2bd;margin-left:2px}
+.squad-title>button{font-size:10px;border:1px solid #b38e54;border-radius:12px;padding:2px 6px;background:linear-gradient(#746044,#3b3035);white-space:nowrap}
+.home-squad-slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+.squad-member{position:relative;aspect-ratio:1/1.17;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(125deg,#b88d50,#f2db95 40%,#7c5935);clip-path:polygon(15% 0,85% 0,100% 15%,100% 85%,85% 100%,15% 100%,0 85%,0 15%);padding:3px 2px 2px}
+.squad-member::before{content:"";position:absolute;inset:1px;background:radial-gradient(#4c435a,#222535);clip-path:inherit;z-index:-1}.squad-member img{width:100%;height:70%;object-fit:contain;image-rendering:pixelated}.squad-member>span:not(.recruit-plus){font-size:8px;line-height:1.2;color:#f5d578}.squad-member small{font-size:7px;white-space:nowrap;color:#cfbf9e}.squad-member .recruit-plus{font:22px Georgia;color:#c8b89a;line-height:1.1}.squad-member.empty{background:linear-gradient(125deg,#70614e,#b29b71,#59514a)}
+.home-trial{padding:9px 9px 8px;min-width:0;overflow:hidden;margin-top:3px}
+.trial-scenery{position:absolute;inset:2px;z-index:-1;clip-path:inherit;background:linear-gradient(90deg,#22222ff5,#22222fe0 35%,#25243180),url('../assets/lobby-v57/konoha-sunset.webp') 75% 36%/160% auto}
+.home-trial h2{font:600 clamp(13px,3.6vw,17px) Georgia,'Noto Serif CJK SC',serif;letter-spacing:.2px;white-space:nowrap}
+.home-trial h2 span{font-size:10px;margin-left:2px;color:#e5d2ab;font-weight:400}
+.home-trial>p{font-size:11px;color:#f5e9d4;margin:5px 0 11px;letter-spacing:1px}
+.trial-progress{width:68%;margin-bottom:8px}.trial-progress>small{font-size:9px;color:#dfd6c7}
+.trial-meter{height:7px;border:1px solid #a78852;border-radius:9px;overflow:hidden;margin-top:3px;background:#131726cc}.trial-meter i{display:block;height:100%;border-radius:inherit;background:linear-gradient(#ffe18c,#e9a626)}
+.trial-bottom{display:flex;align-items:center;justify-content:space-between;gap:3px}
+.trial-bottom>span{font-size:8px;white-space:nowrap;display:flex;align-items:center;gap:2px;color:#e4d3b2}.trial-bottom>span .lobby-icon{width:13px;height:13px}
+.trial-bottom #btn-battle{display:flex;align-items:center;justify-content:center;gap:2px;min-height:33px;min-width:78px;padding:1px 5px;background:linear-gradient(125deg,#fff1b2,#e99d2c 20%,#e66d19 52%,#ffc75e);border:2px solid #ffe9a0;box-shadow:inset 0 0 0 1px #fff5b377,0 0 10px #ff9b12;color:#fff8dc;font:24px NinjaBrush,serif;text-shadow:1px 2px 2px #873516;clip-path:polygon(10% 0,93% 0,100% 16%,100% 79%,90% 100%,0 100%,0 20%)}
+.trial-bottom #btn-battle .lobby-icon{width:22px;height:22px}.trial-bottom #btn-battle>span{font:20px Georgia,serif;margin-left:0}
+#ui[data-page="lobby"] #bottom-nav{position:absolute;bottom:0;left:0;right:0;height:11.7%;min-height:70px;padding:12px 4px max(5px,env(safe-area-inset-bottom));border-top:0;box-shadow:none;background:linear-gradient(170deg,#25222df2,#30252eeb);clip-path:polygon(0 9%,5% 4%,11% 1%,18% 4%,25% 10%,34% 6%,43% 11%,52% 5%,61% 10%,70% 6%,79% 3%,88% 5%,95% 1%,100% 6%,100% 100%,0 100%)}
+#ui[data-page="lobby"] #bottom-nav::before{content:"";position:absolute;top:0;left:0;right:0;height:11px;background:linear-gradient(90deg,#c68a46,#ffe4a1,#b47b3b,#ffdc9c);clip-path:polygon(0 70%,5% 30%,11% 0,18% 30%,25% 85%,34% 40%,43% 92%,52% 35%,61% 80%,70% 40%,79% 10%,88% 30%,95% 0,100% 40%,100% 56%,95% 17%,88% 46%,79% 28%,70% 58%,61% 97%,52% 52%,43% 100%,34% 58%,25% 100%,18% 48%,11% 18%,5% 48%,0 86%)}
+#bottom-nav .nav-btn>.lobby-icon{width:30px;height:30px;image-rendering:auto;opacity:1;filter:none}
+#ui[data-page="lobby"] #bottom-nav .nav-btn{color:#f6e9d1;font-family:Georgia,'Noto Serif CJK SC',serif;font-size:13px;font-weight:500;border-radius:0;background:none;box-shadow:none;gap:3px;position:relative;justify-content:flex-start;padding:3px 0 0;text-shadow:0 1px 3px #140d20}
+#ui[data-page="lobby"] #bottom-nav .nav-btn.active{color:#ffe8a3;background:radial-gradient(ellipse at 50% 90%,#ed9d193b,transparent 64%)}
+#ui[data-page="lobby"] #bottom-nav .nav-btn.active>.lobby-icon{filter:drop-shadow(0 0 3px #ffbb50) drop-shadow(0 0 7px #ed7d16);transform:translateY(-2px) scale(1.12)}
+#ui[data-page="lobby"] #bottom-nav .nav-btn.active::after{content:"";position:absolute;bottom:1px;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,#ffd879,transparent);box-shadow:0 0 6px #ffb24a}
+.maple{position:absolute;z-index:2;color:#ffe8ad;opacity:.7;left:calc(7% + var(--i)*17%);bottom:calc(6% + var(--i)*1.9%);font-size:17px;transform:rotate(calc(var(--i)*47deg));pointer-events:none;text-shadow:0 0 8px #fcb34a}
+.inventory-panel h3{font-size:15px;margin-bottom:14px}.inventory-panel>div{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid #dde3ee}.inventory-panel strong{margin-left:auto}.inventory-panel .muted{margin-top:12px;line-height:1.7}
+@media(max-width:350px){#ui[data-page="lobby"] .tb-profile{gap:4px}#ui[data-page="lobby"] .tb-avatar{width:37px;height:37px}#ui[data-page="lobby"] .tb-avatar img{width:31px}#ui[data-page="lobby"] .tb-name em{font-size:9px}#ui[data-page="lobby"] .tb-cur{gap:5px}.lobby-cards{width:51%;right:2%;gap:6px}.lobby-shortcuts button{font-size:10px}.lobby-shortcuts .lobby-icon{width:29px;height:29px}.lobby-rail button{min-height:48px;font-size:11px}.lobby-rail .lobby-icon{width:28px;height:28px}.home-squad{padding:7px}.home-squad-slots{gap:3px}.squad-title>button{font-size:9px;padding:2px 4px}.home-trial{padding:8px}.home-trial h2 span{font-size:8px}.trial-bottom>span{font-size:7px}.trial-bottom #btn-battle{min-width:69px;font-size:22px}.trial-bottom #btn-battle .lobby-icon{width:17px;height:17px}}
+@media(max-height:650px){.lobby-cards{top:35%;gap:5px}.home-summon{height:63px}.home-squad{padding-top:5px;padding-bottom:6px}.squad-title{margin-bottom:4px}.home-trial{margin-top:0}.home-trial>p{margin:3px 0 5px}.trial-progress{margin-bottom:5px}.lobby-rail{top:17%}.lobby-rail button{min-height:45px}.lobby-rail .lobby-icon{width:26px;height:26px}.portrait-controls{bottom:13%}}
+
+/* Keep the CTA as one horizontal word even on 320px phones. */
+.trial-bottom #btn-battle{flex-shrink:0;min-width:96px;white-space:nowrap;height:38px;gap:1px}
+.trial-bottom #btn-battle>.battle-word{font:26px NinjaBrush,'Noto Serif CJK SC',serif;white-space:nowrap;line-height:1;letter-spacing:0}
+.trial-bottom #btn-battle>i{font:18px Georgia,serif;font-style:normal}
+.trial-bottom>span{white-space:normal;line-height:1.35;max-width:56px}
+.summon-hero{height:280%;width:110%;right:-25%;top:-27%;object-fit:cover}
+@media(max-width:350px){.trial-bottom #btn-battle{min-width:82px;padding:1px 3px}.trial-bottom #btn-battle>.battle-word{font-size:23px}.trial-bottom #btn-battle>i{font-size:16px}.trial-bottom>span{max-width:48px}.trial-bottom>span .lobby-icon{display:none}}
+/* Standalone iPhone safe areas: keep avatar and shortcuts below the status bar. */
+#ui[data-page="lobby"] #topbar{padding-top:max(8px,env(safe-area-inset-top));min-height:calc(54px + env(safe-area-inset-top))}
+.cinematic-lobby .lobby-shortcuts{top:calc(7.6% + env(safe-area-inset-top))}

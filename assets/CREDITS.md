@@ -157,3 +157,8 @@ Ma Shan Zheng（马善政毛笔字体），Copyright 2018 The Ma Shan Zheng Proj
 ## v0.56 第一阶段补完
 
 新增14个战斗形态；来源、补绘及差异见 `battle/assets/CREDITS-v56.md`，私有源码 `docs/skills-v56/README.md`。保留原有立绘。
+
+
+## v0.57 首页
+
+木叶夕照背景为参考辅助生成的环境图（无人物/UI）；首页19枚图标为代码绘制SVG。人物立绘沿用既有来源。毛笔字为Google Fonts Ma Shan Zheng（SIL OFL 1.1）子集，许可见 assets/fonts/MaShanZheng-OFL.txt。具体记录见私有源码 docs/home-v57/sources.json。

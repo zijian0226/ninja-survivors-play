@@ -2,11 +2,13 @@
 window.HomePortrait=(function(){
  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
  function mount(stage,key){
+  const cinematic=stage.dataset.layout==='cinematic57';
   const img=stage.querySelector('img'),art=NinjaArt.get(key),f=art.framing,points=new Map();
   let box,ready=false,view={z:1,x:.5,y:.5},baseline,custom=false,centerHead=true,restored=false;
   const saved=Save.data.homePortraits?.[key],frame=()=>document.getElementById('app').getBoundingClientRect();
   stage.dataset.composition=art.composition||'full';
   function baseScale(w,h){
+   if(cinematic){const header=document.getElementById('topbar').getBoundingClientRect().bottom-frame().top;return Math.min(Math.max(h*.45,h*.875-header-10)/box.h,w*(art.composition==='beast'?.72:.66)/box.w);}
    const hb=f.headBox,headW=(hb[2]-hb[0])*img.naturalWidth,headH=(hb[3]-hb[1])*img.naturalHeight;
    if(f.presentation?.mode==='portrait'){const spec=f.presentation.home;return Math.min(w*spec.headWidthFraction/headH,h*spec.maxHeadViewportHeight/headH,w*(spec.maxHeadWidth||.44)/headW);}
    if(f.layout!=='portrait'||art.pixel){
@@ -19,6 +21,7 @@ window.HomePortrait=(function(){
   function geometry(){const w=stage.clientWidth,h=stage.clientHeight;return {w,h,scale:baseScale(w,h)*view.z};}
   function restore(w,h){
    if(restored)return;restored=true;
+   if(cinematic){if(saved?.layout===5&&saved.art===art.file&&saved.framing===f.revision&&['z','x','y'].every(k=>Number.isFinite(saved[k]))&&saved.custom){custom=true;view={z:saved.z,x:saved.x,y:saved.y};centerHead=false;}return;}
    if(!saved||!['z','x','y'].every(k=>Number.isFinite(saved[k]))||saved.art!==art.file)return;
    if(saved.layout===4&&saved.framing===f.revision){
     custom=!!saved.custom;if(custom){view={z:saved.z,x:saved.x,y:saved.y};centerHead=false;}return;
@@ -54,7 +57,7 @@ window.HomePortrait=(function(){
    const hx=(art.head[0]*img.naturalWidth-box.x)*scale,hy=(art.head[1]*img.naturalHeight-box.y)*scale;
    if(centerHead){
     const targetY=f.layout==='portrait'||f.presentation?.mode==='portrait'?Math.max(h*(f.presentation?.home.headCenterY??(art.composition==='bust'?.30:.25)),header+14+hh*scale/2):Math.max(h*.28,header+14+hy);
-    view.x=(w/2-hx+bw/2)/w;view.y=(targetY-hy+bh/2)/h;centerHead=false;
+    view.x=((cinematic?w*.32:w/2)-hx+bw/2)/w;view.y=cinematic?(h*.875-bh/2)/h:(targetY-hy+bh/2)/h;centerHead=false;
    }
    const left=(hb[0]*img.naturalWidth-box.x)*scale,right=(hb[2]*img.naturalWidth-box.x)*scale;
    const top=(hb[1]*img.naturalHeight-box.y)*scale,bottom=(hb[3]*img.naturalHeight-box.y)*scale;
@@ -63,7 +66,7 @@ window.HomePortrait=(function(){
    Object.assign(img.style,{width:img.naturalWidth*scale+'px',height:img.naturalHeight*scale+'px',transformOrigin:`${art.head[0]*100}% ${art.head[1]*100}%`,transform:`translate(${bx-box.x*scale}px,${by-box.y*scale}px) rotate(${f.rotationDeg||0}deg)`});
    stage.dataset.ready='true';stage.dataset.custom=String(custom);
   }
-  function save(){if(!ready)return;Save.data.homePortraits||={};Save.data.homePortraits[key]={...view,layout:4,framing:f.revision,custom,art:art.file};Save.save();}
+  function save(){if(!ready)return;Save.data.homePortraits||={};Save.data.homePortraits[key]={...view,layout:cinematic?5:4,framing:f.revision,custom,art:art.file};Save.save();}
   function anchor(){
    const p=[...points.values()],r=stage.getBoundingClientRect(),center=p.length>1?{x:(p[0].x+p[1].x)/2-r.left,y:(p[0].y+p[1].y)/2-r.top}:{x:p[0]?.x-r.left,y:p[0]?.y-r.top};
    baseline={...view,center,distance:p.length>1?Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y):0};

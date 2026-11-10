@@ -14,8 +14,8 @@ window.Game=(function(){
   if(G.shellPrepared)return;
   const c=GameData.charById[Save.data.displaySelected||Save.data.selected]||GameData.characters[0];let done=0;
   report({progress:0,message:'正在准备首页…'});
-  const complete=()=>report({progress:++done/2,message:'正在准备首页…'});
-  await Promise.all([new Promise((resolve,reject)=>{const image=new Image(),timeout=setTimeout(()=>reject(Error('首页立绘加载超时')),15000);image.onload=()=>{clearTimeout(timeout);complete();resolve();};image.onerror=()=>{clearTimeout(timeout);reject(Error('首页立绘加载失败'));};image.src=NinjaArt.get(c.id)?.file||c.portraitURL;}),document.fonts.ready.then(complete)]);
+  const complete=()=>report({progress:++done/3,message:'正在准备首页…'});
+  await Promise.all([new Promise((resolve,reject)=>{const image=new Image(),timeout=setTimeout(()=>reject(Error('首页立绘加载超时')),15000);image.onload=()=>{clearTimeout(timeout);complete();resolve();};image.onerror=()=>{clearTimeout(timeout);reject(Error('首页立绘加载失败'));};image.src=NinjaArt.get(c.id)?.file||c.portraitURL;}),new Promise((resolve,reject)=>{const image=new Image(),timeout=setTimeout(()=>reject(Error('首页背景加载超时')),15000);image.onload=()=>{clearTimeout(timeout);complete();resolve();};image.onerror=()=>{clearTimeout(timeout);reject(Error('首页背景加载失败'));};image.src='assets/lobby-v57/konoha-sunset.webp';}),document.fonts.ready.then(complete)]);
   G.shellPrepared=true;
  };
  function loading(message,retry=false,progress=null){

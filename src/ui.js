@@ -78,7 +78,7 @@ window.UI = (function () {
   /* ---------- 顶栏 & 底部导航 ---------- */
   function renderTop() {
     const s = S(), ch = D.charById[s.selected];
-    $('topbar').innerHTML = `
+    $('topbar').innerHTML = U.page==='lobby'?HomeLobby.top(s,ch,Game.debug()): `
       <div class="tb-profile"><div class="tb-avatar" style="--c:${ch.color}"><img class="pix" src="${Sprites.headURL(ch.id, 3)}"></div>
         <div class="tb-name"><b>木叶忍者</b><button id="ui-debug-toggle" class="tb-debug" type="button" role="switch" aria-checked="${Game.debug()}">调试 ${Game.debug()?'开启':'关闭'}</button></div></div>
       <div class="tb-cur">
@@ -89,14 +89,14 @@ window.UI = (function () {
     $('topbar').querySelectorAll('.plus').forEach(b => b.onclick = () => { Sfx.play('click'); U.toast(b.dataset.tip === 'gy' ? '勾玉可通过战斗存活与击败BOSS获得（本作无任何付费）' : '金币可通过战斗获得'); });
   }
   const navItems = [
-    { id: 'lobby', name: '主页', icon: 'home' },
-    { id: 'roster', name: '角色', icon: 'clone' },
-    { id: 'summon', name: '召唤', icon: 'magatama' },
-    { id: 'upgrade', name: '强化', icon: 'whetstone' },
-    { id: 'settings', name: '设置', icon: 'gear' }
+    { id: 'lobby', name: '首页', icon: 'home' },
+    { id: 'roster', name: '忍者', icon: 'ninja' },
+    { id: 'summon', name: '召唤', icon: 'summon' },
+    { id: 'upgrade', name: '强化', icon: 'upgrade' },
+    { id: 'inventory', name: '背包', icon: 'bag' }
   ];
   function renderNav() {
-    $('bottom-nav').innerHTML = navItems.map(n => `<button class="nav-btn ${U.page === n.id ? 'active' : ''}" data-go="${n.id}"><img class="pix" src="${Sprites.iconURL(n.icon, 3)}"><span>${n.name}</span></button>`).join('');
+    $('bottom-nav').innerHTML = navItems.map(n => `<button class="nav-btn ${U.page === n.id ? 'active' : ''}" data-go="${n.id}">${HomeLobby.icon(n.icon)}<span>${n.name}</span></button>`).join('');
     $('bottom-nav').querySelectorAll('.nav-btn').forEach(b => b.onclick = () => { Sfx.play('click'); U.go(b.dataset.go); });
   }
   U.go = function (page, arg) {
@@ -108,7 +108,7 @@ window.UI = (function () {
     const m = $('ui-main');
     m.className = 'page-' + page;
     m.innerHTML = '';
-    ({ lobby: renderLobby, roster: renderRoster, summon: renderSummon, upgrade: renderUpgrade, settings: renderSettings })[page](m, arg);
+    ({ lobby: renderLobby, roster: renderRoster, summon: renderSummon, upgrade: renderUpgrade, settings: renderSettings, inventory: m=>HomeLobby.inventory(m) })[page](m, arg);
     m.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => { Sfx.play('click'); U.go(b.dataset.go, b.dataset.arg); }));
     Sfx.music('lobby');
   };
@@ -122,35 +122,9 @@ window.UI = (function () {
   }
   function renderLobby(m) {
     const s=S(),ch=D.charById[s.displaySelected||s.selected];
-    m.innerHTML = `
-      <div class="lobby" style="--c:${ch.color};--c2:${ch.color2}">
-        <div class="lobby-bg"><div class="lb-grad"></div><div class="lb-rays"></div>${sealSvg('lb-seal')}
-          <div class="lb-kanji">忍</div>${Array.from({ length: 8 }, (_, i) => `<i class="leaf" style="--i:${i}"></i>`).join('')}</div>
-        <div class="splash-wrap home-portrait-stage" aria-label="首页展示立绘，可拖动和双指缩放">${NinjaArt.tag(ch.id,'splash')}</div>
-        <div class="portrait-tools"><span>拖动调整 · 双指缩放</span><button type="button" data-portrait-reset aria-label="恢复默认上半身构图">复位</button></div>
-        <div class="lobby-side">
-          <button class="side-btn" data-go="roster"><img class="pix" src="${Sprites.iconURL('clone', 3)}"><span>换人</span></button>
-          <button class="side-btn" id="btn-notice"><img class="pix" src="${Sprites.iconURL('scrollBig', 3)}"><span>公告</span></button>
-        </div>
-        <div class="lobby-banner" data-go="summon">
-          <div class="lbn-tag">限定UP</div>
-          <div class="lbn-imgs">${D.gacha.featured.map(id => charImg(id, 3)).join('')}</div>
-          <div class="lbn-txt"><b>${D.gacha.bannerName}</b><small>SSR 概率 3% · ${D.gacha.pity}抽保底</small></div>
-        </div>
-        <div class="lobby-info">
-          <div><small>累计击杀</small><b>${s.stats.totalKills}</b></div>
-          <div><small>出战次数</small><b>${s.stats.runs}</b></div>
-          <div><small>通关次数</small><b>${s.stats.wins}</b></div>
-        </div>
-        <button class="btn-battle" id="btn-battle">
-          <span class="bb-shine"></span>
-          <span class="bb-main">出 战</span>
-          <span class="bb-sub">15分钟试炼 · 升级招募小队</span>
-        </button>
-      </div>`;
+    m.innerHTML=HomeLobby.render(s,ch);
     U.disposePortrait=HomePortrait.mount(m.querySelector('.home-portrait-stage'),ch.id);
-    $('btn-battle').onclick = () => { Sfx.play('select'); U.openBattlePrep(); };
-    $('btn-notice').onclick=()=>{Sfx.play('click');modal('公告',`<p>欢迎来到《忍者：无尽试炼》。</p><ul><li>拖动移动，忍术自动释放；近身忍术需接近目标。</li><li>单人开局，升级招募最多3名支援；支援倒地5秒复活。</li><li>5/10分钟小首领、13分钟大首领，15分钟超时。</li><li>战斗支持1、1.5、2、3倍速；暂停查看技能和联动。</li></ul><p class="muted">第一阶段53个角色立绘已解锁，可在角色页设为首页展示。已有40个战斗形态可测试，新角色战斗素材待后续更新。开屏只准备首页，战斗与技能资源按包加载。</p>`);};
+    HomeLobby.bind(m,U,modal);
   }
 
   /* ---------- 角色 ---------- */

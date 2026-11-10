@@ -1,0 +1,25 @@
+/* v0.57: full-screen Leaf Village lobby. Visual slots reflect the current solo/recruit rules. */
+window.HomeLobby={
+ icon(name,cls=''){return `<img class="lobby-icon ${cls}" src="assets/lobby-v57/${name}.svg" alt="" draggable="false">`;},
+ top(s,ch,debug){return `<div class="tb-profile"><div class="tb-avatar"><img class="pix" src="${Sprites.headURL(ch.id,3)}" alt=""></div><div class="tb-name"><b>木叶忍者 <em>Lv.${1+Math.floor((s.stats.totalKills||0)/1000)}</em></b><div class="profile-meter"><i style="width:${((s.stats.totalKills||0)%1000)/10}%"></i></div><button id="ui-debug-toggle" class="tb-debug" type="button" role="switch" aria-checked="${debug}">调试${debug?'开启':'关闭'}</button></div></div><div class="tb-cur"><div class="cur-pill">${this.icon('coin')}<b id="cur-coins">${s.coins}</b><button class="plus" data-tip="coin" aria-label="金币来源">＋</button></div><div class="cur-pill gy">${this.icon('gem')}<b id="cur-gouyu">${s.gouyu}</b><button class="plus" data-tip="gy" aria-label="勾玉来源">＋</button></div></div>`;},
+ render(s,ch){
+  const main=GameData.charById[s.selected],featured=GameData.gacha.featured,ic=this.icon.bind(this);
+  return `<div class="lobby cinematic-lobby"><div class="lobby-bg"><div class="konoha-sunset"></div><div class="lobby-vignette"></div>${Array.from({length:6},(_,i)=>`<i class="maple" style="--i:${i}">✦</i>`).join('')}</div>
+   <div class="splash-wrap home-portrait-stage" data-layout="cinematic57" aria-label="首页全身立绘，可拖动和双指缩放">${NinjaArt.tag(ch.id,'splash')}</div>
+   <div class="lobby-shortcuts" aria-label="快捷功能">${[['mail','邮件'],['quest','任务'],['gift','活动'],['notice','公告'],['gear','设置']].map(([icon,label])=>`<button type="button" data-home-action="${icon}" aria-label="${label}">${ic(icon)}<span>${label}</span></button>`).join('')}</div>
+   <aside class="lobby-rail" aria-label="补给入口">${[['shop','商城'],['gift','特惠'],['card','月卡'],['gem','首充']].map(([icon,label])=>`<button type="button" data-home-action="${icon==='gift'?'offer':icon}" aria-label="${label}">${ic(icon)}<span>${label}</span></button>`).join('')}</aside>
+   <div class="portrait-controls"><button type="button" data-home-action="swap" aria-label="切换首页展示忍者">${ic('swap')}<span>换人</span></button><button type="button" data-portrait-reset aria-label="恢复默认全身构图">复位</button></div>
+   <div class="lobby-cards">
+    <button class="gold-frame home-summon" type="button" data-go="summon" aria-label="限定召唤"><div class="summon-lightning"></div><img class="summon-hero" src="${NinjaArt.get(featured.includes('sasuke')?'sasuke':featured[0]).card}" alt=""><div class="summon-copy"><b>限定召唤</b><small>${GameData.gacha.bannerName.split('·').pop().trim()}</small></div><span class="banner-chevron">»</span></button><div class="banner-dots" aria-hidden="true"><i class="active"></i><i></i><i></i><i></i></div>
+    <section class="gold-frame home-squad"><div class="squad-title"><b>出战小队 <small>1/4</small></b><button type="button" data-home-action="prep">备战 »</button></div><div class="home-squad-slots"><div class="squad-member"><img class="pix" src="${Sprites.headURL(main.id,3)}" alt="${main.current.name}"><span>主控</span></div>${[3,7,12].map(lv=>`<div class="squad-member empty"><span class="recruit-plus">＋</span><small>Lv.${lv}招募</small></div>`).join('')}</div></section>
+    <section class="gold-frame home-trial"><div class="trial-scenery"></div><h2>忍界试炼 <span>生存挑战</span></h2><p>木叶试炼场</p><div class="trial-progress"><small>最佳存活 ${Math.floor((s.stats.bestTime||0)/60).toString().padStart(2,'0')}:${Math.floor((s.stats.bestTime||0)%60).toString().padStart(2,'0')}</small><div class="trial-meter"><i style="width:${Math.min(100,(s.stats.bestTime||0)/9)}%"></i></div></div><div class="trial-bottom"><span>${ic('leaf')}15分钟 · 三首领</span><button id="btn-battle" type="button">${ic('sword')}<span class="battle-word">出战</span><i>»</i></button></div></section>
+   </div>
+  </div>`;
+ },
+ bind(m,ui,modal){
+  const tips={mail:['邮件','暂无新邮件。系统通知会显示在这里。'],quest:['试炼记录',`累计击杀：${Save.data.stats.totalKills}<br>出战次数：${Save.data.stats.runs}<br>通关次数：${Save.data.stats.wins}`],gift:['活动','限定召唤已开放，可在底部「召唤」查看当前奖池。'],notice:['公告','第一阶段53个角色均可上阵，共64个可玩形态。<br><br>单人开局，Lv.3／7／12招募支援；倒地5秒复活。每局15分钟，含两个小首领和一个大首领。'],shop:['商城','商城兑换暂未开放，敬请期待。'],offer:['特惠','补给活动尚未开放。当前可通过试炼获得金币与勾玉。'],card:['月卡','月卡暂未开放，敬请期待。'],gem:['首充','首充活动暂未开放，敬请期待。']};
+  m.querySelectorAll('[data-home-action]').forEach(b=>b.onclick=()=>{Sfx.play('click');const a=b.dataset.homeAction;if(a==='gear')ui.go('settings');else if(a==='swap')ui.go('roster');else if(a==='prep')ui.openBattlePrep();else if(tips[a])modal(tips[a][0],`<p class="home-info-copy">${tips[a][1]}</p>`);});
+  m.querySelector('#btn-battle').onclick=()=>{Sfx.play('select');ui.openBattlePrep();};
+ },
+ inventory(m){const s=Save.data;m.innerHTML=`<div class="page-head"><h2>背包</h2><span>INVENTORY</span></div><section class="panel inventory-panel"><h3>我的资源</h3><div>${this.icon('coin')}<b>金币</b><strong>${s.coins}</strong></div><div>${this.icon('gem')}<b>勾玉</b><strong>${s.gouyu}</strong></div><p class="muted">战斗奖励自动存入。当前尚未开放消耗道具与装备仓库。</p></section>`;}
+};
