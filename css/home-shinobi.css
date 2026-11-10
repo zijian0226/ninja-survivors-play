@@ -1,0 +1,72 @@
+/* v0.59 — cut steel, contract seals and inward perspective. All symbols are original SVG. */
+.shinobi-lobby{--ink:#122638;--ivory:#e6eee8;--sage:#a2cbc2;--line:#ccdfd154}
+.shinobi-lobby .konoha-sunset{filter:saturate(.7) brightness(.86)}
+.shinobi-lobby .lobby-vignette{background:linear-gradient(180deg,#14283d22,transparent 23%,transparent 53%,#0c223c5c),linear-gradient(90deg,#0c26313d,transparent 22%,transparent 76%,#10223233)}
+.shinobi-lobby .home-portrait-stage .splash{filter:drop-shadow(0 5px 10px #10253555)}
+#ui[data-page="lobby"] #topbar{background:linear-gradient(180deg,#10233388,transparent)}
+#ui[data-page="lobby"] .tb-avatar{border:1px solid #d8e4df;box-shadow:0 0 0 3px #20333a66,0 3px 9px #101d3355;background:radial-gradient(#526068,#152d3c)}
+#ui[data-page="lobby"] .tb-name{color:#f2f2e9;text-shadow:0 2px 4px #0c1d32}
+#ui[data-page="lobby"] .profile-meter{border-color:#bdcdc15c;background:#1b2b3899;height:3px}
+#ui[data-page="lobby"] .profile-meter i{background:linear-gradient(90deg,#728d87,#d6e7d9)}
+#ui[data-page="lobby"] .cur-pill{border-color:#c8d9d15c;background:linear-gradient(110deg,#1c3342c9,#27384999);box-shadow:none;border-radius:3px;transform:skewX(-7deg)}
+#ui[data-page="lobby"] .cur-pill>*{transform:skewX(7deg)}
+#ui[data-page="lobby"] .cur-pill .plus{border-radius:0;border:0;background:#cadae415!important;color:#e7eee8!important;font-size:16px;width:18px;height:18px}
+#ui[data-page="lobby"] .cur-pill>.lobby-icon{width:23px;height:24px;margin-left:0}
+.shinobi-lobby .lobby-shortcuts button{color:#e8eee8;text-shadow:0 1px 4px #0d2534;filter:none;font-size:11px;letter-spacing:1px;gap:3px;isolation:isolate}
+.shinobi-lobby .lobby-shortcuts button::before{content:"";position:absolute;top:0;left:7px;width:31px;height:31px;transform:rotate(45deg) skew(-4deg,-4deg);border:1px solid #d0e2d13d;background:linear-gradient(140deg,#afc9c625,#17344675 58%,#57797633);box-shadow:1px 2px 7px #14263433;z-index:-1}
+.shinobi-lobby .lobby-shortcuts .lobby-icon{width:31px;height:31px;opacity:.95;filter:drop-shadow(0 1px 2px #11263888)}
+.shinobi-lobby .lobby-shortcuts button:active{filter:brightness(1.35)}
+.shinobi-lobby .lobby-rail{width:30%;bottom:28.8%;gap:5px;display:flex;flex-direction:column;transform:perspective(650px) rotateY(13deg) rotateZ(-5deg);transform-origin:left center}
+.shinobi-lobby .lobby-rail button{min-height:31px;flex-direction:row;justify-content:flex-start;padding:2px 8px;gap:7px;background:linear-gradient(105deg,#173348b5,#2339478c 70%,#36565e18);border:0;border-left:1px solid #cadfd48c;border-bottom:1px solid #dcece830;border-radius:0;box-shadow:none;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);clip-path:polygon(0 0,98% 0,90% 100%,0 100%);font-size:11px;letter-spacing:2px;color:#e4ebe5;text-shadow:0 1px 2px #102034}
+.shinobi-lobby .lobby-rail button:nth-child(2){width:94%}.shinobi-lobby .lobby-rail button:nth-child(3){width:88%}.shinobi-lobby .lobby-rail button:nth-child(4){width:82%}
+.shinobi-lobby .lobby-rail .lobby-icon{width:26px;height:26px;opacity:.9}
+.shinobi-lobby .gold-frame{clip-path:polygon(0 0,96% 0,100% 9%,100% 100%,4% 100%,0 92%);border:1px solid #cddcd15e;background:linear-gradient(115deg,#123248d9,#1b34449c 65%,#33555f65);box-shadow:inset 0 0 20px #688c8c0d,0 5px 15px #0b20384d;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);isolation:isolate}
+.shinobi-lobby .gold-frame::before{inset:0;background:linear-gradient(150deg,#c5dfd60d,transparent 35%,#688b9a0c);border-left:2px solid #c6dfd75c;clip-path:none}
+.shinobi-lobby .gold-frame::after{inset:5px;clip-path:none;border:0;border-top:1px solid #c9e2dd24;border-bottom:1px solid #c9e2dd1f;pointer-events:none}
+.shinobi-lobby .home-summon{transform:perspective(650px) rotateY(10deg) rotateZ(-2deg);transform-origin:left center;border-color:#c5cad66b;filter:none;min-height:56px}
+.shinobi-lobby .summon-lightning{background:radial-gradient(ellipse at 90% 35%,#547f9b88,transparent 55%),linear-gradient(125deg,#1d2b41c9,#26394acc)}
+.shinobi-lobby .summon-lightning::before,.shinobi-lobby .summon-lightning::after{opacity:.17;background:#d0e9e8;filter:drop-shadow(0 0 3px #afded9)}
+.shinobi-lobby .summon-copy b{font:600 clamp(13px,3.8vw,17px) Georgia,'Noto Serif CJK SC',serif;color:#f0f1e8;letter-spacing:1px}
+.shinobi-lobby .summon-copy small{color:#c3d6d4;font-size:9px;letter-spacing:1px}
+.shinobi-lobby .summon-hero{width:75%;height:430%;object-fit:contain;right:-7%;top:-20%;filter:drop-shadow(-3px 0 5px #17273866);mask-image:linear-gradient(90deg,transparent,#000 25%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 25%)}
+.shinobi-lobby .banner-chevron{color:#d1e1d8;font:18px Georgia,serif}
+.shinobi-lobby .banner-dots i{border-color:#d9e6da88}.shinobi-lobby .banner-dots i.active{background:#d6e8db;box-shadow:0 0 5px #d5f4db66}
+.shinobi-lobby .home-squad{width:40%;bottom:14.3%;transform:perspective(650px) rotateY(15deg) rotateZ(-5deg);transform-origin:left center;padding:8px 8px 7px;filter:none}
+.panel-index{display:block;font-size:8px;color:#acc9c4;letter-spacing:2px;margin:1px 0 6px;line-height:1}
+.shinobi-lobby .squad-title{margin-bottom:6px;color:#e8ece4}
+.shinobi-lobby .squad-title>b{font:600 12px Georgia,'Noto Serif CJK SC',serif;letter-spacing:1px}
+.shinobi-lobby .squad-title small{font:10px Georgia,serif;color:#b6c9c8;letter-spacing:0}
+.shinobi-lobby .squad-title>button{border:0;border-left:1px solid #c4d8d74d;border-radius:0;background:#a9c7bd12;color:#d8e5db;letter-spacing:0;padding:3px 5px}
+.shinobi-lobby .squad-member{background:linear-gradient(125deg,#c7d8cd8c,#6a8a8d5c);clip-path:polygon(10% 0,100% 0,100% 90%,90% 100%,0 100%,0 10%)}
+.shinobi-lobby .squad-member::before{background:#183344ad}
+.shinobi-lobby .squad-member>span:not(.recruit-plus){color:#d8e5d9}.shinobi-lobby .squad-member small{color:#c4d2cc}.shinobi-lobby .squad-member .recruit-plus{color:#c3d8d0}
+.shinobi-lobby .home-trial{right:2.5%;bottom:16.1%;width:40%;padding:11px 10px 10px;min-height:125px;transform:perspective(650px) rotateY(-15deg) rotateZ(5deg);transform-origin:right center;filter:none;overflow:hidden}
+.shinobi-lobby .trial-scenery{inset:0;background:linear-gradient(110deg,#19384b45,#2143511f);clip-path:none}
+.shinobi-lobby .panel-watermark{position:absolute;z-index:-1;right:-12px;top:4px;width:109px;height:109px;opacity:.13;transform:rotate(-12deg);pointer-events:none}
+.shinobi-lobby .home-trial h2{font:600 17px Georgia,'Noto Serif CJK SC',serif;color:#edf0e5;text-shadow:0 2px 4px #152a36;letter-spacing:2px;position:relative}
+.shinobi-lobby .home-trial>p{color:#c2d5d0;font-size:10px;letter-spacing:2px;margin:6px 0 15px}
+.shinobi-lobby .trial-bottom #btn-battle{height:38px;min-height:38px;border:1px solid #f5d896bb;box-shadow:inset 0 1px 0 #fff0c95c,0 3px 9px #0e22394d;background:linear-gradient(115deg,#9f6a39,#ca9c5d 55%,#e8c282);color:#fff5dc;clip-path:polygon(0 0,97% 0,100% 12%,100% 100%,3% 100%,0 88%);text-shadow:0 1px 2px #694a2b}
+.shinobi-lobby .trial-bottom #btn-battle>.battle-word{font-size:27px;letter-spacing:2px}
+.shinobi-lobby .trial-bottom #btn-battle .lobby-icon{width:23px;height:23px;opacity:.95}
+.shinobi-lobby .portrait-controls{gap:4px;right:3.5%}
+.shinobi-lobby .portrait-controls button{min-width:36px;min-height:32px;padding:4px;border:0;border-left:1px solid #d1e4d163;border-radius:0;background:#19394865;color:#dce7de;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);font-size:9px;transform:perspective(500px) rotateY(-10deg)}
+.shinobi-lobby .portrait-controls [data-portrait-reset]{font-size:9px;opacity:.75}
+#ui[data-page="lobby"] #bottom-nav{background:linear-gradient(180deg,#132a3e00,#142b3fa8 35%,#10263be6);border-top:1px solid #d4e4dc12;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#ui[data-page="lobby"] #bottom-nav .nav-btn{color:#c3d2cf;font-size:10px;font-weight:400;letter-spacing:2px;gap:2px;text-shadow:0 2px 3px #122636}
+#ui[data-page="lobby"] #bottom-nav .nav-btn.active{color:#eaf5e8;background:radial-gradient(ellipse at 50% 45%,#9bc5af1f,transparent 72%)}
+#ui[data-page="lobby"] #bottom-nav .nav-btn.active>.lobby-icon{filter:drop-shadow(0 0 5px #9bd8c23f);opacity:1}
+#ui[data-page="lobby"] #bottom-nav .nav-btn[data-go="lobby"]>.lobby-icon{width:38px;height:38px;transform:translateY(-3px)}
+#ui[data-page="lobby"] #bottom-nav .nav-btn:not([data-go="lobby"])>.lobby-icon{width:30px;height:30px;opacity:.78;transform:perspective(350px) rotateY(7deg) rotateZ(-4deg)}
+#ui[data-page="lobby"] #bottom-nav .nav-btn.active::after{height:1px;background:linear-gradient(90deg,transparent,#a1ccc0,transparent);box-shadow:0 0 4px #91cfbd44;bottom:5px;left:23%;right:23%}
+#ui:not([data-page="lobby"]):not([data-page="roster"]) #bottom-nav .lobby-icon,.inventory-panel .lobby-icon{filter:brightness(.42) saturate(.5)}
+@media(max-width:350px){.shinobi-lobby .home-trial{width:40%;padding:10px 8px;min-height:118px}.shinobi-lobby .home-trial h2{font-size:15px}.shinobi-lobby .squad-title>b{font-size:10px;letter-spacing:0}.shinobi-lobby .panel-index{font-size:7px;margin-bottom:5px;letter-spacing:1px}.shinobi-lobby .home-squad{padding:7px;width:41%}.shinobi-lobby .squad-title>button{font-size:8px;padding:3px}.shinobi-lobby .lobby-rail{width:31%}.shinobi-lobby .lobby-rail button{gap:4px;font-size:10px}.shinobi-lobby .lobby-shortcuts button::before{left:5px;width:29px;height:29px}.shinobi-lobby .lobby-shortcuts .lobby-icon{width:29px;height:29px}}
+@media(max-height:650px){.shinobi-lobby .lobby-rail{bottom:31%;gap:3px}.shinobi-lobby .lobby-rail button{min-height:26px;padding:1px 6px;font-size:10px}.shinobi-lobby .lobby-rail .lobby-icon{width:23px;height:23px}.shinobi-lobby .home-trial{min-height:110px;padding:9px 8px;bottom:15.4%}.shinobi-lobby .home-trial>p{margin:5px 0 10px}.shinobi-lobby .home-squad{bottom:14.3%}.shinobi-lobby .panel-index{margin-bottom:4px}.shinobi-lobby .home-summon{min-height:49px}.shinobi-lobby .banner-dots{top:19.2%}}
+@supports not (backdrop-filter:blur(4px)){.shinobi-lobby .gold-frame{background:linear-gradient(115deg,#183247e8,#203d4bd9)}}
+.shinobi-lobby .lobby-shortcuts button{min-width:44px;min-height:51px}
+.shinobi-lobby .trial-bottom #btn-battle{height:44px;min-height:44px}
+.shinobi-lobby .portrait-controls button{min-width:40px;min-height:36px}
+/* Keep the full hairline in the recruitment banner and give the mission title priority. */
+.shinobi-lobby .summon-hero{top:0;height:400%}
+.shinobi-lobby .home-trial h2{font-size:19px}
+.shinobi-lobby .squad-title>b{font-size:13px}
+@media(max-width:350px){.shinobi-lobby .home-trial h2{font-size:17px}.shinobi-lobby .squad-title>b{font-size:11px}}

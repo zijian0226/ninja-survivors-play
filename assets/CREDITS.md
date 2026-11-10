@@ -162,3 +162,8 @@ Ma Shan Zheng（马善政毛笔字体），Copyright 2018 The Ma Shan Zheng Proj
 ## v0.57 首页
 
 木叶夕照背景为参考辅助生成的环境图（无人物/UI）；首页19枚图标为代码绘制SVG。人物立绘沿用既有来源。毛笔字为Google Fonts Ma Shan Zheng（SIL OFL 1.1）子集，许可见 assets/fonts/MaShanZheng-OFL.txt。具体记录见私有源码 docs/home-v57/sources.json。
+
+
+## v0.59 首页忍具图标
+
+20枚SVG图标由 tools/ui/build-shinobi-icons.py 原创绘制；材质与透视为CSS。以木叶护额、忍具、卷轴等元素进行主题化设计，不称为官方拆包图标。未新增生成的人物或背景；既有美术来源不变。

@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v58-centered-home';
+const VERSION = 'v59-shinobi-glass';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -15,31 +15,32 @@ const PRECACHE = [
   './play.html',
   './battle/scroll-roguelite.js?v=scrollproto1',
   './manifest.webmanifest',
-  './css/style.css?v=home58',
-  './css/home-lobby.css?v=home58',
-  './css/home-centered.css?v=home58',
-  './src/home-lobby.js?v=home58',
+  './css/style.css?v=home59',
+  './css/home-lobby.css?v=home59',
+  './css/home-centered.css?v=home59',
+  './css/home-shinobi.css?v=home59',
+  './src/home-lobby.js?v=home59',
   './assets/lobby-v57/konoha-sunset.webp',
-  './src/data/characters.js?v=home58',
-  './src/data/skills.js?v=home58',
-  './src/data/enemies.js?v=home58',
-  './src/data/upgrades.js?v=home58',
-  './src/art/pixelArt.js?v=home58',
-  './src/save.js?v=home58',
-  './src/audio.js?v=home58',
-  './src/sprites.js?v=home58',
-  './src/battle-bridge.js?v=home58',
-  './src/data/roster-current.js?v=home58',
-  './src/data/phase-one.js?v=home58',
-  './src/data/character-packs.js?v=home58',
-  './css/current-ui.css?v=home58',
-  './css/roster.css?v=home58',
-  './src/data/portrait-layout.js?v=home58',
-  './src/roster-ui.js?v=home58',
-  './src/home-portrait.js?v=home58',
-  './src/ui.js?v=home58',
-  './src/mobile.js?v=home58',
-  './src/main.js?v=home58',
+  './src/data/characters.js?v=home59',
+  './src/data/skills.js?v=home59',
+  './src/data/enemies.js?v=home59',
+  './src/data/upgrades.js?v=home59',
+  './src/art/pixelArt.js?v=home59',
+  './src/save.js?v=home59',
+  './src/audio.js?v=home59',
+  './src/sprites.js?v=home59',
+  './src/battle-bridge.js?v=home59',
+  './src/data/roster-current.js?v=home59',
+  './src/data/phase-one.js?v=home59',
+  './src/data/character-packs.js?v=home59',
+  './css/current-ui.css?v=home59',
+  './css/roster.css?v=home59',
+  './src/data/portrait-layout.js?v=home59',
+  './src/roster-ui.js?v=home59',
+  './src/home-portrait.js?v=home59',
+  './src/ui.js?v=home59',
+  './src/mobile.js?v=home59',
+  './src/main.js?v=home59',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
@@ -80,8 +81,8 @@ self.addEventListener('activate', event => {
         channel.port1.onmessage=event=>done(event.data);
         try{client.postMessage({type:'NINJA_CLIENT_STATUS'},[channel.port2]);}catch{done(null);}
       });
-      if(status?.release==='home58')return;
-      url.pathname=SCOPE+'play.html';url.searchParams.set('release','home58');
+      if(status?.release==='home59')return;
+      url.pathname=SCOPE+'play.html';url.searchParams.set('release','home59');
       // Navigation must run after activation has settled; awaiting it inside activate deadlocks.
       let tries=0;
       const navigate=()=>{
