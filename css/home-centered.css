@@ -1,0 +1,53 @@
+/* v0.58: centered character with functional controls around the portrait.
+ * Layout uses the phone's actual viewport, excluding the reference image's black margins. */
+.centered-lobby .konoha-sunset{background-position:50% 50%;filter:saturate(.8) brightness(.9)}
+.centered-lobby .lobby-vignette{background:linear-gradient(180deg,#12223822,transparent 28%,transparent 60%,#18192855),radial-gradient(ellipse at 50% 42%,transparent 15%,#17203822 95%)}
+.centered-lobby .lobby-shortcuts{display:contents}
+.centered-lobby .lobby-shortcuts button{position:absolute;z-index:4;width:45px;min-height:48px;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:11px;font-family:system-ui,sans-serif;filter:drop-shadow(0 2px 3px #142138aa)}
+.centered-lobby .lobby-shortcuts .lobby-icon{width:30px;height:30px}
+.centered-lobby .lobby-shortcuts [data-home-action="mail"]{left:2.5%;top:23%}
+.centered-lobby .lobby-shortcuts [data-home-action="quest"]{left:2.5%;top:32%}
+.centered-lobby .lobby-shortcuts [data-home-action="gift"]{left:2.5%;top:41%}
+.centered-lobby .lobby-shortcuts [data-home-action="notice"]{right:2.5%;top:23%}
+.centered-lobby .lobby-shortcuts [data-home-action="gear"]{right:2.5%;top:32%}
+.centered-lobby .lobby-cards{display:contents;filter:none}
+.centered-lobby .home-summon{position:absolute;left:2.5%;top:9.5%;width:36%;height:7.4%;min-height:50px;max-height:74px;padding:8px 9px;filter:drop-shadow(0 2px 5px #17203377)}
+.centered-lobby .summon-copy b{font-size:clamp(14px,4vw,18px);letter-spacing:0}
+.centered-lobby .summon-copy small{font-size:9px;margin-top:3px}
+.centered-lobby .summon-hero{height:240%;top:-27%;width:100%;right:-20%}
+.centered-lobby .banner-chevron{right:4px;font-size:20px;top:27%}
+.centered-lobby .banner-dots{position:absolute;left:2.5%;top:17.7%;width:36%;margin:0;gap:5px}
+.centered-lobby .banner-dots i{width:4px;height:4px}
+.centered-lobby .lobby-rail{left:2.5%;top:auto;bottom:28.5%;width:31%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;background:none;padding:0;clip-path:none;filter:none}
+.centered-lobby .lobby-rail::before{display:none}
+.centered-lobby .lobby-rail button{min-height:48px;padding:5px 2px;gap:1px;font-family:system-ui,sans-serif;font-size:10px;border:1px solid #c9b68b99;background:linear-gradient(125deg,#253042c7,#3a3445aa);border-radius:3px;box-shadow:0 2px 5px #111f2e55;backdrop-filter:blur(3px)}
+.centered-lobby .lobby-rail button+button::before{display:none}
+.centered-lobby .lobby-rail .lobby-icon{width:25px;height:25px}
+.centered-lobby .portrait-controls{position:absolute;left:auto;right:3%;top:44%;bottom:auto;flex-direction:column;align-items:center;gap:6px}
+.centered-lobby .portrait-controls button{background:#1f2b3d77;border-color:#dfd3bd66;min-height:34px;min-width:41px;justify-content:center;padding:4px 6px;font-size:10px}
+.centered-lobby .portrait-controls [data-portrait-reset]{font-size:9px}
+.centered-lobby .home-squad{position:absolute;left:2.5%;bottom:14.5%;width:39%;padding:8px;filter:drop-shadow(0 3px 4px #10213177);transform:rotate(-2deg)}
+.centered-lobby .squad-title>b{font-size:12px}.centered-lobby .squad-title>button{font-size:9px;padding:2px 4px}.centered-lobby .squad-title small{font-size:10px}
+.centered-lobby .home-squad-slots{gap:3px}
+.centered-lobby .home-trial{position:absolute;right:2.5%;top:auto;bottom:16%;width:39%;padding:10px;min-height:122px;filter:drop-shadow(0 3px 5px #12203388);transform:rotate(2deg)}
+.centered-lobby .home-trial h2{font-size:16px;letter-spacing:1px}
+.centered-lobby .home-trial h2 span,.centered-lobby .trial-progress,.centered-lobby .trial-bottom>span{display:none}
+.centered-lobby .home-trial>p{font-size:11px;margin:5px 0 14px}
+.centered-lobby .trial-bottom{display:block}
+.centered-lobby .trial-bottom #btn-battle{width:100%;min-width:0;height:39px;gap:3px;min-height:39px}
+.centered-lobby .trial-bottom #btn-battle>.battle-word{font-size:28px}
+.centered-lobby .trial-bottom #btn-battle .lobby-icon{width:22px;height:22px}
+.centered-lobby .gold-frame{background:linear-gradient(130deg,#e5d0a3,#8c7964 45%,#d8c298);clip-path:polygon(5% 0,96% 0,100% 8%,100% 92%,95% 100%,0 100%,0 8%)}
+.centered-lobby .gold-frame::before{inset:1px;background:linear-gradient(125deg,#243042df,#252d3bba)}
+.centered-lobby .gold-frame::after{inset:4px;border-color:#d8c5a533}
+.centered-lobby .maple{display:none}
+#ui[data-page="lobby"] #bottom-nav{height:calc(10.6% + env(safe-area-inset-bottom));min-height:calc(66px + env(safe-area-inset-bottom));clip-path:none;background:linear-gradient(180deg,#19203000,#1a2337bb 36%,#1b2236ed);padding-top:12px;backdrop-filter:blur(3px)}
+#ui[data-page="lobby"] #bottom-nav::before{display:none}
+#ui[data-page="lobby"] #bottom-nav .nav-btn{font-family:system-ui,sans-serif;font-size:11px;gap:2px;color:#e0e0df}
+#ui[data-page="lobby"] #bottom-nav .nav-btn.active{color:#fff1c9;background:radial-gradient(ellipse at center,#b99b5938,transparent 70%)}
+#ui[data-page="lobby"] #bottom-nav .nav-btn[data-go="lobby"]>.lobby-icon{width:36px;height:36px;transform:translateY(-3px)}
+#ui[data-page="lobby"] #bottom-nav .nav-btn:not([data-go="lobby"])>.lobby-icon{width:28px;height:28px}
+#ui[data-page="lobby"] #bottom-nav .nav-btn.active::after{bottom:3px}
+@media(max-width:350px){.centered-lobby .home-squad{padding:7px;width:40%}.centered-lobby .squad-title>b{font-size:11px}.centered-lobby .squad-title>button{font-size:8px}.centered-lobby .home-trial{width:40%;padding:9px}.centered-lobby .home-trial h2{font-size:14px}.centered-lobby .home-trial>p{font-size:10px}.centered-lobby .lobby-shortcuts button{width:40px;font-size:10px}.centered-lobby .lobby-shortcuts .lobby-icon{width:27px;height:27px}.centered-lobby .lobby-rail{width:30%}}
+@media(max-height:650px){.centered-lobby .home-squad{bottom:14%}.centered-lobby .home-trial{bottom:15%;min-height:106px;padding:8px}.centered-lobby .home-trial>p{margin:3px 0 8px}.centered-lobby .lobby-rail{bottom:30%;gap:3px}.centered-lobby .lobby-rail button{min-height:41px;padding:3px 2px}.centered-lobby .lobby-rail .lobby-icon{width:23px;height:23px}.centered-lobby .lobby-shortcuts [data-home-action="mail"],.centered-lobby .lobby-shortcuts [data-home-action="notice"]{top:22%}.centered-lobby .lobby-shortcuts [data-home-action="quest"],.centered-lobby .lobby-shortcuts [data-home-action="gear"]{top:32%}.centered-lobby .lobby-shortcuts [data-home-action="gift"]{top:42%}.centered-lobby .portrait-controls{top:43%}}
+.centered-lobby .home-summon,.centered-lobby .home-squad,.centered-lobby .home-trial,.centered-lobby .banner-dots{z-index:3}

@@ -89,11 +89,11 @@ window.UI = (function () {
     $('topbar').querySelectorAll('.plus').forEach(b => b.onclick = () => { Sfx.play('click'); U.toast(b.dataset.tip === 'gy' ? '勾玉可通过战斗存活与击败BOSS获得（本作无任何付费）' : '金币可通过战斗获得'); });
   }
   const navItems = [
-    { id: 'lobby', name: '首页', icon: 'home' },
     { id: 'roster', name: '忍者', icon: 'ninja' },
-    { id: 'summon', name: '召唤', icon: 'summon' },
     { id: 'upgrade', name: '强化', icon: 'upgrade' },
-    { id: 'inventory', name: '背包', icon: 'bag' }
+    { id: 'lobby', name: '首页', icon: 'home' },
+    { id: 'inventory', name: '背包', icon: 'bag' },
+    { id: 'summon', name: '召唤', icon: 'summon' }
   ];
   function renderNav() {
     $('bottom-nav').innerHTML = navItems.map(n => `<button class="nav-btn ${U.page === n.id ? 'active' : ''}" data-go="${n.id}">${HomeLobby.icon(n.icon)}<span>${n.name}</span></button>`).join('');
