@@ -17,15 +17,15 @@ window.SourceArt56={
   for(const a of TeamSeven.living())if((a===s.p?Growth.main():a.profile)?.key==='tsunade')a.hp=Math.min(a===s.p?mainMaxHp():TeamSeven.maxHp(a),a.hp+3*dt);
   for(const a of s.sourceSummons){
    a.life-=dt;a.atk-=dt;a.cast=Math.max(0,a.cast-dt);const e=Growth.enemies().filter(e=>Math.hypot(e.x-a.owner.x,e.y-a.owner.y)<600).sort((x,y)=>dist(x,a)-dist(y,a))[0];a.moving=false;
-   if(e){const gap=dist(a,e)||1;if(gap>42){s.world.move(a,(e.x-a.x)/gap*145*dt,(e.y-a.y)/gap*145*dt,10,s.arena);a.moving=true;}a.facing=e.x>=a.x?1:-1;if(gap<70&&a.atk<=0){hit(e,a.source.damage*.22);a.atk=.85;a.cast=.24;}}
+   if(e){const gap=dist(a,e)||1;if(gap>42){s.world.move(a,(e.x-a.x)/gap*145*dt,(e.y-a.y)/gap*145*dt,10,s.arena);a.moving=true;}a.facing=e.x>=a.x?1:-1;if(gap<70&&a.atk<=0){addDamageZone(a.x+a.facing*25,a.y-24,a.source.damage*.22,'impact',.24,24);a.atk=.85;a.cast=.24;}}
   }
   s.sourceSummons=s.sourceSummons.filter(a=>a.life>0);
   for(const q of SkillArt.active){
-   if(!q.source56Heal||q.age<q.source56Heal.next||q.age>=q.damageEnd||q.actor.hp<=0||q.actor.down>0)continue;
-   const z=q.source56Heal;z.next+=.25;const patients=z.team?TeamSeven.living().filter(a=>dist(a,q.actor)<260):[q.actor];for(const a of patients){const max=a===s.p?mainMaxHp():TeamSeven.maxHp(a);a.hp=Math.min(max,a.hp+max*z.fraction/z.pulses);}
+   if(!q.source56Heal||q.age<q.source56Heal.next||q.age>=q.damageEnd||!q.released||!q.geometry)continue;
+   const z=q.source56Heal;z.next+=.25;const patients=z.team?TeamSeven.living().filter(a=>SkillMotion.ellipse(SkillMotion.healArea(q),a)):[q.actor];for(const a of patients){const max=a===s.p?mainMaxHp():TeamSeven.maxHp(a);a.hp=Math.min(max,a.hp+max*z.fraction/z.pulses);}
   }
  },
- draw(entities){for(const a of s.sourceSummons||[])entities.push({y:a.y,draw:()=>this.drawActor(a.sprite,a.cast>0?'cast':a.moving?'run':'idle',a.x,a.y,a.facing,Math.min(.82,a.life/.3),0,false,a.cast>0?.24-a.cast:null)});}
+ draw(entities){for(const q of SkillArt.active)if(q.source56Heal?.team&&q.released&&q.age<q.damageEnd&&q.geometry)entities.push({y:q.geometry.y,draw:()=>{const g=SkillMotion.healArea(q);ctx.save();ctx.globalAlpha=.45;ctx.strokeStyle='#b4e6b1';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(g.x,g.y,g.rx,g.ry,0,0,Math.PI*2);ctx.stroke();ctx.restore();}});for(const a of s.sourceSummons||[])entities.push({y:a.y,draw:()=>this.drawActor(a.sprite,a.cast>0?'cast':a.moving?'run':'idle',a.x,a.y,a.facing,Math.min(.82,a.life/.3),0,false,a.cast>0?.24-a.cast:null)});}
 };
 (function(){
  const cast=SkillArt.cast,update=SkillArt.update,draw=SkillArt.draw,ensure=SkillArt.ensure,loaded=SkillArt.loaded,description=SkillArt.description,nativeSprite=sprite;

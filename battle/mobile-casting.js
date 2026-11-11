@@ -1,6 +1,7 @@
-/* Mobile casting policy, scoped to the previously tested forms, v0.54 forms and fourteen v0.56 forms. */
+/* Continuous input for every current form; spatial behavior lives in SkillMotion. */
 (function(){
- const keys=new Set(['naruto_shippuden','sasuke','sakura','kakashi','original_hiri','itachi','pain','konan','obito','deidara','madara','orochimaru','kisame','kakuzu','gaara','temari','shikamaru','ino','choji','sai','hidan','asuma','shino','tenten','kiba','kurenai','kabuto','yamato','zabuza','kimimaro','minato','guy','konohamaru','tsunade','jiraiya_sage','hiruzen','hashirama','tobirama','kankuro','chiyo','pain_asura','pain_animal','killerbee_eight_tail','yugito','haku']);
+
+ const keys=new Set(Object.keys(SKILL_KITS));
  const keyOf=a=>a&&s&&a===s.p?s.mainKey:a?.profile?.key;
  const enabled=a=>keys.has(keyOf(a));
  // A circular stick preserves direction even when the finger leaves its ring.
@@ -9,7 +10,7 @@
   const strength=Math.min(1,Math.max(0,(d-3)/27));
   return d?{x:dx/d*strength,y:dy/d*strength}:{x:0,y:0};
  }
- const blocks=SkillArt.blocksMovement,cast=SkillArt.cast,update=SkillArt.update,nativeTick=tick;
+ const blocks=SkillArt.blocksMovement,cast=SkillArt.cast,nativeTick=tick;
  SkillArt.blocksMovement=function(a){return enabled(a)?false:blocks.call(this,a);};
  SkillArt.cast=function(a,u,...args){
   const scoped=keys.has(u?.key),before=scoped?new Set(this.active):null,face=a?.facing;
@@ -19,22 +20,12 @@
   a.mobileCastAction=a.action;
   for(const q of this.active)if(!before.has(q)){
    q.mobileCasting=true;
-   // An independent melee effect has a world position, just like its pixels.
-   if(!q.composite&&q.kit.kind==='melee'){
-    q.clip={...q.clip,damageOffset:[0,0]};q.damageX=q.x;q.damageY=q.y;
-   }
   }
   // Aiming a jutsu must not turn the held movement input around.
   if(a.moving)a.facing=face;
   return result;
  };
- SkillArt.update=function(dt){
-  for(const q of this.active)if(q.mobileCasting&&q.composite&&q.clip.damageOffset){
-   q.damageX=q.actor.x+q.facing*q.clip.damageOffset[0];
-   q.damageY=q.actor.y+q.clip.damageOffset[1];
-  }
-  return update.call(this,dt);
- };
+
  tick=function(dt){
   const p=pointer;
   if(!p||!enabled(s?.p))return nativeTick(dt);

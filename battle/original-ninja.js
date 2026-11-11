@@ -29,9 +29,9 @@ window.OriginalNinja={
    this.forms.set(a,{actor:a,unit:u,age:0,duration:7.4+(l>=3?2:0),damage:k.damage*scale,radius,slashAge:9,slashDue:false,nextSlash:.05,slashFacing:a.facing});
    const links=SquadLinks.onUltimate(a,u,e);UltimateCue.show(a,u,links);
   }else{
-   const flower=slot==='secondary',q={actor:a,unit:u,slot,age:0,duration:flower?1.85:1.45,x:flower?e.x:a.x,y:flower?e.y-24:a.y-24,fromX:a.x+a.facing*18,fromY:a.y-(this.visible(a)?90:28),radius,damage:k.damage*scale,level:l,nextPulse:flower?.42:.25,charmApplied:false,comboTargets:new Set()};
+   const flower=slot==='secondary',q={actor:a,unit:u,slot,age:0,duration:flower?1.85:1.45,x:flower?e.x:a.x,y:flower?e.y-24:a.y-24,fromX:a.x+a.facing*18,fromY:a.y-(this.visible(a)?90:28),radius,damage:k.damage*scale,level:l,nextPulse:flower?.42:.25,released:false,target:e,flightFrom:null,flightTo:null,charmApplied:false,comboTargets:new Set()};
    this.effects.push(q);if(this.effects.length>30)this.effects.shift();
-   if(a===s.p){SquadLinks.onImpact({owner:a,x:e.x,y:e.y-24,element:k.element,damage:q.damage});if(slot==='primary')SquadLinks.onPrimary({x:e.x,y:e.y-24},q.damage);}
+
   }
   this.metrics.casts[slot]++;SkillArt.metrics.casts++;return true;
  },
@@ -41,21 +41,26 @@ window.OriginalNinja={
  update(dt){
   for(const [a,q]of this.forms){q.age+=dt;q.slashAge+=dt;if(a.hp<=0||a.down>0||q.age>=q.duration){this.forms.delete(a);continue;}
    if(q.age>=.95&&q.age<q.duration-.5){q.nextSlash-=dt;const target=Growth.nearestEnemy(a,260);if(q.nextSlash<=0&&target){q.nextSlash=.9;q.slashAge=0;q.slashDue=true;q.slashFacing=target.x>=a.x?1:-1;}
-    if(q.slashDue&&q.slashAge>=.18){q.slashDue=false;this.metrics.slashes++;for(const e of Growth.enemies())if(Math.hypot(e.x-a.x,e.y-a.y)<q.radius+(e.r||12)&&(e.x-a.x)*q.slashFacing>-45){hit(e,q.damage);SkillArt.metrics.pulses++;}}
+    if(q.slashDue&&q.slashAge>=.18){q.slashDue=false;this.metrics.slashes++;const c=SKILL_ART_DATA[KEY].skills.ultimate,g=SkillMotion.originalGeometry(q,c,this.avatarFrame(q),184,a.x,a.y,.91,q.slashFacing);for(const e of Growth.enemies())if(SkillMotion.ellipse(g,e)&&(e.x-a.x)*q.slashFacing>-45){hit(e,q.damage);SkillArt.metrics.pulses++;}}
    }
   }
-  for(const q of this.effects){q.age+=dt;if(q.actor.hp<=0||q.actor.down>0){q.age=q.duration;continue;}
-   if(q.age>=q.nextPulse&&q.age<(q.slot==='primary'?1.15:1.55)){
+  for(const q of this.effects){q.age+=dt;
+   const flower=q.slot==='secondary';if((q.actor.hp<=0||q.actor.down>0)&&(!flower||!q.released)){q.age=q.duration;continue;}
+   if(flower&&!q.released&&q.age>=.18){const k=q.unit.kit.secondary,e=q.target?.hp>0&&dist(q.target,q.actor)<=k.range?q.target:Growth.nearestEnemy(q.actor,k.range);if(!e){q.age=q.duration;SkillMotion.refund(q);continue;}q.released=true;q.flightFrom={x:q.actor.x+q.actor.facing*18,y:q.actor.y-(this.visible(q.actor)?90:28)};q.flightTo={x:e.x,y:e.y-24};}
+   if(!flower){q.x=q.actor.x;q.y=q.actor.y-24;q.released=q.age>=.25;}
+   else if(q.released){const f=clamp((q.age-.18)/.24,0,1);q.x=q.flightFrom.x+(q.flightTo.x-q.flightFrom.x)*f;q.y=q.flightFrom.y+(q.flightTo.y-q.flightFrom.y)*f;}
+   else{q.x=q.actor.x+q.actor.facing*18;q.y=q.actor.y-28;}
+   const c=SKILL_ART_DATA[KEY].skills[q.slot];q.geometry=SkillMotion.originalGeometry(q,c,this.frame(q),q.radius*2.15,q.x,q.y);
+   if(q.released&&q.age>=q.nextPulse&&q.age<(flower?1.55:1.15)){
     q.nextPulse+=.2;this.metrics.pulses++;SkillArt.metrics.pulses++;
-    for(const e of Growth.enemies())if(Math.hypot(e.x-q.x,e.y-24-q.y)<=q.radius+(e.r||12)){
-     if(q.slot==='primary'){
-      hit(e,q.damage/5);if(e===s.boss){if(!q.charmApplied)e.originalDaze=Math.max(e.originalDaze||0,2);}else if(!q.charmApplied){e.originalCharm=2+(q.level>=4?.6:0);e.originalCharmAtk=.3;e.originalCharmDamage=10*this.power(q.actor,q.level);this.metrics.charms++;}
-     }else{
-      const combo=this.charmed(e)&&!q.comboTargets.has(e);hit(e,q.damage);e.originalBurn={left:2.4,next:.6,damage:q.damage*.65};
-      if(combo){q.comboTargets.add(e);this.metrics.combos++;for(const other of Growth.enemies())if(dist(e,other)<55)hit(other,q.damage*.8);effect(e.x,e.y-24,34,'fire',.35);}
+    if(q.actor===s.p&&!q.linkTriggered&&q.geometry){q.linkTriggered=true;const z={x:q.geometry.x,y:q.geometry.y};SquadLinks.onImpact({...z,owner:q.actor,element:q.unit.kit[q.slot].element,damage:q.damage});if(!flower)SquadLinks.onPrimary(z,q.damage);}
+    for(const e of Growth.enemies())if(SkillMotion.ellipse(q.geometry,e)){
+     if(!flower){hit(e,q.damage/5);if(e===s.boss){if(!q.charmApplied)e.originalDaze=Math.max(e.originalDaze||0,2);}else if(!q.charmApplied){e.originalCharm=2+(q.level>=4?.6:0);e.originalCharmAtk=.3;e.originalCharmDamage=10*this.power(q.actor,q.level);this.metrics.charms++;}}
+     else{const combo=this.charmed(e)&&!q.comboTargets.has(e);hit(e,q.damage);e.originalBurn={left:2.4,next:.6,damage:q.damage*.65};
+      if(combo){q.comboTargets.add(e);this.metrics.combos++;addDamageZone(e.x,e.y-24,q.damage*.8,'fire',.35,34);}
      }
     }
-    if(q.slot==='primary')q.charmApplied=true;
+    if(!flower)q.charmApplied=true;
    }
   }
   this.effects=this.effects.filter(q=>q.age<q.duration);
@@ -76,15 +81,16 @@ window.OriginalNinja={
   if(action==='cast'){row=slot==='primary'?4:slot==='secondary'?5:slot==='ultimate'?6:2;n=Math.min(7,Math.floor((actionAge||0)/(a?.action?.duration||.34)*8));}
   ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=alpha;ctx.translate(Math.round(x),Math.round(y));if(facing<0)ctx.scale(-1,1);ctx.drawImage(im,n*96,row*96,96,96,-48,-84,96,96);ctx.restore();return true;
  },
+ avatarFrame(q){if(q.age<1)return Math.min(3,Math.floor((q.age-.4)/.6*4));if(q.age>=q.duration-.5)return Math.min(15,12+Math.floor((q.age-q.duration+.5)/.5*4));return q.slashAge<.65?8+Math.min(3,Math.floor(q.slashAge/.65*4)):4+Math.floor(s.t*7)%4;},
  frame(q){if(q.slot==='primary'){if(q.age<.4)return Math.min(3,Math.floor(q.age*10));if(q.age<1.05)return 4+Math.floor((q.age-.4)*10)%2;return Math.min(7,6+Math.floor((q.age-1.05)/.4*2));}if(q.age<.3)return Math.floor(q.age/.15);if(q.age<.6)return 2+Math.min(1,Math.floor((q.age-.3)/.15));if(q.age<1.5)return 4+Math.floor((q.age-.6)*10)%2;return Math.min(7,6+Math.floor((q.age-1.5)/.35*2));},
  draw(entities){
-  for(const q of this.effects)entities.push({y:q.y+24,draw:()=>{const c=SKILL_ART_DATA[KEY].skills[q.slot],im=SkillArt.cache.get(c.file);if(!im)return;const size=q.radius*2.15;let x=q.x,y=q.y;if(q.slot==='secondary'&&q.age<.3){const t=q.age/.3;x=q.fromX+(q.x-q.fromX)*t;y=q.fromY+(q.y-q.fromY)*t;}ctx.save();ctx.globalAlpha=(q.slot==='primary'?.68:.9)*Math.min(1,q.age/.08,(q.duration-q.age)/.13);ctx.imageSmoothingEnabled=false;ctx.drawImage(im,this.frame(q)*c.cell[0],0,...c.cell,x-size/2,y-size*.62,size,size);ctx.restore();}});
-  for(const[a,q]of this.forms)if(this.visible(a))entities.push({y:a.y,draw:()=>{const c=SKILL_ART_DATA[KEY].skills.ultimate,im=SkillArt.cache.get(c.file);if(!im)return;let n;if(q.age<1)n=Math.min(3,Math.floor((q.age-.4)/.6*4));else if(q.age>=q.duration-.5)n=Math.min(15,12+Math.floor((q.age-q.duration+.5)/.5*4));else n=q.slashAge<.65?8+Math.min(3,Math.floor(q.slashAge/.65*4)):4+Math.floor(s.t*7)%4;const size=184;ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=.65;ctx.translate(Math.round(a.x),Math.round(a.y));if((q.slashAge<.65?q.slashFacing:a.facing)<0)ctx.scale(-1,1);ctx.drawImage(im,n*256,0,256,256,-size/2,-size*.91,size,size);ctx.restore();}});
+  for(const q of this.effects)entities.push({y:q.y+24,draw:()=>{const c=SKILL_ART_DATA[KEY].skills[q.slot],im=SkillArt.cache.get(c.file);if(!im)return;const size=q.radius*2.15;const x=q.x,y=q.y;ctx.save();ctx.globalAlpha=(q.slot==='primary'?.68:.9)*Math.min(1,q.age/.08,(q.duration-q.age)/.13);ctx.imageSmoothingEnabled=false;ctx.drawImage(im,this.frame(q)*c.cell[0],0,...c.cell,x-size/2,y-size*.62,size,size);ctx.restore();}});
+  for(const[a,q]of this.forms)if(this.visible(a))entities.push({y:a.y,draw:()=>{const c=SKILL_ART_DATA[KEY].skills.ultimate,im=SkillArt.cache.get(c.file);if(!im)return;const n=this.avatarFrame(q);const size=184;ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=.65;ctx.translate(Math.round(a.x),Math.round(a.y));if((q.slashAge<.65?q.slashFacing:a.facing)<0)ctx.scale(-1,1);ctx.drawImage(im,n*256,0,256,256,-size/2,-size*.91,size,size);ctx.restore();}});
   for(const e of Growth.enemies())if(this.charmed(e))entities.push({y:e.y,draw:()=>{ctx.save();ctx.strokeStyle='#ff99cf';ctx.lineWidth=1.5;ctx.beginPath();ctx.ellipse(e.x,e.y-4,16,6,0,0,Math.PI*2);ctx.stroke();ctx.fillStyle='#ffc3e2';ctx.fillRect(e.x-2,e.y-54,4,4);ctx.restore();}});
  },
  initUI(){const b=document.getElementById('originalTry');if(!b)return;b.onclick=async()=>{if(!DebugMode.enabled||!assetsReady)return;b.disabled=true;try{HubUI.closeSheet(false);await SkillLab.open(KEY);}catch(error){console.warn('Original character load',error);toast('原创角色加载失败，请重试');}finally{b.disabled=!assetsReady;}};},
  readyUI(){const b=document.getElementById('originalTry');if(b)b.disabled=false;if(!this.queryConsumed&&DebugMode.enabled&&new URLSearchParams(location.search).get('try')===KEY){this.queryConsumed=true;setTimeout(()=>{if(state==='intro'&&assetsReady&&DebugMode.enabled)b?.click();},650);}},
- description(slot,l){const k=SKILL_KITS[KEY].kit[slot];if(slot==='ultimate')return k.text+` 当前Lv.${l}：须佐有效时间${l>=3?8:6}秒；挥刀伤害提高${Math.max(0,(l-1)*16)}%，${l>=2?'斩击范围扩大25%。':'斩击范围155。'}本体不叠加显示，进入形态不重置两项技能冷却。`;return k.text+` 当前Lv.${l}：威力提高${Math.max(0,(l-1)*16)}%，范围${Math.round(k.radius*(l>=2?1.25:1))}${slot==='primary'&&l>=4?'，魅惑延长至2.6秒':''}。`;}
+ description(slot,l){const k=SKILL_KITS[KEY].kit[slot];if(slot==='ultimate')return k.text+` 当前Lv.${l}：须佐有效时间${l>=3?8:6}秒；挥刀伤害提高${Math.max(0,(l-1)*16)}%，${l>=2?'斩击按须佐刀光范围命中。':'斩击按须佐刀光范围命中。'}本体不叠加显示，进入形态不重置两项技能冷却。`;return k.text+` 当前Lv.${l}：威力提高${Math.max(0,(l-1)*16)}%，范围${Math.round(k.radius*(l>=2?1.25:1))}${slot==='primary'&&l>=4?'，魅惑延长至2.6秒':''}。`;}
 };
 const cast=SkillArt.cast,update=SkillArt.update,draw=SkillArt.draw,hidden=SkillArt.hidden,clear=SkillArt.clear,description=SkillArt.description;
 SkillArt.cast=function(a,u,...rest){return u?.key===KEY?OriginalNinja.cast(a,u,...rest):cast.call(this,a,u,...rest)};

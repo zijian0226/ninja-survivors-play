@@ -282,7 +282,7 @@ window.UI = (function () {
 
   /* ---------- 出战 & 结算 ---------- */
   U.openBattlePrep=function(){
-    if(Game.runtimeId!=='ninja-v56-squad64'){location.replace(new URL('play.html?release=entry31',location.href).href);return;}
+    if(Game.runtimeId!=='ninja-v62-squad64'){location.replace(new URL('play.html?release=entry31',location.href).href);return;}
     let selected=Game.available(D.charById[S().selected])?S().selected:'naruto';
     let excluded=[...(Game.excluded||[])];
     modal('出战准备','');const body=$('modal').querySelector('.md-body');

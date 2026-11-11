@@ -2,6 +2,7 @@
   "js": {
     "sources": [
       "skill-art-data.js",
+      "skill-motion-data.js",
       "skill-kits-v23.js",
       "characters.js",
       "skill-catalog.js",
@@ -15,35 +16,40 @@
       "ultimate-cue.js",
       "build-inspect.js",
       "skill-art.js",
+      "skill-motion.js",
       "original-ninja.js",
       "official-gallery.js",
       "materials.js",
+      "tailed-beasts.js",
       "game.js",
       "source-art56.js"
     ],
     "source_sha256": {
       "skill-art-data.js": "cc36f24b607168fea22c69738430843754b8478782a06cd0e1dd3ba564d88ae3",
+      "skill-motion-data.js": "e5af635ac695e20e93906d9c07650409272576ded2a685f6302462401e7dfd86",
       "skill-kits-v23.js": "2ac7e6b25f2b3347c46f45e33d5ddf19b4b77abbcbec16de34d806ff9803c77f",
       "characters.js": "c0699623151ecdbbc06d56205829694873f8ca3127443e42edd0f88a1b7f3a82",
       "skill-catalog.js": "5c358d5b8e69fd84e41768b40184b3445e15e50a9bbcd1afeacb253d9f405368",
       "hub.js": "0d4a11a6e0232d3ddf9199065e8eef50bf739d8e7e26c4933433b99254bdb5a1",
       "world.js": "91a32fe29ab41cde63f7a229c440b8d52d53d171b4ed847ca1e76e362b25d291",
-      "squad.js": "5fef2af64e8a6a607492bfce3fbfbe79ec68b2bf053fd6193fd417e4feb3c6d7",
-      "recruitment.js": "5fc00d98f5cab4ab60d93222248c7ced27fae7fa7ea6b3c33da5be0637a086b3",
+      "squad.js": "b88844c334d7283c5483a7dbb6524a286ee9f85eb1bf2d0e0937bab052766122",
+      "recruitment.js": "a053b922c86a709a159eca3c1b8e5f74fcb5039b63ba5186abe9d92f96b83366",
       "skill-lab.js": "d3ed0d43b8226d793f5e74e4c4a666a622bd38972753c979bd500124a4ae4998",
       "debug-mode.js": "b17f07138084b5f6f472f2020b32811bf28dc77a13796af48b77ce5aeb3844d6",
       "growth.js": "462f33ed1a119311377817b62aac736cc5cc09afdb842637735bcdf923496b9a",
       "ultimate-cue.js": "3b07cc8c8b68e5869681efa726cbb846bf1153a0f5272fc6526ed538eec36b90",
       "build-inspect.js": "2a0fb78347def1107d871a2a0906f751b95db411a5e28236847385a1ff307ad9",
-      "skill-art.js": "6ada234cc73eedfb0eabbc0830ae725b5b5351e2b37226f91664ed6298758842",
-      "original-ninja.js": "064f73544f3476c17ff2cf52a6ed029375229601b705cc1cfd8549e41ae11d4e",
+      "skill-art.js": "5a36efee21443410eaf5b735b810d0f9295b6eb723874f527d82ed345433cd83",
+      "skill-motion.js": "10e193fbc02964c513715f3db009208c0ddfc24f05215a4f7fe4ee26d0b4ccb3",
+      "original-ninja.js": "97e07afcd580c95d3ccd61c99c8cc761d3f8b274032af3980e677db4bcca6e7e",
       "official-gallery.js": "52622f52c5a294c4835a7875e9979f0614cd66cd21c9ceeb30019e31c8779b09",
       "materials.js": "103e0fef39cfc8dd1bb7a556f1347a70614abd4d4d7fc69ee4bd37ffc0085fb6",
-      "game.js": "f9a3036e64560623c4f79791973723e8bcb8a004a01b4aa27484ca00a4f2ca94",
-      "source-art56.js": "2e0d1a0280a609f16fb19e49ffd08f8bbaf908b2f0aed28892e1834b0d196548"
+      "tailed-beasts.js": "ce6a3edc41f034f5630a08990f9ea88e1e60f85bfa5e807c0f5976861031870a",
+      "game.js": "f853af1887a96187ae2c8f304bb5f1f0a900071b044c7d1871b68ce0cddc8e66",
+      "source-art56.js": "066a4c762eb52afc336aa2a227be99e78c82442fdbb4917f1a8d88ed788a3401"
     },
-    "bytes": 1107238,
-    "sha256": "f87083972cc67e11fc6b34995ad8bb0f7cdba073c3f8a6c0091b1eb38ff233d5"
+    "bytes": 1341355,
+    "sha256": "25f1b12b63bff71ad72a2878f8eae82241c0f737a49cfcb5cac26ba153c478fb"
   },
   "css": {
     "sources": [

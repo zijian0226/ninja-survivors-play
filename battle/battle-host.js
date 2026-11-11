@@ -1,7 +1,7 @@
 /* Package loading and test access only; the original combat core stays unchanged. */
 (function(){
  if(parent===window)return;
- const RUNTIME='ninja-v56-squad64',CHANNEL='ninja-current-battle-v1';let active=false,starting=false,prepared=false,runEpoch=0,latestRequest=null,testOrder=(parent.CharacterPacks?.playable||parent.CurrentRoster?.map(u=>u.key)||[]).filter(key=>RecruitRun.get(key));
+ const RUNTIME='ninja-v62-squad64',CHANNEL='ninja-current-battle-v1';let active=false,starting=false,prepared=false,runEpoch=0,latestRequest=null,testOrder=(parent.CharacterPacks?.playable||parent.CurrentRoster?.map(u=>u.key)||[]).filter(key=>RecruitRun.get(key));
  const allowed=new Set(testOrder),jobs=new Map(),complete=new Set(),extras=new Set(),progress=new Map();
  RecruitRun.units=RecruitRun.units.filter(u=>allowed.has(u.key));
  const hinted=new URLSearchParams(location.search).get('main');if(allowed.has(hinted))RecruitRun.mainKey=hinted;
@@ -16,7 +16,7 @@
  reset=function(quick=false){const u=RecruitRun.get(RecruitRun.mainKey);if(!u||!allowed.has(u.key))return;const review=u.releaseComplete;u.releaseComplete=true;try{nativeReset(quick);}finally{u.releaseComplete=review;}if(review===false&&state==='play')s.debugUsed=true;};
  function packFiles(key){const d=SKILL_ART_DATA[key],u=RecruitRun.get(key),files=new Set(),images=new Set();
   const add=(url,image=false)=>{if(url){files.add(url);if(image)images.add(url);}};
-  add(d.actor.file,true);if(d.woodActor)add(d.woodActor.file,true);add(d.portrait);for(const clip of Object.values(d.skills)){add(clip.file,true);add(clip.icon);if(clip.impact)add(clip.impact.file,true);if(clip.caster)add(clip.caster.file,true);}add(UltimateCue.art(u));return{files,images};
+  add(d.actor.file,true);if(d.woodActor)add(d.woodActor.file,true);add(d.portrait);for(const slot of ['primary','secondary','ultimate']){const clip=SkillArt.effectiveClip(key,slot);add(clip.file,true);add(clip.icon);if(clip.impact)add(clip.impact.file,true);if(clip.caster)add(clip.caster.file,true);}add(UltimateCue.art(u));return{files,images};
  }
  function mark(url){for(const [key,p]of progress)if(p.files.has(url)&&!p.done.has(url)){p.done.add(url);send('pack-loading',{key,name:RecruitRun.get(key).name,done:p.done.size,total:p.files.size});}}
  SkillArt.image=async function(url){const image=await nativeImage(url);mark(url);return image;};

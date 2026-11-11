@@ -162,3 +162,7 @@ Ma Shan Zheng（马善政毛笔字体），Copyright 2018 The Ma Shan Zheng Proj
 ## v0.57 首页
 
 木叶夕照背景为参考辅助生成的环境图（无人物/UI）；首页19枚图标为代码绘制SVG。人物立绘沿用既有来源。毛笔字为Google Fonts Ma Shan Zheng（SIL OFL 1.1）子集，许可见 assets/fonts/MaShanZheng-OFL.txt。具体记录见私有源码 docs/home-v57/sources.json。
+
+## v0.62 尾兽蛋与移动施法
+
+尾兽蛋、三种尾兽与图标为代码绘制的原创临时像素图；不冒称官方提取素材。旧合图运行派生图层保留原来源并标注自动分层/区域补齐，未替换原始文件，参见 battle/assets/CREDITS-v62.md。
