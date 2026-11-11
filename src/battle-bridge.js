@@ -3,7 +3,7 @@ window.Game=(function(){
  const CHANNEL='ninja-current-battle-v1',allowed=new Set(CharacterPacks.playable);
  let frame=null,ready=false,basePromise=null,baseResolve=null,baseReject=null,baseTimer=0,baseReport=()=>{},timer=0,epoch=0,lastStart=null;
  const $=id=>document.getElementById(id),downloaded=new Set();
- const G={runtimeId:'ninja-v62-squad64',shellPrepared:false,assetsPrepared:false,onEnd:null,active:false,launching:false,currentKey:null,excluded:[]};
+ const G={runtimeId:'ninja-v63-squad64',shellPrepared:false,assetsPrepared:false,onEnd:null,active:false,launching:false,currentKey:null,excluded:[]};
  try{G.excluded=(JSON.parse(localStorage.getItem('ninja-recruit-loadout'))?.excluded||[]).filter(x=>['火','风','雷','土','水','阴','阳','全'].includes(x)).slice(0,3);}catch{}
  const post=data=>frame?.contentWindow.postMessage({channel:CHANNEL,...data},location.origin);
  G.available=c=>!!c?.current&&allowed.has(c.current.key);
@@ -27,7 +27,7 @@ window.Game=(function(){
   $('pack-label').textContent=message;$('pack-retry').hidden=!retry;$('pack-meter').hidden=progress===null;$('pack-percent').hidden=progress===null;
   if(progress!==null){const percent=Math.floor(Math.max(0,Math.min(1,progress))*100);$('pack-fill').style.width=percent+'%';$('pack-meter').setAttribute('aria-valuenow',percent);$('pack-percent').textContent=percent+'%';}el.hidden=false;
  }
- function ensureFrame(){if(frame)return;frame=document.createElement('iframe');frame.id='battle-frame';frame.title='忍者：无尽试炼 · 战斗';frame.allow='autoplay; fullscreen';frame.src='battle/play.html?embedded=1&v=combat62&main='+encodeURIComponent(G.currentKey||'naruto_shippuden');frame.hidden=true;$('battle').appendChild(frame);}
+ function ensureFrame(){if(frame)return;frame=document.createElement('iframe');frame.id='battle-frame';frame.title='忍者：无尽试炼 · 战斗';frame.allow='autoplay; fullscreen';frame.src='battle/play.html?embedded=1&v=auto63&main='+encodeURIComponent(G.currentKey||'naruto_shippuden');frame.hidden=true;$('battle').appendChild(frame);}
  function prepareBase(){post({type:'prepare',allowedKeys:CharacterPacks.playable});}
  function baseFail(message){clearTimeout(baseTimer);const reject=baseReject;baseResolve=baseReject=null;G.assetsPrepared=false;if(reject)reject(Error(message));}
  G.preload=function(report=()=>{}){baseReport=report;if(G.assetsPrepared)return Promise.resolve();if(basePromise)return basePromise;basePromise=new Promise((resolve,reject)=>{baseResolve=resolve;baseReject=reject;});baseTimer=setTimeout(()=>baseFail('基础包加载超时'),120000);ensureFrame();if(ready)prepareBase();return basePromise;};

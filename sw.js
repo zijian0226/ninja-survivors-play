@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v62-eggs-spatial-skills';
+const VERSION = 'v63-auto-battle';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -15,31 +15,31 @@ const PRECACHE = [
   './play.html',
   './battle/scroll-roguelite.js?v=scrollproto1',
   './manifest.webmanifest',
-  './css/style.css?v=combat62',
-  './css/home-lobby.css?v=combat62',
-  './css/home-centered.css?v=combat62',
-  './src/home-lobby.js?v=combat62',
+  './css/style.css?v=auto63',
+  './css/home-lobby.css?v=auto63',
+  './css/home-centered.css?v=auto63',
+  './src/home-lobby.js?v=auto63',
   './assets/lobby-v57/konoha-sunset.webp',
-  './src/data/characters.js?v=combat62',
-  './src/data/skills.js?v=combat62',
-  './src/data/enemies.js?v=combat62',
-  './src/data/upgrades.js?v=combat62',
-  './src/art/pixelArt.js?v=combat62',
-  './src/save.js?v=combat62',
-  './src/audio.js?v=combat62',
-  './src/sprites.js?v=combat62',
-  './src/battle-bridge.js?v=combat62',
-  './src/data/roster-current.js?v=combat62',
-  './src/data/phase-one.js?v=combat62',
-  './src/data/character-packs.js?v=combat62',
-  './css/current-ui.css?v=combat62',
-  './css/roster.css?v=combat62',
-  './src/data/portrait-layout.js?v=combat62',
-  './src/roster-ui.js?v=combat62',
-  './src/home-portrait.js?v=combat62',
-  './src/ui.js?v=combat62',
-  './src/mobile.js?v=combat62',
-  './src/main.js?v=combat62',
+  './src/data/characters.js?v=auto63',
+  './src/data/skills.js?v=auto63',
+  './src/data/enemies.js?v=auto63',
+  './src/data/upgrades.js?v=auto63',
+  './src/art/pixelArt.js?v=auto63',
+  './src/save.js?v=auto63',
+  './src/audio.js?v=auto63',
+  './src/sprites.js?v=auto63',
+  './src/battle-bridge.js?v=auto63',
+  './src/data/roster-current.js?v=auto63',
+  './src/data/phase-one.js?v=auto63',
+  './src/data/character-packs.js?v=auto63',
+  './css/current-ui.css?v=auto63',
+  './css/roster.css?v=auto63',
+  './src/data/portrait-layout.js?v=auto63',
+  './src/roster-ui.js?v=auto63',
+  './src/home-portrait.js?v=auto63',
+  './src/ui.js?v=auto63',
+  './src/mobile.js?v=auto63',
+  './src/main.js?v=auto63',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
@@ -80,8 +80,8 @@ self.addEventListener('activate', event => {
         channel.port1.onmessage=event=>done(event.data);
         try{client.postMessage({type:'NINJA_CLIENT_STATUS'},[channel.port2]);}catch{done(null);}
       });
-      if(status?.release==='combat62')return;
-      url.pathname=SCOPE+'play.html';url.searchParams.set('release','combat62');
+      if(status?.release==='auto63')return;
+      url.pathname=SCOPE+'play.html';url.searchParams.set('release','auto63');
       // Navigation must run after activation has settled; awaiting it inside activate deadlocks.
       let tries=0;
       const navigate=()=>{

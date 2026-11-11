@@ -22,7 +22,8 @@
       "materials.js",
       "tailed-beasts.js",
       "game.js",
-      "source-art56.js"
+      "source-art56.js",
+      "auto-battle.js"
     ],
     "source_sha256": {
       "skill-art-data.js": "cc36f24b607168fea22c69738430843754b8478782a06cd0e1dd3ba564d88ae3",
@@ -45,11 +46,12 @@
       "official-gallery.js": "52622f52c5a294c4835a7875e9979f0614cd66cd21c9ceeb30019e31c8779b09",
       "materials.js": "103e0fef39cfc8dd1bb7a556f1347a70614abd4d4d7fc69ee4bd37ffc0085fb6",
       "tailed-beasts.js": "ce6a3edc41f034f5630a08990f9ea88e1e60f85bfa5e807c0f5976861031870a",
-      "game.js": "f853af1887a96187ae2c8f304bb5f1f0a900071b044c7d1871b68ce0cddc8e66",
-      "source-art56.js": "066a4c762eb52afc336aa2a227be99e78c82442fdbb4917f1a8d88ed788a3401"
+      "game.js": "77f874ae74d1192ed0a2df22f4b8c8bdc9a555db7707e0d73db44f5d9b9e69b5",
+      "source-art56.js": "066a4c762eb52afc336aa2a227be99e78c82442fdbb4917f1a8d88ed788a3401",
+      "auto-battle.js": "c3a7c9d437f1256dc91be28be24ba74c29c1b3090e6d410bcab007232eb5d69c"
     },
-    "bytes": 1341355,
-    "sha256": "25f1b12b63bff71ad72a2878f8eae82241c0f737a49cfcb5cac26ba153c478fb"
+    "bytes": 1349011,
+    "sha256": "43fbf9b59d54207b697f2de1eca25e47ddecfa659b1949b99b9331d097b3c84b"
   },
   "css": {
     "sources": [

@@ -1,7 +1,7 @@
 /* Package loading and test access only; the original combat core stays unchanged. */
 (function(){
  if(parent===window)return;
- const RUNTIME='ninja-v62-squad64',CHANNEL='ninja-current-battle-v1';let active=false,starting=false,prepared=false,runEpoch=0,latestRequest=null,testOrder=(parent.CharacterPacks?.playable||parent.CurrentRoster?.map(u=>u.key)||[]).filter(key=>RecruitRun.get(key));
+ const RUNTIME='ninja-v63-squad64',CHANNEL='ninja-current-battle-v1';let active=false,starting=false,prepared=false,runEpoch=0,latestRequest=null,testOrder=(parent.CharacterPacks?.playable||parent.CurrentRoster?.map(u=>u.key)||[]).filter(key=>RecruitRun.get(key));
  const allowed=new Set(testOrder),jobs=new Map(),complete=new Set(),extras=new Set(),progress=new Map();
  RecruitRun.units=RecruitRun.units.filter(u=>allowed.has(u.key));
  const hinted=new URLSearchParams(location.search).get('main');if(allowed.has(hinted))RecruitRun.mainKey=hinted;
