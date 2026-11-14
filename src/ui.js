@@ -90,10 +90,11 @@ window.UI = (function () {
   }
   const navItems = [
     { id: 'roster', name: '忍者', icon: 'ninja' },
-    { id: 'upgrade', name: '强化', icon: 'upgrade' },
+    { id: 'jutsu', name: '忍术', icon: 'jutsu' },
     { id: 'lobby', name: '首页', icon: 'home' },
     { id: 'inventory', name: '背包', icon: 'bag' },
-    { id: 'summon', name: '召唤', icon: 'summon' }
+    { id: 'summon', name: '召唤', icon: 'summon' },
+    { id: 'upgrade', name: '强化', icon: 'upgrade' }
   ];
   function renderNav() {
     $('bottom-nav').innerHTML = navItems.map(n => `<button class="nav-btn ${U.page === n.id ? 'active' : ''}" data-go="${n.id}">${HomeLobby.icon(n.icon)}<span>${n.name}</span></button>`).join('');
@@ -108,7 +109,7 @@ window.UI = (function () {
     const m = $('ui-main');
     m.className = 'page-' + page;
     m.innerHTML = '';
-    ({ lobby: renderLobby, roster: renderRoster, summon: renderSummon, upgrade: renderUpgrade, settings: renderSettings, inventory: m=>HomeLobby.inventory(m) })[page](m, arg);
+    ({ lobby: renderLobby, roster: renderRoster, jutsu: renderJutsu, summon: renderSummon, upgrade: renderUpgrade, settings: renderSettings, inventory: m=>HomeLobby.inventory(m) })[page](m, arg);
     m.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => { Sfx.play('click'); U.go(b.dataset.go, b.dataset.arg); }));
     Sfx.music('lobby');
   };
@@ -229,6 +230,47 @@ window.UI = (function () {
   }
 
   /* ---------- 强化 ---------- */
+
+  function ownedJutsuUnits(){
+    const owned=S().owned||{};
+    const units=[];
+    for(const c of (D.characters||[])){
+      const key=c.current?.key;
+      if(!key)continue;
+      const have=owned[c.id]||c.unlocked;
+      const open=typeof Game?.available==='function'?Game.available(c):true;
+      if(have&&open)units.push({id:c.id,key,name:c.current?.name||c.name,element:c.element});
+    }
+    return units;
+  }
+  function renderJutsu(m, filter){
+    const C=window.SkillPoolCatalog;
+    if(!C){m.innerHTML='<div class="page-head"><h2>忍术</h2></div><p class="prep-copy">忍术图鉴未能载入。</p>';return;}
+    const key=C.NATURE_ORDER.includes(filter)?filter:'all';
+    const units=ownedJutsuUnits();
+    const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const nav=`<div class="jutsu-nature-nav">${['all',...C.NATURE_ORDER].map(n=>`<button type="button" data-jutsu-nature="${n}" class="${n===key?'active':''}">${n==='all'?'全部':`<img src="${C.natureSrc(n)}" alt="">${n}`}</button>`).join('')}</div>`;
+    const groups=key==='all'?C.NATURE_ORDER:[key];
+    const body=groups.map(n=>{
+      const list=C.skills.filter(s=>s.gate===n);
+      if(!list.length)return `<section class="jutsu-group"><header><img src="${C.natureSrc(n)}" alt=""><h3>${n}</h3><small>暂无专属忍术</small></header>${n==='阳'?'<p class="jutsu-note">阳属性忍者仍可学习全部中性忍术。</p>':''}</section>`;
+      const cards=list.map(skill=>{
+        const levels=C.levelEffects(skill).map(x=>`<li><b>Lv.${x.level}</b> ${esc(x.text)}</li>`).join('');
+        return `<article class="jutsu-card" data-skill="${esc(skill.id)}">
+          <img class="jutsu-art" src="${esc(C.iconOf(skill))}" alt="">
+          <div class="jutsu-body"><small>${esc(skill.gate)} · Lv.1–5</small><b>${esc(skill.name)}</b>
+          <p>${esc(skill.text)}</p>
+          <ol class="jutsu-levels">${levels}</ol>
+          <p class="jutsu-learners">${esc(C.formatLearners(units,skill))}</p></div></article>`;
+      }).join('');
+      return `<section class="jutsu-group"><header><img src="${C.natureSrc(n)}" alt=""><h3>${n}</h3><small>${list.length} 招</small></header><div class="jutsu-grid">${cards}</div></section>`;
+    }).join('');
+    m.innerHTML=`<div class="page-head"><h2>忍术</h2><span>JUTSU · 通用忍术图鉴</span></div>
+      <p class="jutsu-lead">局内最多携带 6 个通用忍术。每位忍者只能学习与自身查克拉性质相符的忍术，以及全部中性忍术。定位为「全」的忍者可学习所有性质。专属奥义按形态保留，不在此图鉴中。</p>
+      ${nav}${body}`;
+    m.querySelectorAll('[data-jutsu-nature]').forEach(b=>b.onclick=()=>{Sfx.play('click');renderJutsu(m,b.dataset.jutsuNature);});
+  }
+
   function renderUpgrade(m) {
     const s = S();
     m.innerHTML = `<div class="page-head"><h2>强化</h2><span>TRAINING · 局外方案</span></div>
@@ -282,7 +324,7 @@ window.UI = (function () {
 
   /* ---------- 出战 & 结算 ---------- */
   U.openBattlePrep=function(){
-    if(Game.runtimeId!=='ninja-v64-shared-pool'){location.replace(new URL('play.html?release=pool64',location.href).href);return;}
+    if(Game.runtimeId!=='ninja-v64.1-shared-pool'){location.replace(new URL('play.html?release=pool641',location.href).href);return;}
     let selected=Game.available(D.charById[S().selected])?S().selected:'naruto';
     let excluded=[...(Game.excluded||[])];
     modal('出战准备','');const body=$('modal').querySelector('.md-body');

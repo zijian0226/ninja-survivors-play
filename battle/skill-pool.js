@@ -4,11 +4,11 @@
 (function(){
 'use strict';
 
-const ALL_NATURES=['火','风','雷','土','水','阴','阳'];
-const NATURE_ORDER=['风','火','雷','土','水','阴','阳','中性'];
-const NATURE_ICONS={'火':'fire.png','风':'wind.png','雷':'lightning.png','土':'earth.png','水':'water.png','阴':'yin.svg','阳':'yang.svg','全':'all.svg','中性':'all.svg'};
-const NATURE_SRC=n=>'../assets/nature-icons/'+(NATURE_ICONS[n]||'all.svg');
-const MAX_SLOTS=6, BASIC_MELEE_RANGE=56, BASIC_INTERVAL=.65, BASIC_MELEE_DAMAGE=22, BASIC_RANGED_DAMAGE=20;
+const Catalog=window.SkillPoolCatalog;
+if(!Catalog)throw new Error('SkillPoolCatalog is required');
+const ALL_NATURES=Catalog.ALL_NATURES,NATURE_ORDER=Catalog.NATURE_ORDER,NATURE_SRC=Catalog.natureSrc;
+const MAX_SLOTS=Catalog.MAX_SLOTS, BASIC_MELEE_RANGE=56, BASIC_INTERVAL=.65, BASIC_MELEE_DAMAGE=22, BASIC_RANGED_DAMAGE=20;
+const SKILLS=Catalog.skills,FORMS=Catalog.forms;
 
 const FACE_ALIAS={naruto_shippuden:"naruto"};
 const FACE_ART={
@@ -78,104 +78,6 @@ const FACE_ART={
  zabuza:{"src":"../assets/phase-one/zabuza.webp","ar":0.664,"box":[0.1799,0.0,0.3492,0.2113]}
 };
 
-const SKILLS=[
- {id:'rasengan',name:'螺旋丸',gate:'风',element:'风',kind:'aura',sourceKey:'naruto_shippuden',slot:'primary',art:'ready',text:'在身前凝出查克拉球，持续伤害周围的敌人。'},
- {id:'kage_bunshin',name:'影分身之术',gate:'中性',element:'阳',kind:'summon',special:'clones',art:'smoke',text:'召唤两名分身协同作战，分身会自行寻敌攻击。'},
- {id:'chidori',name:'千鸟',gate:'雷',element:'雷',kind:'melee',sourceKey:'sasuke',slot:'primary',art:'needs_cleanup',text:'向前突进，对近身敌人造成雷属性伤害。'},
- {id:'goukakyuu',name:'火遁·豪火球之术',gate:'火',element:'火',kind:'projectile',sourceKey:'sasuke',slot:'secondary',art:'ready',text:'喷出火球，命中后灼烧沿途的敌人。'},
- {id:'hakke_kuushou',name:'八卦空掌',gate:'中性',element:'体术',kind:'projectile',sourceKey:'neji',slot:'primary',art:'ready',text:'打出查克拉掌波，远程打击前方的敌人。'},
- {id:'kaiten',name:'八卦掌·回天',gate:'中性',element:'体术',kind:'aura',sourceKey:'neji',slot:'secondary',art:'needs_cleanup',text:'在身边展开旋转气罩，持续伤害靠近的敌人。'},
- {id:'shinra_tensei',name:'神罗天征',gate:'阴',element:'阴',kind:'aura',sourceKey:'pain',slot:'primary',art:'ready',text:'爆发斥力冲击，伤害并击退周围的杂兵。'},
- {id:'sabaku_kyuu',name:'砂缚牢',gate:'土',element:'土',kind:'ground',sourceKey:'gaara',slot:'primary',art:'ready',text:'在地面掀起流砂，范围伤害并减速敌人。'},
- {id:'kage_mane',name:'影子模仿术',gate:'阴',element:'阴',kind:'ground',sourceKey:'shikamaru',slot:'primary',art:'ready',text:'伸出影子，束缚地面上的敌人。'},
- {id:'shintenshin',name:'心转身之术',gate:'阴',element:'阴',kind:'ground',sourceKey:'ino',slot:'primary',art:'ready',text:'冲击一片区域，魅惑杂兵；对首领改为减速。'},
- {id:'choujuu_giga',name:'超兽伪画·狮子',gate:'阴',element:'阴',kind:'projectile',sourceKey:'sai',slot:'primary',art:'ready',text:'绘出墨狮扑向敌人。'},
- {id:'hien',name:'飞燕',gate:'风',element:'风',kind:'melee',sourceKey:'asuma',slot:'primary',art:'ready',text:'近身挥砍，对前方敌人造成风刃斩击。'},
- {id:'ningu_scatter',name:'忍具散射',gate:'中性',element:'忍具',kind:'projectile',sourceKey:'tenten',slot:'secondary',art:'ready',text:'同时抛出多枚忍具，覆盖前方的敌人。'},
- {id:'tracking_kunai',name:'追踪苦无',gate:'中性',element:'忍具',kind:'shot',shot:'kunai',icon:'assets/shuriken.png',art:'ready',text:'朝最近的敌人投出追踪苦无。',kit:{name:'追踪苦无',kind:'projectile',element:'shuriken',range:420,radius:12,damage:16,cd:2.0,duration:.4}},
- {id:'fuuton_blade',name:'风遁·风刃',gate:'风',element:'风',kind:'shot',shot:'wind',icon:'assets/rasenshuriken.png',art:'ready',text:'射出穿透风刃，可连续命中一条直线上的敌人。',kit:{name:'风遁·风刃',kind:'projectile',element:'wind',range:440,radius:20,damage:21,cd:2.9,duration:.4}},
- {id:'raiton_chain',name:'雷遁·雷链',gate:'雷',element:'雷',kind:'zone',shot:'lightning',icon:'assets/lightning.png',art:'ready',text:'在目标落点降下雷击，并可在附近敌人间跳跃。',kit:{name:'雷遁·雷链',kind:'zone',element:'lightning',range:400,radius:44,damage:22,cd:3.0,duration:.75}},
- {id:'exploding_tag',name:'起爆符',gate:'中性',element:'忍具',kind:'zone',shot:'tag',icon:'assets/pickup-scroll-existing.png',art:'ready',text:'在敌人脚下埋下起爆符，稍后爆炸。',kit:{name:'起爆符',kind:'zone',element:'impact',range:380,radius:48,damage:27,cd:4.0,duration:.9}},
- {id:'suiryuudan',name:'水遁·水龙弹之术',gate:'水',element:'水',kind:'projectile',sourceKey:'zabuza',slot:'primary',art:'ready',text:'唤出水龙，冲击前方的敌人。'},
- {id:'suirou',name:'水遁·水牢之术',gate:'水',element:'水',kind:'ground',sourceKey:'zabuza',slot:'secondary',art:'ready',text:'在地面形成水牢，禁锢落入其中的敌人。'},
- {id:'doton_wall',name:'土遁·土流壁',gate:'土',element:'土',kind:'ground',sourceKey:'hiruzen',slot:'secondary',art:'ready',text:'升起土墙冲击一片区域。土墙不阻挡移动。'},
- {id:'mokuton_forest',name:'木遁·树界降诞',gate:'土',element:'土',kind:'ground',sourceKey:'hashirama',slot:'primary',art:'ready',text:'林木从地面生长，范围伤害并束缚敌人。'},
- {id:'katsuyu',name:'通灵·蛞蝓',gate:'中性',element:'医疗',kind:'ground',sourceKey:'tsunade',slot:'secondary',art:'ready',text:'通灵蛞蝓覆盖地面，治疗自己并为敌人附加毒素。'},
- {id:'hiraishin',name:'飞雷神之术',gate:'中性',element:'空间',kind:'melee',sourceKey:'minato',slot:'primary',art:'ready',text:'瞬移到敌人身边，给予一记打击。'},
- {id:'gouriki_senpuu',name:'木叶刚力旋风',gate:'中性',element:'体术',kind:'melee',sourceKey:'guy',slot:'primary',art:'ready',text:'回旋踢击，打击并击退近身的敌人。'},
- {id:'gatsuga',name:'牙通牙',gate:'中性',element:'体术',kind:'melee',sourceKey:'kiba',slot:'secondary',art:'ready',text:'化作兽影，突击近处的敌人。'},
- {id:'kikaichu',name:'寄坏虫攻击※',gate:'土',element:'土',kind:'projectile',sourceKey:'shino',slot:'secondary',art:'ready',text:'放出虫群，飞向周围的敌人。'},
- {id:'sensatsu_suishou',name:'千杀水翔',gate:'水',element:'水',kind:'projectile',sourceKey:'haku',slot:'primary',art:'ready',text:'射出冰针，贯穿前方的敌人。'},
- {id:'haienseki',name:'火遁·灰积烧',gate:'火',element:'火',kind:'ground',sourceKey:'asuma',slot:'secondary',art:'ready',text:'在地面点燃一片火海，持续灼烧走入的敌人。'}
-];
-
-const FORMS={
- naruto_shippuden:{learn:['风','阳'],start:'rasengan',style:'melee'},
- naruto_sage:{learn:['风','阳'],start:'rasengan',style:'melee'},
- naruto_kurama:{learn:['阳','风'],start:'rasengan',style:'melee'},
- naruto_one_tail:{learn:['阳','风'],start:'rasengan',style:'melee'},
- naruto_four_tail:{learn:['阳','风'],start:'rasengan',style:'melee'},
- sasuke:{learn:['雷','火'],start:'chidori',style:'ranged'},
- sasuke_curse:{learn:['雷','火'],start:'chidori',style:'ranged'},
- sasuke_hebi:{learn:['雷','火'],start:'chidori',style:'ranged'},
- sasuke_susanoo:{learn:['阴','雷'],start:'chidori',style:'ranged'},
- kakashi:{learn:['雷','土'],start:'raiton_chain',style:'ranged'},
- kakashi_kamui:{learn:['雷','阴'],start:'raiton_chain',style:'ranged'},
- itachi:{learn:['火','阴'],start:'goukakyuu',style:'ranged'},
- pain:{learn:['阴','火'],start:'shinra_tensei',style:'ranged'},
- konan:{learn:['风','土'],start:'fuuton_blade',style:'ranged'},
- obito:{learn:['火','阴'],start:'goukakyuu',style:'ranged'},
- deidara:{learn:['土','雷'],start:'exploding_tag',style:'ranged'},
- madara:{learn:'all',start:'goukakyuu',style:'ranged'},
- orochimaru:{learn:['阴','土'],start:'mokuton_forest',style:'melee'},
- kisame:{learn:['水','土'],start:'suiryuudan',style:'melee'},
- kakuzu:{learn:['土','雷'],start:'raiton_chain',style:'ranged'},
- gaara:{learn:['土','风'],start:'sabaku_kyuu',style:'ranged'},
- temari:{learn:['风'],start:'fuuton_blade',style:'ranged'},
- suigetsu:{learn:['水','风'],start:'suiryuudan',style:'melee'},
- jiraiya:{learn:['火','风'],start:'goukakyuu',style:'ranged'},
- jiraiya_sage:{learn:['火','阴'],start:'haienseki',style:'ranged'},
- killerbee:{learn:['雷','水'],start:'gouriki_senpuu',style:'melee'},
- killerbee_eight_tail:{learn:['阳','雷'],start:'gouriki_senpuu',style:'melee'},
- neji:{learn:['阳','土'],start:'hakke_kuushou',style:'melee'},
- hinata:{learn:['阳','火'],start:'hakke_kuushou',style:'melee'},
- lee:{learn:['阳'],start:'gouriki_senpuu',style:'melee',tight:true},
- guy:{learn:['阳','火'],start:'gouriki_senpuu',style:'melee'},
- guy_death_gate:{learn:['阳','火'],start:'gouriki_senpuu',style:'melee'},
- sasori:{learn:['土','火'],start:'ningu_scatter',style:'ranged'},
- sakura:{learn:['阳','水'],start:'gouriki_senpuu',style:'melee'},
- sakura_war:{learn:['阳','土'],start:'gouriki_senpuu',style:'melee'},
- jugo:{learn:['阳','土'],start:'gouriki_senpuu',style:'melee'},
- kaguya:{learn:'all',start:'shinra_tensei',style:'ranged'},
- shikamaru:{learn:['阴','火'],start:'kage_mane',style:'ranged'},
- ino:{learn:['阴','土'],start:'shintenshin',style:'ranged'},
- choji:{learn:['阳'],start:'gouriki_senpuu',style:'melee',tight:true},
- sai:{learn:['阴','土'],start:'choujuu_giga',style:'ranged'},
- hidan:{learn:['阴'],start:'gouriki_senpuu',style:'melee'},
- asuma:{learn:['风','火'],start:'hien',style:'melee'},
- shino:{learn:['土'],start:'kikaichu',style:'ranged'},
- tenten:{learn:['阳'],start:'ningu_scatter',style:'ranged',tight:true},
- kiba:{learn:['阳'],start:'gatsuga',style:'melee',tight:true},
- kurenai:{learn:['阴'],start:'shintenshin',style:'ranged'},
- kabuto:{learn:['阴','水'],start:'katsuyu',style:'melee'},
- yamato:{learn:['土','水'],start:'mokuton_forest',style:'ranged'},
- zabuza:{learn:['水'],start:'suiryuudan',style:'melee'},
- kimimaro:{learn:['阳','土'],start:'gouriki_senpuu',style:'melee'},
- minato:{learn:['风','阳'],start:'hiraishin',style:'ranged'},
- konohamaru:{learn:['风','阳'],start:'kage_bunshin',style:'ranged'},
- tsunade:{learn:['阳','土'],start:'katsuyu',style:'melee'},
- hiruzen:{learn:['火','土'],start:'haienseki',style:'ranged'},
- hashirama:{learn:['土','水'],start:'mokuton_forest',style:'ranged'},
- tobirama:{learn:['水','火'],start:'suiryuudan',style:'ranged'},
- kankuro:{learn:['阴','土'],start:'ningu_scatter',style:'ranged'},
- chiyo:{learn:['阴','土'],start:'ningu_scatter',style:'ranged'},
- pain_asura:{learn:['雷','土'],start:'ningu_scatter',style:'melee'},
- pain_animal:{learn:['阳'],start:'kage_bunshin',style:'ranged',tight:true},
- yugito:{learn:['火','阳'],start:'haienseki',style:'melee'},
- haku:{learn:['水','风'],start:'sensatsu_suishou',style:'ranged'},
- original_hiri:{learn:['阴','火'],start:'goukakyuu',style:'ranged'}
-};
-
 const TEAM7_FAMILIES=['sasuke','sakura','kakashi'];
 const ART_NOTES=[
  {id:'kage_bunshin',note:'影分身不播木叶丸合图（图层含两具身体），改用烟雾+施术者人物表分身。'},
@@ -225,32 +127,15 @@ window.SkillPool={
  maxSlots:MAX_SLOTS,
  byId,
 
- natures(key){
-  const e=formEntry(key);
-  if(e.learn==='all')return ALL_NATURES.slice();
-  const attr=window.SKILL_KITS?.[key]?.attribute;
-  const list=Array.isArray(e.learn)?e.learn.slice():[];
-  if(attr==='全')return ALL_NATURES.slice();
-  if(attr&&!list.includes(attr))list.unshift(attr);
-  return list;
- },
- canLearn(key,skill){
-  const g=(typeof skill==='string'?byId[skill]:skill)?.gate;
-  if(!g)return false;
-  if(g==='中性')return true;
-  return this.natures(key).includes(g);
- },
- learnableSkills(key){return SKILLS.filter(x=>this.canLearn(key,x));},
- startId(key){return formEntry(key).start;},
+ natures(key){return Catalog.natures(key);},
+ canLearn(key,skill){return Catalog.canLearn(key,skill);},
+ learnableSkills(key){return Catalog.learnableSkills(key);},
+ startId(key){return Catalog.startId(key);},
  style(key){return formEntry(key).style||'ranged';},
  isMelee(key){return this.style(key)==='melee';},
  owned(){return Object.entries(s?.pool||{}).filter(([,lv])=>lv>0).map(([id,level])=>({skill:byId[id],level})).filter(x=>x.skill);},
  slotCount(){return this.owned().length;},
- kitOf(skill){
-  if(skill.kit)return skill.kit;
-  const src=window.SKILL_KITS?.[skill.sourceKey]?.kit?.[skill.slot];
-  return src?{...src,name:skill.name}:null;
- },
+ kitOf(skill){return Catalog.kitOf(skill);},
  clipOf(skill){
   if(!skill.sourceKey||!skill.slot||!window.SkillMotion)return null;
   try{
@@ -259,11 +144,7 @@ window.SkillPool={
    return clip;
   }catch{return null;}
  },
- iconOf(skill){
-  if(skill.icon)return skill.icon;
-  const art=window.SKILL_ART_DATA?.[skill.sourceKey]?.skills?.[skill.slot];
-  return art?.icon||this.clipOf(skill)?.file||'assets/pickup-scroll-existing.png';
- },
+ iconOf(skill){return Catalog.iconOf(skill)||this.clipOf(skill)?.file||Catalog.assetPath('assets/pickup-scroll-existing.png');},
  async ensureSkill(skill){
   const clip=this.clipOf(skill);
   if(!clip)return;
@@ -378,7 +259,7 @@ window.SkillPool={
  damageFor(skill,level){
   const kit=this.kitOf(skill)||{damage:20};
   const boost=1+(s.power||0)*.12,team=1+(s.teamPower||0)*.1+(s.reserve||0)*.02;
-  return (kit.damage||20)*(Growth.main()?.personal||1)*boost*team*(1+(level-1)*.16)*this.affinity(skill);
+  return (kit.damage||20)*(Growth.main()?.personal||1)*boost*team*Catalog.damageScale(level)*this.affinity(skill);
  },
 
  tryCast(skill,level,target){
@@ -391,12 +272,12 @@ window.SkillPool={
  castClones(level){
   startCast(s.p);
   effect(s.p.x,s.p.y-20,36,'smoke',.45);
-  const count=level>=5?3:2;
-  const dmg=18*(Growth.main()?.personal||1)*(1+(s.power||0)*.12)*(1+(s.teamPower||0)*.1);
-  if(typeof updateClones==='function')updateClones(0,dmg*(.7+level*.08),TeamSeven.cooldown?.()||1);
+  const count=Catalog.cloneCount(level);
+  const dmg=Catalog.CLONE_BASE_DAMAGE*(Growth.main()?.personal||1)*(1+(s.power||0)*.12)*(1+(s.teamPower||0)*.1);
+  if(typeof updateClones==='function')updateClones(0,dmg*Catalog.cloneDamageMul(level),TeamSeven.cooldown?.()||1);
   else{
    for(let i=0;i<count&&s.summons.length<6;i++){
-    s.summons.push({x:s.p.x+(i%2?24:-24),y:s.p.y+10+i*6,facing:s.p.facing,moving:false,action:null,atk:.2,life:6+level});
+    s.summons.push({x:s.p.x+(i%2?24:-24),y:s.p.y+10+i*6,facing:s.p.facing,moving:false,action:null,atk:.2,life:Catalog.cloneLife(level)});
    }
   }
   s.cast=1;
@@ -412,10 +293,10 @@ window.SkillPool={
   startCast(s.p);
   s.p.facing=e.x>=s.p.x?1:-1;
   const damage=this.damageFor(skill,level);
-  const count=Math.min(4,1+(level>=3?1:0)+(level>=5?1:0));
+  const count=Math.min(4,Catalog.waveCount(level));
   if(skill.kind==='zone'||skill.shot==='lightning'||skill.shot==='tag'){
    for(let j=0;j<Math.min(count,targets.length||1);j++){
-    const t=targets[j]||e,radius=(kit.radius||40)+level*5;
+    const t=targets[j]||e,radius=Catalog.zoneRadius(kit,level);
     if(s.zones.length<60)addDamageZone(t.x,t.y-24,damage*.5,kit.element||'impact',kit.duration||.75,radius);
     if((kit.element==='lightning'||skill.shot==='lightning')&&j===0)this.resonate('雷',t.x,t.y,damage);
    }
@@ -453,7 +334,7 @@ window.SkillPool={
   const melee=kit.kind==='melee'||skill.kind==='melee';
   const natural=clip.frame_times_ms?.reduce((n,x)=>n+x,0)/1000||clip.frames/(clip.fps||12);
   const duration=Math.max(kit.duration&&kit.kind!=='summon'?kit.duration:.45,Math.min(3.6,natural||.6));
-  const radius=(kit.radius||50)*(l>=2?1.25:1);
+  const radius=Catalog.artRadius(kit,l);
   let x=summon||melee||skill.kind==='aura'||kit.kind==='aura'?a.x:e.x;
   let y=summon||melee||skill.kind==='aura'||kit.kind==='aura'?a.y:e.y;
   if(melee)x+=a.facing*30;

@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v64-shared-pool';
+const VERSION = 'v64.1-jutsu-nav';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -14,34 +14,35 @@ const PRECACHE = [
   './index.html',
   './play.html',
   './battle/scroll-roguelite.js?v=scrollproto1',
-  './battle/skill-pool.js?v=pool64',
-  './battle/skill-pool.css?v=pool64',
+  './battle/skill-pool.js?v=pool641',
+  './battle/skill-pool.css?v=pool641',
   './manifest.webmanifest',
-  './css/style.css?v=pool64',
-  './css/home-lobby.css?v=pool64',
-  './css/home-centered.css?v=pool64',
-  './src/home-lobby.js?v=pool64',
+  './css/style.css?v=pool641',
+  './css/home-lobby.css?v=pool641',
+  './css/home-centered.css?v=pool641',
+  './src/home-lobby.js?v=pool641',
   './assets/lobby-v57/konoha-sunset.webp',
-  './src/data/characters.js?v=pool64',
-  './src/data/skills.js?v=pool64',
-  './src/data/enemies.js?v=pool64',
-  './src/data/upgrades.js?v=pool64',
-  './src/art/pixelArt.js?v=pool64',
-  './src/save.js?v=pool64',
-  './src/audio.js?v=pool64',
-  './src/sprites.js?v=pool64',
-  './src/battle-bridge.js?v=pool64',
-  './src/data/roster-current.js?v=pool64',
-  './src/data/phase-one.js?v=pool64',
-  './src/data/character-packs.js?v=pool64',
-  './css/current-ui.css?v=pool64',
-  './css/roster.css?v=pool64',
-  './src/data/portrait-layout.js?v=pool64',
-  './src/roster-ui.js?v=pool64',
-  './src/home-portrait.js?v=pool64',
-  './src/ui.js?v=pool64',
-  './src/mobile.js?v=pool64',
-  './src/main.js?v=pool64',
+  './src/data/characters.js?v=pool641',
+  './src/data/skills.js?v=pool641',
+  './src/data/enemies.js?v=pool641',
+  './src/data/upgrades.js?v=pool641',
+  './src/art/pixelArt.js?v=pool641',
+  './src/save.js?v=pool641',
+  './src/audio.js?v=pool641',
+  './src/sprites.js?v=pool641',
+  './src/battle-bridge.js?v=pool641',
+  './src/data/roster-current.js?v=pool641',
+  './src/data/phase-one.js?v=pool641',
+  './src/data/character-packs.js?v=pool641',
+  './src/data/skill-pool-catalog.js?v=pool641',
+  './css/current-ui.css?v=pool641',
+  './css/roster.css?v=pool641',
+  './src/data/portrait-layout.js?v=pool641',
+  './src/roster-ui.js?v=pool641',
+  './src/home-portrait.js?v=pool641',
+  './src/ui.js?v=pool641',
+  './src/mobile.js?v=pool641',
+  './src/main.js?v=pool641',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
@@ -82,8 +83,8 @@ self.addEventListener('activate', event => {
         channel.port1.onmessage=event=>done(event.data);
         try{client.postMessage({type:'NINJA_CLIENT_STATUS'},[channel.port2]);}catch{done(null);}
       });
-      if(status?.release==='pool64')return;
-      url.pathname=SCOPE+'play.html';url.searchParams.set('release','pool64');
+      if(status?.release==='pool641')return;
+      url.pathname=SCOPE+'play.html';url.searchParams.set('release','pool641');
       // Navigation must run after activation has settled; awaiting it inside activate deadlocks.
       let tries=0;
       const navigate=()=>{
