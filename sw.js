@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v63-auto-battle';
+const VERSION = 'v64-shared-pool';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -14,32 +14,34 @@ const PRECACHE = [
   './index.html',
   './play.html',
   './battle/scroll-roguelite.js?v=scrollproto1',
+  './battle/skill-pool.js?v=pool64',
+  './battle/skill-pool.css?v=pool64',
   './manifest.webmanifest',
-  './css/style.css?v=auto63',
-  './css/home-lobby.css?v=auto63',
-  './css/home-centered.css?v=auto63',
-  './src/home-lobby.js?v=auto63',
+  './css/style.css?v=pool64',
+  './css/home-lobby.css?v=pool64',
+  './css/home-centered.css?v=pool64',
+  './src/home-lobby.js?v=pool64',
   './assets/lobby-v57/konoha-sunset.webp',
-  './src/data/characters.js?v=auto63',
-  './src/data/skills.js?v=auto63',
-  './src/data/enemies.js?v=auto63',
-  './src/data/upgrades.js?v=auto63',
-  './src/art/pixelArt.js?v=auto63',
-  './src/save.js?v=auto63',
-  './src/audio.js?v=auto63',
-  './src/sprites.js?v=auto63',
-  './src/battle-bridge.js?v=auto63',
-  './src/data/roster-current.js?v=auto63',
-  './src/data/phase-one.js?v=auto63',
-  './src/data/character-packs.js?v=auto63',
-  './css/current-ui.css?v=auto63',
-  './css/roster.css?v=auto63',
-  './src/data/portrait-layout.js?v=auto63',
-  './src/roster-ui.js?v=auto63',
-  './src/home-portrait.js?v=auto63',
-  './src/ui.js?v=auto63',
-  './src/mobile.js?v=auto63',
-  './src/main.js?v=auto63',
+  './src/data/characters.js?v=pool64',
+  './src/data/skills.js?v=pool64',
+  './src/data/enemies.js?v=pool64',
+  './src/data/upgrades.js?v=pool64',
+  './src/art/pixelArt.js?v=pool64',
+  './src/save.js?v=pool64',
+  './src/audio.js?v=pool64',
+  './src/sprites.js?v=pool64',
+  './src/battle-bridge.js?v=pool64',
+  './src/data/roster-current.js?v=pool64',
+  './src/data/phase-one.js?v=pool64',
+  './src/data/character-packs.js?v=pool64',
+  './css/current-ui.css?v=pool64',
+  './css/roster.css?v=pool64',
+  './src/data/portrait-layout.js?v=pool64',
+  './src/roster-ui.js?v=pool64',
+  './src/home-portrait.js?v=pool64',
+  './src/ui.js?v=pool64',
+  './src/mobile.js?v=pool64',
+  './src/main.js?v=pool64',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
@@ -80,8 +82,8 @@ self.addEventListener('activate', event => {
         channel.port1.onmessage=event=>done(event.data);
         try{client.postMessage({type:'NINJA_CLIENT_STATUS'},[channel.port2]);}catch{done(null);}
       });
-      if(status?.release==='auto63')return;
-      url.pathname=SCOPE+'play.html';url.searchParams.set('release','auto63');
+      if(status?.release==='pool64')return;
+      url.pathname=SCOPE+'play.html';url.searchParams.set('release','pool64');
       // Navigation must run after activation has settled; awaiting it inside activate deadlocks.
       let tries=0;
       const navigate=()=>{

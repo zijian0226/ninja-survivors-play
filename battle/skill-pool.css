@@ -1,0 +1,46 @@
+/* Ally call bar and lobby 忍术 catalog. Also keeps 6 pool slots on one upgrade row. */
+.call-bar{position:absolute;right:66px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);z-index:3;display:flex;flex-direction:column-reverse;gap:10px;pointer-events:auto;max-width:110px}
+.call-bar[hidden]{display:none}
+.call-btn{position:relative;width:96px;padding:6px 4px 7px;border-radius:16px;border:1px solid #c0b58199;background:#143224e8;color:#f2ddaa;display:flex;flex-direction:column;align-items:center;gap:4px;overflow:visible;touch-action:manipulation;font:700 11px/1.2 system-ui,sans-serif}
+.call-btn .call-faces{position:relative;display:flex;flex-wrap:wrap;gap:2px;justify-content:center;width:72px;z-index:1}
+.call-btn .call-faces.n2,.call-btn .call-faces.n3,.call-btn .call-faces.n4{width:80px;gap:2px}
+.call-face{display:block;position:relative;width:72px;height:72px;border-radius:50%;overflow:hidden;background:#1c2e24;border:1.5px solid #e6d6a8cc;box-shadow:0 0 0 1px #0b1610;flex:0 0 auto}
+.call-faces.n2 .call-face,.call-faces.n3 .call-face,.call-faces.n4 .call-face{width:38px;height:38px}
+.call-face img{position:absolute;width:calc(100% / var(--sx));height:calc(100% / var(--sy));left:calc(var(--fx) / var(--sx) * -100%);top:calc(var(--fy) / var(--sy) * -100%);max-width:none;filter:none;opacity:1;pointer-events:none}
+/* Cooldown veil and ring sit over the portrait; the face stays at full brightness. */
+.call-btn:not(.ready) .call-face::after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(rgba(8,16,12,.32) calc(var(--cd,0)*360deg),transparent 0);pointer-events:none;z-index:2}
+.call-btn:not(.ready) .call-face::before{content:"";position:absolute;inset:0;border-radius:50%;padding:3px;background:conic-gradient(#e6d08a calc((1 - var(--cd,0))*360deg),#1a241866 0);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;pointer-events:none;z-index:3;box-sizing:border-box}
+.call-btn .call-name{position:relative;z-index:1;display:-webkit-box;max-width:88px;text-align:center;font:700 11px/1.25 system-ui,sans-serif;white-space:normal;overflow:hidden;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-break:break-all}
+.call-btn .call-cd{position:relative;z-index:1;font:650 10px/1 system-ui,sans-serif;color:#d7c792;letter-spacing:0}
+.call-btn.ready{background:#b9d289;color:#1d3426;border-color:#e3ecc2;box-shadow:0 0 0 2px #b9d289aa,0 0 12px #b9d28999}
+.call-btn.ready .call-face{box-shadow:0 0 0 2px #dce9b4,0 0 10px #b9d289cc}
+.call-btn.ready .call-cd{color:#215132}
+.call-btn.combo{width:100px;border-color:#deb46d}
+.call-btn:disabled{opacity:1;filter:none}
+.call-btn:focus-visible{outline:2px solid #f1ecc6;outline-offset:2px}
+
+/* 6 pool slots must stay on one row at 390px; base CSS still assumes 5 columns. */
+#modal.choice-screen .pool-build .build-slots,
+.choice-screen .pool-build .build-slots,
+.pool-build .build-slots{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:2px;min-width:0}
+#modal.choice-screen .pool-build .build-slots .equipped-slot{min-width:0;height:40px;max-height:40px}
+.pool-build{margin-top:6px;width:100%;min-width:0}
+.equipped-build{flex-wrap:wrap}
+
+.pool-nature-nav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.pool-nature-nav button{display:inline-flex;align-items:center;gap:4px;padding:6px 8px;border-radius:999px;border:1px solid #c0b58166;background:#183324cc;color:#f2ddaa;font:600 11px/1 system-ui,sans-serif}
+.pool-nature-nav button img{width:14px;height:14px}
+.pool-nature-nav button.active{background:#b9d289;color:#1d3426;border-color:#e3ecc2}
+.pool-group{margin:0 0 18px}
+.pool-group header{display:flex;align-items:center;gap:8px;margin:0 0 8px}
+.pool-group header img{width:18px;height:18px}
+.pool-group header h3{margin:0;font-size:15px}
+.pool-group header small{opacity:.7}
+.pool-grid{display:flex;flex-direction:column;gap:8px}
+.pool-card{display:grid;grid-template-columns:64px 1fr;gap:10px;padding:10px;border-radius:12px;background:#13261bcc;border:1px solid #c0b58133;color:#f4ead0}
+.pool-card .pool-art{width:64px;height:64px;object-fit:cover;object-position:left top;border-radius:8px;background:#0c1811}
+.pool-card b{display:block;margin:2px 0 4px;font-size:14px}
+.pool-card p{margin:0 0 4px;font-size:12px;line-height:1.45;opacity:.92}
+.pool-card .pool-learners{opacity:.8;font-size:11px}
+
+.pause-ally.call-only span.ready{color:#b9d289}
