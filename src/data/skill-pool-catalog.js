@@ -205,13 +205,27 @@ function formatLearners(units,skill){
   const names=list.slice(0,8).map(u=>u.name).join('、');
   return '可学：'+names+(list.length>8?' 等'+list.length+'人':'');
 }
+function naturesWithSkills(){return NATURE_ORDER.filter(n=>SKILLS.some(s=>s.gate===n));}
+function preloadIcons(){
+  const seen=new Set();
+  SKILLS.forEach(s=>{
+    const src=iconOf(s);
+    if(!src||seen.has(src))return;
+    seen.add(src);
+    const img=new Image();
+    img.decoding='async';
+    img.src=src;
+  });
+}
 
 const Catalog={
   ALL_NATURES,NATURE_ORDER,NATURE_ICONS,MAX_SLOTS,DAMAGE_PER_LEVEL,
   CLONE_BASE_DAMAGE,skills:SKILLS,forms:FORMS,byId,
   inBattle,assetPath,natureSrc,formEntry,natures,canLearn,learnableSkills,
   startId,kitOf,iconOf,damageScale,waveCount,zoneRadius,artRadius,
-  cloneCount,cloneLife,cloneDamageMul,baseDamage,levelEffects,learners,formatLearners
+  cloneCount,cloneLife,cloneDamageMul,baseDamage,levelEffects,learners,formatLearners,
+  naturesWithSkills,preloadIcons
 };
 global.SkillPoolCatalog=Catalog;
+preloadIcons();
 })(window);

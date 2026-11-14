@@ -246,18 +246,19 @@ window.UI = (function () {
   function renderJutsu(m, filter){
     const C=window.SkillPoolCatalog;
     if(!C){m.innerHTML='<div class="page-head"><h2>忍术</h2></div><p class="prep-copy">忍术图鉴未能载入。</p>';return;}
-    const key=C.NATURE_ORDER.includes(filter)?filter:'all';
+    const visible=C.naturesWithSkills();
+    const key=visible.includes(filter)?filter:'all';
     const units=ownedJutsuUnits();
     const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    const nav=`<div class="jutsu-nature-nav">${['all',...C.NATURE_ORDER].map(n=>`<button type="button" data-jutsu-nature="${n}" class="${n===key?'active':''}">${n==='all'?'全部':`<img src="${C.natureSrc(n)}" alt="">${n}`}</button>`).join('')}</div>`;
-    const groups=key==='all'?C.NATURE_ORDER:[key];
+    const nav=`<div class="jutsu-nature-nav">${['all',...visible].map(n=>`<button type="button" data-jutsu-nature="${n}" class="${n===key?'active':''}">${n==='all'?'全部':`<img src="${C.natureSrc(n)}" alt="">${n}`}</button>`).join('')}</div>`;
+    const groups=key==='all'?visible:[key];
     const body=groups.map(n=>{
       const list=C.skills.filter(s=>s.gate===n);
-      if(!list.length)return `<section class="jutsu-group"><header><img src="${C.natureSrc(n)}" alt=""><h3>${n}</h3><small>暂无专属忍术</small></header>${n==='阳'?'<p class="jutsu-note">阳属性忍者仍可学习全部中性忍术。</p>':''}</section>`;
+      if(!list.length)return '';
       const cards=list.map(skill=>{
         const levels=C.levelEffects(skill).map(x=>`<li><b>Lv.${x.level}</b> ${esc(x.text)}</li>`).join('');
         return `<article class="jutsu-card" data-skill="${esc(skill.id)}">
-          <img class="jutsu-art" src="${esc(C.iconOf(skill))}" alt="">
+          <img class="jutsu-art" src="${esc(C.iconOf(skill))}" alt="${esc(skill.name)}" width="64" height="64" decoding="async">
           <div class="jutsu-body"><small>${esc(skill.gate)} · Lv.1–5</small><b>${esc(skill.name)}</b>
           <p>${esc(skill.text)}</p>
           <ol class="jutsu-levels">${levels}</ol>
@@ -268,6 +269,11 @@ window.UI = (function () {
     m.innerHTML=`<div class="page-head"><h2>忍术</h2><span>JUTSU · 通用忍术图鉴</span></div>
       <p class="jutsu-lead">局内最多携带 6 个通用忍术。每位忍者只能学习与自身查克拉性质相符的忍术，以及全部中性忍术。定位为「全」的忍者可学习所有性质。专属奥义按形态保留，不在此图鉴中。</p>
       ${nav}${body}`;
+    m.querySelectorAll('.jutsu-art').forEach(img=>{
+      const ready=()=>img.classList.add('is-ready');
+      if(img.complete&&img.naturalWidth)ready();
+      else{img.addEventListener('load',ready,{once:true});img.addEventListener('error',ready,{once:true});}
+    });
     m.querySelectorAll('[data-jutsu-nature]').forEach(b=>b.onclick=()=>{Sfx.play('click');renderJutsu(m,b.dataset.jutsuNature);});
   }
 
@@ -324,7 +330,7 @@ window.UI = (function () {
 
   /* ---------- 出战 & 结算 ---------- */
   U.openBattlePrep=function(){
-    if(Game.runtimeId!=='ninja-v64.1-shared-pool'){location.replace(new URL('play.html?release=pool641',location.href).href);return;}
+    if(Game.runtimeId!=='ninja-v64.2-shared-pool'){location.replace(new URL('play.html?release=pool642',location.href).href);return;}
     let selected=Game.available(D.charById[S().selected])?S().selected:'naruto';
     let excluded=[...(Game.excluded||[])];
     modal('出战准备','');const body=$('modal').querySelector('.md-body');
