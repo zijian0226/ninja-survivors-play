@@ -31,18 +31,18 @@ textarea{width:100%;height:110px;background:#070b16;color:var(--ink);border:1px 
 <header><b>卡片取景</b><span class="tip" id="cnt"></span><button id="exp" class="pri">导出</button><button id="imp">导入</button></header>
 <main>
 <div class="stage">
- <div><div class="fr" id="ed"><canvas id="cv"></canvas><div class="g gv"></div><div class="g gh" style="top:36%"></div><div class="g gh" style="top:49%"></div></div><div class="cap"><span id="name"></span></div></div>
- <div><div class="fr" id="ref"><canvas id="rc"></canvas><div class="g gv"></div><div class="g gh" style="top:36%"></div><div class="g gh" style="top:49%"></div></div><div class="cap">标准：迪达拉</div></div>
+ <div><div class="fr" id="ed"><canvas id="cv"></canvas><div class="g gv"></div><div class="g gh" style="top:28%"></div><div class="g gh" style="top:40%"></div></div><div class="cap"><span id="name"></span></div></div>
+ <div><div class="fr" id="ref"><canvas id="rc"></canvas><div class="g gv"></div><div class="g gh" style="top:28%"></div><div class="g gh" style="top:40%"></div></div><div class="cap">参考：迪达拉</div></div>
 </div>
 <div class="ctl"><button id="prev">‹ 上一个</button><button id="zo">－</button><button id="zi">＋</button><button id="rst">重置</button><button id="next">下一个 ›</button></div>
-<div class="tip" style="text-align:center">拖动移动，滚轮/双指缩放；红线＝眼睛、下巴，绿线＝居中。自动保存。</div>
+<div class="tip" style="text-align:center">拖动移动，滚轮/双指缩放；红线＝默认眼线28%、下巴40%，绿线＝居中。自动保存。</div>
 <div id="io"><textarea id="ta" placeholder="导出的 JSON / 粘贴后点「导入」"></textarea><div class="ctl"><button id="doimp">导入这段</button><button id="close">收起</button></div></div>
 <div class="grid" id="grid"></div>
 </main>
 <script>
 const BASE=location.pathname.includes('/tools/')?'../':'';
-/* Same model as tools/build-roster-busts.py (keep in sync): card 270x410, 迪达拉 standard eye line 36%, eye→chin 13%. */
-const W=270,H=410,A=W/H,EYE_Y=.36,FACE_H=.13,KEY='cropEdits.v1';
+/* Same model as tools/build-roster-busts.py (keep in sync): card 270x410, default standard (from the user's v0.66.7 hand crops) eye line 28%, eye→chin 12%. */
+const W=270,H=410,A=W/H,EYE_Y=.28,FACE_H=.12,KEY='cropEdits.v1';
 let P={},C={},N={},ids=[],img={},cur=0,edits=JSON.parse(localStorage.getItem(KEY)||'{}');
 const $=s=>document.querySelector(s);
 function load(src){const s=document.createElement('script');s.src=BASE+src;return new Promise((ok,no)=>{s.onload=ok;s.onerror=no;document.head.appendChild(s)})}
