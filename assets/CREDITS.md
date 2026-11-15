@@ -48,7 +48,7 @@
 - 金币（两）与勾玉图标为本项目自绘（`cur-ryo.svg`、`cur-magatama.svg`）。
 
 ### 界面字体（Google Fonts）
-- Ma Shan Zheng、Noto Serif SC、Noto Sans SC、Barlow Condensed
+- Ma Shan Zheng、Noto Serif SC、Noto Sans SC、Barlow Condensed、Racing Sans One（v0.66.5 稀有度字样，仅 R/S/U 子集）
 - 许可证：SIL Open Font License 1.1（全文见 `assets/fonts/ui-v66/*-OFL.txt`）
 - 本地路径：`assets/fonts/ui-v66/*.woff2`，只保留界面用到的字（`tools/build-ui-fonts.py` 子集化），运行时不访问 Google CDN。
 
