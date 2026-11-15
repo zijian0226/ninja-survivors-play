@@ -307,7 +307,7 @@ window.UI = (function () {
     m.innerHTML = `<div class="page"><header class="page-head page-back"><button type="button" class="icon-btn" id="settings-back" aria-label="返回首页">${UIIcons.icon('chevronLeft')}</button><h2>设置</h2></header>
       <section class="card set-list">${tg('sfx','音效','技能与界面')}${tg('music','大厅音乐','背景音乐')}<div class="set-row"><div><b>屏幕震动</b><small>暂不支持切换</small></div><button class="toggle" disabled aria-label="震动设置暂未接入"><i></i></button></div><div class="set-row"><div><b>伤害数字</b><small>默认显示</small></div><button class="toggle on" disabled aria-label="伤害数字默认显示"><i></i></button></div>
         <div class="set-row"><div><b>战斗设置</b><small>暂停页可调倍速</small></div><button class="btn btn-secondary btn-sm" id="btn-perf">说明</button></div></section>
-      <section class="card about"><h3 class="card-heading">关于</h3><p>《忍者：无尽试炼》v0.66.3 · 暮夜金卷<br>同人非官方作品，与任何版权方无关；素材来源见源码 CREDITS。</p><p class="credit">图标：Icons by Lorc, Delapouite, DarkZaitzev, Faithtoken / game-icons.net，CC BY 3.0<br>字体：Ma Shan Zheng、Noto Serif SC、Noto Sans SC、Barlow Condensed（SIL OFL 1.1）</p></section>
+      <section class="card about"><h3 class="card-heading">关于</h3><p>《忍者：无尽试炼》v0.66.4 · 暮夜金卷<br>同人非官方作品，与任何版权方无关；素材来源见源码 CREDITS。</p><p class="credit">图标：Icons by Lorc, Delapouite, DarkZaitzev, Faithtoken / game-icons.net，CC BY 3.0<br>字体：Ma Shan Zheng、Noto Serif SC、Noto Sans SC、Barlow Condensed（SIL OFL 1.1）</p></section>
       <button class="btn btn-secondary btn-danger btn-block" id="btn-reset">清除存档</button></div>`;
     $('settings-back').onclick=()=>{Sfx.play('click');U.go('lobby');};
     $('btn-perf').onclick=()=>modal('战斗设置','<p>战斗中点暂停：查看同伴、调倍速。<br>开启调试后可升级、跳首领。</p>');
@@ -328,7 +328,7 @@ window.UI = (function () {
 
   /* ---------- 出战 & 结算 ---------- */
   U.openBattlePrep=function(){
-    if(Game.runtimeId!=='ninja-v663-dusk-scroll'){location.replace(new URL('play.html?release=pool663',location.href).href);return;}
+    if(Game.runtimeId!=='ninja-v664-dusk-scroll'){location.replace(new URL('play.html?release=pool664',location.href).href);return;}
     let selected=Game.available(D.charById[S().selected])?S().selected:'naruto';
     /* v0.66.2：排除招募属性的入口已移除，出战时清空旧的排除设置。顶部改为属性筛选，角色用战斗像素小人（待机帧条，整数倍放大）。 */
     const excluded=[];
@@ -339,7 +339,7 @@ window.UI = (function () {
     /* 多属性角色命中任一属性；「全」属性角色视为七属性全开，出现在每个属性筛选里。 */
     const match=c=>filter==='all'||elsOf(c).includes(filter)||elsOf(c).includes('全');
     const elKey=n=>(EL.find(e=>e[0]===n)||EL[7])[1];
-    const sprite=c=>{const p=window.PrepSprites?.[c.current.key];if(!p)return charImg(c.id,3,'prep-fallback');return `<span class="prep-sprite${p.n<2?' single':''}" style="--w:${p.w};--h:${p.h};--n:${p.n};--s:${p.s};--ms:${p.ms};background-image:url('${p.file}')" role="img" aria-label="${c.current.name}"></span>`;};
+    const sprite=c=>{const p=window.PrepSprites?.[c.current.key];if(!p)return charImg(c.id,3,'prep-fallback');return `<span class="prep-sprite${p.n<2?' single':''}" data-key="${c.current.key}" style="--w:${p.w};--h:${p.h};--n:${p.n};--s:${p.s};--ms:${p.ms};background-image:url('${p.file}')" role="img" aria-label="${c.current.name}"></span>`;};
     modal('备战','');const body=$('modal').querySelector('.md-body');$('modal').classList.add('is-prep');
     function render(){const scrollTop=body.scrollTop,list=D.characters.filter(match);
      body.innerHTML=`<div class="prep-filter" role="radiogroup" aria-label="按属性筛选" style="--chips:${present.length+1}"><button type="button" class="prep-el ${filter==='all'?'active':''}" data-filter="all" role="radio" aria-checked="${filter==='all'}">全部</button>${present.map(([n,k])=>`<button type="button" class="prep-el ${filter===n?'active':''}" data-filter="${n}" data-el="${k}" role="radio" aria-checked="${filter===n}"><i></i>${n}</button>`).join('')}</div>
@@ -348,9 +348,19 @@ window.UI = (function () {
      body.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;try{localStorage.setItem('prepFilter',filter);}catch{}render();body.scrollTop=0;});
      body.scrollTop=scrollTop;fit();watch();
     }
-    /* v0.66.3：每个小人按所在卡片的可用区取最大倍数，且一个像素对应整数个设备像素（锐利），保证完整露出、不裁剪。 */
-    function fit(){body.querySelectorAll('.prep-sprite').forEach(el=>{const st=el.parentElement,cs=getComputedStyle(el),W=st.clientWidth-4,H=st.clientHeight-(parseFloat(cs.marginBottom)||0)-2,w=+cs.getPropertyValue('--w'),h=+cs.getPropertyValue('--h');if(!W||!w||!h)return;
-      const f=Math.min(W/w,H/(h+(el.classList.contains('single')?1:0))),dpr=Math.max(1,Math.round((window.devicePixelRatio||1)*4)/4),k=f*dpr<dpr?Math.floor(f*100)/100:Math.min(3,Math.floor(f*dpr)/dpr);el.style.setProperty('--s',k);el.dataset.scale=k;});}
+    /* v0.66.4：全部角色用同一个缩放倍数，身高比例忠实于原画。倍数 = 能让所有常规形态完整放进卡片的最大值，
+       并取到「一个精灵像素 = 整数个设备像素」（390px 手机 3x 屏为 4/3 倍）；只有完全八尾化奇拉比放不下时单独缩小。
+       低分屏桌面若对齐设备像素会损失 15% 以上，则改用 0.05 步进的非整数倍（仍为 pixelated）。舞台高度按最高常规形态统一，脚底同一基线。 */
+    const EXC='killerbee_eight_tail';
+    function fit(){const st=body.querySelector('.prep-stage');if(!st)return;const W=st.clientWidth-4;if(!W)return;
+      const all=Object.entries(window.PrepSprites||{}),reg=all.filter(([k])=>k!==EXC),hh=p=>p.h+(p.n<2?1:0);
+      const mw=Math.max(...reg.map(([,p])=>p.w)),mh=Math.max(...reg.map(([,p])=>hh(p)));
+      const dpr=Math.max(1,Math.round((window.devicePixelRatio||1)*4)/4),exact=W/mw;
+      let k=Math.floor(exact*dpr)/dpr;if(k<=0||k<exact*.85)k=Math.floor(exact*20)/20;k=Math.min(3,k);
+      const H=Math.ceil(mh*k);body.style.setProperty('--prep-stage-h',(H+8)+'px');body.dataset.scale=k;
+      body.querySelectorAll('.prep-sprite').forEach(el=>{const p=window.PrepSprites[el.dataset.key];if(!p)return;let sc=k;
+        if(p.w*sc>W||hh(p)*sc>H)sc=Math.floor(Math.min(W/p.w,H/hh(p))*100)/100;
+        el.style.setProperty('--s',sc);el.dataset.scale=sc;el.classList.toggle('exception',sc!==k);});}
     let io=null;const ro=new ResizeObserver(()=>fit());ro.observe(body);
     function watch(){io?.disconnect();if(!('IntersectionObserver' in window))return;io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('off',!e.isIntersecting)),{root:body,rootMargin:'80px 0px'});body.querySelectorAll('.prep-sprite').forEach(el=>io.observe(el));}
     render();const buttons=$('modal').querySelector('.md-btns');buttons.innerHTML='<button class="btn btn-secondary" id="prep-cancel">取消</button>'+(Game.debug()?'<button class="btn btn-secondary" id="prep-lab">技能试放</button>':'')+'<button class="btn btn-primary" id="prep-start">出战</button>';
