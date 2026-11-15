@@ -90,6 +90,8 @@ function thumb(j){const id=ids[j],t=document.querySelectorAll('.t')[j];if(!t)ret
  else{const g=document.createElement('img');g.loading='lazy';g.src=BASE+'assets/roster-busts/'+id+'.webp';g.alt='';t.prepend(g)}}
 (async()=>{await Promise.all([load('src/data/portrait-layout.js'),load('src/data/character-packs.js').catch(()=>{})]);P=window.NinjaArt.profiles;ids=Object.keys(P);
  C=await (await fetch(BASE+'assets/roster-busts/crops.json',{cache:'no-cache'})).json();
+ /* edits already published (same as crops.json) are no longer "已改" */
+ for(const[id,e]of Object.entries(edits))if(!P[id]||(C[id]?.crop&&C[id].crop.every((v,j)=>Math.abs(v-e[j])<1e-5)))delete edits[id];localStorage.setItem(KEY,JSON.stringify(edits));
  const pk=(window.CharacterPacks||{}).packages||{};for(const id of ids)N[id]=pk[id]?.name||(id==='naruto'?'鸣人':id);
  $('#grid').innerHTML=ids.map((id,j)=>`<div class="t" data-j="${j}"><span>${N[id]}</span></div>`).join('');ids.forEach((_,j)=>thumb(j));
  $('#grid').onclick=e=>{const t=e.target.closest('.t');if(t){select(+t.dataset.j);scrollTo({top:0,behavior:'smooth'})}};
