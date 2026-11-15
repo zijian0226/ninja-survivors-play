@@ -73,6 +73,7 @@ window.Sfx = (function () {
     gacha: () => { for (let i = 0; i < 10; i++) tone(300 + i * 80, 0.12, 'triangle', 0.04, null, i * 0.08); },
     revealR: () => tone(880, 0.2, 'triangle', 0.07),
     revealSR: () => [660, 880, 1320].forEach((f, i) => tone(f, 0.2, 'triangle', 0.07, null, i * 0.06)),
+    revealUR: () => { [523, 659, 784, 1047, 1319, 1568, 2093].forEach((f, i) => tone(f, 0.34, 'square', 0.05, null, i * 0.065)); noise(0.9, 0.08, 7000, 'highpass', 0.12); },
     revealSSR: () => { [523, 659, 784, 1047, 1319, 1568].forEach((f, i) => tone(f, 0.3, 'square', 0.05, null, i * 0.07)); noise(0.8, 0.06, 6000, 'highpass', 0.1); },
     win: () => [523, 659, 784, 1047, 784, 1047, 1319].forEach((f, i) => tone(f, 0.25, 'square', 0.06, null, i * 0.12)),
     lose: () => [392, 349, 311, 262].forEach((f, i) => tone(f, 0.35, 'triangle', 0.08, null, i * 0.2))

@@ -138,10 +138,10 @@ window.UI = (function () {
         <div class="bn-chars">${g.featured.map((id, i) => charImg(id, 9, 'bnc bnc' + i)).join('')}</div>
         <div class="bn-label"><div class="bn-tag"><span class="seal-tag">限定</span>概率UP</div><div class="bn-name">${g.bannerName.split('·').pop().trim()}</div></div>
         <div class="bn-foot"><div class="bn-feat">${g.featured.map(id => `<div>${rarityBadge(D.charById[id].rarity)}${NinjaRoster.label(D.charById[id]).name}</div>`).join('')}</div>
-          <div class="bn-pity"><span>距离SSR保底</span><b>${g.pity - s.pity}</b><span>抽</span></div></div>
+          <div class="bn-pity"><span>距离SSR/UR保底</span><b>${g.pity - s.pity}</b><span>抽</span></div></div>
       </div>
       <div class="sm-info">
-        <div class="r-SSR"><small>SSR</small><b>3%</b></div><div class="r-SR"><small>SR</small><b>12%</b></div><div class="r-R"><small>R</small><b>85%</b></div>
+        <div class="r-UR"><small>UR</small><b>0.5%</b></div><div class="r-SSR"><small>SSR</small><b>2.5%</b></div><div class="r-SR"><small>SR</small><b>12%</b></div><div class="r-R"><small>R</small><b>85%</b></div>
       </div>
       <div class="sm-btns">
         <button class="btn btn-secondary summon1" id="btn-s1"><span>召唤 ×1</span><em>${UIIcons.currency('gouyu')}${g.cost1}</em></button>
@@ -154,24 +154,24 @@ window.UI = (function () {
     $('btn-pool').onclick = () => $('btn-rates').onclick();
     $('btn-rates').onclick = () => {
       Sfx.play('click');
-      const ssr = D.characters.filter(c => c.rarity === 'SSR'), sr = D.characters.filter(c => c.rarity === 'SR');
-      modal('概率详情', `<p><b>SSR 3%</b>：${ssr.map(c => c.name).join('、')}</p><p><b>SR 12%</b>：${sr.map(c => c.name).join('、')}、${g.srItem.name}（勾玉×${g.srItem.gouyu}）</p>
+      const ur = D.characters.filter(c => c.rarity === 'UR'), ssr = D.characters.filter(c => c.rarity === 'SSR'), sr = D.characters.filter(c => c.rarity === 'SR');
+      modal('概率详情', `${ur.length?`<p><b>UR 0.5%</b>：${ur.map(c => c.name).join('、')}</p>`:''}<p><b>SSR 2.5%</b>：${ssr.map(c => c.name).join('、')}</p><p><b>SR 12%</b>：${sr.map(c => c.name).join('、')}、${g.srItem.name}（勾玉×${g.srItem.gouyu}）</p>
         <p><b>R 85%</b>：${g.rItems.map(r => r.name + '（金币×' + r.coins + '）').join('、')}</p>
-        <p>${g.pity} 抽必出 SSR；十连必得 SR 以上。<br>重复角色：星级 +1，满星转金币×${g.dupMaxCoins}。</p>`);
+        <p>${g.pity} 抽必出 SSR 或 UR；十连必得 SR 以上。<br>重复角色：星级 +1，满星转金币×${g.dupMaxCoins}。</p>`);
     };
   }
   function rollRarity(s) {
     const g = D.gacha; s.pity++; s.pulls++;
-    const r = Math.random();
-    let rar = r < g.rates.SSR ? 'SSR' : r < g.rates.SSR + g.rates.SR ? 'SR' : 'R';
-    if (s.pity >= g.pity) rar = 'SSR';
-    if (rar === 'SSR') s.pity = 0;
+    const r = Math.random(), ur = g.rates.UR || 0, ssr = g.rates.SSR, sr = g.rates.SR;
+    let rar = r < ur ? 'UR' : r < ur + ssr ? 'SSR' : r < ur + ssr + sr ? 'SR' : 'R';
+    if (s.pity >= g.pity) rar = (ur && Math.random() < ur / (ur + ssr)) ? 'UR' : 'SSR';
+    if (rar === 'SSR' || rar === 'UR') s.pity = 0;
     return rar;
   }
   function resolve(rar) {
     const g = D.gacha, s = S();
     let char = null;
-    if (rar === 'SSR') { const pool = D.characters.filter(c => c.rarity === 'SSR'); char = pool[Math.floor(Math.random() * pool.length)]; }
+    if (rar === 'UR' || rar === 'SSR') { const pool = D.characters.filter(c => c.rarity === rar); char = pool[Math.floor(Math.random() * pool.length)] || null; }
     else if (rar === 'SR' && Math.random() < 0.6) { const pool = D.characters.filter(c => c.rarity === 'SR'); char = pool[Math.floor(Math.random() * pool.length)]; }
     if (char) {
       const o = s.owned[char.id];
@@ -196,7 +196,7 @@ window.UI = (function () {
   }
   function playGacha(results) {
     const el = $('gacha-anim');
-    const best = results.some(r => r.rar === 'SSR') ? 'SSR' : results.some(r => r.rar === 'SR') ? 'SR' : 'R';
+    const best = results.some(r => r.rar === 'UR') ? 'UR' : results.some(r => r.rar === 'SSR') ? 'SSR' : results.some(r => r.rar === 'SR') ? 'SR' : 'R';
     el.className = 'overlay gacha best-' + best;
     el.innerHTML = `<div class="ga-stage">${sealSvg('ga-seal')}<div class="ga-orb"></div><div class="ga-hint">点击召唤</div></div><button class="ga-skip">跳过 ${UIIcons.icon('chevronRight')}</button>`;
     Sfx.play('gacha');
@@ -221,7 +221,7 @@ window.UI = (function () {
       return `<div class="ga-card r-${r.rar}" style="animation-delay:${instant ? 0 : i * 0.16}s"><div class="gc-in">
         <div class="gc-face"><div class="gc-rays"></div><div class="gc-art">${img}</div><div class="gc-strip"><div class="gc-l1"><span class="gc-rar">${r.rar}</span><span class="gc-name">${name}</span></div>${sub}</div></div></div></div>`;
     }).join('')}</div><button class="btn btn-primary ga-ok">确 定</button>`;
-    results.forEach((r, i) => setTimeout(() => Sfx.play(r.rar === 'SSR' ? 'revealSSR' : r.rar === 'SR' ? 'revealSR' : 'revealR'), instant ? 0 : i * 160 + 200));
+    results.forEach((r, i) => setTimeout(() => Sfx.play(r.rar === 'UR' ? 'revealUR' : r.rar === 'SSR' ? 'revealSSR' : r.rar === 'SR' ? 'revealSR' : 'revealR'), instant ? 0 : i * 160 + 200));
     el.querySelector('.ga-ok').onclick = () => { Sfx.play('click'); el.className = 'overlay hidden'; el.innerHTML = ''; U.go('summon'); const nw = results.filter(r => r.isNew); if (nw.length) U.toast('解锁新角色：' + nw.map(r => r.char.name).join('、'), 2200); };
   }
 
@@ -307,7 +307,7 @@ window.UI = (function () {
     m.innerHTML = `<div class="page"><header class="page-head page-back"><button type="button" class="icon-btn" id="settings-back" aria-label="返回首页">${UIIcons.icon('chevronLeft')}</button><h2>设置</h2></header>
       <section class="card set-list">${tg('sfx','音效','技能与界面')}${tg('music','大厅音乐','背景音乐')}<div class="set-row"><div><b>屏幕震动</b><small>暂不支持切换</small></div><button class="toggle" disabled aria-label="震动设置暂未接入"><i></i></button></div><div class="set-row"><div><b>伤害数字</b><small>默认显示</small></div><button class="toggle on" disabled aria-label="伤害数字默认显示"><i></i></button></div>
         <div class="set-row"><div><b>战斗设置</b><small>暂停页可调倍速</small></div><button class="btn btn-secondary btn-sm" id="btn-perf">说明</button></div></section>
-      <section class="card about"><h3 class="card-heading">关于</h3><p>《忍者：无尽试炼》v0.66.8 · 暮夜金卷<br>同人非官方作品，与任何版权方无关；素材来源见源码 CREDITS。</p><p class="credit">图标：Icons by Lorc, Delapouite, DarkZaitzev, Faithtoken / game-icons.net，CC BY 3.0<br>字体：Ma Shan Zheng、Noto Serif SC、Noto Sans SC、Barlow Condensed、Racing Sans One（SIL OFL 1.1）</p></section>
+      <section class="card about"><h3 class="card-heading">关于</h3><p>《忍者：无尽试炼》v0.66.9 · 暮夜金卷<br>同人非官方作品，与任何版权方无关；素材来源见源码 CREDITS。</p><p class="credit">图标：Icons by Lorc, Delapouite, DarkZaitzev, Faithtoken / game-icons.net，CC BY 3.0<br>字体：Ma Shan Zheng、Noto Serif SC、Noto Sans SC、Barlow Condensed、Racing Sans One（SIL OFL 1.1）</p></section>
       <button class="btn btn-secondary btn-danger btn-block" id="btn-reset">清除存档</button></div>`;
     $('settings-back').onclick=()=>{Sfx.play('click');U.go('lobby');};
     $('btn-perf').onclick=()=>modal('战斗设置','<p>战斗中点暂停：查看同伴、调倍速。<br>开启调试后可升级、跳首领。</p>');
@@ -328,7 +328,7 @@ window.UI = (function () {
 
   /* ---------- 出战 & 结算 ---------- */
   U.openBattlePrep=function(){
-    if(Game.runtimeId!=='ninja-v668-dusk-scroll'){location.replace(new URL('play.html?release=pool668',location.href).href);return;}
+    if(Game.runtimeId!=='ninja-v669-dusk-scroll'){location.replace(new URL('play.html?release=pool669',location.href).href);return;}
     let selected=Game.available(D.charById[S().selected])?S().selected:'naruto';
     /* v0.66.2：排除招募属性的入口已移除，出战时清空旧的排除设置。顶部改为属性筛选，角色用战斗像素小人（待机帧条，整数倍放大）。 */
     const excluded=[];
@@ -343,7 +343,7 @@ window.UI = (function () {
     modal('备战','');const body=$('modal').querySelector('.md-body');$('modal').classList.add('is-prep');
     function render(){const scrollTop=body.scrollTop,list=D.characters.filter(match);
      body.innerHTML=`<div class="prep-filter" role="radiogroup" aria-label="按属性筛选" style="--chips:${present.length+1}"><button type="button" class="prep-el ${filter==='all'?'active':''}" data-filter="all" role="radio" aria-checked="${filter==='all'}">全部</button>${present.map(([n,k])=>`<button type="button" class="prep-el ${filter===n?'active':''}" data-filter="${n}" data-el="${k}" role="radio" aria-checked="${filter===n}"><i></i>${n}</button>`).join('')}</div>
-      <div class="prep-grid">${list.map(c=>{const n=window.NinjaRoster?.label?NinjaRoster.label(c):{name:c.current.name,form:''},r=c.rarity==='SSR'||c.rarity==='SR'?c.rarity.toLowerCase():'r',els=elsOf(c);return `<button type="button" class="prep-card rarity-${r} ${c.id===selected?'active':''}" data-prep="${c.id}" data-els="${els.join('')}" ${Game.available(c)?'':'disabled'} aria-pressed="${c.id===selected}" title="${c.current.name}${c.catalogOnly?' · 战斗待制作':c.current.releaseComplete?'':' · 预览'}"><span class="prep-stage">${sprite(c)}</span>${c.id===selected?'<span class="prep-pick">出战</span>':''}<span class="prep-rar">${r.toUpperCase()}</span><b>${n.name}</b><small>${n.form?n.form+' · ':''}${els.map(e=>`<em data-el="${elKey(e)}">${e}</em>`).join('')}</small></button>`;}).join('')||'<p class="prep-empty">该属性暂无可出战角色</p>'}</div>`;
+      <div class="prep-grid">${list.map(c=>{const n=window.NinjaRoster?.label?NinjaRoster.label(c):{name:c.current.name,form:''},r=c.rarity==='UR'||c.rarity==='SSR'||c.rarity==='SR'?c.rarity.toLowerCase():'r',els=elsOf(c);return `<button type="button" class="prep-card rarity-${r} ${c.id===selected?'active':''}" data-prep="${c.id}" data-els="${els.join('')}" ${Game.available(c)?'':'disabled'} aria-pressed="${c.id===selected}" title="${c.current.name}${c.catalogOnly?' · 战斗待制作':c.current.releaseComplete?'':' · 预览'}"><span class="prep-stage">${sprite(c)}</span>${c.id===selected?'<span class="prep-pick">出战</span>':''}<span class="prep-rar">${r.toUpperCase()}</span><b>${n.name}</b><small>${n.form?n.form+' · ':''}${els.map(e=>`<em data-el="${elKey(e)}">${e}</em>`).join('')}</small></button>`;}).join('')||'<p class="prep-empty">该属性暂无可出战角色</p>'}</div>`;
      body.querySelectorAll('[data-prep]').forEach(b=>b.onclick=()=>{selected=b.dataset.prep;render();});
      body.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;try{localStorage.setItem('prepFilter',filter);}catch{}render();body.scrollTop=0;});
      body.scrollTop=scrollTop;fit();watch();

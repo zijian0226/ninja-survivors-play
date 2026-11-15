@@ -1,14 +1,19 @@
 /* Portrait-first phone roster. Display choice remains separate from battle loadout.
- * v0.66: 卡框按真实稀有度（R/SR/SSR）；SSR 金色流光+火花+呼吸光，SR 紫色流光+星芒，纯 CSS；离屏卡片由 IntersectionObserver 暂停动画。 */
+ * v0.66: 卡框按真实稀有度（R/SR/SSR/UR）；SSR 金色流光+火花，SR 紫色流光+星芒，UR 蓝彩框+漂移星屑+双层流光，纯 CSS；离屏由 IntersectionObserver 暂停。 */
 window.NinjaRoster=(function(){
  const state={filter:'all',scope:'phase',scroll:0},types=['火','风','雷','土','水','阴','阳','全'];
  const colors={'火':'#F0663A','风':'#4FC6A0','雷':'#F2CF4A','土':'#C8955A','水':'#4A9BEA','阴':'#8F7BE0','阳':'#F6E7B0','全':'#A9B0C2'};
  let io=null;
  function rnd(seed){let x=seed*9301+49297;return()=>((x=(x*9301+49297)%233280)/233280);}
+ function rarOf(c){return c.rarity==='UR'||c.rarity==='SSR'||c.rarity==='SR'?c.rarity:'R';}
  function fx(r,i){
-  if(r!=='SSR'&&r!=='SR')return '';
+  if(r!=='SSR'&&r!=='SR'&&r!=='UR')return '';
   const R=rnd(i+7),pick=a=>a[Math.floor(R()*a.length)];let out=`<span class="sweep" style="--d:${(i*.45%3.6).toFixed(2)}s"></span>`;
-  if(r==='SSR'){out+='<span class="ember-glow"></span>';for(let k=0;k<6;k++)out+=`<span class="spark" style="left:${8+Math.round(R()*80)}%;--s:${pick([4,5,6,7])}px;--b:${24+Math.round(R()*34)}%;--t:${(2.2+R()*1.4).toFixed(2)}s;--d:${(R()*3).toFixed(2)}s;--x:${Math.round(R()*28-14)}px"></span>`;}
+  if(r==='UR'){
+   out+=`<span class="sweep sweep-2" style="--d:${(1.4+i*.3%2).toFixed(2)}s"></span><span class="ur-aura"></span>`;
+   for(let k=0;k<10;k++)out+=`<span class="spark ur-spark" style="left:${6+Math.round(R()*84)}%;--s:${pick([3,4,5,6,7])}px;--b:${18+Math.round(R()*55)}%;--t:${(2.4+R()*1.8).toFixed(2)}s;--d:${(R()*3.2).toFixed(2)}s;--x:${Math.round(R()*36-18)}px"></span>`;
+   for(let k=0;k<6;k++)out+=`<span class="twinkle ur-twinkle" style="left:${8+Math.round(R()*80)}%;top:${8+Math.round(R()*55)}%;--s:${pick([8,10,12,14])}px;--t:${(2+R()*1.6).toFixed(2)}s;--d:${(R()*2.8).toFixed(2)}s"></span>`;
+  }else if(r==='SSR'){out+='<span class="ember-glow"></span>';for(let k=0;k<6;k++)out+=`<span class="spark" style="left:${8+Math.round(R()*80)}%;--s:${pick([4,5,6,7])}px;--b:${24+Math.round(R()*34)}%;--t:${(2.2+R()*1.4).toFixed(2)}s;--d:${(R()*3).toFixed(2)}s;--x:${Math.round(R()*28-14)}px"></span>`;}
   else for(let k=0;k<4;k++)out+=`<span class="twinkle" style="left:${10+Math.round(R()*75)}%;top:${10+Math.round(R()*50)}%;--s:${pick([8,10,12])}px;--t:${(2+R()*1.2).toFixed(2)}s;--d:${(R()*2.5).toFixed(2)}s"></span>`;
   return out;
  }
@@ -39,7 +44,7 @@ window.NinjaRoster=(function(){
   m.innerHTML=`<section class="page ninja-archive"><header class="page-head ninja-archive-head"><h2>忍者档案</h2><span class="page-meta"><b>${list.length}</b>/${pool.length}</span></header>
    <div class="segmented ninja-scope-bar"><button type="button" data-roster-scope="phase" aria-pressed="${state.scope==='phase'}">第一阶段 <b>53</b></button><button type="button" data-roster-scope="legacy" aria-pressed="${state.scope==='legacy'}">其他已接入 <b>${GameData.characters.filter(c=>!c.phaseOne).length}</b></button></div>
    <div class="chip-row ninja-filter-bar" aria-label="按属性筛选"><button type="button" data-attribute="all" class="chip ${state.filter==='all'?'active':''}" aria-pressed="${state.filter==='all'}">全部</button>${types.map(t=>`<button type="button" data-attribute="${t}" aria-label="筛选${t}属性" title="${t}属性" class="chip ${state.filter===t?'active':''}" aria-pressed="${state.filter===t}" style="--nature:${colors[t]}">${logo(t)}<span>${t}</span></button>`).join('')}</div>
-   <div class="ro-grid ninja-card-grid">${list.map((c,index)=>{const art=NinjaArt.get(c.id),n=label(c),r=c.rarity==='SSR'||c.rarity==='SR'?c.rarity:'R',home=(Save.data.displaySelected||Save.data.selected)===c.id,st=Save.data.owned[c.id]?.stars||0;return `<article class="ro-card ninja-card rarity-${r.toLowerCase()} ${r!=='R'?'fx':''} ${home?'is-displayed':''}" data-id="${c.id}" data-composition="${art.composition||'full'}" data-framing="${art.framing.presentation?.mode||'legacy'}" role="button" tabindex="0" aria-label="查看${esc(n.name)}${n.form?' · '+esc(n.form):''}详情" title="${esc(n.name)}${n.form?' · '+esc(n.form):''}" style="--nature:${colors[c.element]}">${r!=='R'?'<span class="rim"></span>':''}<div class="card-in"><div class="ninja-card-portrait">${bust(c)}</div>${fx(r,index)}${home?'<span class="rc-main" title="首页展示中">展</span>':''}${art.pixel?'<span class="ninja-art-pending">待补</span>':''}<div class="ninja-card-caption"><span class="pips" aria-label="${st}星">${[0,1,2,3,4].map(k=>`<i class="${k<st?'on':''}"></i>`).join('')}</span><span class="rar-display rar-${r.toLowerCase()}" data-text="${r}" aria-label="稀有度 ${r}">${r}</span></div></div>${nature(c)}</article>`;}).join('')}</div>
+   <div class="ro-grid ninja-card-grid">${list.map((c,index)=>{const art=NinjaArt.get(c.id),n=label(c),r=rarOf(c),home=(Save.data.displaySelected||Save.data.selected)===c.id,st=Save.data.owned[c.id]?.stars||0;return `<article class="ro-card ninja-card rarity-${r.toLowerCase()} ${r!=='R'?'fx':''} ${home?'is-displayed':''}" data-id="${c.id}" data-composition="${art.composition||'full'}" data-framing="${art.framing.presentation?.mode||'legacy'}" role="button" tabindex="0" aria-label="查看${esc(n.name)}${n.form?' · '+esc(n.form):''}详情" title="${esc(n.name)}${n.form?' · '+esc(n.form):''}" style="--nature:${colors[c.element]}">${r!=='R'?'<span class="rim"></span>':''}<div class="card-in">${r!=='UR'?`<div class="ninja-card-portrait">${bust(c)}</div>`:''}${fx(r,index)}${home?'<span class="rc-main" title="首页展示中">展</span>':''}${art.pixel?'<span class="ninja-art-pending">待补</span>':''}<div class="ninja-card-caption"><span class="pips" aria-label="${st}星">${[0,1,2,3,4].map(k=>`<i class="${k<st?'on':''}"></i>`).join('')}</span></div></div>${r==='UR'?`<div class="ninja-card-portrait is-over">${bust(c)}</div>`:''}<span class="rar-display rar-${r.toLowerCase()}" data-text="${r}" aria-label="稀有度 ${r}">${r}</span>${nature(c)}</article>`;}).join('')}</div>
    ${!list.length?`<div class="card empty-state ninja-empty">${UIIcons.icon('ninja','empty-icon')}<p>该属性暂时没有开放形态</p></div>`:''}
    <details class="card locked-archive ninja-locked"><summary>未开放图鉴 <span>${locked.length}</span></summary><div class="locked-grid">${locked.map(c=>`<button disabled class="locked-card">${esc(c.name)}</button>`).join('')}</div></details></section>`;
 

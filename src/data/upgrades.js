@@ -17,8 +17,8 @@ GameData.upgradeCost = (u, lv) => Math.round(u.base * Math.pow(u.grow, lv) / 10)
 GameData.gacha = {
   bannerName: '限定召唤 · 宿命之瞳',
   cost1: 100, cost10: 900,          // 勾玉（仅游戏内货币，无真实付费）
-  rates: { SSR: 0.03, SR: 0.12, R: 0.85 },
-  pity: 60,                          // 60抽必出SSR
+  rates: { UR: 0.005, SSR: 0.025, SR: 0.12, R: 0.85 },
+  pity: 60,                          // 60抽必出 SSR 或 UR
   featured: ['sasuke', 'kakashi'],
   rItems: [
     { id: 'kit',    name: '忍具包',   icon: 'shuriken', coins: 120 },
