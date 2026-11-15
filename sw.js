@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v662-dusk-scroll';
+const VERSION = 'v663-dusk-scroll';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -13,40 +13,40 @@ const PRECACHE = [
   './',
   './index.html',
   './play.html',
-  './battle/scroll-roguelite.js?v=pool662',
-  './battle/skill-pool.js?v=pool662',
-  './battle/skill-pool.css?v=pool662',
+  './battle/scroll-roguelite.js?v=pool663',
+  './battle/skill-pool.js?v=pool663',
+  './battle/skill-pool.css?v=pool663',
   './manifest.webmanifest',
-  './css/app.css?v=pool662',
-  './battle/ui-theme.css?v=pool662',
-  './src/home-lobby.js?v=pool662',
+  './css/app.css?v=pool663',
+  './battle/ui-theme.css?v=pool663',
+  './src/home-lobby.js?v=pool663',
   './assets/lobby-v57/konoha-sunset.webp',
   './assets/fonts/ui-v66/noto-sans-sc-400.woff2',
   './assets/fonts/ui-v66/noto-sans-sc-700.woff2',
   './assets/fonts/ui-v66/noto-serif-sc-700.woff2',
   './assets/fonts/ui-v66/ma-shan-zheng.woff2',
   './assets/fonts/ui-v66/barlow-condensed-600.woff2',
-  './src/data/characters.js?v=pool662',
-  './src/data/skills.js?v=pool662',
-  './src/data/enemies.js?v=pool662',
-  './src/data/upgrades.js?v=pool662',
-  './src/art/pixelArt.js?v=pool662',
-  './src/save.js?v=pool662',
-  './src/audio.js?v=pool662',
-  './src/sprites.js?v=pool662',
-  './src/battle-bridge.js?v=pool662',
-  './src/data/roster-current.js?v=pool662',
-  './src/data/phase-one.js?v=pool662',
-  './src/data/character-packs.js?v=pool662',
-  './src/data/prep-sprites.js?v=pool662',
-  './src/data/skill-pool-catalog.js?v=pool662',
-  './src/data/portrait-layout.js?v=pool662',
-  './src/roster-ui.js?v=pool662',
-  './src/home-portrait.js?v=pool662',
-  './src/ui-icons.js?v=pool662',
-  './src/ui.js?v=pool662',
-  './src/mobile.js?v=pool662',
-  './src/main.js?v=pool662',
+  './src/data/characters.js?v=pool663',
+  './src/data/skills.js?v=pool663',
+  './src/data/enemies.js?v=pool663',
+  './src/data/upgrades.js?v=pool663',
+  './src/art/pixelArt.js?v=pool663',
+  './src/save.js?v=pool663',
+  './src/audio.js?v=pool663',
+  './src/sprites.js?v=pool663',
+  './src/battle-bridge.js?v=pool663',
+  './src/data/roster-current.js?v=pool663',
+  './src/data/phase-one.js?v=pool663',
+  './src/data/character-packs.js?v=pool663',
+  './src/data/prep-sprites.js?v=pool663',
+  './src/data/skill-pool-catalog.js?v=pool663',
+  './src/data/portrait-layout.js?v=pool663',
+  './src/roster-ui.js?v=pool663',
+  './src/home-portrait.js?v=pool663',
+  './src/ui-icons.js?v=pool663',
+  './src/ui.js?v=pool663',
+  './src/mobile.js?v=pool663',
+  './src/main.js?v=pool663',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
@@ -87,8 +87,8 @@ self.addEventListener('activate', event => {
         channel.port1.onmessage=event=>done(event.data);
         try{client.postMessage({type:'NINJA_CLIENT_STATUS'},[channel.port2]);}catch{done(null);}
       });
-      if(status?.release==='pool662')return;
-      url.pathname=SCOPE+'play.html';url.searchParams.set('release','pool662');
+      if(status?.release==='pool663')return;
+      url.pathname=SCOPE+'play.html';url.searchParams.set('release','pool663');
       // Navigation must run after activation has settled; awaiting it inside activate deadlocks.
       let tries=0;
       const navigate=()=>{
