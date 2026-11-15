@@ -307,7 +307,7 @@ window.UI = (function () {
     m.innerHTML = `<div class="page"><header class="page-head page-back"><button type="button" class="icon-btn" id="settings-back" aria-label="返回首页">${UIIcons.icon('chevronLeft')}</button><h2>设置</h2></header>
       <section class="card set-list">${tg('sfx','音效','技能与界面')}${tg('music','大厅音乐','背景音乐')}<div class="set-row"><div><b>屏幕震动</b><small>暂不支持切换</small></div><button class="toggle" disabled aria-label="震动设置暂未接入"><i></i></button></div><div class="set-row"><div><b>伤害数字</b><small>默认显示</small></div><button class="toggle on" disabled aria-label="伤害数字默认显示"><i></i></button></div>
         <div class="set-row"><div><b>战斗设置</b><small>暂停页可调倍速</small></div><button class="btn btn-secondary btn-sm" id="btn-perf">说明</button></div></section>
-      <section class="card about"><h3 class="card-heading">关于</h3><p>《忍者：无尽试炼》v0.66.1 · 暮夜金卷<br>同人非官方作品，与任何版权方无关；素材来源见源码 CREDITS。</p><p class="credit">图标：Icons by Lorc, Delapouite, DarkZaitzev, Faithtoken / game-icons.net，CC BY 3.0<br>字体：Ma Shan Zheng、Noto Serif SC、Noto Sans SC、Barlow Condensed（SIL OFL 1.1）</p></section>
+      <section class="card about"><h3 class="card-heading">关于</h3><p>《忍者：无尽试炼》v0.66.2 · 暮夜金卷<br>同人非官方作品，与任何版权方无关；素材来源见源码 CREDITS。</p><p class="credit">图标：Icons by Lorc, Delapouite, DarkZaitzev, Faithtoken / game-icons.net，CC BY 3.0<br>字体：Ma Shan Zheng、Noto Serif SC、Noto Sans SC、Barlow Condensed（SIL OFL 1.1）</p></section>
       <button class="btn btn-secondary btn-danger btn-block" id="btn-reset">清除存档</button></div>`;
     $('settings-back').onclick=()=>{Sfx.play('click');U.go('lobby');};
     $('btn-perf').onclick=()=>modal('战斗设置','<p>战斗中点暂停：查看同伴、调倍速。<br>开启调试后可升级、跳首领。</p>');
@@ -320,7 +320,7 @@ window.UI = (function () {
     const el = $('modal');
     el.innerHTML = `<div class="md-box"><div class="md-title">${title}</div><div class="md-body">${html}</div>
       <div class="md-btns">${onOk ? '<button class="btn btn-secondary" id="md-cancel">取消</button><button class="btn btn-secondary btn-danger" id="md-ok">确定</button>' : '<button class="btn btn-primary" id="md-cancel">好的</button>'}</div></div>`;
-    el.classList.remove('hidden');
+    el.classList.remove('hidden','is-prep');
     $('md-cancel').onclick = () => { Sfx.play('click'); el.classList.add('hidden'); };
     if (onOk) $('md-ok').onclick = () => { el.classList.add('hidden'); onOk(); };
   }
@@ -328,18 +328,30 @@ window.UI = (function () {
 
   /* ---------- 出战 & 结算 ---------- */
   U.openBattlePrep=function(){
-    if(Game.runtimeId!=='ninja-v661-dusk-scroll'){location.replace(new URL('play.html?release=pool661',location.href).href);return;}
+    if(Game.runtimeId!=='ninja-v662-dusk-scroll'){location.replace(new URL('play.html?release=pool662',location.href).href);return;}
     let selected=Game.available(D.charById[S().selected])?S().selected:'naruto';
-    let excluded=[...(Game.excluded||[])];
-    modal('备战','');const body=$('modal').querySelector('.md-body');
-    function render(){const scrollTop=body.scrollTop;body.innerHTML=`<p class="prep-copy">单人出战；局内最多招募 3 名同伴（不上场）。</p><div class="prep-grid">${D.characters.map(c=>`<button class="prep-card ${c.id===selected?'active':''}" data-prep="${c.id}" ${Game.available(c)?'':'disabled'}>${charImg(c.id,3)}<b>${c.current.name}</b><small>${c.element}${c.catalogOnly?' · 战斗待制作':c.current.releaseComplete?'':' · 预览'}</small></button>`).join('')}</div><h3 class="prep-title">排除招募属性 <span class="num">${excluded.length}/3</span></h3><div class="prep-types">${['火','风','雷','土','水','阴','阳','全'].map(n=>`<button data-exclude="${n}" aria-pressed="${excluded.includes(n)}" class="chip ${excluded.includes(n)?'active':''}">${n}</button>`).join('')}</div>`;
+    /* v0.66.2：排除招募属性的入口已移除，出战时清空旧的排除设置。顶部改为属性筛选，角色用战斗像素小人（待机帧条，整数倍放大）。 */
+    const excluded=[];
+    const EL=[['火','fire'],['风','wind'],['雷','thunder'],['土','earth'],['水','water'],['阴','yin'],['阳','yang'],['全','all']];
+    const elsOf=c=>(Array.isArray(c.elements)&&c.elements.length?c.elements:[c.element]).filter(Boolean);
+    const present=EL.filter(([n])=>D.characters.some(c=>elsOf(c).includes(n)));
+    let filter=localStorage.getItem('prepFilter')||'all';if(filter!=='all'&&!present.some(([n])=>n===filter))filter='all';
+    /* 多属性角色命中任一属性；「全」属性角色视为七属性全开，出现在每个属性筛选里。 */
+    const match=c=>filter==='all'||elsOf(c).includes(filter)||elsOf(c).includes('全');
+    const elKey=n=>(EL.find(e=>e[0]===n)||EL[7])[1];
+    const sprite=c=>{const p=window.PrepSprites?.[c.current.key];if(!p)return charImg(c.id,3,'prep-fallback');return `<span class="prep-sprite" style="--w:${p.w};--h:${p.h};--n:${p.n};--s:${p.s};--ms:${p.ms};background-image:url('${p.file}')" role="img" aria-label="${c.current.name}"></span>`;};
+    modal('备战','');const body=$('modal').querySelector('.md-body');$('modal').classList.add('is-prep');
+    function render(){const scrollTop=body.scrollTop,list=D.characters.filter(match);
+     body.innerHTML=`<div class="prep-filter" role="radiogroup" aria-label="按属性筛选" style="--chips:${present.length+1}"><button type="button" class="prep-el ${filter==='all'?'active':''}" data-filter="all" role="radio" aria-checked="${filter==='all'}">全部</button>${present.map(([n,k])=>`<button type="button" class="prep-el ${filter===n?'active':''}" data-filter="${n}" data-el="${k}" role="radio" aria-checked="${filter===n}"><i></i>${n}</button>`).join('')}</div>
+      <div class="prep-grid">${list.map(c=>{const n=window.NinjaRoster?.label?NinjaRoster.label(c):{name:c.current.name,form:''},r=c.rarity==='SSR'||c.rarity==='SR'?c.rarity.toLowerCase():'r',els=elsOf(c);return `<button type="button" class="prep-card rarity-${r} ${c.id===selected?'active':''}" data-prep="${c.id}" data-els="${els.join('')}" ${Game.available(c)?'':'disabled'} aria-pressed="${c.id===selected}" title="${c.current.name}${c.catalogOnly?' · 战斗待制作':c.current.releaseComplete?'':' · 预览'}"><span class="prep-stage">${sprite(c)}</span>${c.id===selected?'<span class="prep-pick">出战</span>':''}<span class="prep-rar">${r.toUpperCase()}</span><b>${n.name}</b><small>${n.form?n.form+' · ':''}${els.map(e=>`<em data-el="${elKey(e)}">${e}</em>`).join('')}</small></button>`;}).join('')||'<p class="prep-empty">该属性暂无可出战角色</p>'}</div>`;
      body.querySelectorAll('[data-prep]').forEach(b=>b.onclick=()=>{selected=b.dataset.prep;render();});
-     body.querySelectorAll('[data-exclude]').forEach(b=>b.onclick=()=>{const n=b.dataset.exclude;if(excluded.includes(n))excluded=excluded.filter(x=>x!==n);else if(excluded.length<3)excluded.push(n);else{U.toast('最多排除3种属性');return;}const top=body.scrollTop;render();body.scrollTop=top;});
+     body.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;try{localStorage.setItem('prepFilter',filter);}catch{}render();body.scrollTop=0;});
      body.scrollTop=scrollTop;
     }
     render();const buttons=$('modal').querySelector('.md-btns');buttons.innerHTML='<button class="btn btn-secondary" id="prep-cancel">取消</button>'+(Game.debug()?'<button class="btn btn-secondary" id="prep-lab">技能试放</button>':'')+'<button class="btn btn-primary" id="prep-start">出战</button>';
-    $('prep-cancel').onclick=()=>$('modal').classList.add('hidden');
-    const start=lab=>{S().selected=selected;Game.excluded=excluded;Save.save();$('modal').classList.add('hidden');if(lab){show('battle');Game.start(selected,{excluded,lab:true});}else U.startBattle();};
+    const close=()=>{$('modal').classList.add('hidden');$('modal').classList.remove('is-prep');};
+    $('prep-cancel').onclick=close;
+    const start=lab=>{S().selected=selected;Game.excluded=excluded;Save.save();close();if(lab){show('battle');Game.start(selected,{excluded,lab:true});}else U.startBattle();};
     $('prep-start').onclick=()=>start(false);if($('prep-lab'))$('prep-lab').onclick=()=>start(true);
   };
 

@@ -24,7 +24,7 @@ window.HomeLobby={
      <button type="button" class="home-banner event" data-home-action="gift" aria-label="限时活动">${I('event','ghost')}<span class="medal">${I('event')}</span><span class="copy"><b>限时活动</b><small>敬请期待</small></span></button>
      <button type="button" class="home-banner gacha" data-go="summon" aria-label="限时抽卡：${g.bannerName}"><img class="hero" src="${hero}" alt=""><span class="copy"><b>${g.bannerName.split('·').pop().trim()}</b><small><span class="seal-tag">限时</span>SSR <i>UP</i></small></span></button>
     </div>
-    <div class="home-trial"><div class="trial-copy"><h2>木叶试炼场</h2><p>最佳 <b>${bestText}</b></p></div><button type="button" class="btn trial-prep" data-home-action="prep">备战</button><button id="btn-battle" class="btn btn-primary" type="button">${I('sword')}<span class="battle-word">出战</span></button></div>
+    <div class="home-trial"><div class="trial-copy"><h2>木叶试炼场</h2><p>最佳 <b>${bestText}</b></p></div><button id="btn-battle" class="btn btn-primary" type="button">${I('sword')}<span class="battle-word">出战</span></button></div>
    </section>
   </div>`;
  },
