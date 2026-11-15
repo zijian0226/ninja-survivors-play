@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="robots" content="noindex"><link rel="icon" href="data:,">
+<title>卡片取景调整</title>
+<style>
+:root{--bg:#0b1122;--panel:#141e33;--line:#2a3a5c;--gold:#e8b94f;--ink:#e9e3d2;--sub:#9aa6bf}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.4 system-ui,"PingFang SC","Noto Sans SC",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:6px;align-items:center;padding:8px 10px;background:#0b1122ee;border-bottom:1px solid var(--line)}
+header b{color:var(--gold);font-size:15px;margin-right:auto}
+button{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 11px;font:inherit;cursor:pointer;touch-action:manipulation}
+button.pri{background:linear-gradient(#f3d78c,#c99a3b);color:#1b1408;border-color:#f3d78c;font-weight:700}
+main{max-width:760px;margin:0 auto;padding:10px}
+.stage{display:flex;gap:10px;align-items:flex-start;justify-content:center}
+.fr{position:relative;flex:0 0 auto;border-radius:10px;overflow:hidden;background:#2d3c5f;box-shadow:0 0 0 2px var(--gold)}
+.fr canvas{display:block;width:100%;height:100%}
+#ed{width:min(58vw,330px);aspect-ratio:270/410;touch-action:none;cursor:grab}
+#ref{width:min(32vw,180px);aspect-ratio:270/410;box-shadow:0 0 0 2px var(--line)}
+.g{position:absolute;pointer-events:none}.gv{top:0;bottom:0;left:50%;border-left:1px dashed #6f6}.gh{left:0;right:0;border-top:1px dashed #f66}
+.cap{text-align:center;color:var(--sub);font-size:12px;margin-top:4px}
+.ctl{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:10px 0}
+#name{font-weight:700;color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:6px;margin-top:8px}
+.t{position:relative;aspect-ratio:270/410;border-radius:6px;overflow:hidden;background:#2d3c5f;border:2px solid transparent;cursor:pointer}
+.t.on{border-color:var(--gold)}.t img,.t canvas{width:100%;height:100%;display:block;object-fit:cover}
+.t span{position:absolute;left:0;right:0;bottom:0;font-size:10px;text-align:center;background:#0009;white-space:nowrap;overflow:hidden}
+.t i{position:absolute;right:2px;top:2px;font-style:normal;font-size:10px;background:#e04848;color:#fff;border-radius:4px;padding:0 3px}
+textarea{width:100%;height:110px;background:#070b16;color:var(--ink);border:1px solid var(--line);border-radius:8px;font:12px monospace;margin-top:8px}
+#io{display:none}#io.show{display:block}.tip{color:var(--sub);font-size:12px}
+</style></head><body>
+<header><b>卡片取景</b><span class="tip" id="cnt"></span><button id="exp" class="pri">导出</button><button id="imp">导入</button></header>
+<main>
+<div class="stage">
+ <div><div class="fr" id="ed"><canvas id="cv"></canvas><div class="g gv"></div><div class="g gh" style="top:36%"></div><div class="g gh" style="top:49%"></div></div><div class="cap"><span id="name"></span></div></div>
+ <div><div class="fr" id="ref"><canvas id="rc"></canvas><div class="g gv"></div><div class="g gh" style="top:36%"></div><div class="g gh" style="top:49%"></div></div><div class="cap">标准：迪达拉</div></div>
+</div>
+<div class="ctl"><button id="prev">‹ 上一个</button><button id="zo">－</button><button id="zi">＋</button><button id="rst">重置</button><button id="next">下一个 ›</button></div>
+<div class="tip" style="text-align:center">拖动移动，滚轮/双指缩放；红线＝眼睛、下巴，绿线＝居中。自动保存。</div>
+<div id="io"><textarea id="ta" placeholder="导出的 JSON / 粘贴后点「导入」"></textarea><div class="ctl"><button id="doimp">导入这段</button><button id="close">收起</button></div></div>
+<div class="grid" id="grid"></div>
+</main>
+<script>
+const BASE=location.pathname.includes('/tools/')?'../':'';
+/* Same model as tools/build-roster-busts.py (keep in sync): card 270x410, 迪达拉 standard eye line 36%, eye→chin 13%. */
+const W=270,H=410,A=W/H,EYE_Y=.36,FACE_H=.13,KEY='cropEdits.v1';
+let P={},C={},N={},ids=[],img={},cur=0,edits=JSON.parse(localStorage.getItem(KEY)||'{}');
+const $=s=>document.querySelector(s);
+function load(src){const s=document.createElement('script');s.src=BASE+src;return new Promise((ok,no)=>{s.onload=ok;s.onerror=no;document.head.appendChild(s)})}
+function image(id){return img[id]||(img[id]=new Promise(ok=>{const i=new Image();i.onload=()=>ok(i);i.onerror=()=>ok(null);i.src=BASE+P[id].file}))}
+function bbox(i,p){const c=document.createElement('canvas');c.width=i.naturalWidth;c.height=i.naturalHeight;const x=c.getContext('2d');x.drawImage(i,0,0);const d=x.getImageData(0,0,c.width,c.height).data;let a=1e9,b=1e9,e=-1,f=-1;
+ for(let y=0;y<c.height;y++)for(let X=0;X<c.width;X++)if(d[(y*c.width+X)*4+3]){a=Math.min(a,X);b=Math.min(b,y);e=Math.max(e,X+1);f=Math.max(f,y+1)}return[a,b,e,f]}
+/* box = crop centre (x,y) and height h, in source pixels of the (rotated) portrait */
+function baseBox(id,i){const o=C[id]||{},iw=i.naturalWidth,ih=i.naturalHeight;
+ if(o.crop)return{x:o.crop[0]*iw,y:o.crop[1]*ih,h:o.crop[2]*ih};
+ if(o.fit){const[a,b,e,f]=bbox(i);const cw=Math.max((e-a)*o.fit,(f-b)*o.fit*A),ch=cw/A;return{x:(a+e)/2,y:(b+f)/2,h:ch}}
+ const[fc,fe,fn]=o.face,ch=(fn-fe)*ih/FACE_H/(o.zoom||1),cw=ch*A;return{x:fc*iw-(o.dx||0)*cw,y:fe*ih-(EYE_Y+(o.dy||0))*ch+ch/2,h:ch}}
+function boxOf(id,i){const e=edits[id];return e?{x:e[0]*i.naturalWidth,y:e[1]*i.naturalHeight,h:e[2]*i.naturalHeight}:baseBox(id,i)}
+function draw(cv,id,i,b){const r=cv.getBoundingClientRect(),dpr=devicePixelRatio||1;cv.width=Math.round((r.width||W)*dpr);cv.height=Math.round(cv.width/A);
+ const x=cv.getContext('2d'),s=cv.height/b.h,p=P[id],f=p.framing||{};x.imageSmoothingEnabled=!p.pixel;x.clearRect(0,0,cv.width,cv.height);
+ x.save();x.translate(cv.width/2,cv.height/2);x.scale(s,s);x.translate(-b.x,-b.y);x.beginPath();x.rect(0,0,i.naturalWidth,i.naturalHeight);x.clip();
+ if(f.rotationDeg){const hx=p.head[0]*i.naturalWidth,hy=p.head[1]*i.naturalHeight;x.translate(hx,hy);x.rotate(f.rotationDeg*Math.PI/180);x.translate(-hx,-hy)}
+ x.drawImage(i,0,0);x.restore()}
+let box=null,I=null;
+async function select(k){cur=(k+ids.length)%ids.length;const id=ids[cur];$('#name').textContent=(N[id]||id)+(edits[id]?' · 已改':'');I=await image(id);if(ids[cur]!==id)return;box=boxOf(id,I);render();
+ document.querySelectorAll('.t').forEach((t,j)=>t.classList.toggle('on',j===cur))}
+function render(){if(I)draw($('#cv'),ids[cur],I,box)}
+function save(){const id=ids[cur],iw=I.naturalWidth,ih=I.naturalHeight;edits[id]=[+(box.x/iw).toFixed(5),+(box.y/ih).toFixed(5),+(box.h/ih).toFixed(5)];localStorage.setItem(KEY,JSON.stringify(edits));
+ $('#name').textContent=(N[id]||id)+' · 已改';thumb(cur);count()}
+function count(){$('#cnt').textContent=Object.keys(edits).length?`已改 ${Object.keys(edits).length}`:''}
+/* zoom by factor k around frame point (px,py) in CSS pixels */
+function zoom(k,px,py){const r=$('#cv').getBoundingClientRect();px??=r.width/2;py??=r.height/2;const s=r.height/box.h,sx=box.x+(px-r.width/2)/s,sy=box.y+(py-r.height/2)/s;
+ box.h/=k;const s2=r.height/box.h;box.x=sx-(px-r.width/2)/s2;box.y=sy-(py-r.height/2)/s2;render();save()}
+const pts=new Map();let last=null;
+$('#ed').addEventListener('pointerdown',e=>{$('#ed').setPointerCapture(e.pointerId);pts.set(e.pointerId,[e.clientX,e.clientY]);last=null});
+$('#ed').addEventListener('pointermove',e=>{if(!pts.has(e.pointerId)||!I)return;const r=$('#cv').getBoundingClientRect(),s=r.height/box.h,o=pts.get(e.pointerId);pts.set(e.pointerId,[e.clientX,e.clientY]);
+ if(pts.size===1){box.x-=(e.clientX-o[0])/s;box.y-=(e.clientY-o[1])/s;render();save()}
+ else if(pts.size===2){const[a,b]=[...pts.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]),m=[(a[0]+b[0])/2-r.left,(a[1]+b[1])/2-r.top];if(last)zoom(d/last,m[0],m[1]);last=d}});
+['pointerup','pointercancel'].forEach(t=>$('#ed').addEventListener(t,e=>{pts.delete(e.pointerId);last=null}));
+$('#ed').addEventListener('wheel',e=>{e.preventDefault();const r=$('#cv').getBoundingClientRect();zoom(Math.exp(-e.deltaY*.0015),e.clientX-r.left,e.clientY-r.top)},{passive:false});
+$('#zi').onclick=()=>zoom(1.06);$('#zo').onclick=()=>zoom(1/1.06);
+$('#prev').onclick=()=>select(cur-1);$('#next').onclick=()=>select(cur+1);
+$('#rst').onclick=()=>{const id=ids[cur];delete edits[id];localStorage.setItem(KEY,JSON.stringify(edits));thumb(cur);count();select(cur)};
+function exportJSON(){const o={};for(const id of ids)if(edits[id])o[id]={crop:edits[id]};return JSON.stringify(o)}
+$('#exp').onclick=async()=>{const t=exportJSON();$('#ta').value=t;$('#io').classList.add('show');try{await navigator.clipboard.writeText(t);$('#exp').textContent='已复制'}catch(e){$('#ta').select();$('#exp').textContent='请手动复制'}setTimeout(()=>$('#exp').textContent='导出',1600)};
+$('#imp').onclick=()=>{$('#io').classList.add('show');$('#ta').focus()};$('#close').onclick=()=>$('#io').classList.remove('show');
+$('#doimp').onclick=()=>{try{const o=JSON.parse($('#ta').value);let n=0;for(const[id,v]of Object.entries(o)){const c=v&&(v.crop||v);if(P[id]&&Array.isArray(c)&&c.length===3){edits[id]=c.map(Number);n++}}
+ localStorage.setItem(KEY,JSON.stringify(edits));ids.forEach((_,j)=>thumb(j));count();select(cur);alert(`已导入 ${n} 个`)}catch(e){alert('JSON 格式不对')}};
+function thumb(j){const id=ids[j],t=document.querySelectorAll('.t')[j];if(!t)return;t.querySelector('i')?.remove();t.querySelector('img,canvas')?.remove();
+ if(edits[id]){const c=document.createElement('canvas');t.prepend(c);const m=document.createElement('i');m.textContent='已改';t.appendChild(m);image(id).then(i=>i&&draw(c,id,i,boxOf(id,i)))}
+ else{const g=document.createElement('img');g.loading='lazy';g.src=BASE+'assets/roster-busts/'+id+'.webp';g.alt='';t.prepend(g)}}
+(async()=>{await Promise.all([load('src/data/portrait-layout.js'),load('src/data/character-packs.js').catch(()=>{})]);P=window.NinjaArt.profiles;ids=Object.keys(P);
+ C=await (await fetch(BASE+'assets/roster-busts/crops.json',{cache:'no-cache'})).json();
+ const pk=(window.CharacterPacks||{}).packages||{};for(const id of ids)N[id]=pk[id]?.name||(id==='naruto'?'鸣人':id);
+ $('#grid').innerHTML=ids.map((id,j)=>`<div class="t" data-j="${j}"><span>${N[id]}</span></div>`).join('');ids.forEach((_,j)=>thumb(j));
+ $('#grid').onclick=e=>{const t=e.target.closest('.t');if(t){select(+t.dataset.j);scrollTo({top:0,behavior:'smooth'})}};
+ const di=await image('deidara');if(di){const draw2=()=>draw($('#rc'),'deidara',di,boxOf('deidara',di));draw2();addEventListener('resize',()=>{draw2();render()})}
+ count();select(Math.max(0,ids.indexOf(new URLSearchParams(location.search).get('id'))));})();
+</script></body></html>
