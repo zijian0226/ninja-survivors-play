@@ -304,11 +304,12 @@ window.UI = (function () {
   function renderSettings(m) {
     const s = S().settings;
     const tg = (k, name, desc) => `<div class="set-row"><div><b>${name}</b><small>${desc}</small></div><button class="toggle ${s[k] ? 'on' : ''}" data-k="${k}" role="switch" aria-checked="${!!s[k]}" aria-label="${name}"><i></i></button></div>`;
-    m.innerHTML = `<div class="page"><header class="page-head"><h2>设置</h2></header>
+    m.innerHTML = `<div class="page"><header class="page-head page-back"><button type="button" class="icon-btn" id="settings-back" aria-label="返回首页">${UIIcons.icon('chevronLeft')}</button><h2>设置</h2></header>
       <section class="card set-list">${tg('sfx','音效','技能与界面')}${tg('music','大厅音乐','背景音乐')}<div class="set-row"><div><b>屏幕震动</b><small>暂不支持切换</small></div><button class="toggle" disabled aria-label="震动设置暂未接入"><i></i></button></div><div class="set-row"><div><b>伤害数字</b><small>默认显示</small></div><button class="toggle on" disabled aria-label="伤害数字默认显示"><i></i></button></div>
         <div class="set-row"><div><b>战斗设置</b><small>暂停页可调倍速</small></div><button class="btn btn-secondary btn-sm" id="btn-perf">说明</button></div></section>
-      <section class="card about"><h3 class="card-heading">关于</h3><p>《忍者：无尽试炼》v0.66 · 暮夜金卷<br>同人非官方作品，与任何版权方无关；素材来源见源码 CREDITS。</p><p class="credit">图标：Icons by Lorc, Delapouite, DarkZaitzev, Faithtoken / game-icons.net，CC BY 3.0<br>字体：Ma Shan Zheng、Noto Serif SC、Noto Sans SC、Barlow Condensed（SIL OFL 1.1）</p></section>
+      <section class="card about"><h3 class="card-heading">关于</h3><p>《忍者：无尽试炼》v0.66.1 · 暮夜金卷<br>同人非官方作品，与任何版权方无关；素材来源见源码 CREDITS。</p><p class="credit">图标：Icons by Lorc, Delapouite, DarkZaitzev, Faithtoken / game-icons.net，CC BY 3.0<br>字体：Ma Shan Zheng、Noto Serif SC、Noto Sans SC、Barlow Condensed（SIL OFL 1.1）</p></section>
       <button class="btn btn-secondary btn-danger btn-block" id="btn-reset">清除存档</button></div>`;
+    $('settings-back').onclick=()=>{Sfx.play('click');U.go('lobby');};
     $('btn-perf').onclick=()=>modal('战斗设置','<p>战斗中点暂停：查看同伴、调倍速。<br>开启调试后可升级、跳首领。</p>');
     m.querySelectorAll('.toggle[data-k]').forEach(b => b.onclick = () => { s[b.dataset.k] = !s[b.dataset.k]; Save.save(); Sfx.apply(); Game.syncSettings(); Sfx.play('click'); b.classList.toggle('on', s[b.dataset.k]); b.setAttribute('aria-checked', String(!!s[b.dataset.k])); });
     $('btn-reset').onclick = () => modal('清除存档', '<p>确定要清除所有进度吗？此操作不可恢复。</p>', () => { Save.reset(); Sfx.apply(); U.toast('存档已清除'); U.go('lobby'); });
@@ -327,7 +328,7 @@ window.UI = (function () {
 
   /* ---------- 出战 & 结算 ---------- */
   U.openBattlePrep=function(){
-    if(Game.runtimeId!=='ninja-v66-dusk-scroll'){location.replace(new URL('play.html?release=pool66',location.href).href);return;}
+    if(Game.runtimeId!=='ninja-v661-dusk-scroll'){location.replace(new URL('play.html?release=pool661',location.href).href);return;}
     let selected=Game.available(D.charById[S().selected])?S().selected:'naruto';
     let excluded=[...(Game.excluded||[])];
     modal('备战','');const body=$('modal').querySelector('.md-body');

@@ -1,6 +1,8 @@
 /* Phone portrait framing uses the visible head, with separate layouts for grouped art. */
 window.HomePortrait=(function(){
  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+ /* v0.66.1: free framing on the clean home stage: zoom 0.4x–6x and pan until any point of the art reaches the stage centre. */
+ const ZMIN=.4,ZMAX=6;
  function mount(stage,key){
   const clean=stage.dataset.layout==='clean65',centered=stage.dataset.layout==='centered58',cinematic=stage.dataset.layout==='cinematic57',layout=clean?7:centered?6:cinematic?5:4;
   const img=stage.querySelector('img'),art=NinjaArt.get(key),f=art.framing,points=new Map();
@@ -67,7 +69,7 @@ window.HomePortrait=(function(){
    const w=stage.clientWidth,h=stage.clientHeight;if(!w||!h)return;restore(w,h);
    const g=clean?region():null,header=clean?g.top:document.getElementById('topbar').getBoundingClientRect().bottom-screen.top,bs=baseScale(w,h),hb=visibleHeadBox();
    const hw=(hb[2]-hb[0])*img.naturalWidth,hh=(hb[3]-hb[1])*img.naturalHeight;
-   view.z=clean?clamp(view.z,.5,1.7):clamp(view.z,.5,Math.min(1.7,(w-32)/(hw*bs),(h*.67-header-12)/(hh*bs)));
+   view.z=clean?clamp(view.z,ZMIN,ZMAX):clamp(view.z,.5,Math.min(1.7,(w-32)/(hw*bs),(h*.67-header-12)/(hh*bs)));
    const scale=bs*view.z,bw=box.w*scale,bh=box.h*scale;
    const hx=(art.head[0]*img.naturalWidth-box.x)*scale,hy=(art.head[1]*img.naturalHeight-box.y)*scale;
    if(centerHead&&clean){view.x=(g.left+g.w/2)/w;view.y=(g.top+Math.max(0,g.h-bh)*.9+bh/2)/h;centerHead=false;}
@@ -77,7 +79,7 @@ window.HomePortrait=(function(){
    }
    const left=(hb[0]*img.naturalWidth-box.x)*scale,right=(hb[2]*img.naturalWidth-box.x)*scale;
    const top=(hb[1]*img.naturalHeight-box.y)*scale,bottom=(hb[3]*img.naturalHeight-box.y)*scale;
-   const bx=clamp(view.x*w-bw/2,16-left,w-16-right),by=clean?clamp(view.y*h-bh/2,header-top,g.bottom-bottom):clamp(view.y*h-bh/2,header+12-top,h*.67-bottom);
+   const bx=clean?clamp(view.x*w-bw/2,w/2-bw,w/2):clamp(view.x*w-bw/2,16-left,w-16-right),by=clean?clamp(view.y*h-bh/2,h/2-bh,h/2):clamp(view.y*h-bh/2,header+12-top,h*.67-bottom);
    view.x=(bx+bw/2)/w;view.y=(by+bh/2)/h;
    Object.assign(img.style,{width:img.naturalWidth*scale+'px',height:img.naturalHeight*scale+'px',transformOrigin:`${art.head[0]*100}% ${art.head[1]*100}%`,transform:`translate(${bx-box.x*scale}px,${by-box.y*scale}px) rotate(${f.rotationDeg||0}deg)`});
    stage.dataset.ready='true';stage.dataset.custom=String(custom);
@@ -91,9 +93,18 @@ window.HomePortrait=(function(){
   stage.addEventListener('pointermove',e=>{
    if(!points.has(e.pointerId))return;e.preventDefault();custom=true;points.set(e.pointerId,{x:e.clientX,y:e.clientY});
    const p=[...points.values()],r=stage.getBoundingClientRect(),cx=p.length>1?(p[0].x+p[1].x)/2-r.left:p[0].x-r.left,cy=p.length>1?(p[0].y+p[1].y)/2-r.top:p[0].y-r.top;
-   const factor=baseline.distance>0?Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y)/baseline.distance:1;view.z=clamp(baseline.z*factor,.5,1.7);const ratio=view.z/baseline.z;
+   const factor=baseline.distance>0?Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y)/baseline.distance:1;view.z=clean?clamp(baseline.z*factor,ZMIN,ZMAX):clamp(baseline.z*factor,.5,1.7);const ratio=view.z/baseline.z;
    view.x=(cx+(baseline.x*r.width-baseline.center.x)*ratio)/r.width;view.y=(cy+(baseline.y*r.height-baseline.center.y)*ratio)/r.height;apply();
   });
+  /* Desktop wheel / trackpad pinch: zoom around the cursor. */
+  let wheelTimer=0;
+  stage.addEventListener('wheel',e=>{
+   if(!ready)return;e.preventDefault();custom=true;centerHead=false;
+   const r=stage.getBoundingClientRect(),cx=e.clientX-r.left,cy=e.clientY-r.top,old=view.z;
+   const next=clean?clamp(old*Math.exp(-e.deltaY*(e.ctrlKey?.01:.0015)),ZMIN,ZMAX):clamp(old*Math.exp(-e.deltaY*.0015),.5,1.7),ratio=next/old;
+   view.z=next;view.x=(cx+(view.x*r.width-cx)*ratio)/r.width;view.y=(cy+(view.y*r.height-cy)*ratio)/r.height;apply();
+   clearTimeout(wheelTimer);wheelTimer=setTimeout(save,250);
+  },{passive:false});
   function end(e){if(!points.delete(e.pointerId))return;if(points.size)anchor();save();}
   for(const event of ['pointerup','pointercancel','lostpointercapture'])stage.addEventListener(event,end);
   stage.parentElement.querySelector('[data-portrait-reset]').onclick=()=>{view={z:1,x:.5,y:.5};custom=false;centerHead=true;apply();save();};
