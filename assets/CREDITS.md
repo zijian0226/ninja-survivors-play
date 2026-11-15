@@ -36,6 +36,24 @@
 
 ---
 
+## v0.66 界面图标与字体（暮夜金卷）
+
+### game-icons.net 图标
+- 作者：Lorc、Delapouite、DarkZaitzev、Faithtoken
+- 来源：https://game-icons.net （SVG 合集下载，2026-11-14）
+- 许可证：CC BY 3.0（https://creativecommons.org/licenses/by/3.0/）
+- 署名要求：需要署名。游戏内「设置 → 关于」已写：Icons by Lorc, Delapouite, DarkZaitzev, Faithtoken / game-icons.net, CC BY 3.0
+- 改动：仅把填充色改为 currentColor 以便上色，图形未改。
+- 本地路径：`assets/ui-v66/icons/`（清单见同目录 `LICENSES.md`；游戏里以内联 path 的方式写在 `src/ui-icons.js`）
+- 金币（两）与勾玉图标为本项目自绘（`cur-ryo.svg`、`cur-magatama.svg`）。
+
+### 界面字体（Google Fonts）
+- Ma Shan Zheng、Noto Serif SC、Noto Sans SC、Barlow Condensed
+- 许可证：SIL Open Font License 1.1（全文见 `assets/fonts/ui-v66/*-OFL.txt`）
+- 本地路径：`assets/fonts/ui-v66/*.woff2`，只保留界面用到的字（`tools/build-ui-fonts.py` 子集化），运行时不访问 Google CDN。
+
+---
+
 ## B. 仅限个人学习使用（版权归原作者/岸本齐史/集英社/Pierrot 等，不得商用或发布）
 
 > 以下全部是《火影忍者》相关角色的游戏拆包 sprite、官方卡面或同人素材。项目所有者确认本游戏仅用于个人学习、不商用不发布。

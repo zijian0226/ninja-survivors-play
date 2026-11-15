@@ -97,7 +97,7 @@
   const hint=document.querySelector('.upgrade-instruction');
   const ribbon=document.querySelector('.upgrade-ribbon');
   if(recruitLevels.has(s.level)&&s.allies.length<3&&document.querySelector('.recruit-choice')){
-   if(ribbon)ribbon.textContent='小队招募 · 第 '+(s.allies.length+1)+' 名队友';
+   if(ribbon)ribbon.innerHTML='招募同伴<small>'+(s.allies.length+1)+'/3</small>';
    if(hint)hint.textContent='阶段奖励：选择一名忍者加入小队；队友忍术可与卷轴共鸣';
   }else if(hint)hint.textContent='选择忍术、卷轴或被动强化 · 下次招募节点 Lv.3 / Lv.7 / Lv.12';
  };
@@ -110,7 +110,7 @@
    const x=slots[i];
    return x?'<div class="equipped-slot" title="'+x.name+'"><img src="'+x.icon+'" alt=""><small>'+(s['scroll_'+x.key]||1)+'</small></div>':'<div class="equipped-slot empty"><i>＋</i></div>';
   }).join('');
-  return origStrip()+'<div class="build-group scroll-build"><span class="build-group-label">卷轴 <small>'+slots.length+'/'+maxSlots+' · 自动攻击</small></span><div class="build-slots">'+cards+'</div></div>';
+  return origStrip()+'<div class="build-group scroll-build"><span class="build-group-label">卷轴 <small>'+slots.length+'/'+maxSlots+'</small></span><div class="build-slots">'+cards+'</div></div>';
  };
  const origTick=tick;
  tick=function(dt){

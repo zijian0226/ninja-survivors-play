@@ -7,7 +7,7 @@ window.HomePortrait=(function(){
   let box,ready=false,view={z:1,x:.5,y:.5},baseline,custom=false,centerHead=true,restored=false;
   const saved=Save.data.homePortraits?.[key],frame=()=>document.getElementById('app').getBoundingClientRect();
   stage.dataset.composition=art.composition||'full';
-  /* v0.65: the whole figure fits the free area between the banner, side entries and trial dock. */
+  /* v0.65+: the whole figure fits the free area between the top controls and the bottom dock (v0.66: banners + trial bar). */
  function region(){
   const app=frame(),root=stage.parentElement,rect=sel=>root.querySelector(sel)?.getBoundingClientRect();
   const top=Math.max(document.getElementById('topbar').getBoundingClientRect().bottom,rect('.home-top-cards')?.bottom||0)-app.top+8;

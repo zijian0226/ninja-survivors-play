@@ -7,16 +7,18 @@
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="忍者：无尽试炼">
 <meta name="application-name" content="忍者：无尽试炼">
-<meta name="theme-color" content="#FAF8F5">
+<meta name="theme-color" content="#0B1122">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180.png">
 <title>忍者：无尽试炼 · Ninja Survivors</title>
-<link rel="stylesheet" href="css/app.css?v=pool65">
+<link rel="preload" href="assets/fonts/ui-v66/noto-sans-sc-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ui-v66/ma-shan-zheng.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/app.css?v=pool66">
 </head>
 <body>
 <div id="app">
@@ -24,7 +26,7 @@
   <div id="title-screen" class="screen" data-ready="false" aria-busy="true">
     <div class="title-bg" aria-hidden="true"></div>
     <section class="entry-stack" aria-label="忍者：无尽试炼加载">
-      <div class="title-logo"><span class="logo-mark" aria-hidden="true">忍</span><h1 class="logo-main">忍者：<span>无尽试炼</span></h1><div class="logo-sub">像素忍者 · 生存试炼</div></div>
+      <div class="title-logo"><span class="logo-mark" aria-hidden="true">忍</span><h1 class="logo-main">忍者：<span>无尽试炼</span></h1><div class="logo-sub">忍界 · 生存试炼</div></div>
       <div class="entry-loader"><div class="entry-loader-status"><span id="entry-progress" role="status" aria-live="polite">正在准备素材…</span><span id="entry-percent">0%</span></div><div id="entry-meter" class="entry-meter" role="progressbar" aria-label="素材加载进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="entry-fill"></i></div></div>
       <button id="entry-enter" class="title-tap" type="button" disabled>正在加载素材…</button>
       <button id="entry-retry" class="btn btn-secondary" type="button" hidden>重新加载</button>
@@ -32,7 +34,7 @@
     </section>
   </div>
 
-  <!-- 局外界面（二次元手游风格） -->
+  <!-- 局外界面（v0.66 暮夜金卷） -->
   <div id="ui" class="screen hidden">
     <div id="topbar"></div>
     <div id="ui-main"></div>
@@ -47,25 +49,25 @@
   <div id="toast-layer"></div>
 </div>
 
-<script src="src/data/characters.js?v=pool65"></script>
-<script src="src/data/skills.js?v=pool65"></script>
-<script src="src/data/enemies.js?v=pool65"></script>
-<script src="src/data/upgrades.js?v=pool65"></script>
-<script src="src/data/roster-current.js?v=pool65"></script>
-<script src="src/data/phase-one.js?v=pool65"></script>
-<script src="src/data/character-packs.js?v=pool65"></script>
-<script src="src/art/pixelArt.js?v=pool65"></script>
-<script src="src/save.js?v=pool65"></script>
-<script src="src/audio.js?v=pool65"></script>
-<script src="src/bvn.js?v=pool65"></script>
-<script src="src/sprites.js?v=pool65"></script>
-<script src="src/perf.js?v=pool65"></script>
-<script src="src/battle-bridge.js?v=pool65"></script>
-<script src="src/data/portrait-layout.js?v=pool65"></script><script src="src/roster-ui.js?v=pool65"></script>
-<script src="src/home-portrait.js?v=pool65"></script>
-<script src="src/ui-icons.js?v=pool65"></script><script src="src/data/skill-pool-catalog.js?v=pool65"></script><script src="src/home-lobby.js?v=pool65"></script>
-<script src="src/ui.js?v=pool65"></script>
-<script src="src/mobile.js?v=pool65"></script>
-<script src="src/main.js?v=pool65"></script>
+<script src="src/data/characters.js?v=pool66"></script>
+<script src="src/data/skills.js?v=pool66"></script>
+<script src="src/data/enemies.js?v=pool66"></script>
+<script src="src/data/upgrades.js?v=pool66"></script>
+<script src="src/data/roster-current.js?v=pool66"></script>
+<script src="src/data/phase-one.js?v=pool66"></script>
+<script src="src/data/character-packs.js?v=pool66"></script>
+<script src="src/art/pixelArt.js?v=pool66"></script>
+<script src="src/save.js?v=pool66"></script>
+<script src="src/audio.js?v=pool66"></script>
+<script src="src/bvn.js?v=pool66"></script>
+<script src="src/sprites.js?v=pool66"></script>
+<script src="src/perf.js?v=pool66"></script>
+<script src="src/battle-bridge.js?v=pool66"></script>
+<script src="src/data/portrait-layout.js?v=pool66"></script><script src="src/roster-ui.js?v=pool66"></script>
+<script src="src/home-portrait.js?v=pool66"></script>
+<script src="src/ui-icons.js?v=pool66"></script><script src="src/data/skill-pool-catalog.js?v=pool66"></script><script src="src/home-lobby.js?v=pool66"></script>
+<script src="src/ui.js?v=pool66"></script>
+<script src="src/mobile.js?v=pool66"></script>
+<script src="src/main.js?v=pool66"></script>
 </body>
 </html>

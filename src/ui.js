@@ -86,12 +86,11 @@ window.UI = (function () {
     { id: 'roster', name: '忍者', icon: 'ninja' },
     { id: 'jutsu', name: '忍术', icon: 'jutsu' },
     { id: 'lobby', name: '首页', icon: 'home' },
-    { id: 'inventory', name: '背包', icon: 'bag' },
     { id: 'summon', name: '召唤', icon: 'summon' },
     { id: 'upgrade', name: '强化', icon: 'upgrade' }
   ];
   function renderNav() {
-    const navPage = U.page === 'settings' ? 'lobby' : U.page;
+    const navPage = U.page === 'settings' || U.page === 'inventory' ? 'lobby' : U.page;
     $('bottom-nav').innerHTML = navItems.map(n => `<button class="nav-btn ${navPage === n.id ? 'active' : ''}" data-go="${n.id}" ${navPage === n.id ? 'aria-current="page"' : ''}>${UIIcons.icon(n.icon)}<span>${n.name}</span><i class="nav-dot" aria-hidden="true"></i></button>`).join('');
     $('bottom-nav').querySelectorAll('.nav-btn').forEach(b => b.onclick = () => { Sfx.play('click'); U.go(b.dataset.go); });
   }
@@ -135,29 +134,30 @@ window.UI = (function () {
     m.innerHTML = `<div class="page">
       <header class="page-head"><h2>召唤</h2></header>
       <div class="banner">
-        <div class="bn-bg"></div>${sealSvg('bn-seal')}
+        <div class="bn-bg"></div>
         <div class="bn-chars">${g.featured.map((id, i) => charImg(id, 9, 'bnc bnc' + i)).join('')}</div>
-        <div class="bn-label"><div class="bn-tag">限定 · 概率UP</div><div class="bn-name">${g.bannerName}</div>
-          <div class="bn-feat">${g.featured.map(id => `<div>${rarityBadge('SSR')}${D.charById[id].name}</div>`).join('')}</div></div>
+        <div class="bn-label"><div class="bn-tag"><span class="seal-tag">限定</span>概率UP</div><div class="bn-name">${g.bannerName.split('·').pop().trim()}</div></div>
+        <div class="bn-foot"><div class="bn-feat">${g.featured.map(id => `<div>${rarityBadge(D.charById[id].rarity)}${NinjaRoster.label(D.charById[id]).name}</div>`).join('')}</div>
+          <div class="bn-pity"><span>距离SSR保底</span><b>${g.pity - s.pity}</b><span>抽</span></div></div>
       </div>
       <div class="sm-info">
-        <div><small>SSR</small><b>3%</b></div><div><small>SR</small><b>12%</b></div><div><small>R</small><b>85%</b></div>
-        <div class="pity"><small>距离SSR保底</small><b>${g.pity - s.pity}<span>抽</span></b></div>
+        <div class="r-SSR"><small>SSR</small><b>3%</b></div><div class="r-SR"><small>SR</small><b>12%</b></div><div class="r-R"><small>R</small><b>85%</b></div>
       </div>
-      <button class="btn btn-text link-btn" id="btn-rates">概率详情 / 奖池一览 ${UIIcons.icon('chevronRight')}</button>
       <div class="sm-btns">
         <button class="btn btn-secondary summon1" id="btn-s1"><span>召唤 ×1</span><em>${UIIcons.currency('gouyu')}${g.cost1}</em></button>
-        <button class="btn btn-primary summon10" id="btn-s10"><span>召唤 ×10</span><em>${UIIcons.currency('gouyu')}${g.cost10}</em><i class="sm-note">必得SR以上</i></button>
+        <div class="sm-btn-wrap"><i class="sm-note">必得SR以上</i><button class="btn btn-primary summon10 w-full" id="btn-s10"><span>召唤 ×10</span><em>${UIIcons.currency('gouyu')}${g.cost10}</em></button></div>
       </div>
-      <p class="page-foot">勾玉仅通过游戏内获得，无真实付费。收藏星级暂不改变战斗属性。</p></div>`;
+      <div class="sm-links"><button class="btn btn-text link-btn" id="btn-rates">概率详情</button><i></i><button class="btn btn-text link-btn" id="btn-pool">奖池一览</button></div>
+      <p class="page-foot">无真实付费</p></div>`;
     $('btn-s1').onclick = () => doSummon(1);
     $('btn-s10').onclick = () => doSummon(10);
+    $('btn-pool').onclick = () => $('btn-rates').onclick();
     $('btn-rates').onclick = () => {
       Sfx.play('click');
       const ssr = D.characters.filter(c => c.rarity === 'SSR'), sr = D.characters.filter(c => c.rarity === 'SR');
       modal('概率详情', `<p><b>SSR 3%</b>：${ssr.map(c => c.name).join('、')}</p><p><b>SR 12%</b>：${sr.map(c => c.name).join('、')}、${g.srItem.name}（勾玉×${g.srItem.gouyu}）</p>
         <p><b>R 85%</b>：${g.rItems.map(r => r.name + '（金币×' + r.coins + '）').join('、')}</p>
-        <p>· ${g.pity}抽内必定获得SSR；十连必得SR及以上。<br>· 重复获得角色：星级+1（每星全属性+6%），满星转化为金币×${g.dupMaxCoins}。</p>`);
+        <p>${g.pity} 抽必出 SSR；十连必得 SR 以上。<br>重复角色：星级 +1，满星转金币×${g.dupMaxCoins}。</p>`);
     };
   }
   function rollRarity(s) {
@@ -217,10 +217,10 @@ window.UI = (function () {
     el.innerHTML = `<div class="ga-cards ${single ? 'single' : ''}">${results.map((r, i) => {
       const img = r.char ? charImg(r.char.id, single ? 12 : 4) : `<img class="pix" src="${Sprites.iconURL(r.item.icon, single ? 10 : 5)}">`;
       const name = r.char ? r.char.name : r.item.name;
-      const sub = r.char ? (r.isNew ? '<em class="new">NEW</em>' : r.starUp ? `<em>星级 ${r.starUp}★</em>` : `<em>金币×${r.coins}</em>`) : `<em>${r.text}</em>`;
+      const sub = r.char ? (r.isNew ? '<em class="new">新</em>' : r.starUp ? `<em>星级 ${r.starUp}★</em>` : `<em>金币×${r.coins}</em>`) : `<em>${r.text}</em>`;
       return `<div class="ga-card r-${r.rar}" style="animation-delay:${instant ? 0 : i * 0.16}s"><div class="gc-in">
         <div class="gc-face"><div class="gc-rays"></div><div class="gc-art">${img}</div><div class="gc-strip"><div class="gc-l1"><span class="gc-rar">${r.rar}</span><span class="gc-name">${name}</span></div>${sub}</div></div></div></div>`;
-    }).join('')}</div><button class="btn btn-primary ga-ok">确定</button>`;
+    }).join('')}</div><button class="btn btn-primary ga-ok">确 定</button>`;
     results.forEach((r, i) => setTimeout(() => Sfx.play(r.rar === 'SSR' ? 'revealSSR' : r.rar === 'SR' ? 'revealSR' : 'revealR'), instant ? 0 : i * 160 + 200));
     el.querySelector('.ga-ok').onclick = () => { Sfx.play('click'); el.className = 'overlay hidden'; el.innerHTML = ''; U.go('summon'); const nw = results.filter(r => r.isNew); if (nw.length) U.toast('解锁新角色：' + nw.map(r => r.char.name).join('、'), 2200); };
   }
@@ -245,6 +245,7 @@ window.UI = (function () {
     const visible=C.naturesWithSkills();
     const key=visible.includes(filter)?filter:'all';
     const units=ownedJutsuUnits();
+    const ELC={'火':'#F0663A','风':'#4FC6A0','雷':'#F2CF4A','土':'#C8955A','水':'#4A9BEA','阴':'#8F7BE0','阳':'#F6E7B0'};
     const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const nav=`<div class="chip-row jutsu-nature-nav" aria-label="按属性筛选">${['all',...visible].map(n=>`<button type="button" data-jutsu-nature="${n}" class="chip ${n===key?'active':''}" aria-pressed="${n===key}">${n==='all'?'全部':`<img src="${C.natureSrc(n)}" alt="">${n}`}</button>`).join('')}</div>`;
     const groups=key==='all'?visible:[key];
@@ -254,17 +255,17 @@ window.UI = (function () {
       const cards=list.map(skill=>{
         const levels=C.levelEffects(skill).map(x=>`<li><b>Lv.${x.level}</b> ${esc(x.text)}</li>`).join('');
         return `<article class="card jutsu-card" data-skill="${esc(skill.id)}">
-          <div class="jutsu-main"><span class="jutsu-art-wrap"><img class="jutsu-art" src="${esc(C.iconOf(skill))}" alt="${esc(skill.name)}" width="72" height="72" decoding="async"></span>
+          <div class="jutsu-main"><span class="jutsu-art-wrap" style="--el:${ELC[skill.gate]||'#A9B0C2'}"><img class="jutsu-art" src="${esc(C.iconOf(skill))}" alt="${esc(skill.name)}" width="72" height="72" decoding="async"></span>
           <div class="jutsu-body"><div class="jutsu-name"><b>${esc(skill.name)}</b><span class="el-tag" data-el="${esc(skill.gate)}">${esc(skill.gate)}</span></div>
-          <p>${esc(skill.text)}</p><small>Lv.1–5 · 局内升级强化</small></div></div>
-          <details class="jutsu-more"><summary>等级效果 · 可学忍者 ${UIIcons.icon('chevronDown')}</summary>
-          <ol class="jutsu-levels">${levels}</ol>
+          <p>${esc(skill.short||skill.text)}</p></div></div>
+          <details class="jutsu-more"><summary>详情 ${UIIcons.icon('chevronDown')}</summary>
+          <p class="jutsu-full">${esc(skill.text)}</p><ol class="jutsu-levels">${levels}</ol>
           <p class="jutsu-learners">${esc(C.formatLearners(units,skill))}</p></details></article>`;
       }).join('');
       return `<section class="jutsu-group"><header class="section-head"><img src="${C.natureSrc(n)}" alt=""><h3>${n}</h3><small>${list.length} 招</small></header><div class="jutsu-grid">${cards}</div></section>`;
     }).join('');
-    m.innerHTML=`<div class="page"><header class="page-head"><h2>忍术</h2><span class="page-meta">${C.skills.length} 招通用忍术</span></header>
-      <p class="page-lead jutsu-lead">局内最多携带 6 个通用忍术。每位忍者只能学习与自身查克拉性质相符的忍术，以及全部中性忍术。定位为「全」的忍者可学习所有性质。专属奥义按形态保留，不在此图鉴中。</p>
+    m.innerHTML=`<div class="page"><header class="page-head"><h2>忍术</h2><span class="page-meta"><b>${C.skills.length}</b> 招</span></header>
+      <p class="page-lead jutsu-lead">局内最多带 6 招，可学同属性与中性忍术。</p>
       ${nav}${body}</div>`;
     m.querySelectorAll('.jutsu-art').forEach(img=>{
       const ready=()=>img.classList.add('is-ready');
@@ -276,15 +277,14 @@ window.UI = (function () {
 
   function renderUpgrade(m) {
     const s = S();
-    m.innerHTML = `<div class="page"><header class="page-head"><h2>强化</h2><span class="page-meta">即将开放</span></header>
-      <p class="page-lead">局外强化即将开放。当前只有局内升级三选一会改变战斗属性，不消耗金币。</p><div class="up-list">${D.metaUpgrades.map(u => {
+    m.innerHTML = `<div class="page"><header class="page-head"><h2>强化</h2><span class="page-meta">即将开放</span></header><div class="up-list">${D.metaUpgrades.map(u => {
         const lv = s.upgrades[u.id] || 0, max = lv >= u.max, cost = D.upgradeCost(u, lv);
         return `<div class="card up-row"><div class="up-ic"><img class="pix" src="${Sprites.iconURL(u.icon, 4)}"></div>
           <div class="up-info"><b>${u.name}</b><small>${u.desc}</small>
           <div class="up-pips">${Array.from({ length: u.max }, (_, i) => `<i class="${i < lv ? 'on' : ''}"></i>`).join('')}</div></div>
           <button disabled aria-label="暂未接入战斗" class="btn btn-sm btn-disabled up-buy ${max ? 'disabled' : s.coins < cost ? 'poor' : ''}" data-id="${u.id}">待开放</button></div>`;
       }).join('')}</div>
-      <button class="btn btn-text link-btn" id="btn-refund">重置强化（返还全部金币）</button></div>`;
+      <button class="btn btn-text link-btn" id="btn-refund">重置强化</button></div>`;
     m.querySelectorAll('.up-buy').forEach(b => b.onclick = () => {
       const u = D.metaUpgrades.find(x => x.id === b.dataset.id), lv = s.upgrades[u.id] || 0;
       if (lv >= u.max) return;
@@ -305,11 +305,11 @@ window.UI = (function () {
     const s = S().settings;
     const tg = (k, name, desc) => `<div class="set-row"><div><b>${name}</b><small>${desc}</small></div><button class="toggle ${s[k] ? 'on' : ''}" data-k="${k}" role="switch" aria-checked="${!!s[k]}" aria-label="${name}"><i></i></button></div>`;
     m.innerHTML = `<div class="page"><header class="page-head"><h2>设置</h2></header>
-      <section class="card set-list">${tg('sfx','音效','技能与界面音效')}${tg('music','大厅音乐','8-bit 合成背景音乐')}<div class="set-row"><div><b>屏幕震动</b><small>沿用当前战斗版本，暂不支持切换</small></div><button class="toggle" disabled aria-label="震动设置暂未接入"><i></i></button></div><div class="set-row"><div><b>伤害数字</b><small>战斗内默认显示</small></div><button class="toggle on" disabled aria-label="伤害数字默认显示"><i></i></button></div>
-        <div class="set-row"><div><b>战斗设置</b><small>战斗暂停页可调整1～3倍速</small></div><button class="btn btn-secondary btn-sm" id="btn-perf">查看说明</button></div></section>
-      <section class="card about"><h3 class="card-heading">关于</h3><p>《忍者：无尽试炼》v0.65<br>灵感来自忍者题材动漫；非官方作品，与任何版权方无关。<br>技能动作包含已收集的像素素材与原创角色素材，来源见源码中的素材记录。</p></section>
+      <section class="card set-list">${tg('sfx','音效','技能与界面')}${tg('music','大厅音乐','背景音乐')}<div class="set-row"><div><b>屏幕震动</b><small>暂不支持切换</small></div><button class="toggle" disabled aria-label="震动设置暂未接入"><i></i></button></div><div class="set-row"><div><b>伤害数字</b><small>默认显示</small></div><button class="toggle on" disabled aria-label="伤害数字默认显示"><i></i></button></div>
+        <div class="set-row"><div><b>战斗设置</b><small>暂停页可调倍速</small></div><button class="btn btn-secondary btn-sm" id="btn-perf">说明</button></div></section>
+      <section class="card about"><h3 class="card-heading">关于</h3><p>《忍者：无尽试炼》v0.66 · 暮夜金卷<br>同人非官方作品，与任何版权方无关；素材来源见源码 CREDITS。</p><p class="credit">图标：Icons by Lorc, Delapouite, DarkZaitzev, Faithtoken / game-icons.net，CC BY 3.0<br>字体：Ma Shan Zheng、Noto Serif SC、Noto Sans SC、Barlow Condensed（SIL OFL 1.1）</p></section>
       <button class="btn btn-secondary btn-danger btn-block" id="btn-reset">清除存档</button></div>`;
-    $('btn-perf').onclick=()=>modal('战斗设置','<p>进入战斗后点击暂停，可查看队友、连携、倍速；开启首页调试后还可升级、跳转首领。</p>');
+    $('btn-perf').onclick=()=>modal('战斗设置','<p>战斗中点暂停：查看同伴、调倍速。<br>开启调试后可升级、跳首领。</p>');
     m.querySelectorAll('.toggle[data-k]').forEach(b => b.onclick = () => { s[b.dataset.k] = !s[b.dataset.k]; Save.save(); Sfx.apply(); Game.syncSettings(); Sfx.play('click'); b.classList.toggle('on', s[b.dataset.k]); b.setAttribute('aria-checked', String(!!s[b.dataset.k])); });
     $('btn-reset').onclick = () => modal('清除存档', '<p>确定要清除所有进度吗？此操作不可恢复。</p>', () => { Save.reset(); Sfx.apply(); U.toast('存档已清除'); U.go('lobby'); });
   }
@@ -327,16 +327,16 @@ window.UI = (function () {
 
   /* ---------- 出战 & 结算 ---------- */
   U.openBattlePrep=function(){
-    if(Game.runtimeId!=='ninja-v65-ui-light'){location.replace(new URL('play.html?release=pool65',location.href).href);return;}
+    if(Game.runtimeId!=='ninja-v66-dusk-scroll'){location.replace(new URL('play.html?release=pool66',location.href).href);return;}
     let selected=Game.available(D.charById[S().selected])?S().selected:'naruto';
     let excluded=[...(Game.excluded||[])];
-    modal('出战准备','');const body=$('modal').querySelector('.md-body');
-    function render(){const scrollTop=body.scrollTop;body.innerHTML=`<p class="prep-copy">首页展示与出战独立。单人开局，Lv.3／7／12招募最多3名支援。64个已接入战斗形态可选；第一阶段53个角色均已开放。角色包在选择后单独载入。</p><div class="prep-grid">${D.characters.map(c=>`<button class="prep-card ${c.id===selected?'active':''}" data-prep="${c.id}" ${Game.available(c)?'':'disabled'}>${charImg(c.id,3)}<b>${c.current.name}</b><small>${c.element}${c.catalogOnly?' · 战斗待制作':c.current.releaseComplete?'':' · 预览'}</small></button>`).join('')}</div><h3 class="prep-title">排除招募属性 ${excluded.length}/3</h3><div class="prep-types">${['火','风','雷','土','水','阴','阳','全'].map(n=>`<button data-exclude="${n}" aria-pressed="${excluded.includes(n)}" class="chip ${excluded.includes(n)?'active':''}">${n}</button>`).join('')}</div><p class="prep-copy">可排除0–3种属性。“全”为独立类别。每关2个小首领、1个大首领；支持1.5/2/3倍速。</p>`;
+    modal('备战','');const body=$('modal').querySelector('.md-body');
+    function render(){const scrollTop=body.scrollTop;body.innerHTML=`<p class="prep-copy">单人出战；局内最多招募 3 名同伴（不上场）。</p><div class="prep-grid">${D.characters.map(c=>`<button class="prep-card ${c.id===selected?'active':''}" data-prep="${c.id}" ${Game.available(c)?'':'disabled'}>${charImg(c.id,3)}<b>${c.current.name}</b><small>${c.element}${c.catalogOnly?' · 战斗待制作':c.current.releaseComplete?'':' · 预览'}</small></button>`).join('')}</div><h3 class="prep-title">排除招募属性 <span class="num">${excluded.length}/3</span></h3><div class="prep-types">${['火','风','雷','土','水','阴','阳','全'].map(n=>`<button data-exclude="${n}" aria-pressed="${excluded.includes(n)}" class="chip ${excluded.includes(n)?'active':''}">${n}</button>`).join('')}</div>`;
      body.querySelectorAll('[data-prep]').forEach(b=>b.onclick=()=>{selected=b.dataset.prep;render();});
      body.querySelectorAll('[data-exclude]').forEach(b=>b.onclick=()=>{const n=b.dataset.exclude;if(excluded.includes(n))excluded=excluded.filter(x=>x!==n);else if(excluded.length<3)excluded.push(n);else{U.toast('最多排除3种属性');return;}const top=body.scrollTop;render();body.scrollTop=top;});
      body.scrollTop=scrollTop;
     }
-    render();const buttons=$('modal').querySelector('.md-btns');buttons.innerHTML='<button class="btn btn-secondary" id="prep-cancel">取消</button>'+(Game.debug()?'<button class="btn btn-secondary" id="prep-lab">技能试放</button>':'')+'<button class="btn btn-primary" id="prep-start">进入试炼</button>';
+    render();const buttons=$('modal').querySelector('.md-btns');buttons.innerHTML='<button class="btn btn-secondary" id="prep-cancel">取消</button>'+(Game.debug()?'<button class="btn btn-secondary" id="prep-lab">技能试放</button>':'')+'<button class="btn btn-primary" id="prep-start">出战</button>';
     $('prep-cancel').onclick=()=>$('modal').classList.add('hidden');
     const start=lab=>{S().selected=selected;Game.excluded=excluded;Save.save();$('modal').classList.add('hidden');if(lab){show('battle');Game.start(selected,{excluded,lab:true});}else U.startBattle();};
     $('prep-start').onclick=()=>start(false);if($('prep-lab'))$('prep-lab').onclick=()=>start(true);

@@ -17,7 +17,7 @@ window.TailedBeasts={
  },
  collect(){
   const d=this.data;if(d.pet){if(d.pet.level<5){d.pet.level++;toast(d.pet.name+' 强化 / Lv.'+d.pet.level);}else{s.p.hp=Math.min(mainMaxHp(),s.p.hp+mainMaxHp()*.1);toast('尾兽已满级 / 回复10%生命');}this.syncSlot();return;}
-  if(!d.egg){d.egg={progress:0,need:40};toast('获得尾兽蛋 / 拾取40点查克拉孵化，不扣角色经验');}else this.feed(20);
+  if(!d.egg){d.egg={progress:0,need:40};toast('获得尾兽蛋');}else this.feed(20);
   this.syncSlot();
  },
  feed(value){const d=this.data;if(!d.egg||d.pet||!(value>0))return;d.egg.progress=Math.min(d.egg.need,d.egg.progress+value);if(d.egg.progress>=d.egg.need)d.pending=true;this.syncSlot();},
@@ -38,7 +38,7 @@ window.TailedBeasts={
  draw(entities){const p=this.data.pet;if(p)entities.push({y:p.y,draw:()=>{const im=images['beast'+p.key[0].toUpperCase()+p.key.slice(1)];if(!im)return;const row=p.cast>0?2:p.moving?1:0,f=Math.floor(s.t*(p.moving?11:7))%4;ctx.save();ctx.translate(Math.round(p.x),Math.round(p.y));if(p.facing<0)ctx.scale(-1,1);ctx.imageSmoothingEnabled=false;ctx.drawImage(im,f*32,row*32,32,32,-16,-29,32,32);ctx.restore();}});
   for(const e of Growth.enemies())if(e.skillBurn?.source==='matatabi')entities.push({y:e.y+1,draw:()=>{ctx.fillStyle='#6dbcf2';for(let i=0;i<3;i++)ctx.fillRect(Math.round(e.x-8+i*7),Math.round(e.y-20-Math.sin(s.t*8+i)*3),3,6);}});
  },
- panel(){const d=this.data;if(d.pet)return `<h3>尾兽 · ${d.pet.name} Lv.${d.pet.level}</h3><p>${d.pet.description} 不占支援名额；重复蛋强化，Lv.5后转为回复10%生命。</p>`;if(d.egg)return `<h3>尾兽蛋 · ${d.egg.progress}/${d.egg.need}</h3><p>拾取查克拉时同步孵化，不扣角色经验。</p>`;return '<h3>尾兽蛋</h3><p>精英怪与宝箱可掉落；靠近拾取后，用查克拉孵化。</p>';},
+ panel(){const d=this.data;if(d.pet)return `<h3>尾兽 · ${d.pet.name} Lv.${d.pet.level}</h3><p>${d.pet.description}</p>`;if(d.egg)return `<h3>尾兽蛋 · ${d.egg.progress}/${d.egg.need}</h3>`;return '<h3>尾兽蛋</h3><p>未获得</p>';},
  hud(){let el=$('beastHud');if(!el){el=document.createElement('button');el.id='beastHud';el.className='beast-hud';el.type='button';el.onclick=()=>{if(state==='play')pause();};$('shell').appendChild(el);}const d=this.data;el.hidden=state==='intro'||(!d.egg&&!d.pet)||!!s.skillLab;if(el.hidden)return;const p=d.pet,egg=d.egg;el.innerHTML=`<img src="${this.icon(p?p.key:'egg')}" alt=""><span><b>${p?p.name+' Lv.'+p.level:'尾兽蛋 '+egg.progress+'/'+egg.need}</b><i><em style="width:${p?100:egg.progress/egg.need*100}%"></em></i></span>`;const root=$('shell').getBoundingClientRect(),hud=document.querySelector('.hud').getBoundingClientRect(),world=$('worldStatus');el.style.top=Math.round(Math.max(hud.bottom,world&&!world.hidden?world.getBoundingClientRect().bottom:0)-root.top+7)+'px';},
  debugPanel(){return '<h3>尾兽蛋调试</h3><button class="debug-upgrade" id="debugEgg">掉落尾兽蛋</button><button class="debug-upgrade" id="debugHatch">测试尾兽孵化</button><button class="debug-upgrade" id="debugHitboxes">技能命中范围：'+(SkillMotion.debug?'开':'关')+'</button>';},
  bindDebug(){if(!DebugMode.enabled)return;const back=()=>{s.debugUsed=true;state='play';$('modal').hidden=true;$('modal').classList.remove('squad-pause');};if($('debugEgg'))$('debugEgg').onclick=()=>{back();this.drop(s.p.x+35,s.p.y,'debug',true);};if($('debugHatch'))$('debugHatch').onclick=()=>{back();this.data.pet=null;this.data.egg={progress:40,need:40};this.data.pending=true;this.syncSlot();this.present();};if($('debugHitboxes'))$('debugHitboxes').onclick=()=>{SkillMotion.debug=!SkillMotion.debug;$('debugHitboxes').textContent='技能命中范围：'+(SkillMotion.debug?'开':'关');};}

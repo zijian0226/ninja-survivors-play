@@ -198,7 +198,7 @@ window.SkillPool={
    if(level===0&&slots>=MAX_SLOTS)continue;
    const next=level+1;
    cards.push({
-    id:'pool:'+skill.id,poolId:skill.id,max:5,name:skill.name,
+    id:'pool:'+skill.id,poolId:skill.id,max:5,name:skill.name,short:skill.short,gate:skill.gate,
     text:()=> (level?('升级至 Lv.'+next+' / '):'习得 / ')+skill.gate+' · '+skill.text+(next===5?' · 满级强化':next>=3?' · 追加余波':''),
     icon:this.iconOf(skill),current:level
    });
@@ -629,16 +629,26 @@ window.SkillPool={
   upgrade=function(force){
    nativeUpgrade(force);
    if(state!=='upgrade')return;
-   const hint=document.querySelector('.upgrade-instruction');
-   const recruit=document.querySelector('.recruit-choice');
-   if(recruit&&hint)hint.textContent='阶段奖励：选择一名忍者加入呼叫栏，点按释放其专属奥义；下次招募节点 Lv.3 / Lv.7 / Lv.12';
-   else if(hint)hint.textContent='选择可学忍术、奥义或被动强化 · 通用技能最多 6 个';
+   /* v0.66：技能选择去掉说明文字，卡面描述 ≤12 字（Catalog.short / 定义里的 short），新习得加「新」印章。 */
+   document.querySelectorAll('.upgrade-instruction,.upgrade-pause-note').forEach(x=>x.remove());
+   const ribbon=document.querySelector('.choice-screen .upgrade-ribbon');
+   if(ribbon&&!ribbon.querySelector('small'))ribbon.insertAdjacentHTML('beforeend','<small>Lv.'+s.level+'</small>');
+   const EL={'火':'#F0663A','风':'#4FC6A0','雷':'#F2CF4A','土':'#C8955A','水':'#4A9BEA','阴':'#8F7BE0','阳':'#F6E7B0'};
+   const clip=t=>{t=String(t||'').replace(/<[^>]*>/g,'').replace(/^(主控主动|主控被动|通用被动|习得|升级至 Lv\.\d) \/ /,'').split(/[，。；]/)[0];return t.length>12?t.slice(0,12):t;};
    document.querySelectorAll('[data-upgrade]').forEach(button=>{
-    const id=button.dataset.upgrade;
+    const id=button.dataset.upgrade,desc=button.querySelector('.choice-description');
+    const offer=(SkillPool.lastOffers||[]).find(o=>o.id===id)||upgradeDefinitions.find(u=>u.id===id);
+    if(desc){
+     if(id.startsWith('recruit:')){const nat=desc.querySelector('.choice-natures');desc.innerHTML=nat?nat.outerHTML:'招募同伴';}
+     else if(id.startsWith('link:'))desc.textContent=clip(desc.textContent);
+     else{const sk=id.startsWith('pool:')?byId[id.slice(5)]:null;desc.textContent=sk?.short||(typeof offer?.short==='function'?offer.short():offer?.short)||(id==='ultimate'?'奥义威力与范围提升':clip(desc.textContent));}
+    }
     if(id&&id.startsWith('pool:')){
+     const sk=byId[id.slice(5)];if(sk&&EL[sk.gate])button.style.setProperty('--el',EL[sk.gate]);
      const level=s.pool?.[id.slice(5)]||0,max=5,next=Math.min(max,level+1);
      const em=button.querySelector('em');
-     if(em)em.textContent='Lv.'+level+' → '+next;
+     if(em)em.textContent=level?'Lv.'+level+' → Lv.'+next:'新习得 → Lv.1';
+     if(!level){button.classList.add('is-new');button.insertAdjacentHTML('afterbegin','<span class="choice-new" aria-label="新">新</span>');}
      const stars=button.querySelector('.choice-stars');
      if(stars)stars.innerHTML=Array.from({length:max},(_,i)=>'<i class="'+(i<next?'on':'')+'">★</i>').join('');
      const tag=button.querySelector('.choice-tag');
@@ -702,7 +712,7 @@ window.SkillPool={
       {id:'passive-recovery',name:'通用被动 · 全队恢复',icon:'assets/pickup-pill-existing.png',badge:s.reserveRegen,empty:!s.reserveRegen},
       {id:'summon',name:s.summonSkill?.name||'通灵兽 · 未携带',icon:s.summonSkill?.icon||null,badge:s.summonSkill?.level||'',empty:!s.summonSkill,mark:'灵'}
     ].map(x=>slot(x.id,x.name,x.icon,x.badge,!!x.empty,x.mark||'＋')).join('');
-    return `<div class="build-group jutsu-group"><span class="build-group-label">忍术 <small>被动 ＋ 专属奥义</small></span><div class="build-slots">${jutsu}</div></div><div class="build-group pool-build"><span class="build-group-label">通用忍术 <small>${owned.length}/${MAX_SLOTS}</small></span><div class="build-slots">${pool}</div></div><div class="build-group passive-group"><span class="build-group-label">被动 <small>通用 4 ＋ 通灵 1</small></span><div class="build-slots">${passives}</div></div>`;
+    return `<div class="build-group jutsu-group"><span class="build-group-label">固有</span><div class="build-slots">${jutsu}</div></div><div class="build-group pool-build"><span class="build-group-label">忍术 <small>${owned.length}/${MAX_SLOTS}</small></span><div class="build-slots">${pool}</div></div><div class="build-group passive-group"><span class="build-group-label">被动</span><div class="build-slots">${passives}</div></div>`;
    }catch(err){return origStrip();}
   };
 
@@ -751,14 +761,14 @@ window.SkillPool={
     const btn=SkillPool.buttons().find(b=>b.allies?.some(x=>x.id===a.id)||b.id==='ally:'+a.id);
     const remain=btn?SkillPool.chargeOf(btn): (a.ultimateCd||0);
     const ready=remain<=0;
-    return `<article class="pause-ally call-only"><img src="${SkillArt.portrait(a.profile)}" alt="${a.name}"><div><div class="pause-ally-title"><strong>${a.name}</strong><span class="${ready?'ready':''}">${ready?'奥义已充能':'冷却 '+Math.ceil(remain)+' 秒'}</span></div><p><span>${ult}</span></p><small>不进入战场 · 点按右侧呼叫栏释放专属奥义</small></div></article>`;
+    return `<article class="pause-ally call-only"><img src="${SkillArt.portrait(a.profile)}" alt="${a.name}"><div><div class="pause-ally-title"><strong>${a.name}</strong><span class="${ready?'ready':''}">${ready?'奥义已充能':'冷却 '+Math.ceil(remain)+' 秒'}</span></div><p><span>${ult}</span></p></div></article>`;
    }).join('');
   };
   if(window.SquadLinks){
    const origPanel=SquadLinks.panel.bind(SquadLinks);
    SquadLinks.panel=function(){
     this.sync();
-    return `<section class="squad-link-panel"><h3>合体奥义 ${s.synergies.length}</h3>${this.definitions.filter(d=>d.families.some(g=>g.includes(Growth.main().family))).map(d=>`<article><b>${d.name}</b><span>${this.ready(d)?'已可在呼叫栏释放合体奥义':'招募对应支援后解锁合体奥义'}</span><small>${d.label} · ${d.text}</small></article>`).join('')}<p>有联系的支援会合并为一个呼叫按钮。</p></section>`;
+    return `<section class="squad-link-panel"><h3>合体奥义 ${s.synergies.length}</h3>${this.definitions.filter(d=>d.families.some(g=>g.includes(Growth.main().family))).map(d=>`<article><b>${d.name}</b><span>${this.ready(d)?'已解锁':'未解锁'}</span><small>${d.label}</small></article>`).join('')}</section>`;
    };
   }
   const origHud=updateHud;
