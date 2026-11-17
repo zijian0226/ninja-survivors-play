@@ -44,3 +44,6 @@
 .pool-card .pool-learners{opacity:.8;font-size:11px}
 
 .pause-ally.call-only span.ready{color:#b9d289}
+
+/* v0.67.1：像素技能图标（tools/pixelize-icon.py 产出）保持硬边 */
+img[src*="fx-v67/gokakyu-icon"]{image-rendering:pixelated}
