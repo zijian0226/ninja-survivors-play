@@ -1,0 +1,44 @@
+{
+ "image": "gokakyu-sheet.png",
+ "frameWidth": 96,
+ "frameHeight": 96,
+ "columns": 8,
+ "rows": 3,
+ "fps": 12,
+ "anchor": [
+  48,
+  48
+ ],
+ "animations": {
+  "charge": {
+   "row": 0,
+   "count": 4,
+   "loop": false
+  },
+  "fly": {
+   "row": 1,
+   "count": 6,
+   "loop": true
+  },
+  "impact": {
+   "row": 2,
+   "count": 8,
+   "loop": false
+  }
+ },
+ "loopRow": 1,
+ "facing": "right",
+ "palette": [
+  "#FFF6D6",
+  "#FFE066",
+  "#FFB02E",
+  "#F26B1D",
+  "#C8323C",
+  "#7A1E1E",
+  "#3A2A2A",
+  "#0B1122"
+ ],
+ "outline": "#0B1122",
+ "bodyDiameterPx": 42,
+ "source": "generated pixel sprite (no third-party asset)"
+}
