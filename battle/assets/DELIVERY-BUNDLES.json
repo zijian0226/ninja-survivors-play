@@ -33,7 +33,7 @@
       "skill-catalog.js": "5c358d5b8e69fd84e41768b40184b3445e15e50a9bbcd1afeacb253d9f405368",
       "hub.js": "99d1fec9cc7bcfe1a0e7d097338ff655a82b591ed84d88732238cfce8e5f6356",
       "world.js": "91a32fe29ab41cde63f7a229c440b8d52d53d171b4ed847ca1e76e362b25d291",
-      "squad.js": "64e39d61ff9fa4d66ffddb0a0598042120de98f9fb27cd0b1fa618e75df578e3",
+      "squad.js": "8df3df87fdacbf56b6697c05f887318bf483e96ded1790791ae7b3e5cd473f7c",
       "recruitment.js": "3a53d0f42de5592be05ac060f5b72bcfe29278a61bcd1c104f37de7eb67a4554",
       "skill-lab.js": "e645ab549bddf8353ff4b006bf66d3f80feeac93d185525bff81de186a9f97d1",
       "debug-mode.js": "b17f07138084b5f6f472f2020b32811bf28dc77a13796af48b77ce5aeb3844d6",
@@ -48,10 +48,10 @@
       "tailed-beasts.js": "d935dc3b64703f8ad427c22901ad9af9c68b9ff3a6dad2960977d00aa3aac60c",
       "game.js": "f5d2e90404afc4de55344e5e2376f10d61d116b31e7265f93d59cf048103da22",
       "source-art56.js": "066a4c762eb52afc336aa2a227be99e78c82442fdbb4917f1a8d88ed788a3401",
-      "auto-battle.js": "c3a7c9d437f1256dc91be28be24ba74c29c1b3090e6d410bcab007232eb5d69c"
+      "auto-battle.js": "19b44e7f4d5b6bf7dc0de4a32051cf5ae55096b3bfa84744f745e9c0ed996229"
     },
-    "bytes": 1349232,
-    "sha256": "8ade18dd8f14eb6dcfbd9eb2b93ca18787ff46fe6efce1b7e77640b0e3b31335"
+    "bytes": 1352421,
+    "sha256": "6e4cddd15d858e53ed25e7e0ed421d8965966f68a9d569b3edbd4523683fcc62"
   },
   "css": {
     "sources": [

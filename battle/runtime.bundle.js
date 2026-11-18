@@ -10608,7 +10608,7 @@ window.TeamSeven={
    let dx=goal.x-a.x,dy=goal.y-a.y,d=Math.hypot(dx,dy)||1,vx=d>12?dx/d*speed:0,vy=d>12?dy/d*speed:0;
    for(const other of this.living()){if(other===a)continue;const gap=dist(a,other)||1;if(gap<40){vx+=(a.x-other.x)/gap*(40-gap)*5;vy+=(a.y-other.y)/gap*(40-gap)*5;}}
    if(s.boss?.phase==='warn'&&s.boss.pattern==='pulse'){const gap=dist(a,s.boss)||1;if(gap<RunFlow.plans[s.bossStep].radius+30){vx=(a.x-s.boss.x)/gap*220;vy=(a.y-s.boss.y)/gap*220;}}else if(s.boss?.phase==='warn'&&s.boss.dash){const q=s.boss.dash,along=(a.x-q.x)*q.dx+(a.y-q.y)*q.dy,side=(a.x-q.x)*(-q.dy)+(a.y-q.y)*q.dx;if(along>-30&&along<850&&Math.abs(side)<65){const sign=side>=0?1:-1;vx=-q.dy*sign*205;vy=q.dx*sign*205;}}
-   a.moving=Math.hypot(vx,vy)>4;if(a.moving&&!SkillArt.blocksMovement(a)){s.world.move(a,vx*dt,vy*dt,12,s.arena);if(Math.abs(vx)>3)a.facing=vx>0?1:-1;}
+   a.moving=Math.hypot(vx,vy)>4;if(a.moving&&!SkillArt.blocksMovement(a)){const st=window.AutoBattle?.steer?AutoBattle.steer(a,vx*dt,vy*dt,12,goal):{x:vx*dt,y:vy*dt};s.world.move(a,st.x,st.y,12,s.arena);if(Math.abs(vx)>3)a.facing=vx>0?1:-1;}
    if(e&&a.atk<=0&&dist(a,e)<400){this.projectile(a,e,12);a.atk=1.05*this.cooldown()/(a.profile?.attackSpeed||1);}
    const style=a.profile?.style||a.id;
    if(e&&a.jutsu<=0)this.castPrimary(a,e);
@@ -10618,7 +10618,7 @@ window.TeamSeven={
   }
   this.updateSupportClones(dt);
  },
- updateSupportClones(dt){for(const c of s.supportClones){c.life-=dt;const e=(s.boss?[...s.enemies,s.boss]:s.enemies).filter(e=>e.hp>0).sort((a,b)=>dist(a,c)-dist(b,c))[0];if(e){const d=dist(e,c)||1;if(d>75)s.world.move(c,(e.x-c.x)/d*145*dt,(e.y-c.y)/d*145*dt,12,s.arena);c.facing=e.x>=c.x?1:-1;c.atk-=dt;if(c.atk<=0){this.projectile({...c,profile:c.owner.profile},e,7);c.atk=1.2*this.cooldown();}}else if(dist(c,s.p)>240){c.x=s.p.x+40;c.y=s.p.y+50;}if(c.life<=0&&c.owner.profile?.key==='kakashi')addDamageZone(c.x,c.y-24,12*this.bonus(c.owner),'lightning',.6,45);}s.supportClones=s.supportClones.filter(c=>c.life>0);},
+ updateSupportClones(dt){for(const c of s.supportClones){c.life-=dt;const e=(s.boss?[...s.enemies,s.boss]:s.enemies).filter(e=>e.hp>0).sort((a,b)=>dist(a,c)-dist(b,c))[0];if(e){const d=dist(e,c)||1;if(d>75){const dx=(e.x-c.x)/d*145*dt,dy=(e.y-c.y)/d*145*dt,st=window.AutoBattle?.steer?AutoBattle.steer(c,dx,dy,12,e):{x:dx,y:dy};s.world.move(c,st.x,st.y,12,s.arena);}c.facing=e.x>=c.x?1:-1;c.atk-=dt;if(c.atk<=0){this.projectile({...c,profile:c.owner.profile},e,7);c.atk=1.2*this.cooldown();}}else if(dist(c,s.p)>240){c.x=s.p.x+40;c.y=s.p.y+50;}if(c.life<=0&&c.owner.profile?.key==='kakashi')addDamageZone(c.x,c.y-24,12*this.bonus(c.owner),'lightning',.6,45);}s.supportClones=s.supportClones.filter(c=>c.life>0);},
  draw(entities){for(const a of s.allies){if(a.down>0){const g=a.grave||a;entities.push({y:g.y,draw:()=>this.drawGrave(a)});continue;}entities.push({y:a.y,draw:()=>{if(!SkillArt.hidden(a))sprite(a.sprite||a.id,a.moving?'run':a.action?'cast':'idle',a.x,a.y,a.facing,a.inv>0&&Math.sin(s.t*24)>0?.55:1,0,false,!a.moving&&a.action?a.action.age:null);ctx.fillStyle='#1b2927';ctx.fillRect(a.x-18,a.y+7,36,5);ctx.fillStyle=this.definitions.find(d=>d.id===a.id)?.color||'#afd2ab';ctx.fillRect(a.x-17,a.y+8,34*a.hp/this.maxHp(a),3);ctx.font='9px Pixel,sans-serif';ctx.textAlign='center';ctx.fillStyle='#e7e8cc';ctx.fillText(a.name,a.x,a.y-67);ctx.textAlign='left';}});}for(const c of s.supportClones||[])entities.push({y:c.y,draw:()=>sprite(c.sprite,'run',c.x,c.y,c.facing,.55)});},
  drawGrave(a){const g=a.grave||a,x=Math.round(g.x),y=Math.round(g.y);ctx.save();ctx.fillStyle='#12231b66';ctx.fillRect(x-21,y-2,42,6);ctx.fillStyle='#273c37';ctx.fillRect(x-17,y-35,34,35);ctx.fillRect(x-13,y-39,26,4);ctx.fillStyle='#a3ada0';ctx.fillRect(x-14,y-34,28,31);ctx.fillRect(x-10,y-37,20,3);ctx.fillStyle='#cbd0b8';ctx.fillRect(x-11,y-32,3,25);ctx.fillStyle='#5a6b60';ctx.fillRect(x+10,y-32,2,26);ctx.fillStyle='#344a41';ctx.font='14px Pixel,sans-serif';ctx.textAlign='center';ctx.fillText('忍',x,y-14);ctx.restore();},
  drawGraveLabels(){const boxes=[],ratio=W/Math.max(1,$('shell').clientWidth);s.graveLabelBoxes=[];for(const a of s.allies){if(a.down<=0)continue;const g=a.grave||a;ctx.save();ctx.font=`600 ${12*ratio}px system-ui,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';const w=Math.min(W-16*ratio,Math.max(74*ratio,ctx.measureText(a.name).width+18*ratio)),h=39*ratio,minY=145*ratio,maxY=H-h-70*ratio;let x=clamp(g.x-s.camera.x-w/2,8*ratio,W-w-8*ratio),y=clamp(g.y-s.camera.y-80*ratio,minY,Math.max(minY,maxY));for(let n=0;n<8&&boxes.some(b=>x<b.x+b.w+4*ratio&&x+w>b.x-4*ratio&&y<b.y+b.h+4*ratio&&y+h>b.y-4*ratio);n++){y-=h+5*ratio;if(y<minY){y=clamp(g.y-s.camera.y+12*ratio,minY,maxY);x=clamp(x+(n%2?1:-1)*(w+5*ratio),8*ratio,W-w-8*ratio);}}const b={x,y,w,h,name:a.name};boxes.push(b);s.graveLabelBoxes.push(b);x+=s.camera.x;y+=s.camera.y;ctx.fillStyle='#13281ff2';ctx.fillRect(x,y,w,h);ctx.strokeStyle='#c8b584';ctx.lineWidth=ratio;ctx.strokeRect(x,y,w,h);ctx.fillStyle='#f4dfac';ctx.fillText(a.name,x+w/2,y+13*ratio);ctx.font=`600 ${11*ratio}px system-ui,sans-serif`;ctx.fillStyle='#c8d8bd';ctx.fillText(Math.ceil(a.down)+'秒后复活',x+w/2,y+28*ratio);ctx.restore();}},
@@ -11528,18 +11528,47 @@ window.AutoBattle={
   if(!b.dash)return 0;const a=b.phase==='dash'?b:b.dash,length=plan.move*(b.phase==='dash'?Math.max(0,b.timer):.65),end={x:a.x+b.dash.dx*length,y:a.y+b.dash.dy*length};
   return Math.max(0,47-segmentDistance(point,a,end))*180;
  },
+ /* 自动走位：用真实可走位置打分，视线被挡时用 32px 局部流场绕开崖壁/岩台/石像，不穿墙 */
+ blockedAt(x,y,r=12){return !s.arena&&!!s.world.blocked(x,y,r);},
+ clearPath(ax,ay,bx,by,r=12){if(s.arena)return true;const n=Math.max(2,Math.ceil(Math.hypot(bx-ax,by-ay)/16));for(let i=1;i<=n;i++)if(s.world.blocked(ax+(bx-ax)*i/n,ay+(by-ay)*i/n,r))return false;return true;},
+ predict(x,y,dx,dy,r=12){const a=s.arena;if(a)return{x:Math.max(a.x+r,Math.min(a.x+a.w-r,x+dx)),y:Math.max(a.y+r,Math.min(a.y+a.h-r,y+dy))};const w=s.world;let nx=x,ny=y;if(!w.blocked(x+dx,y,r))nx=x+dx;if(!w.blocked(nx,y+dy,r))ny=y+dy;return{x:nx,y:ny};},
+ flow(tx,ty,from){const w=s.world;if(!w||s.arena)return null;const src=from||s.p,C=32,N=192,gx=Math.floor(tx/C),gy=Math.floor(ty/C),px=Math.floor(src.x/C),py=Math.floor(src.y/C),key=gy*N+gx+','+(py*N+px),now=performance.now();
+  if(this._F&&this._Fk===key&&now<this._Fu)return this._F;this._Fk=key;this._Fu=now+280;
+  const F=this._F||(this._F=new Int16Array(N*N)),Q=this._Q||(this._Q=new Int32Array(N*N));F.fill(-1);
+  const R=48,hard=(cx,cy)=>cx<1||cy<1||cx>=N-1||cy>=N-1||w.blocked(cx*C+16,cy*C+16,12);
+  let sx=gx,sy=gy;if(hard(sx,sy)){let ok=false;for(let d=1;d<12&&!ok;d++)for(let j=-d;j<=d&&!ok;j++)for(let i=-d;i<=d;i++){if(Math.max(Math.abs(i),Math.abs(j))!==d)continue;if(!hard(gx+i,gy+j)){sx=gx+i;sy=gy+j;ok=true;}}if(!ok)return F;}
+  let h=0,t=0;Q[t++]=sy*N+sx;F[Q[0]]=0;
+  while(h<t){const k=Q[h++],x=k%N,y=(k/N)|0;if(Math.abs(x-px)>R||Math.abs(y-py)>R)continue;
+   for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const nx=x+dx,ny=y+dy;if(nx<1||ny<1||nx>=N-1||ny>=N-1||Math.abs(nx-px)>R||Math.abs(ny-py)>R)continue;const nk=ny*N+nx;if(F[nk]>=0||hard(nx,ny))continue;F[nk]=F[k]+1;Q[t++]=nk;}}
+  return F;},
+ flowCost(x,y,tx,ty,from){const F=this.flow(tx,ty,from);if(!F)return Math.hypot(x-tx,y-ty);const N=192,c=F[Math.floor(y/32)*N+Math.floor(x/32)];return c>=0?c*32:5000;},
+ steer(e,dx,dy,r=12,goal=null){if(!e||s.arena)return{x:dx,y:dy};const want=Math.hypot(dx,dy);if(want<1)return{x:dx,y:dy};
+  const tx=goal?.x??e.x+dx*8,ty=goal?.y??e.y+dy*8;
+  if(this.clearPath(e.x,e.y,tx,ty,r))return{x:dx,y:dy};
+  const F=this.flow(tx,ty,e);if(!F)return{x:dx,y:dy};const C=32,N=192,cx=Math.floor(e.x/C),cy=Math.floor(e.y/C);
+  let best=null,bestV=1e9;
+  for(const [sx,sy] of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]]){
+   const nx=cx+sx,ny=cy+sy;if(nx<1||ny<1||nx>=N-1||ny>=N-1)continue;const v=F[ny*N+nx];if(v<0||v>=bestV)continue;
+   if(sx&&sy&&(F[cy*N+nx]<0||F[ny*N+cx]<0))continue;
+   const len=want/Math.hypot(sx,sy),vx=sx*len,vy=sy*len,n=this.predict(e.x,e.y,vx,vy,r);
+   if(Math.hypot(n.x-e.x,n.y-e.y)<want*.3)continue;bestV=v;best={x:vx,y:vy};
+  }
+  return best||{x:dx,y:dy};},
  plan(){
   const d=this.data,p=s.p;d.target=this.aim(650)||null;d.goal=this.goal();const goal=d.goal,desired=this.distance(),near=this.hostiles().filter(e=>dist(e,p)<360).sort((a,b)=>dist(a,p)-dist(b,p)).slice(0,24),speed=175*(Growth.main().movement||1);let best=null,bestScore=-Infinity;
   if(goal.kind==='wait'){d.vector={x:0,y:0};d.heading=d.vector;d.reason='等待';return;}
   const candidates=[{x:0,y:0}];for(let i=0;i<24;i++){const a=i*Math.PI/12;for(const speed of [.25,.55,1])candidates.push({x:Math.cos(a)*speed,y:Math.sin(a)*speed});}
-  for(const v of candidates){let score=0;for(const time of [.15,.35,.55]){const q={x:p.x+v.x*speed*time,y:p.y+v.y*speed*time};
+  const los=this.clearPath(p.x,p.y,goal.x,goal.y,12);
+  for(const v of candidates){let score=0;for(const time of [.15,.35,.55]){const want=speed*time,q=this.predict(p.x,p.y,v.x*want,v.y*want,12),moved=Math.hypot(q.x-p.x,q.y-p.y);
     if(!this.inside(q,16))score-=12000;
+    if((v.x||v.y)&&moved<want*.3)score-=2500;
+    if(this.blockedAt(q.x,q.y,12))score-=8000;
     score-=this.dangerCost(q,time);
     for(const e of near){const gap=dist(e,p)||1,advance=Math.min(gap,(e.speed||0)*time),ex=e.x+(p.x-e.x)/gap*advance,ey=e.y+(p.y-e.y)/gap*advance,range=Math.hypot(q.x-ex,q.y-ey),touch=(e.r||12)+23;
      if(range<touch)score-=1500+(touch-range)*90;
      else if(range<80)score-=(80-range)*.5;
     }
-    const gap=dist(q,goal);score-=goal.kind==='fight'?Math.abs(gap-desired)*.9:goal.kind==='loot'?gap:0;
+    const gap=los?dist(q,goal):this.flowCost(q.x,q.y,goal.x,goal.y);score-=goal.kind==='fight'?Math.abs(gap-desired)*.9:goal.kind==='loot'?gap:0;
    }
    // A small heading bonus prevents left/right jitter without delaying danger responses.
    score+=(v.x*d.heading.x+v.y*d.heading.y)*5;if(!v.x&&!v.y)score+=3;

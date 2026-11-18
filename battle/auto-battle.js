@@ -44,18 +44,47 @@ window.AutoBattle={
   if(!b.dash)return 0;const a=b.phase==='dash'?b:b.dash,length=plan.move*(b.phase==='dash'?Math.max(0,b.timer):.65),end={x:a.x+b.dash.dx*length,y:a.y+b.dash.dy*length};
   return Math.max(0,47-segmentDistance(point,a,end))*180;
  },
+ /* 自动走位：用真实可走位置打分，视线被挡时用 32px 局部流场绕开崖壁/岩台/石像，不穿墙 */
+ blockedAt(x,y,r=12){return !s.arena&&!!s.world.blocked(x,y,r);},
+ clearPath(ax,ay,bx,by,r=12){if(s.arena)return true;const n=Math.max(2,Math.ceil(Math.hypot(bx-ax,by-ay)/16));for(let i=1;i<=n;i++)if(s.world.blocked(ax+(bx-ax)*i/n,ay+(by-ay)*i/n,r))return false;return true;},
+ predict(x,y,dx,dy,r=12){const a=s.arena;if(a)return{x:Math.max(a.x+r,Math.min(a.x+a.w-r,x+dx)),y:Math.max(a.y+r,Math.min(a.y+a.h-r,y+dy))};const w=s.world;let nx=x,ny=y;if(!w.blocked(x+dx,y,r))nx=x+dx;if(!w.blocked(nx,y+dy,r))ny=y+dy;return{x:nx,y:ny};},
+ flow(tx,ty,from){const w=s.world;if(!w||s.arena)return null;const src=from||s.p,C=32,N=192,gx=Math.floor(tx/C),gy=Math.floor(ty/C),px=Math.floor(src.x/C),py=Math.floor(src.y/C),key=gy*N+gx+','+(py*N+px),now=performance.now();
+  if(this._F&&this._Fk===key&&now<this._Fu)return this._F;this._Fk=key;this._Fu=now+280;
+  const F=this._F||(this._F=new Int16Array(N*N)),Q=this._Q||(this._Q=new Int32Array(N*N));F.fill(-1);
+  const R=48,hard=(cx,cy)=>cx<1||cy<1||cx>=N-1||cy>=N-1||w.blocked(cx*C+16,cy*C+16,12);
+  let sx=gx,sy=gy;if(hard(sx,sy)){let ok=false;for(let d=1;d<12&&!ok;d++)for(let j=-d;j<=d&&!ok;j++)for(let i=-d;i<=d;i++){if(Math.max(Math.abs(i),Math.abs(j))!==d)continue;if(!hard(gx+i,gy+j)){sx=gx+i;sy=gy+j;ok=true;}}if(!ok)return F;}
+  let h=0,t=0;Q[t++]=sy*N+sx;F[Q[0]]=0;
+  while(h<t){const k=Q[h++],x=k%N,y=(k/N)|0;if(Math.abs(x-px)>R||Math.abs(y-py)>R)continue;
+   for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const nx=x+dx,ny=y+dy;if(nx<1||ny<1||nx>=N-1||ny>=N-1||Math.abs(nx-px)>R||Math.abs(ny-py)>R)continue;const nk=ny*N+nx;if(F[nk]>=0||hard(nx,ny))continue;F[nk]=F[k]+1;Q[t++]=nk;}}
+  return F;},
+ flowCost(x,y,tx,ty,from){const F=this.flow(tx,ty,from);if(!F)return Math.hypot(x-tx,y-ty);const N=192,c=F[Math.floor(y/32)*N+Math.floor(x/32)];return c>=0?c*32:5000;},
+ steer(e,dx,dy,r=12,goal=null){if(!e||s.arena)return{x:dx,y:dy};const want=Math.hypot(dx,dy);if(want<1)return{x:dx,y:dy};
+  const tx=goal?.x??e.x+dx*8,ty=goal?.y??e.y+dy*8;
+  if(this.clearPath(e.x,e.y,tx,ty,r))return{x:dx,y:dy};
+  const F=this.flow(tx,ty,e);if(!F)return{x:dx,y:dy};const C=32,N=192,cx=Math.floor(e.x/C),cy=Math.floor(e.y/C);
+  let best=null,bestV=1e9;
+  for(const [sx,sy] of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]]){
+   const nx=cx+sx,ny=cy+sy;if(nx<1||ny<1||nx>=N-1||ny>=N-1)continue;const v=F[ny*N+nx];if(v<0||v>=bestV)continue;
+   if(sx&&sy&&(F[cy*N+nx]<0||F[ny*N+cx]<0))continue;
+   const len=want/Math.hypot(sx,sy),vx=sx*len,vy=sy*len,n=this.predict(e.x,e.y,vx,vy,r);
+   if(Math.hypot(n.x-e.x,n.y-e.y)<want*.3)continue;bestV=v;best={x:vx,y:vy};
+  }
+  return best||{x:dx,y:dy};},
  plan(){
   const d=this.data,p=s.p;d.target=this.aim(650)||null;d.goal=this.goal();const goal=d.goal,desired=this.distance(),near=this.hostiles().filter(e=>dist(e,p)<360).sort((a,b)=>dist(a,p)-dist(b,p)).slice(0,24),speed=175*(Growth.main().movement||1);let best=null,bestScore=-Infinity;
   if(goal.kind==='wait'){d.vector={x:0,y:0};d.heading=d.vector;d.reason='等待';return;}
   const candidates=[{x:0,y:0}];for(let i=0;i<24;i++){const a=i*Math.PI/12;for(const speed of [.25,.55,1])candidates.push({x:Math.cos(a)*speed,y:Math.sin(a)*speed});}
-  for(const v of candidates){let score=0;for(const time of [.15,.35,.55]){const q={x:p.x+v.x*speed*time,y:p.y+v.y*speed*time};
+  const los=this.clearPath(p.x,p.y,goal.x,goal.y,12);
+  for(const v of candidates){let score=0;for(const time of [.15,.35,.55]){const want=speed*time,q=this.predict(p.x,p.y,v.x*want,v.y*want,12),moved=Math.hypot(q.x-p.x,q.y-p.y);
     if(!this.inside(q,16))score-=12000;
+    if((v.x||v.y)&&moved<want*.3)score-=2500;
+    if(this.blockedAt(q.x,q.y,12))score-=8000;
     score-=this.dangerCost(q,time);
     for(const e of near){const gap=dist(e,p)||1,advance=Math.min(gap,(e.speed||0)*time),ex=e.x+(p.x-e.x)/gap*advance,ey=e.y+(p.y-e.y)/gap*advance,range=Math.hypot(q.x-ex,q.y-ey),touch=(e.r||12)+23;
      if(range<touch)score-=1500+(touch-range)*90;
      else if(range<80)score-=(80-range)*.5;
     }
-    const gap=dist(q,goal);score-=goal.kind==='fight'?Math.abs(gap-desired)*.9:goal.kind==='loot'?gap:0;
+    const gap=los?dist(q,goal):this.flowCost(q.x,q.y,goal.x,goal.y);score-=goal.kind==='fight'?Math.abs(gap-desired)*.9:goal.kind==='loot'?gap:0;
    }
    // A small heading bonus prevents left/right jitter without delaying danger responses.
    score+=(v.x*d.heading.x+v.y*d.heading.y)*5;if(!v.x&&!v.y)score+=3;

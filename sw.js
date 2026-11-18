@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v690-dusk-scroll';
+const VERSION = 'v691-dusk-scroll';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -13,19 +13,19 @@ const PRECACHE = [
   './',
   './index.html',
   './play.html',
-  './battle/scroll-roguelite.js?v=pool690',
-  './battle/skill-pool.js?v=pool690',
-  './battle/gokakyu-fireball.js?v=pool690',
-  './battle/battle-ui-proposal.js?v=pool690',
-  './battle/battle-ui-proposal.css?v=pool690',
-  './battle/map-v069-proto.js?v=pool690',
-  './battle/assets/fx-v67/gokakyu-sheet.png?v=pool690',
-  './battle/assets/fx-v67/gokakyu-icon.png?v=pool690',
-  './battle/skill-pool.css?v=pool690',
+  './battle/scroll-roguelite.js?v=pool691',
+  './battle/skill-pool.js?v=pool691',
+  './battle/gokakyu-fireball.js?v=pool691',
+  './battle/battle-ui-proposal.js?v=pool691',
+  './battle/battle-ui-proposal.css?v=pool691',
+  './battle/map-v069-proto.js?v=pool691',
+  './battle/assets/fx-v67/gokakyu-sheet.png?v=pool691',
+  './battle/assets/fx-v67/gokakyu-icon.png?v=pool691',
+  './battle/skill-pool.css?v=pool691',
   './manifest.webmanifest',
-  './css/app.css?v=pool690',
-  './battle/ui-theme.css?v=pool690',
-  './src/home-lobby.js?v=pool690',
+  './css/app.css?v=pool691',
+  './battle/ui-theme.css?v=pool691',
+  './src/home-lobby.js?v=pool691',
   './assets/lobby-v57/konoha-sunset.webp',
   './assets/fonts/ui-v66/noto-sans-sc-400.woff2',
   './assets/fonts/ui-v66/noto-sans-sc-700.woff2',
@@ -33,28 +33,28 @@ const PRECACHE = [
   './assets/fonts/ui-v66/ma-shan-zheng.woff2',
   './assets/fonts/ui-v66/barlow-condensed-600.woff2',
   './assets/fonts/ui-v66/racing-sans-one-rarity.woff2',
-  './src/data/characters.js?v=pool690',
-  './src/data/skills.js?v=pool690',
-  './src/data/enemies.js?v=pool690',
-  './src/data/upgrades.js?v=pool690',
-  './src/art/pixelArt.js?v=pool690',
-  './src/save.js?v=pool690',
-  './src/audio.js?v=pool690',
-  './src/sprites.js?v=pool690',
-  './src/battle-bridge.js?v=pool690',
-  './src/data/roster-current.js?v=pool690',
-  './src/data/phase-one.js?v=pool690',
-  './src/data/character-packs.js?v=pool690',
-  './src/data/prep-sprites.js?v=pool690',
-  './src/data/skill-pool-catalog.js?v=pool690',
-  './src/data/portrait-layout.js?v=pool690',
-  './src/data/roster-busts.js?v=pool690',
-  './src/roster-ui.js?v=pool690',
-  './src/home-portrait.js?v=pool690',
-  './src/ui-icons.js?v=pool690',
-  './src/ui.js?v=pool690',
-  './src/mobile.js?v=pool690',
-  './src/main.js?v=pool690',
+  './src/data/characters.js?v=pool691',
+  './src/data/skills.js?v=pool691',
+  './src/data/enemies.js?v=pool691',
+  './src/data/upgrades.js?v=pool691',
+  './src/art/pixelArt.js?v=pool691',
+  './src/save.js?v=pool691',
+  './src/audio.js?v=pool691',
+  './src/sprites.js?v=pool691',
+  './src/battle-bridge.js?v=pool691',
+  './src/data/roster-current.js?v=pool691',
+  './src/data/phase-one.js?v=pool691',
+  './src/data/character-packs.js?v=pool691',
+  './src/data/prep-sprites.js?v=pool691',
+  './src/data/skill-pool-catalog.js?v=pool691',
+  './src/data/portrait-layout.js?v=pool691',
+  './src/data/roster-busts.js?v=pool691',
+  './src/roster-ui.js?v=pool691',
+  './src/home-portrait.js?v=pool691',
+  './src/ui-icons.js?v=pool691',
+  './src/ui.js?v=pool691',
+  './src/mobile.js?v=pool691',
+  './src/main.js?v=pool691',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
@@ -95,8 +95,8 @@ self.addEventListener('activate', event => {
         channel.port1.onmessage=event=>done(event.data);
         try{client.postMessage({type:'NINJA_CLIENT_STATUS'},[channel.port2]);}catch{done(null);}
       });
-      if(status?.release==='pool690')return;
-      url.pathname=SCOPE+'play.html';url.searchParams.set('release','pool690');
+      if(status?.release==='pool691')return;
+      url.pathname=SCOPE+'play.html';url.searchParams.set('release','pool691');
       // Navigation must run after activation has settled; awaiting it inside activate deadlocks.
       let tries=0;
       const navigate=()=>{
