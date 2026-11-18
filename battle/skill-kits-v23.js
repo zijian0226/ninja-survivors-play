@@ -1410,7 +1410,7 @@ window.SKILL_KITS = {
         "damage": 55,
         "cd": 30,
         "damageMode": "periodic",
-        "duration": 1.75,
+        "duration": 3.5,
         "source": {
           "actor": "madara",
           "skill": "ultimate"
@@ -1427,7 +1427,7 @@ window.SKILL_KITS = {
           "urls": [
             "https://m.ali213.net/news/gl1901/297779.html"
           ],
-          "note": "奥义演出改用 BVN 同人 MOD「New Madara Uchiha Edo Tensei #5」的「上必杀2」原帧（发布者 AI Gaming MUGEN / Akane Gaming），术名采用腾讯手游参考名，像素玩法改编。伤害、冷却、范围与持续时间保持原值。",
+          "note": "奥义演出改用 BVN 同人 MOD「New Madara Uchiha Edo Tensei #5」的「上必杀2」原帧（发布者 AI Gaming MUGEN / Akane Gaming），术名采用腾讯手游参考名，像素玩法改编。伤害、冷却与范围保持原值；持续时间改为 3.5 秒，中间完整须佐能乎会多停留一会儿。",
           "fullAnimationVerified": true
         },
         "visualComplete": true
