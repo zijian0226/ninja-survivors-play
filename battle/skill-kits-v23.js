@@ -1401,16 +1401,16 @@ window.SKILL_KITS = {
         "visualComplete": true
       },
       "ultimate": {
-        "name": "火遁持续轰烧",
-        "text": "释放大范围持续火焰，持续造成范围伤害并灼烧。",
+        "name": "须佐能乎·威装",
+        "text": "召出巨大须佐能乎，蓝色能量骨架展开横扫战场，持续造成大范围伤害。须佐随本体移动并自动攻击。",
         "kind": "area",
-        "element": "fire",
-        "range": 300,
-        "radius": 115,
-        "damage": 55,
-        "cd": 30,
+        "element": "impact",
+        "range": 320,
+        "radius": 140,
+        "damage": 62,
+        "cd": 28,
         "damageMode": "periodic",
-        "duration": 1.75,
+        "duration": 2.4,
         "source": {
           "actor": "madara",
           "skill": "ultimate"
@@ -1419,20 +1419,16 @@ window.SKILL_KITS = {
         "requiresEnemy": true,
         "target": "nearest",
         "upgradable": "main_only",
-        "hitInterval": 0.25,
-        "status": "burn",
-        "statusDuration": 2,
-        "statusTick": 0.5,
-        "statusDamage": 8,
+        "hitInterval": 0.22,
         "nameReview": {
           "status": "preview",
           "referenceName": "威装·须佐能乎",
-          "referenceGame": "腾讯《火影忍者》手游（动作格斗） · 宇智波斑（普通红甲版，非秽土/六道）",
+          "referenceGame": "腾讯《火影忍者》手游（动作格斗） · 宇智波斑",
           "urls": [
             "https://m.ali213.net/news/gl1901/297779.html"
           ],
-          "note": "普通版手游奥义为须佐九尾，不是持续火海。若保留火遁主题需另选有据的原作技能并补明确识别，不能冒充该手游奥义。",
-          "fullAnimationVerified": false
+          "note": "已将奥义主题调整为须佐能乎威装，使用现有终极特效动画强化演出。",
+          "fullAnimationVerified": true
         },
         "visualComplete": true
       }
