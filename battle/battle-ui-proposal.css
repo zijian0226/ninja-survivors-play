@@ -32,7 +32,7 @@ body[data-ui="v068"] .ui-slot small{position:absolute;right:2px;bottom:1px;font:
 body[data-ui="v068"] .ui-slot.ult{border:1.5px solid var(--ui-gold)}
 body[data-ui="v068"] .ui-slot.ult.ready{box-shadow:0 0 0 2px #d9b46a55,0 0 10px #f2ddaa88}
 body[data-ui="v068"] .ui-slot.empty{display:grid;place-items:center;color:#d9b46a55;font-size:16px;background:#0b112280}
-body[data-ui="v068"] .battle-toast{bottom:calc(env(safe-area-inset-bottom,0px) + 136px)!important}
+body[data-ui="v068"] .battle-toast{bottom:calc(env(safe-area-inset-bottom,0px) + 162px)!important}
 /* 升级卡：横向长卡片，一行效果 */
 body[data-ui="v068"] #modal.ui-cards .choices{display:flex!important;flex-direction:column!important;gap:8px!important;grid-template-columns:none!important;height:auto!important}
 body[data-ui="v068"] #modal.ui-cards .choice{position:relative;display:grid!important;grid-template-columns:56px 1fr;grid-template-rows:auto auto auto;column-gap:10px;row-gap:2px;align-items:center;min-height:0!important;height:auto!important;padding:8px 12px 8px 8px!important;text-align:left!important;border-radius:12px!important;background:linear-gradient(90deg,#1a2648,#121c38)!important;border:1px solid var(--ui-line)!important}
@@ -76,3 +76,9 @@ body[data-ui="v068"] .call-btn.ui-main.ready .call-face{border-color:#ffe39a!imp
 body[data-ui="v068"] .call-btn.ui-main .call-cd{background:#1a1530!important;border:1px solid var(--ui-gold)}
 body[data-ui="v068"] .call-btn.ui-main.ready .call-cd{background:var(--ui-gold)!important;color:#1a1530!important}
 body[data-ui="v068"] .call-btn.ui-main.ui-cast .call-face{border-color:#fff!important;box-shadow:0 0 0 3px #fff8,0 0 22px #ffd36b!important}
+/* v0.68.1：不显示虚拟摇杆（拖动移动逻辑不变）；开局提示一行字，首次移动后淡出 */
+body[data-ui="v068"] #joystickBase,body[data-ui="v068"] .touch-guide{display:none!important}
+body[data-ui="v068"] .ui-drag-hint{position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 130px);transform:translateX(-50%);z-index:3;pointer-events:none;white-space:nowrap;padding:3px 12px;border-radius:11px;background:#0b1122b3;border:1px solid #d9b46a55;color:#f2ddaa;font:600 12px/16px system-ui,sans-serif;letter-spacing:.5px;text-shadow:0 1px 0 #000;transition:opacity .25s ease;animation:uiHintPulse 2.4s ease-in-out infinite}
+body[data-ui="v068"] .ui-drag-hint[hidden]{display:block!important;opacity:0;animation:none;visibility:hidden;transition:opacity .25s ease,visibility 0s .25s}
+@keyframes uiHintPulse{0%,100%{opacity:.95}50%{opacity:.6}}
+@media (prefers-reduced-motion:reduce){body[data-ui="v068"] .ui-drag-hint{animation:none}}

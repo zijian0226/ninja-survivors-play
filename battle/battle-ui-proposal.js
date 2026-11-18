@@ -193,14 +193,29 @@ function patchCalls(){
  P._ui=true;
 }
 
+/* ---------- 开局移动提示：首次真正移动（拖动 >8px 或方向键）后淡出，本局不再出现 ---------- */
+function updateDragHint(){
+ const shell=$id('shell');if(!shell||typeof s==='undefined'||!s)return;
+ let el=$id('uiDragHint');
+ if(!el){el=document.createElement('div');el.id='uiDragHint';el.className='ui-drag-hint';el.textContent='任意位置拖动移动，松手停止';el.setAttribute('role','status');shell.appendChild(el);}
+ if(!s.dragHintDone&&state==='play'){
+  const p=typeof pointer!=='undefined'?pointer:null;
+  const k=typeof keys!=='undefined'?keys:{};
+  const dragged=p&&Math.hypot(p.x-p.sx,p.y-p.sy)>8;
+  const keyed=['w','a','s','d','W','A','S','D','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].some(x=>k[x]);
+  if(dragged||keyed)s.dragHintDone=true;
+ }
+ el.hidden=!!s.dragHintDone||!(state==='play'||state==='paused')||!!s.skillLab;
+}
+
 /* ---------- 挂接 ---------- */
 function hookAll(){patchCalls();patchPause();patchNumbers();patchUpgrade();patchWorld();}
 hookAll();
 if(typeof reset==='function'&&!reset._ui){const o=reset;reset=function(){const r=o.apply(this,arguments);if(typeof s!=='undefined'&&s)s.rerolls=UI.rerollMax;return r;};reset._ui=true;}
 if(typeof tick==='function'&&!tick._ui){
  const o=tick;let acc=0;
- tick=function(dt){o.apply(this,arguments);acc+=dt;if(acc>=.1){acc=0;updateTop();renderSlots();}};
+ tick=function(dt){o.apply(this,arguments);updateDragHint();acc+=dt;if(acc>=.1){acc=0;updateTop();renderSlots();}};
  tick._ui=true;
 }
-if(typeof updateHud==='function'&&!updateHud._ui){const o=updateHud;updateHud=function(){const r=o.apply(this,arguments);updateTop();renderSlots();return r;};updateHud._ui=true;}
+if(typeof updateHud==='function'&&!updateHud._ui){const o=updateHud;updateHud=function(){const r=o.apply(this,arguments);updateTop();renderSlots();updateDragHint();return r;};updateHud._ui=true;}
 })();
