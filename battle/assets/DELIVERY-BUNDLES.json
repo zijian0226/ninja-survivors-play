@@ -26,9 +26,9 @@
       "auto-battle.js"
     ],
     "source_sha256": {
-      "skill-art-data.js": "1273f542086498b0084f7942f77384e9925a0090cfd8fa799bb606c6afdbb006",
-      "skill-motion-data.js": "1c56c0b8fce9ad53c39d08f79c5e90aa2d3cabb417d39101d10837df03d963ec",
-      "skill-kits-v23.js": "55d65ef597dddf6e54394952ab753fdbeaec5a03fd57ec18e7d5afe4cf4e54e8",
+      "skill-art-data.js": "d9ab50b55373c6339d8ded0fe099a902135ecea69b5d8e51045b0aad93d198ea",
+      "skill-motion-data.js": "0c3bde0f98ea1882dfda0a90f95157058883e6fc4979d642a6193d3e0dc51476",
+      "skill-kits-v23.js": "b8e4b8bff8b0e87f46b64c0e9157090fef51019492b00994bab3f3ad104d9fce",
       "characters.js": "c0699623151ecdbbc06d56205829694873f8ca3127443e42edd0f88a1b7f3a82",
       "skill-catalog.js": "5c358d5b8e69fd84e41768b40184b3445e15e50a9bbcd1afeacb253d9f405368",
       "hub.js": "99d1fec9cc7bcfe1a0e7d097338ff655a82b591ed84d88732238cfce8e5f6356",
@@ -50,8 +50,8 @@
       "source-art56.js": "066a4c762eb52afc336aa2a227be99e78c82442fdbb4917f1a8d88ed788a3401",
       "auto-battle.js": "19b44e7f4d5b6bf7dc0de4a32051cf5ae55096b3bfa84744f745e9c0ed996229"
     },
-    "bytes": 1361314,
-    "sha256": "aecf93f8a624eddd8f0621204b4f4b330b52d4a8746da8cd9311c06a84c3a578"
+    "bytes": 1357614,
+    "sha256": "7eb9a53166320429111e15f7bcb1debbccb51bb3f8abc806722356803bb6f9af"
   },
   "css": {
     "sources": [

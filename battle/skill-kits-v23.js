@@ -253,8 +253,8 @@ window.SKILL_KITS = {
         }
       },
       "ultimate": {
-        "name": "千鸟刀",
-        "text": "贴近目标连续雷剑斩击，持续造成范围伤害。",
+        "name": "麒麟",
+        "text": "目标处降下麒麟落雷，持续造成范围伤害。",
         "kind": "melee",
         "element": "lightning",
         "range": 105,
@@ -275,14 +275,10 @@ window.SKILL_KITS = {
         "status": "stun",
         "statusDuration": 0.3,
         "nameReview": {
-          "status": "matched",
-          "referenceName": "千鸟刀",
-          "referenceGame": "究极风暴4·鹰佐助/腾讯万花筒写轮眼佐助",
-          "urls": [
-            "https://www.9game.cn/hyrz/2201937.html",
-            "https://shouyou.gamersky.com/news/201807/1076198.shtml"
-          ],
-          "note": "原图可见将雷性质查克拉注入实体刀刃后突刺，符合千鸟刀的核心辨识；该术并非万花筒独占能力，可参考该动作游戏标准名，但不将其整套角色技能表或形态移植过来。",
+          "status": "adapted",
+          "referenceName": "麒麟",
+          "referenceGame": "火影忍者",
+          "note": "已换上独立落雷与雷兽特效，术名改为麒麟；特效出现在目标处，不把佐助身体编进特效。像素玩法改编。",
           "fullAnimationVerified": true
         }
       }
@@ -478,7 +474,7 @@ window.SKILL_KITS = {
     "passive": "乌鸦警戒：本人受到伤害降低6%，移动速度提高4%。",
     "skills": {
       "乌鸦分身": 1,
-      "火遁·炎柱": 1
+      "天照": 1
     },
     "kit": {
       "passive": {
@@ -530,8 +526,8 @@ window.SKILL_KITS = {
         "visualComplete": true
       },
       "secondary": {
-        "name": "火遁·炎柱",
-        "text": "目标处升起炎柱，持续造成范围伤害并灼烧。",
+        "name": "天照",
+        "text": "目标处燃起黑炎，持续造成范围伤害并灼烧。",
         "kind": "area",
         "element": "fire",
         "range": 138.60000000000002,
@@ -554,14 +550,14 @@ window.SKILL_KITS = {
         "statusTick": 0.5,
         "statusDamage": 8,
         "nameReview": {
-          "status": "preview",
+          "status": "adapted",
           "referenceName": "天照",
           "referenceGame": "腾讯《火影忍者》手游（动作格斗） · 宇智波鼬（普通晓袍版本）",
           "urls": [
             "https://news.4399.com/hyrz/renzhe/m/614898.html"
           ],
-          "note": "天照的识别点是黑炎；不能以黑边普通火柱改名天照，需黑炎燃烧、施法眼部起手。 v28已补完整人物施法与特效阶段，正式术名是否对应仍单独核验。",
-          "fullAnimationVerified": false
+          "note": "已换上独立黑炎爆发与火柱特效，不再使用普通火柱；术名改为天照。像素玩法改编，不把施术者身体编进特效。",
+          "fullAnimationVerified": true
         },
         "sourceText": "真实BVN/DS像素动作与特效组合，含起手、有效段和收招；时序/距离为俯视玩法适配。",
         "visualComplete": true
@@ -3372,8 +3368,8 @@ window.SKILL_KITS = {
         "visualComplete": true
       },
       "secondary": {
-        "name": "查克拉爆发",
-        "text": "由真实像素动作演出起手、持续攻击与收招，在有效阶段持续造成范围伤害。",
+        "name": "掌仙术",
+        "text": "在自身展开掌仙术治疗光与医疗查克拉，在有效阶段持续造成范围伤害。",
         "kind": "area",
         "element": "impact",
         "range": 240,
@@ -3382,8 +3378,9 @@ window.SKILL_KITS = {
         "cd": 8,
         "damageMode": "hit",
         "nameReview": {
-          "status": "preview",
-          "note": "真实源时间轴，时序为俯视玩法适配；描述名不冒称原作确定招式。"
+          "status": "adapted",
+          "referenceName": "掌仙术",
+          "note": "已换上独立掌仙术治疗光与医疗查克拉特效；术名改为掌仙术。数值仍为范围伤害，未改成治疗。像素玩法改编，不把小樱身体编进特效。"
         },
         "duration": 1.8,
         "status": "stun",
@@ -3430,7 +3427,7 @@ window.SKILL_KITS = {
     "passive": "医疗经验：本人基础生命提高10%。",
     "skills": {
       "体术·樱连击": 1,
-      "查克拉爆发": 1
+      "掌仙术": 1
     },
     "nameReviewPending": 2
   },
@@ -4426,8 +4423,8 @@ window.SKILL_KITS = {
         "visualComplete": true
       },
       "ultimate": {
-        "name": "须佐能乎·终结攻击",
-        "text": "原形态动作起手，持续范围攻击后收势。",
+        "name": "完全体须佐能乎",
+        "text": "展开完全体须佐能乎斩击与大招，持续范围攻击后收势。",
         "kind": "area",
         "element": "fire",
         "range": 210,
@@ -4437,8 +4434,9 @@ window.SKILL_KITS = {
         "damageMode": "periodic",
         "duration": 2.32,
         "nameReview": {
-          "status": "preview",
-          "note": "取自此形态真实像素与动作；命名为主题/视觉描述，未冒称已核验官方动作手游招式。"
+          "status": "adapted",
+          "referenceName": "完全体须佐能乎",
+          "note": "已换上四阶完全体须佐斩击与大招独立特效；角色身体原是小人，因此 hideBaseActor 换上完全体。像素玩法改编。"
         },
         "sourceText": "真实BVN原形态像素的有限战斗场景适配；术名待核。",
         "status": "burn",
