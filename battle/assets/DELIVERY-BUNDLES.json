@@ -46,12 +46,12 @@
       "official-gallery.js": "52622f52c5a294c4835a7875e9979f0614cd66cd21c9ceeb30019e31c8779b09",
       "materials.js": "103e0fef39cfc8dd1bb7a556f1347a70614abd4d4d7fc69ee4bd37ffc0085fb6",
       "tailed-beasts.js": "d935dc3b64703f8ad427c22901ad9af9c68b9ff3a6dad2960977d00aa3aac60c",
-      "game.js": "9febf4f6546d3e76106dfedcf3e331ba056b7610c1e682bc63504897d50bd68b",
+      "game.js": "f5d2e90404afc4de55344e5e2376f10d61d116b31e7265f93d59cf048103da22",
       "source-art56.js": "066a4c762eb52afc336aa2a227be99e78c82442fdbb4917f1a8d88ed788a3401",
       "auto-battle.js": "c3a7c9d437f1256dc91be28be24ba74c29c1b3090e6d410bcab007232eb5d69c"
     },
-    "bytes": 1348985,
-    "sha256": "7ce45948459cc7ac7405ead76e4a4bdfb1fd5163be29ea2cfa8671dd7fd447e4"
+    "bytes": 1349232,
+    "sha256": "8ade18dd8f14eb6dcfbd9eb2b93ca18787ff46fe6efce1b7e77640b0e3b31335"
   },
   "css": {
     "sources": [
