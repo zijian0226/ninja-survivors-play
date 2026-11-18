@@ -5,8 +5,8 @@
 (function(){
 'use strict';
 const ID='goukakyuu';
-const ICON='assets/fx-v67/gokakyu-icon.png?v=pool671';
-const SHEET={src:'assets/fx-v67/gokakyu-sheet.png?v=pool671',cell:96,fps:12,charge:{row:0,count:4},fly:{row:1,count:6},impact:{row:2,count:8}};
+const ICON='assets/fx-v67/gokakyu-icon.png?v=pool680';
+const SHEET={src:'assets/fx-v67/gokakyu-sheet.png?v=pool680',cell:96,fps:12,charge:{row:0,count:4},fly:{row:1,count:6},impact:{row:2,count:8}};
 /* 成长数值：每张卡 1 级；总等级与其他通用忍术一致，最高 Lv.5（即最多 4 次强化）。 */
 const GROWTH={
  count:{name:'豪火球·连发',max:3,step:1,short:l=>'火球+1 · 共'+(2+l)+'发'},

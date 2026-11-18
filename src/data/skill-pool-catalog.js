@@ -19,7 +19,7 @@ const SKILLS=[
  {id:'rasengan',name:'螺旋丸',gate:'风',element:'风',kind:'aura',sourceKey:'naruto_shippuden',slot:'primary',art:'ready',short:'查克拉球伤害周围',text:'在身前凝出查克拉球，持续伤害周围的敌人。'},
  {id:'kage_bunshin',name:'影分身之术',gate:'中性',element:'阳',kind:'summon',special:'clones',art:'smoke',short:'召唤两名分身助战',text:'召唤两名分身协同作战，分身会自行寻敌攻击。'},
  {id:'chidori',name:'千鸟',gate:'雷',element:'雷',kind:'melee',sourceKey:'sasuke',slot:'primary',art:'needs_cleanup',short:'突进雷击近身敌人',text:'向前突进，对近身敌人造成雷属性伤害。'},
- {id:'goukakyuu',name:'火遁·豪火球之术',gate:'火',element:'火',kind:'projectile',sourceKey:'sasuke',slot:'secondary',art:'ready',icon:'assets/fx-v67/gokakyu-icon.png?v=pool671',short:'火球直飞，命中爆炸',text:'喷出豪火球直线飞行，命中敌人即爆炸；升级可选连发、巨焰或烈焰。'},
+ {id:'goukakyuu',name:'火遁·豪火球之术',gate:'火',element:'火',kind:'projectile',sourceKey:'sasuke',slot:'secondary',art:'ready',icon:'assets/fx-v67/gokakyu-icon.png?v=pool680',short:'火球直飞，命中爆炸',text:'喷出豪火球直线飞行，命中敌人即爆炸；升级可选连发、巨焰或烈焰。'},
  {id:'hakke_kuushou',name:'八卦空掌',gate:'中性',element:'体术',kind:'projectile',sourceKey:'neji',slot:'primary',art:'ready',short:'掌波远程打击',text:'打出查克拉掌波，远程打击前方的敌人。'},
  {id:'kaiten',name:'八卦掌·回天',gate:'中性',element:'体术',kind:'aura',sourceKey:'neji',slot:'secondary',art:'needs_cleanup',short:'旋转气罩护身',text:'在身边展开旋转气罩，持续伤害靠近的敌人。'},
  {id:'shinra_tensei',name:'神罗天征',gate:'阴',element:'阴',kind:'aura',sourceKey:'pain',slot:'primary',art:'ready',short:'斥力击退周围敌人',text:'爆发斥力冲击，伤害并击退周围的杂兵。'},

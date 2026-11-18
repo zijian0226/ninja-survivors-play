@@ -1,0 +1,78 @@
+/* 战斗 UI 提案 v0.68（暮夜金卷：深海军蓝 + 金）。只在 body[data-ui=v068] 生效。 */
+body[data-ui="v068"]{--ui-navy:#101a33f0;--ui-navy2:#1a2648;--ui-gold:#d9b46a;--ui-gold2:#f2ddaa;--ui-line:#d9b46a66}
+/* 顶部一行：暂停 · 生命条+Lv · 计时 */
+body[data-ui="v068"] .battle-top{display:grid!important;grid-template-columns:34px 1fr auto;align-items:center;gap:8px;height:auto!important}
+body[data-ui="v068"] .battle-pause{width:34px!important;height:34px!important;font-size:13px!important}
+body[data-ui="v068"] #timer{grid-column:3;grid-row:1;width:auto!important;min-width:0!important;height:28px!important;padding:0 10px!important;font-size:15px!important;line-height:28px!important;border-radius:14px!important;background:var(--ui-navy)!important;border:1px solid var(--ui-line)!important;color:var(--ui-gold2)!important;position:static!important;transform:none!important}
+body[data-ui="v068"] .battle-counters{display:none!important}
+body[data-ui="v068"] .ui-vitals{grid-column:2;grid-row:1;display:flex;align-items:center;gap:6px;min-width:0}
+body[data-ui="v068"] .ui-hp{position:relative;flex:1;height:14px;border-radius:7px;background:#0b1122e6;border:1px solid var(--ui-line);overflow:hidden}
+body[data-ui="v068"] .ui-hp i{position:absolute;inset:0 auto 0 0;background:linear-gradient(#7fd18a,#3f9a57);transition:width .2s}
+body[data-ui="v068"] .ui-hp.low i{background:linear-gradient(#f08a6a,#c0453a)}
+body[data-ui="v068"] .ui-hp span{position:absolute;inset:0;font:600 9px/14px system-ui,sans-serif;color:#fff;text-align:center;text-shadow:0 1px 0 #000}
+body[data-ui="v068"] .ui-lv{flex:none;font:700 11px/18px system-ui,sans-serif;padding:0 6px;border-radius:9px;background:var(--ui-gold);color:#1a1530}
+body[data-ui="v068"] .ui-chip{grid-column:2/4;grid-row:2;justify-self:end;display:flex;gap:8px;font:500 10px/16px system-ui,sans-serif;color:#d6cdb4cc;padding:0 8px;border-radius:8px;background:#0b1122a6}
+body[data-ui="v068"] .ui-chip b{color:var(--ui-gold2);font-weight:600}
+/* 经验条贴在顶行下方，Lv 文字并入生命条旁 */
+body[data-ui="v068"] .battle-experience{margin-top:2px!important;height:auto!important}
+body[data-ui="v068"] .battle-experience .bar.xp{height:4px!important;border-radius:2px!important}
+body[data-ui="v068"] .battle-experience #level{display:none!important}
+body[data-ui="v068"] #worldStatus{display:none!important}
+/* 地图/构筑 进入暂停菜单；自动/倍速 留在右上角 */
+body[data-ui="v068"] #mapButton,body[data-ui="v068"] #bottomHud{display:none!important}
+body[data-ui="v068"] .ui-pause-quick{display:flex;gap:8px;margin:6px 0 2px}
+body[data-ui="v068"] .ui-pause-quick button{flex:1;height:36px;border-radius:10px;border:1px solid var(--ui-line);background:var(--ui-navy2);color:var(--ui-gold2);font:600 12px system-ui,sans-serif}
+body[data-ui="v068"] .ui-pause-quick button.active{background:var(--ui-gold);color:#1a1530}
+/* 底部 4 个忍术槽 */
+body[data-ui="v068"] .ui-slots{position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);transform:translateX(-50%);display:flex;gap:8px;z-index:3;pointer-events:none}
+body[data-ui="v068"] .ui-slot{position:relative;width:48px;height:48px;border-radius:10px;background:var(--ui-navy);border:1px solid var(--ui-line);overflow:hidden;box-shadow:0 2px 0 #0006}
+body[data-ui="v068"] .ui-slot img{position:absolute;inset:5px;width:38px;height:38px;object-fit:contain;image-rendering:pixelated}
+body[data-ui="v068"] .ui-slot .ui-cd{position:absolute;inset:0;background:conic-gradient(#0b1122c8 calc(var(--cd,0)*360deg),transparent 0)}
+body[data-ui="v068"] .ui-slot small{position:absolute;right:2px;bottom:1px;font:700 8px/10px system-ui,sans-serif;color:var(--ui-gold2);text-shadow:0 1px 0 #000}
+body[data-ui="v068"] .ui-slot.ult{border:1.5px solid var(--ui-gold)}
+body[data-ui="v068"] .ui-slot.ult.ready{box-shadow:0 0 0 2px #d9b46a55,0 0 10px #f2ddaa88}
+body[data-ui="v068"] .ui-slot.empty{display:grid;place-items:center;color:#d9b46a55;font-size:16px;background:#0b112280}
+body[data-ui="v068"] .battle-toast{bottom:calc(env(safe-area-inset-bottom,0px) + 136px)!important}
+/* 升级卡：横向长卡片，一行效果 */
+body[data-ui="v068"] #modal.ui-cards .choices{display:flex!important;flex-direction:column!important;gap:8px!important;grid-template-columns:none!important;height:auto!important}
+body[data-ui="v068"] #modal.ui-cards .choice{position:relative;display:grid!important;grid-template-columns:56px 1fr;grid-template-rows:auto auto auto;column-gap:10px;row-gap:2px;align-items:center;min-height:0!important;height:auto!important;padding:8px 12px 8px 8px!important;text-align:left!important;border-radius:12px!important;background:linear-gradient(90deg,#1a2648,#121c38)!important;border:1px solid var(--ui-line)!important}
+body[data-ui="v068"] #modal.ui-cards .choice .choice-art{grid-row:1/4;grid-column:1;width:56px!important;height:56px!important;margin:0!important;border-radius:10px!important}
+body[data-ui="v068"] #modal.ui-cards .choice .choice-art img{width:100%!important;height:100%!important;object-fit:contain}
+body[data-ui="v068"] #modal.ui-cards .choice-heading{grid-column:2;justify-self:start;font-size:15px!important;line-height:20px!important;margin:0!important;padding-right:70px;text-align:left!important}
+body[data-ui="v068"] #modal.ui-cards .choice-tag{position:absolute!important;right:10px;top:30px;left:auto!important;font-size:9px!important;opacity:.75}
+body[data-ui="v068"] #modal.ui-cards .choice-description{grid-column:2;font-size:12px!important;line-height:16px!important;justify-self:start;max-width:100%;color:#e8dfc6!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0!important;text-align:left!important}
+body[data-ui="v068"] #modal.ui-cards .choice-footer{display:none!important}
+body[data-ui="v068"] .ui-badge{position:absolute;right:10px;top:9px;z-index:2;font:700 10px/18px system-ui,sans-serif;padding:0 7px;border-radius:9px;background:#2a375f;color:var(--ui-gold2);border:1px solid var(--ui-line)}
+body[data-ui="v068"] .ui-badge.new{background:var(--ui-gold);color:#1a1530;border-color:var(--ui-gold)}
+body[data-ui="v068"] .ui-badge.recruit{background:#5a3f86;color:#f3e6ff}
+body[data-ui="v068"] .ui-fit{grid-column:2;justify-self:start;font:500 10px/14px system-ui,sans-serif;color:#a9b0c8}
+body[data-ui="v068"] .ui-fit.good{color:#9fe0b0}
+body[data-ui="v068"] .ui-reroll{display:block;margin:10px auto 0;height:36px;padding:0 18px;border-radius:18px;border:1px solid var(--ui-gold);background:transparent;color:var(--ui-gold2);font:600 13px system-ui,sans-serif}
+body[data-ui="v068"] .ui-reroll b{display:inline-block;min-width:18px;margin-left:4px;border-radius:9px;background:var(--ui-gold);color:#1a1530;font-size:11px;line-height:18px}
+body[data-ui="v068"] .ui-reroll:disabled{opacity:.4}
+/* 自动 / 倍速：右上角两枚小按钮（行为不变） */
+body[data-ui="v068"] .battle-auto:not([hidden]),body[data-ui="v068"] .battle-speed{position:absolute!important;top:calc(env(safe-area-inset-top,0px) + 84px)!important;bottom:auto!important;height:28px!important;border-radius:14px!important;padding:0 9px!important;display:flex!important;flex-direction:row!important;align-items:center;justify-content:center;gap:3px!important;font:600 11px/1 system-ui,sans-serif!important}
+body[data-ui="v068"] .battle-auto:not([hidden]){right:56px!important;width:auto!important;min-width:56px}
+body[data-ui="v068"] .battle-auto svg{width:14px!important;height:14px!important}
+body[data-ui="v068"] .battle-speed{right:12px!important;width:38px!important;font:600 12px/1 system-ui,sans-serif!important}
+/* 伙伴奥义：忍术栏上方的一排小头像（点按释放；自动战斗时自动释放） */
+body[data-ui="v068"] .call-bar:not([hidden]){left:50%!important;right:auto!important;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 72px)!important;flex-direction:row!important;gap:10px!important;max-width:none!important;align-items:flex-end}
+body[data-ui="v068"] .call-btn{width:auto!important;padding:0!important;background:none!important;border:0!important;box-shadow:none!important;gap:2px!important}
+body[data-ui="v068"] .call-btn .call-faces{width:auto!important;flex-wrap:nowrap!important;gap:0!important}
+body[data-ui="v068"] .call-btn .call-face{width:38px!important;height:38px!important;border:1.5px solid var(--ui-line)!important;background:#0b1122!important}
+body[data-ui="v068"] .call-btn .call-faces.n2 .call-face,body[data-ui="v068"] .call-btn .call-faces.n3 .call-face,body[data-ui="v068"] .call-btn .call-faces.n4 .call-face{width:30px!important;height:30px!important;margin-left:-8px}
+body[data-ui="v068"] .call-btn .call-faces .call-face:first-child{margin-left:0}
+body[data-ui="v068"] .call-btn .call-name{display:none!important}
+body[data-ui="v068"] .call-btn .call-cd{font:700 9px/12px system-ui,sans-serif!important;color:var(--ui-gold2)!important;padding:0 5px;border-radius:6px;background:#0b1122cc;margin-top:-8px;z-index:4}
+body[data-ui="v068"] .call-btn:not(.ready) .call-face::before{background:conic-gradient(var(--ui-gold) calc((1 - var(--cd,0))*360deg),#0b112299 0)!important}
+body[data-ui="v068"] .call-btn.ready .call-face{border-color:var(--ui-gold2)!important;box-shadow:0 0 0 2px #d9b46a88,0 0 12px #f2ddaacc!important}
+body[data-ui="v068"] .call-btn.ready .call-cd{background:var(--ui-gold)!important;color:#1a1530!important}
+body[data-ui="v068"] .call-btn.combo .call-faces{padding:1px 3px;border-radius:20px;box-shadow:0 0 0 1px #d9b46a55}
+body[data-ui="v068"] .call-btn.ui-cast .call-face{border-color:#fff!important;box-shadow:0 0 0 3px #fff6,0 0 18px #f2ddaa!important;transform:scale(1.12)}
+/* 主控奥义：奥义行第一位，稍大 + 金边 */
+body[data-ui="v068"] .call-btn.ui-main{margin-right:4px}
+body[data-ui="v068"] .call-btn.ui-main .call-face{width:46px!important;height:46px!important;border:2px solid var(--ui-gold)!important}
+body[data-ui="v068"] .call-btn.ui-main.ready .call-face{border-color:#ffe39a!important;box-shadow:0 0 0 2px #d9b46acc,0 0 16px #ffd36b!important}
+body[data-ui="v068"] .call-btn.ui-main .call-cd{background:#1a1530!important;border:1px solid var(--ui-gold)}
+body[data-ui="v068"] .call-btn.ui-main.ready .call-cd{background:var(--ui-gold)!important;color:#1a1530!important}
+body[data-ui="v068"] .call-btn.ui-main.ui-cast .call-face{border-color:#fff!important;box-shadow:0 0 0 3px #fff8,0 0 22px #ffd36b!important}
