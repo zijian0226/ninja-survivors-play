@@ -26,8 +26,8 @@
       "auto-battle.js"
     ],
     "source_sha256": {
-      "skill-art-data.js": "6625033aaa1d18b7e7625309fbd12f6614453ce642cf91558938cbaa07f4e32e",
-      "skill-motion-data.js": "750eaa6546110d70bd6b963a887e5e3f1844a8c40641f2701a38cd12ba5faa0b",
+      "skill-art-data.js": "1273f542086498b0084f7942f77384e9925a0090cfd8fa799bb606c6afdbb006",
+      "skill-motion-data.js": "1c56c0b8fce9ad53c39d08f79c5e90aa2d3cabb417d39101d10837df03d963ec",
       "skill-kits-v23.js": "55d65ef597dddf6e54394952ab753fdbeaec5a03fd57ec18e7d5afe4cf4e54e8",
       "characters.js": "c0699623151ecdbbc06d56205829694873f8ca3127443e42edd0f88a1b7f3a82",
       "skill-catalog.js": "5c358d5b8e69fd84e41768b40184b3445e15e50a9bbcd1afeacb253d9f405368",
@@ -40,8 +40,8 @@
       "growth.js": "248bbb77cb4688137043124435289ad1ddbe02583a03d974350dbb9c7b5d068c",
       "ultimate-cue.js": "3b07cc8c8b68e5869681efa726cbb846bf1153a0f5272fc6526ed538eec36b90",
       "build-inspect.js": "03812a8ec46fc9ab44a38248b43e7f139177c756a1bd40f57585e824429a4b65",
-      "skill-art.js": "6975c1bb48d937e928ef1345af55f53e00e40a72de145e06b92a2b08c47674ea",
-      "skill-motion.js": "026f804708f1d372e7ee0ef5e8ff2b78cde6120fef9b0c95577ac57665b3f5fa",
+      "skill-art.js": "798d3fb11a382e747e9978abd08bbb7d337a236adfeec812d540309a38729ae4",
+      "skill-motion.js": "d2b096fea57cfafda2947b727a2f649f6baaf19efd58e2da665374e21862d5a6",
       "original-ninja.js": "97e07afcd580c95d3ccd61c99c8cc761d3f8b274032af3980e677db4bcca6e7e",
       "official-gallery.js": "52622f52c5a294c4835a7875e9979f0614cd66cd21c9ceeb30019e31c8779b09",
       "materials.js": "103e0fef39cfc8dd1bb7a556f1347a70614abd4d4d7fc69ee4bd37ffc0085fb6",
@@ -50,8 +50,8 @@
       "source-art56.js": "066a4c762eb52afc336aa2a227be99e78c82442fdbb4917f1a8d88ed788a3401",
       "auto-battle.js": "19b44e7f4d5b6bf7dc0de4a32051cf5ae55096b3bfa84744f745e9c0ed996229"
     },
-    "bytes": 1360418,
-    "sha256": "014ffb894fdf9030aef002a48e0ff3e5f77e222b27357f365ec1ec55565e11e3"
+    "bytes": 1361314,
+    "sha256": "aecf93f8a624eddd8f0621204b4f4b330b52d4a8746da8cd9311c06a84c3a578"
   },
   "css": {
     "sources": [

@@ -58,8 +58,10 @@ window.SkillMotion={
   const mode=q.motion.mode;
   if(q.released&&(mode==='aura'||mode==='melee')){
    const e=this.target(q);
-   if(e){
-    q.target=e;
+   if(e)q.target=e;
+   const walking=!!(q.clip.walkFrames&&q.actor.moving&&q.age>=(q.clip.walkAfter||0)&&q.age<q.duration);
+   if(walking){q.walkAge=(q.walkAge||0)+dt;q.facing=q.actor.facing||q.facing;}
+   else if(e){
     const face=e.x>=q.actor.x?1:-1,lock=q.clip.faceLockFrames,fr=SkillArt.frame(q);
     const locked=Array.isArray(lock)&&fr>=lock[0]&&fr<=lock[1];
     if(!locked){q.facing=face;if(!q.actor.moving)q.actor.facing=face;}
