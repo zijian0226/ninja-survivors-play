@@ -25,7 +25,8 @@ window.SkillMotion={
  },
  sync(q){
   const m=q.motion;if(!m)return;const mode=m.mode,scale=this.scale(q),c=q.clip,frame=SkillArt.frame(q),rect=m.rects[frame];q.motionFrame=frame;
-  const ref=m.reference,refX=((ref[0]+ref[2])/2-c.anchor[0])*scale,refY=((ref[1]+ref[3])/2-c.anchor[1])*scale;
+  const [ax,ay]=c.frame_anchors?.[frame]||c.anchor,clip={...c,anchor:[ax,ay]};
+  const ref=m.reference,refX=((ref[0]+ref[2])/2-clip.anchor[0])*scale,refY=((ref[1]+ref[3])/2-clip.anchor[1])*scale;
   let x=q.actor.x,y=q.actor.y;
   if(mode==='ground'||mode==='planted'||mode==='summon'){
    const p=q.released?q.releasePos:{x:q.target?.x??q.actor.x,y:q.target?.y??q.actor.y};x=p.x;y=p.y;
@@ -37,9 +38,12 @@ window.SkillMotion={
    const point=q.impactPoint||{x:from.x+(to.x-from.x)*t,y:from.y+(to.y-from.y)*t};q.projectilePoint=point;q.inFlight=q.released&&!q.impactPoint&&t<1;
    const cx=rect?(rect[0]+rect[2])/2:c.anchor[0],cy=rect?(rect[1]+rect[3])/2:c.anchor[1];x=point.x-q.facing*(cx-c.anchor[0])*scale-(c.offset?.[0]||0);y=point.y-(cy-c.anchor[1])*scale-(c.offset?.[1]||0);
   }
-  if(mode==='melee'||mode==='aura'){x=q.actor.x+(mode==='melee'?q.facing*Math.min(40,(q.kit.range||64)*.65):0)-q.facing*refX-(c.offset?.[0]||0);y=q.actor.y-24-refY-(c.offset?.[1]||0);}
+  if(mode==='melee'||mode==='aura'){
+   if(mode==='aura'&&c.plantedOnActor){x=q.actor.x;y=q.actor.y;}
+   else{x=q.actor.x+(mode==='melee'?q.facing*Math.min(40,(q.kit.range||64)*.65):0)-q.facing*refX-(c.offset?.[0]||0);y=q.actor.y-24-refY-(c.offset?.[1]||0);}
+  }
   q.x=x;q.y=y;
-  q.geometry=rect?this.geometry(c,rect,x,y,q.facing,scale,q.radius):null;
+  q.geometry=rect?this.geometry(clip,rect,x,y,q.facing,scale,q.radius):null;
   if(q.unit.key==='lee'&&q.slot==='ultimate'&&c.impact&&q.age/q.duration>.62){
    const ic=c.impact,i=Math.min(ic.frames-1,Math.floor((q.age/q.duration-.62)/.38*ic.frames));q.landingPoint??={x:q.geometry?.x??x,y:(q.geometry?.y??y)+24};q.geometry=m.impactRects?.[i]?this.geometry(ic,m.impactRects[i],q.landingPoint.x,q.landingPoint.y,1,1,q.radius):null;
   }
@@ -51,6 +55,16 @@ window.SkillMotion={
  update(q,dt){
   if(!q.motion)return true;if(q.age<0)return false;
   if(!q.released&&q.age>=q.releaseAt&&!this.release(q))return false;
+  const mode=q.motion.mode;
+  if(q.released&&(mode==='aura'||mode==='melee')){
+   const e=this.target(q);
+   if(e){
+    q.target=e;
+    const face=e.x>=q.actor.x?1:-1,lock=q.clip.faceLockFrames,fr=SkillArt.frame(q);
+    const locked=Array.isArray(lock)&&fr>=lock[0]&&fr<=lock[1];
+    if(!locked){q.facing=face;if(!q.actor.moving)q.actor.facing=face;}
+   }
+  }
   const previous=q.projectilePoint?{...q.projectilePoint}:null;this.sync(q);
   if(q.released&&q.motion.mode==='projectile'&&!q.impactPoint&&q.geometry){
    const g=q.geometry,p=previous||q.flightFrom;
