@@ -1401,16 +1401,16 @@ window.SKILL_KITS = {
         "visualComplete": true
       },
       "ultimate": {
-        "name": "须佐能乎·威装",
-        "text": "召出巨大须佐能乎，蓝色能量骨架展开横扫战场，持续造成大范围伤害。须佐随本体移动并自动攻击。",
+        "name": "威装·须佐能乎",
+        "text": "唤出完整须佐能乎，挥动双刀对周围敌人造成大范围持续伤害。",
         "kind": "area",
         "element": "impact",
-        "range": 320,
-        "radius": 140,
-        "damage": 62,
-        "cd": 28,
+        "range": 300,
+        "radius": 115,
+        "damage": 55,
+        "cd": 30,
         "damageMode": "periodic",
-        "duration": 2.4,
+        "duration": 1.75,
         "source": {
           "actor": "madara",
           "skill": "ultimate"
@@ -1419,15 +1419,15 @@ window.SKILL_KITS = {
         "requiresEnemy": true,
         "target": "nearest",
         "upgradable": "main_only",
-        "hitInterval": 0.22,
+        "hitInterval": 0.25,
         "nameReview": {
-          "status": "preview",
+          "status": "adapted",
           "referenceName": "威装·须佐能乎",
-          "referenceGame": "腾讯《火影忍者》手游（动作格斗） · 宇智波斑",
+          "referenceGame": "腾讯《火影忍者》手游（动作格斗） · 宇智波斑（普通红甲版，非秽土/六道）",
           "urls": [
             "https://m.ali213.net/news/gl1901/297779.html"
           ],
-          "note": "已将奥义主题调整为须佐能乎威装，使用现有终极特效动画强化演出。",
+          "note": "奥义演出改为完整须佐能乎双刀横扫；术名采用该手游参考名，像素玩法改编。伤害、冷却、范围与持续时间保持原值。先前仅改文案的提交未包含新动画，已用新像素序列替换原火海特效。",
           "fullAnimationVerified": true
         },
         "visualComplete": true
