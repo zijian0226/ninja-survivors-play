@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v700-shared-fx-pack';
+const VERSION = 'v701-jutsu-ui-sync';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -23,7 +23,7 @@ const PRECACHE = [
   './battle/assets/fx-v67/gokakyu-icon.png?v=pool691',
   './battle/skill-pool.css?v=pool691',
   './manifest.webmanifest',
-  './css/app.css?v=pool691',
+  './css/app.css?v=pool701',
   './battle/ui-theme.css?v=pool691',
   './src/home-lobby.js?v=pool691',
   './assets/lobby-v57/konoha-sunset.webp',
@@ -42,17 +42,18 @@ const PRECACHE = [
   './src/audio.js?v=pool691',
   './src/sprites.js?v=pool691',
   './src/battle-bridge.js?v=pool691',
-  './src/data/roster-current.js?v=pool691',
+  './src/data/roster-current.js?v=pool701',
   './src/data/phase-one.js?v=pool691',
   './src/data/character-packs.js?v=pool691',
   './src/data/prep-sprites.js?v=pool691',
-  './src/data/skill-pool-catalog.js?v=pool691',
+  './src/data/skill-display.js?v=pool701',
+  './src/data/skill-pool-catalog.js?v=pool701',
   './src/data/portrait-layout.js?v=pool691',
   './src/data/roster-busts.js?v=pool691',
-  './src/roster-ui.js?v=pool691',
+  './src/roster-ui.js?v=pool701',
   './src/home-portrait.js?v=pool691',
   './src/ui-icons.js?v=pool691',
-  './src/ui.js?v=pool691',
+  './src/ui.js?v=pool701',
   './src/mobile.js?v=pool691',
   './src/main.js?v=pool691',
   './icons/icon-192.png',

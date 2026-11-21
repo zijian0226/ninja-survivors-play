@@ -239,40 +239,86 @@ window.UI = (function () {
     }
     return units;
   }
+  /* 忍术页：通用忍术（共享技能池）+ 角色招式（每个形态的技能一 / 技能二 / 奥义）。
+   * 角色招式的名称、描述、图标与预览动画全部读 SkillDisplay（由战斗运行时生成），不在界面里另写一份。 */
+  const JUTSU_SLOTS=[['primary','技能一'],['secondary','技能二'],['ultimate','奥义']];
+  const jutsuState={tab:'pool',pool:'all',kits:'all'};
+  const ELC={'火':'#F0663A','风':'#4FC6A0','雷':'#F2CF4A','土':'#C8955A','水':'#4A9BEA','阴':'#8F7BE0','阳':'#F6E7B0','全':'#D9B26A'};
+  const jEsc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function kitUnits(){
+    const SD=window.SkillDisplay;if(!SD)return [];
+    return (D.characters||[]).map(c=>({c,key:c.current?.key,u:SD.unit(c.current?.key)})).filter(x=>x.u);
+  }
+  function previewClip(title,clip,note){
+    const SD=window.SkillDisplay;if(!clip||!SD)return;
+    modal(jEsc(title),`<div class="skill-preview-stage"><canvas class="skill-preview-canvas" width="320" height="240" aria-label="${jEsc(title)}特效预览"></canvas><span class="skill-preview-state">载入中…</span></div>${note?`<p class="skill-preview-note">${jEsc(note)}</p>`:''}`);
+    const box=$('modal'),cv=box.querySelector('.skill-preview-canvas'),state=box.querySelector('.skill-preview-state'),ctx=cv.getContext('2d'),img=new Image();
+    const [cw,ch]=clip.cell,cols=clip.columns||clip.frames,row=clip.row||0,times=clip.times,index=clip.index;
+    const total=times?times.reduce((a,b)=>a+b,0):clip.frames*1000/(clip.fps||12);
+    const scale=Math.min(cv.width*.92/cw,cv.height*.92/ch,3),dw=Math.round(cw*scale),dh=Math.round(ch*scale),dx=Math.round((cv.width-dw)/2),dy=Math.round(cv.height-dh-(cv.height-dh)/4);
+    let t0=0;
+    const frameAt=ms=>{if(times){let t=ms%total,i=0;while(i<times.length-1&&t>=times[i]){t-=times[i];i++;}return index?index[i]:i;}return Math.floor(ms*(clip.fps||12)/1000)%clip.frames;};
+    const draw=now=>{if(!cv.isConnected||box.classList.contains('hidden'))return;if(!t0)t0=now;const f=frameAt(now-t0);ctx.clearRect(0,0,cv.width,cv.height);ctx.imageSmoothingEnabled=false;ctx.drawImage(img,(f%cols)*cw,(row+Math.floor(f/cols))*ch,cw,ch,dx,dy,dw,dh);requestAnimationFrame(draw);};
+    img.onload=()=>{state.remove();requestAnimationFrame(draw);};
+    img.onerror=()=>{state.textContent='特效图载入失败';};
+    img.src=SD.src(clip.file);
+  }
+  U.previewSkill=function(key,slot){const s=window.SkillDisplay?.skill(key,slot);if(s)previewClip(s.name,s.clip,s.text);};
   function renderJutsu(m, filter){
     const C=window.SkillPoolCatalog;
     if(!C){m.innerHTML='<div class="page"><header class="page-head"><h2>忍术</h2></header><section class="card empty-state"><b>忍术图鉴未能载入</b><p>请刷新页面后重试。</p></section></div>';return;}
-    const visible=C.naturesWithSkills();
-    const key=visible.includes(filter)?filter:'all';
-    const units=ownedJutsuUnits();
-    const ELC={'火':'#F0663A','风':'#4FC6A0','雷':'#F2CF4A','土':'#C8955A','水':'#4A9BEA','阴':'#8F7BE0','阳':'#F6E7B0'};
-    const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    const nav=`<div class="chip-row jutsu-nature-nav" aria-label="按属性筛选">${['all',...visible].map(n=>`<button type="button" data-jutsu-nature="${n}" class="chip ${n===key?'active':''}" aria-pressed="${n===key}">${n==='all'?'全部':`<img src="${C.natureSrc(n)}" alt="">${n}`}</button>`).join('')}</div>`;
-    const groups=key==='all'?visible:[key];
-    const body=groups.map(n=>{
-      const list=C.skills.filter(s=>s.gate===n);
-      if(!list.length)return '';
-      const cards=list.map(skill=>{
-        const levels=C.levelEffects(skill).map(x=>`<li><b>Lv.${x.level}</b> ${esc(x.text)}</li>`).join('');
-        return `<article class="card jutsu-card" data-skill="${esc(skill.id)}">
-          <div class="jutsu-main"><span class="jutsu-art-wrap" style="--el:${ELC[skill.gate]||'#A9B0C2'}"><img class="jutsu-art" src="${esc(C.iconOf(skill))}" alt="${esc(skill.name)}" width="72" height="72" decoding="async"></span>
-          <div class="jutsu-body"><div class="jutsu-name"><b>${esc(skill.name)}</b><span class="el-tag" data-el="${esc(skill.gate)}">${esc(skill.gate)}</span></div>
-          <p>${esc(skill.short||skill.text)}</p></div></div>
+    if(filter==='kits'||filter==='pool')jutsuState.tab=filter;
+    else if(filter)jutsuState[jutsuState.tab]=filter;
+    const kits=kitUnits(),kitCount=kits.reduce((n,x)=>n+Object.keys(x.u.skills).length,0);
+    const tab=jutsuState.tab==='kits'&&kits.length?'kits':'pool';
+    const tabs=`<div class="chip-row jutsu-tabs" role="tablist" aria-label="忍术分类"><button type="button" role="tab" data-jutsu-tab="pool" class="chip ${tab==='pool'?'active':''}" aria-selected="${tab==='pool'}">通用忍术 <b>${C.skills.length}</b></button><button type="button" role="tab" data-jutsu-tab="kits" class="chip ${tab==='kits'?'active':''}" aria-selected="${tab==='kits'}" ${kits.length?'':'disabled'}>角色招式 <b>${kitCount}</b></button></div>`;
+    const natureChip=(n,key,attr)=>`<button type="button" ${attr}="${n}" class="chip ${n===key?'active':''}" aria-pressed="${n===key}">${n==='all'?'全部':`<img src="${C.natureSrc(n)}" alt="">${n}`}</button>`;
+    let body,lead;
+    if(tab==='pool'){
+      const visible=C.naturesWithSkills(),key=visible.includes(jutsuState.pool)?jutsuState.pool:'all',units=ownedJutsuUnits();
+      lead='局内最多带 6 招，可学同属性与中性忍术。';
+      const nav=`<div class="chip-row jutsu-nature-nav" aria-label="按属性筛选">${['all',...visible].map(n=>natureChip(n,key,'data-jutsu-nature')).join('')}</div>`;
+      body=nav+(key==='all'?visible:[key]).map(n=>{
+        const list=C.skills.filter(s=>s.gate===n);
+        if(!list.length)return '';
+        const cards=list.map(skill=>{
+          const levels=C.levelEffects(skill).map(x=>`<li><b>Lv.${x.level}</b> ${jEsc(x.text)}</li>`).join(''),clip=C.clipOf?.(skill);
+          return `<article class="card jutsu-card" data-skill="${jEsc(skill.id)}">
+          <div class="jutsu-main"><span class="jutsu-art-wrap" style="--el:${ELC[skill.gate]||'#A9B0C2'}"><img class="jutsu-art" src="${jEsc(C.iconOf(skill))}" alt="${jEsc(skill.name)}" width="72" height="72" decoding="async"></span>
+          <div class="jutsu-body"><div class="jutsu-name"><b>${jEsc(skill.name)}</b><span class="el-tag" data-el="${jEsc(skill.gate)}">${jEsc(skill.gate)}</span></div>
+          <p>${jEsc(skill.short||skill.text)}</p></div>${clip?`<button type="button" class="icon-btn jutsu-play" data-preview-pool="${jEsc(skill.id)}" aria-label="预览${jEsc(skill.name)}特效">${UIIcons.icon('play')}</button>`:''}</div>
           <details class="jutsu-more"><summary>详情 ${UIIcons.icon('chevronDown')}</summary>
-          <p class="jutsu-full">${esc(skill.text)}</p><ol class="jutsu-levels">${levels}</ol>
-          <p class="jutsu-learners">${esc(C.formatLearners(units,skill))}</p></details></article>`;
+          <p class="jutsu-full">${jEsc(skill.text)}</p><ol class="jutsu-levels">${levels}</ol>
+          <p class="jutsu-learners">${jEsc(C.formatLearners(units,skill))}</p></details></article>`;
+        }).join('');
+        return `<section class="jutsu-group"><header class="section-head"><img src="${C.natureSrc(n)}" alt=""><h3>${n}</h3><small>${list.length} 招</small></header><div class="jutsu-grid">${cards}</div></section>`;
       }).join('');
-      return `<section class="jutsu-group"><header class="section-head"><img src="${C.natureSrc(n)}" alt=""><h3>${n}</h3><small>${list.length} 招</small></header><div class="jutsu-grid">${cards}</div></section>`;
-    }).join('');
-    m.innerHTML=`<div class="page"><header class="page-head"><h2>忍术</h2><span class="page-meta"><b>${C.skills.length}</b> 招</span></header>
-      <p class="page-lead jutsu-lead">局内最多带 6 招，可学同属性与中性忍术。</p>
-      ${nav}${body}</div>`;
+    }else{
+      const order=['风','火','雷','土','水','阴','阳','全'],have=order.filter(n=>kits.some(x=>x.c.element===n)),key=have.includes(jutsuState.kits)?jutsuState.kits:'all',SD=window.SkillDisplay;
+      lead='每个形态的技能一、技能二与奥义，和战斗中的名称、图标、特效一致。点 ▶ 看特效。';
+      const nav=`<div class="chip-row jutsu-nature-nav" aria-label="按角色属性筛选">${['all',...have].map(n=>natureChip(n,key,'data-kit-nature')).join('')}</div>`;
+      body=nav+`<div class="jutsu-grid kit-grid">${kits.filter(x=>key==='all'||x.c.element===key).map(({c,key:k,u})=>{
+        const label=window.NinjaRoster?.label?NinjaRoster.label(c):{name:u.name,form:''};
+        const rows=JUTSU_SLOTS.filter(([slot])=>u.skills[slot]).map(([slot,slotName])=>{const s=u.skills[slot];return `<li class="kit-skill" data-kit-skill="${jEsc(k)}:${slot}">
+          <span class="jutsu-art-wrap kit-art-wrap" style="--el:${ELC[c.element]||'#A9B0C2'}">${s.icon?`<img class="jutsu-art" src="${jEsc(SD.src(s.icon))}" alt="" width="48" height="48" loading="lazy" decoding="async">`:''}</span>
+          <div class="jutsu-body"><small class="kit-slot ${slot==='ultimate'?'is-ult':''}">${slotName}</small><b class="kit-name">${jEsc(s.name)}</b><p>${jEsc(s.text)}</p></div>
+          ${s.clip?`<button type="button" class="icon-btn jutsu-play" data-preview-kit="${jEsc(k)}:${slot}" aria-label="预览${jEsc(s.name)}特效">${UIIcons.icon('play')}</button>`:''}</li>`;}).join('');
+        return `<article class="card kit-card" data-unit="${jEsc(k)}"><header class="kit-head"><b>${jEsc(label.name)}</b>${label.form?`<small>${jEsc(label.form)}</small>`:''}<span class="el-tag" data-el="${jEsc(c.element)}">${jEsc(c.element)}</span></header><ol class="kit-skills">${rows}</ol></article>`;
+      }).join('')}</div>`;
+    }
+    m.innerHTML=`<div class="page"><header class="page-head"><h2>忍术</h2><span class="page-meta"><b>${tab==='pool'?C.skills.length:kitCount}</b> 招</span></header>
+      ${tabs}<p class="page-lead jutsu-lead">${lead}</p>
+      ${body}</div>`;
     m.querySelectorAll('.jutsu-art').forEach(img=>{
       const ready=()=>img.classList.add('is-ready');
       if(img.complete&&img.naturalWidth)ready();
       else{img.addEventListener('load',ready,{once:true});img.addEventListener('error',ready,{once:true});}
     });
+    m.querySelectorAll('[data-jutsu-tab]').forEach(b=>b.onclick=()=>{Sfx.play('click');renderJutsu(m,b.dataset.jutsuTab);m.scrollTop=0;});
     m.querySelectorAll('[data-jutsu-nature]').forEach(b=>b.onclick=()=>{Sfx.play('click');renderJutsu(m,b.dataset.jutsuNature);});
+    m.querySelectorAll('[data-kit-nature]').forEach(b=>b.onclick=()=>{Sfx.play('click');renderJutsu(m,b.dataset.kitNature);});
+    m.querySelectorAll('[data-preview-pool]').forEach(b=>b.onclick=()=>{const s=C.byId[b.dataset.previewPool];Sfx.play('click');previewClip(s.name,C.clipOf(s),s.text);});
+    m.querySelectorAll('[data-preview-kit]').forEach(b=>b.onclick=()=>{const [k,slot]=b.dataset.previewKit.split(':');Sfx.play('click');U.previewSkill(k,slot);});
   }
 
   function renderUpgrade(m) {
