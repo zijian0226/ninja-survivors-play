@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v702-madara-strike-root';
+const VERSION = 'v703-autoattack-input-fix';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -14,7 +14,7 @@ const PRECACHE = [
   './index.html',
   './play.html',
   './battle/scroll-roguelite.js?v=pool691',
-  './battle/skill-pool.js?v=pool691',
+  './battle/skill-pool.js?v=pool703',
   './battle/gokakyu-fireball.js?v=pool691',
   './battle/battle-ui-proposal.js?v=pool691',
   './battle/battle-ui-proposal.css?v=pool691',

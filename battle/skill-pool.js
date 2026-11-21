@@ -535,6 +535,21 @@ window.SkillPool={
   const buttons=this.buttons();
   if(!buttons.length){el.hidden=true;el.innerHTML='';return;}
   el.hidden=false;
+  // v703: this runs every tick. Rebuilding the buttons each frame swapped the node under a finger
+  // mid-tap, so taps on partner calls were lost; when the same buttons stay, update them in place.
+  const sig=buttons.map(btn=>btn.id+'|'+btn.name+'|'+this.comboFaces(btn).map(faceMarkup).join('')).join('\n');
+  if(el.dataset.sig===sig&&el.children.length===buttons.length){
+   buttons.forEach((btn,i)=>{
+    const b=el.children[i],remain=this.chargeOf(btn),ready=remain<=0,frac=ready?0:Math.max(0,Math.min(1,remain/btn.cd));
+    const cdLabel=ready?'就绪':Math.ceil(remain)+'秒';
+    b.className='call-btn'+(ready?' ready':'')+(btn.combo?' combo':'');
+    b.style.setProperty('--cd',frac);b.disabled=!ready;b.removeAttribute('aria-disabled');
+    b.setAttribute('aria-label',btn.name+' '+cdLabel);
+    const cd=b.querySelector('.call-cd');if(cd&&cd.textContent!==cdLabel)cd.textContent=cdLabel;
+   });
+   return;
+  }
+  el.dataset.sig=sig;
   el.innerHTML=buttons.map(btn=>{
    const remain=this.chargeOf(btn),ready=remain<=0,frac=ready?0:Math.max(0,Math.min(1,remain/btn.cd));
    const faces=this.comboFaces(btn);
