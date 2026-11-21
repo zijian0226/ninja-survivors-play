@@ -22,7 +22,10 @@ window.SkillArt={
  icon(u,slot){return window.SKILL_ART_DATA?.[u?.key]?.skills[slot]?.icon||this.portrait(u);},
  clear(){for(const q of this.active)if(q.actor)q.actor.sourceMove=null;this.active=[];},
  busy(a){return this.active.some(q=>q.actor===a&&q.age>=0&&(q.composite?q.age<q.duration:q.age<.16));},
- blocksMovement(){return false;},
+ // strikeFrames marks the real swing inside a looping clip; damage pulses only there, and rootDuringStrike roots the caster for it.
+ striking(q){const w=q.clip?.strikeFrames;if(!w)return true;if(q.age<0||q.age>=q.duration||q.cancelled)return false;const f=this.frame(q);return f>=w[0]&&f<=w[1];},
+ rooted(a){return !!a&&this.active.some(q=>q.actor===a&&q.clip?.rootDuringStrike&&q.clip.strikeFrames&&q.age>=0&&q.age<q.duration&&!q.cancelled&&q.released!==false&&this.striking(q));},
+ blocksMovement(a){return this.rooted(a);},
  reviewText(k){const v=k?.nameReview;if(!v)return '';if(v.status==='preview')return k.visualComplete?'动画已接入 · 正式术名待核':'源动作预览 · 术名/机制待核';return ({game_adaptation:'游戏化招式 · 原作能力改编',matched:'招式名称已核对',adapted:'已核对术名 · 像素玩法改编',preview:'演出待校正 · 当前名称为素材描述或局部招式',original:'本游戏原创被动',original_jutsu:'本游戏原创忍术'})[v.status]||'';},
  frame(q){const c=q.clip,walk=c.walkFrames;if(walk?.length&&q.actor?.moving&&q.age>=(c.walkAfter||0)&&q.age<q.duration){return walk[Math.floor((q.walkAge||0)*(c.walkFps||8))%walk.length];}const times=c.frame_times_ms,index=c.frame_index,n=times?.length;if(n&&((index&&index.length===n)||(!index&&n===c.frames))){const total=times.reduce((a,b)=>a+b,0);let t=Math.max(0,Math.min(1,q.age/q.duration))*total;for(let i=0;i<n;i++){t-=times[i];if(t<0)return index?index[i]:i;}return index?index[n-1]:c.frames-1;}if(c.frames<=3)return Math.floor(q.age*c.fps)%c.frames;return Math.min(c.frames-1,Math.floor(Math.min(1,q.age/q.duration)*c.frames));},
  hidden(a){return this.active.some(q=>q.actor===a&&q.age>=0&&a.hp>0&&!(a.down>0)&&!(q.clip.emptyFrames||[]).includes(this.frame(q))&&((q.clip.hideBaseActor&&q.age<q.duration)||(q.composite?q.age<q.duration:!a.moving&&a.lastBodyCast===q&&q.age<(q.clip.caster?.duration||0))));},
@@ -58,8 +61,8 @@ window.SkillArt={
   for(const q of this.active){
    q.age+=dt;if((q.actor.hp<=0||q.actor.down>0)&&(!q.released||!['ground','planted','projectile'].includes(q.motion?.mode))){q.age=q.duration;continue;}
    const spatialActive=SkillMotion.update(q,dt);
-   if(spatialActive&&q.age>=q.nextPulse&&q.age<q.damageEnd&&q.kit.kind!=='summon'&&!q.kit.noDamage){
-    q.nextPulse+=.2;this.metrics.pulses++;
+   if(spatialActive&&q.age>=q.nextPulse&&q.age<q.damageEnd&&q.kit.kind!=='summon'&&!q.kit.noDamage&&this.striking(q)){
+    if(q.clip.strikeFrames){if(q.nextPulse<q.age-.05)q.nextPulse=q.age;q.nextPulse+=q.clip.strikePulseInterval||.2;}else q.nextPulse+=.2;this.metrics.pulses++;
     if(q.linkEligible&&!q.linkTriggered){q.linkTriggered=true;const center={x:q.geometry.x,y:q.geometry.y};if(q.slot==='primary')SquadLinks.onPrimary(center,q.damage);if(q.slot!=='ultimate')SquadLinks.onImpact({...center,owner:q.actor,element:q.kit.element,damage:q.damage});}
     const totalPulses=Math.max(1,Math.ceil((q.damageEnd-q.duration*(q.clip.damageWindow?.[0]??.15))/.2));
     for(const e of skillTargets())if(e.hp>0&&SkillMotion.hits(q,e)){

@@ -4,7 +4,7 @@
  *   （assets/portraits/*.png 等首次加载成功后即可离线使用；404/失败的响应不会被缓存）
  * - 全部使用相对路径，部署在子路径（如 GitHub Pages /<repo>/）也可工作
  */
-const VERSION = 'v701-jutsu-ui-sync';
+const VERSION = 'v702-madara-strike-root';
 const SCOPE = new URL(self.registration ? self.registration.scope : './', self.location).pathname;
 const PREFIX = 'ninja-survivors-';
 const CACHE = PREFIX + VERSION + '@' + SCOPE;   // 带 scope，避免同域其它项目（如 user.github.io 下多个仓库）互删缓存
@@ -42,11 +42,11 @@ const PRECACHE = [
   './src/audio.js?v=pool691',
   './src/sprites.js?v=pool691',
   './src/battle-bridge.js?v=pool691',
-  './src/data/roster-current.js?v=pool701',
+  './src/data/roster-current.js?v=pool702',
   './src/data/phase-one.js?v=pool691',
   './src/data/character-packs.js?v=pool691',
   './src/data/prep-sprites.js?v=pool691',
-  './src/data/skill-display.js?v=pool701',
+  './src/data/skill-display.js?v=pool702',
   './src/data/skill-pool-catalog.js?v=pool701',
   './src/data/portrait-layout.js?v=pool691',
   './src/data/roster-busts.js?v=pool691',

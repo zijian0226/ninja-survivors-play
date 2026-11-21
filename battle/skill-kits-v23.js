@@ -1398,7 +1398,7 @@ window.SKILL_KITS = {
       },
       "ultimate": {
         "name": "威装·须佐能乎",
-        "text": "唤出完整须佐能乎，持续挥刀对周围敌人造成大范围伤害。",
+        "text": "唤出完整须佐能乎，持续挥刀对周围敌人造成大范围伤害。挥砍时无法移动。",
         "kind": "area",
         "element": "impact",
         "range": 300,

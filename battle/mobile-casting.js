@@ -11,7 +11,7 @@
   return d?{x:dx/d*strength,y:dy/d*strength}:{x:0,y:0};
  }
  const blocks=SkillArt.blocksMovement,cast=SkillArt.cast,nativeTick=tick;
- SkillArt.blocksMovement=function(a){return enabled(a)?false:blocks.call(this,a);};
+ SkillArt.blocksMovement=function(a){return enabled(a)?this.rooted(a):blocks.call(this,a);};
  SkillArt.cast=function(a,u,...args){
   const scoped=keys.has(u?.key),before=scoped?new Set(this.active):null,face=a?.facing;
   const result=cast.call(this,a,u,...args);
